@@ -3,144 +3,385 @@
 <head>
 <title>Kisaan Infotech Limited</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
+  <link rel="stylesheet" href="w3.css">
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  
   <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
-
-/* Style the header */
-.header {
-  padding: 1px;
-  text-align: left;
-  background: #4CAF50;
-  color: white;
-}
-
-/* Increase the font size of the h1 element */
-.header h1 {
-  font-size: 30px;
-}
-
-/* Style the top navigation bar */
-.navbar {
-  overflow: hidden;
-  background-color: #ddd;
-}
-
-/* Style the navigation bar links */
-.navbar a {
-  float: left;
-  display: block;
-  color: Black;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
-}
-
-/* Right-aligned link */
-.navbar a.right {
-  float: right;
-}
-
-/* Change color on hover */
-.navbar a:hover {
-  background-color: #FB682D;
-  color: black;
-}
-
-/* Column container */
-.row {  
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
-.side {
-  flex: 17%;
-  background-color: #f1f1f1;
-  padding: 15px;
-}
-
-/* Main column */
-.main {   
-  flex: 83%;
-  background-color: white;
-  padding: 15px;
-}
-
-/* Footer */
-.footer {
-  padding: 5px;
-  text-align: center;
-  background: #ddd;
-}
-
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 700px) {
-  .row {   
-    flex-direction: column;
+  .container-fluid {
+    padding: 50px 30px;
   }
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .navbar a {
-    float: none;
-    width:100%;
+  .bg-grey {
+    background-color: #f6f6f6;
   }
+  .logo-small {
+    color: #f4511e;
+    font-size: 50px;
+  }
+  .logo {
+    color: #f4511e;
+    font-size: 200px;
+  }
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #f4511e;
+  }
+  .carousel-indicators li {
+    border-color: #f4511e;
+  }
+  .carousel-indicators li.active {
+    background-color: #f4511e;
+  }
+  .item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+  }
+  .item span {
+    font-style: normal;
+  }
+  .panel {
+    border: 1px solid #428042; 
+    border-radius:0 !important;
+    transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-heading {
+    color: #fff !important;
+    background-color: #428042 !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .navbar {
+    margin-bottom: 0;
+    background-color: #428042;
+    z-index: 9999;
+    border: 0;
+    font-size: 13px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 0px;
+    border-radius: 0;
+	font-weight:normal
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #428042 !important;
+    background-color: #e0e0f0 !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #e0e0f0 !important;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+footer .glyphicon {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #0a2a0a;
+}
+  </style>
+<style type="text/css">
+.navbar-brand>img {
+   max-height: 150%;
+   height: 120%;
+   width: auto;
+   margin: 0 auto;
+   -o-object-fit: contain;
+   object-fit: contain; 
+
 }
 </style>
 </head>
-<body>
-<div class="header">
-  <p><img src="DesktopLogo_Transparent.png" alt="DesktopLogo_Transparent"></p>
-</div>
-<div class="navbar">
-<a href="index.html" class="active">Home</a>
-  <a href="Services.html">Our Services</a>
-<a href="Bod.html">Board of Directors</a>
-<a href="Values.html">Our Values</a>
-<a href="Investors.html">Investor Relations</a>
-<a href="Joinus.html">Join Our Team</a>
-<a href="Contact.html">Contact Us</a>
-</div>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+ <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>	
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#mypage"><img src="DesktopLogo_Transparent.png" class="img-responsive"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#board">BOARD OF DIRECTORS</a></li>
+        <li><a href="#investors">INVESTORS</a></li>
+		<li><a href="#joinus">JOIN US</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+	  <ul class="navbar-header navbar-right"> 
+	  <button type="button" data-href="https://www.linkedin.com/company/kisaaninfotechltd" data-width="">Linkedin Page</button>
+	  <a href="https://twitter.com/KisaanLtd?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-related="kisaanltd" data-dnt="true" data-show-count="false">Follow @KisaanLtd</a>
+    </ul>
+	</div>
+  </div>
+</nav> 
+<!-- Container (About Section) -->
+<div id="about" class="container-fluid" style="margin-top:35px ; background-color:#f0f5f0">
+    <div class="text-center">
+    <h2>ABOUT US</h2>
+     </div>
 <div class="row">
-  <div class="side">
-    <h3>Download</h3>
-    <h5><a href="AOA.pdf">Article of Association</a></h5>
-    <h5><a href="MOA.pdf">Memorandum of Association</a></h5>
-      <h5><a href="BoD Code.pdf">Code of Conduct for BoD</a></h5>
-<h5><a href="RPT Policy.pdf">Related Party Transaction Policy</a></h5>
-    <h3>Our Business Units</h3>
-    <h5><a href="http://www.kisaanexports.in">KISAAN EXPORTS</a></h5>
-<h5><a href="http://www.kisaanfishery.com">KISAAN FISHERY</a></h5>
-  </div>
-  <div class="main">
-    <h3>Who We Are!</h3>
-    <h4>"We are multi channel peer to peer shared services marketplace platform for Farmers & the agriculture stakeholders"</h4>
-<p><img src="whoweare.png" alt="who we are" width="550"></p>
-    <h4>Following Items can be shared,  Traded, Exchanged, Swapped or Bartered on this Platform:</h4>
-    <p> (1) Agri Pumps, Motors & Machines. (2) Agri tools, Equipment & Accessories (3) Credit / Loan / Project Finance.</p><p>(4) Farm Labour. (5) Farmer Welfare Schemes (6) Insurance Cover.</p>
-    <br>
-    <h3>What we do!</h3>
-    <p>"We Partner with Farmers to Promote & Facilitate Export, Contract Farming <br>and Agri Allied Businesses like Fishery, Dairy, Bakery, Poultry and Food Processing"</p>
-    <p><img src="farmlabour.jfif" alt="Farm Labour" width="550"></p>
-    <h4>Farmer Services</h4>
-    <p> (1) Crop & Livestock Insurance Registration. (2) A platform to Source & Hire Farm Workers.</p> <p> (3) The Connect & Exchange Platform for Farm land Owners & Tenant Farmer. (4) The Best & affordable Online Services.</p>
+	<div class="col-sm-4 col-xs-12">
+		<div class="panel panel-default text-center">
+			<div class="panel-heading">
+				<h3>WHO WE ARE?</h3>
+			</div>
+			<div class="panel-body">
+			<h5><span style="color:purple">We are The IT and ITeS Public Limited Company</span></h5>
+				<h5><span style="color:purple">A Shared Services Marketplace Platform.</span></h5>
+				<h5><span style="color:purple">Manpower Supplier.</span></h5>
+				<h5><span style="color:purple">Websites Service Provider.</span></h5>
+				<h5><span style="color:purple">The Export House.</span></h5>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4 col-xs-12">
+		<div class="panel panel-default text-center">
+			<div class="panel-heading">
+				<h3>WHAT WE DO?</h3> 
+			</div>
+			<div class="panel-body">
+				<h5 class="text-center"><span style="color:purple">We Design and Develop Websites.</span></h5>
+				<h5 class="text-center"><span style="color:purple">We Source and Supply Manpower.</span></h5>
+				<h5 class="text-justify"><span style="color:purple">We Partner with Farmers and Agriculture stake holders to Promote and Facilitate Export, Contract Farming and Agri Allied Businesses.</span></h5>
+				<h5 class="text-justify"><span style="color:purple">We Provide common platform for borrowing and lending Farm equipments, Farm Machines and Farming tools.</span></h5>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4 col-xs-12">
+		<div class="panel panel-default text-center">
+			<div class="panel-heading">
+				<h3>OUR VALUES</h3>
+			</div>
+			<h4 class="text-center">MISSION</h4>
+			<h4 class="text-center"><span style="color:purple">"Our Mission is to be a Self Managing, Ever Evolving, Conscious and Complete Organization."</span></h4>
+			<br>
+			<h4 class="text-center">VISION</h4> 
+			<h4 class="text-center"><span style="color:purple">"To Solve Problems of The Humanity."</span></h4>
+		</div>
+	</div>
+</div>
+</div>
+<!-- Container (BOD Section) -->
+<div id="board" class="container-fluid">
+	<h2 class="text-center">BOARD OF DIRECTORS</h2>
+	<br>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="text-center" style="background-color:#f0f5f0">
+				<div class="media">
+					<img src="dattashinde.jfif" class="img-thumbnail" style="width:80px">
+					<div class="media-body">
+					<h4 class="media-heading ; text-center">Mr.Datta Shinde</h4>
+					<p class="text-justify">Aged 38 years, is a Director in our Company. He holds a post graduate degree in Physics and has done his bachelors in Science from Dr.B.A.M.University. He has about Fourteen (14) years of cross functional experience in IT, Sales, Recruitment and business development. In the past, he was involved in Recruitment Process Outsourcing for USA region.</p>
+					</div>  
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="text-center" style="background-color:#f0f5f0">
+				<div class="media">
+				<img src="chetan.jfif" class="img-thumbnail" style="width:80px">
+					<div class="media-body">
+					<h4 class="media-heading ; text-center">Mr.Chetan Waghmare</h4>
+					<p class="text-justify">Aged 43 years, is a Director in our company. With over 20 years of core experience in the field of Information Technology in project planning, budgeting, delivery and business development.Chetan holds bachelor degree in Electronics and Telecommunication Engineering from Amaravati University and diploma in Industrial Electronics from Mumbai University.</p>
+					</div>  
+				</div>
+			</div>
+		</div>
+	</div>
+		<br>
+		<div class="row">
+		<div class="col-sm-6">
+			<div class="text-center" style="background-color:#f0f5f0">
+				<div class="media">
+				<img src="santosh.jfif" class="img-thumbnail" style="width:80px">
+					<div class="media-body">
+					<h4 class="media-heading ; text-center">Mr.Santosh Shinde</h4>
+					<p class="text-justify">Aged 29 years, is a Director in our company. skilled youtuber & content writer. Santosh has about Five (05) years of experience into Online Services, Recruitment and business development.</p>
+					</div>  
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="text-center" style="background-color:#f0f5f0">
+				<div class="media">
+				<img src="meera.jfif" class="img-thumbnail" style="width:80px">
+					<div class="media-body">
+					<h4 class="media-heading ; text-center">Mr.Meera Shinde</h4>
+					<p class="text-justify">Aged 38 years, is a Director in our company. Dynamic, driven and accomplished executive, with over 10 years of core experience in the field of administration , operations and business development.</p>
+					</div>  
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Container (Investors Section) -->
+<div id="investors" class="container-fluid">
+<h2 class="text-center">INVESTMENT OPPORTUNITIES</h2>
+<div class="row">
+<div class="col-sm-4" style="background-color:#f0f5f0">
+<h4 class="text-center"><strong>INVEST IN OUR PROJECTS.</strong></h4>
+<p class="text-center"><a href="https://www.kisaanfishery.com">KISAAN FISHERY</a><br>
+<a href="https://www.kisaanexports.in">KISAAN EXPORTS</a><br>
+<a href="kisaanbakery">KISAAN BAKERY</a><br>
+<a href="kisaanbakery">KISAAN SOLAR</a><br> 
+<a href="kisaanbakery">KISAAN PHARMACY</a></p>
+</div>
+		<div class="col-sm-4" style="background-color:#f0f5f0">
+		<h4 class="text-center"><strong>INVEST IN OUR EQUITY</strong></h4>
+		<p class="text-center">Invest in our Equity by Invitation only.<br>
+		Attend Our: Investor Orientation seminar.<br>
+				Dividends paid as Per AGM.<br>
+		Write to: <a href="mailto:investors@kisaaninfotech.com">investors@kisaaninfotech.com</a></p>
+		</div>
+		<div class="col-sm-4" style="background-color:#f0f5f0">
+		<h4 class="text-center"><strong>INVEST IN OUR DEPOSIT PLANS</strong></h4>
+		<p class="text-center"><a href="#">Fixed Term Deposit</a><br>
+		<a href="#">Flexible Term Deposit</a><br>
+		<a href="#">Convertible Bonds</a><br>
+		<a href="#">Non-Convertible Bonds</a></p>
+		</div>
+	</div>
+</div>
+<!-- Container (Join Us Section) -->
+<div id="joinus" class="container-fluid">
+<h2 class="text-center">JOIN OUR TEAM</h2>
+<div class="row">
+<div class="col-sm-4" style="background-color:#f0f5f0">
+<h5 class="text-center"><strong>WE’RE LOOKING FOR PEOPLE TO JOIN OUR TEAM WHO ARE AS EXCITED AS WE ARE.</strong></h5>
+<p class="text-center">Skills, not job titles, <br>are the metrics to work with us.<br>
+email your resume to:<br><a href="mailto:resume@kisaaninfotech.com">resume@kisaaninfotech.com</a></p>
+</div>
+		<div class="col-sm-4" style="background-color:#f0f5f0">
+		<h5 class="text-center"><strong>WHAT WE OFFER</strong></h5>
+		<p class="text-center">Work life Balance.<br>
+		Training and Development.<br>
+		Working with Worlds Best.<br>
+		Employees Come First<br>
+		We Love Having Fun<br>
+		</div>
+		<div class="col-sm-4" style="background-color:#f0f5f0">
+		<h5 class="text-center"><strong>CURRENT JOBS OPENINGS</strong></h5>
+		<p class="text-center"><a href="#">Web Developer</a><br>
+		<a href="#">Recruiter</a><br>
+		<a href="#">Business Development Manager</a><br>
+	<a href="#">Graphic Designer</a><br>	
+	<a href="#">Account Manager</a></p>
+		</div>
+	</div>
+</div>
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid" style="background-color:#f0f5f0">
+  <h2 class="text-center">CONTACT US</h2>
+  <div class="row">
+    <div class="col-sm-4">
+	<div class="panel panel-default text-center">
+      <p><u>PUNE, INDIA</u></p>
+      <p> Kharadi, Pune - INDIA</p>
+      <p>+91-9595820288</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> info@kisaaninfotech.com</p>
+	  <a href="https://twitter.com/intent/tweet?screen_name=KisaanLtd&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @KisaanLtd</a>
+	</div>
+    </div>
+	<div class="col-sm-4">
+	<div class="panel panel-default text-center">
+      <p><u>HYDERABAD, INIDA</u></p>
+      <p>Rejendranagar, Hyderabad, INDIA</p>
+      <p>  +91-9595820288</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> info@kisaaninfotech.com</p>
+	  <a href="https://twitter.com/intent/tweet?screen_name=KisaanLtd&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @KisaanLtd</a>
+    </div>
+	</div>
+	<div class="col-sm-4">
+	<div class="panel panel-default text-center">
+      <p class="text-center"><u>DELAWARE USA</u></p>
+      <p> Wilmington, DE USA</p>
+      <p>  +91-9595820288</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> info@kisaaninfotech.com</p>
+	  <a href="https://twitter.com/intent/tweet?screen_name=KisaanLtd&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @KisaanLtd</a>
+    </div>
+	</div>
   </div>
 </div>
-<div class="footer">
-  <h3>@ KISAAN INFOTECH LIMITED</h3>
-</div>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+  <div class="row" style="background-color:#e0e0f0">
+  <div class="col-sm-4">
+    </div>
+  <div class="col-sm-4">
+  <p> KISAAN INFOTECH LIMITED</p>
+  </div>
+  <div class="col-sm-4">
+  </div>
+  </div>
+</footer>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
 </body>
 </html>
