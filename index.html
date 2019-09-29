@@ -20,8 +20,9 @@
   <style>
     body {
      margin: 0;
-   	 padding: 10px;
+   	 padding: 15px;
      text-align: center;
+	 background-color:#0489B1;
 	 }
   .thumbnail {
     padding: 0 0 15px 0;
@@ -34,7 +35,7 @@
     margin-bottom: 10px;
   }
   .panel {
-    border: 1px solid #428042; 
+    border: 1px solid #0489B1; 
     border-radius:0 !important;
     transition: box-shadow 0.5s;
   }
@@ -43,17 +44,17 @@
   }
   .panel-heading {
     color: #fff !important;
-    background-color: #428042 !important;
-    padding: 10px;
+    background-color: #0489B1 !important;
+    padding: 5PX;
     border-bottom: 1px solid transparent;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
   }
   .navbar {
     margin-bottom: 0;
-    background-color: #428042;
+    background-color: #0489B1;
     z-index: 9999;
     border: 0;
     font-size: 13px !important;
@@ -90,6 +91,11 @@
    object-fit: contain; 
 }
 </style>
+<style>
+ table, th, td {
+  border: 1px solid black;
+}
+</style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -116,13 +122,13 @@
 <!-- Container (About Section) -->
 <div id="about" class="container-fluid" style="margin-top:50px ; background-color:#f0f5f0">
     <div class="text-center">
-    <h2>ABOUT US</h2>
+    <h3>ABOUT US</h3>
      </div>
 <div class="row">
 	<div class="col-sm-4 col-xs-12">
 		<div class="panel panel-default text-center">
 			<div class="panel-heading">
-				<h3>WHO WE ARE?</h3>
+				<h4>WHO WE ARE?</h4>
 			</div>
 			<div class="panel-body">
 			<h5><span style="color:purple">We are The IT and ITeS Public Limited Company</span></h5>
@@ -136,7 +142,7 @@
 	<div class="col-sm-4 col-xs-12">
 		<div class="panel panel-default text-center">
 			<div class="panel-heading">
-				<h3>WHAT WE DO?</h3> 
+				<h4>WHAT WE DO?</h4> 
 			</div>
 			<div class="panel-body">
 				<h5 class="text-center"><span style="color:purple">We Design and Develop Websites.</span></h5>
@@ -149,7 +155,7 @@
 	<div class="col-sm-4 col-xs-12">
 		<div class="panel panel-default text-center">
 			<div class="panel-heading">
-				<h3>OUR VALUES</h3>
+				<h4>OUR VALUES</h4>
 			</div>
 			<h4 class="text-center">MISSION</h4>
 			<h5 class="text-center"><span style="color:purple">"Our Mission is to be a Self Managing, Ever Evolving, Conscious and Complete Organization."</span></h5>
@@ -161,8 +167,8 @@
 </div>
 </div>
 <!-- Container (BOD Section) -->
-<div id="board" class="container-fluid" style="background-color:#f0f5f0">
-	<h2 class="text-center">BOARD OF DIRECTORS</h2>
+<div id="board" class="container-fluid" style="margin-top:10px ; background-color:#f0f5f0">
+	<h3 class="text-center">BOARD OF DIRECTORS</h3>
 	<br>
 	<div class="row">
 		<div class="col-sm-6">
@@ -215,10 +221,10 @@
 	</div>
 </div>
 <!-- Container (Investors Section) -->
-<div id="investors" class="container-fluid" style="background-color:#f0f5f0">
-	<h2 class="text-center">INVESTMENT OPPORTUNITIES</h2>
+<div id="investors" class="container-fluid" style="margin-top:10px ; background-color:#f0f5f0">
+	<h3 class="text-center">INVESTMENT OPPORTUNITIES</h3>
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<h4 class="text-center"><strong>INVEST IN OUR PROJECTS.</strong></h4>
 				<div class="panel panel-default">
 					<p class="text-center">KISAAN FISHERY<sup>(TM)</sup><br>
@@ -227,7 +233,7 @@
 							KISAAN SOLAR <sup>(TM)</sup><br></p>
 				</div>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<h4 class="text-center"><strong>INVEST IN OUR EQUITY</strong></h4>
 				<div class="panel panel-default">
 					<p class="text-center">Invest in our Equity by Invitation.<br>
@@ -236,7 +242,7 @@
 							Write to <br> <span class="glyphicon glyphicon-envelope"></span>: <a href="mailto:investors@kisaaninfotech.com">investors@kisaaninfotech.com</a></p>
 				</div>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 					<h4 class="text-center"><strong>INVEST IN OUR DEPOSIT PLANS</strong></h4>
 				<div class="panel panel-default">
 					<p class="text-center"><a href="#">Fixed Term Deposit</a><br>
@@ -245,19 +251,40 @@
 					<a href="#">Non-Convertible Bonds</a></p>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12 text-center">
+			<div class="col-sm-3">
+			<h4><strong>DOCUMENTS FOR REFERENCE</strong></h4>
 				<div class="panel panel-default">
-					<p><h5><strong>Company Policy & Other Documents for Public Reference</strong></h5> 
-					<p style="margin-top:10px;">(1)<a href="AOA.pdf"> Article of Association </a>(2) <a href="MOA.pdf">Memorandum of Association </a>(3) <a href="BoD Code.pdf">Code of Conduct for BoD </a>(4) <a href="RPT Policy.pdf">Related Party Transaction Policy </a></p></p>
+					
+					<table class="table table-condensed">
+		<tr>
+			   <th class="text-center">Document Name</th>
+		<th class="text-center">Pdf Download</th>
+		</tr>
+      <tr>
+        <td>Article of Association</td>
+		<td><a href="AOA.pdf"> <img src="/Images/pdf.png" style="width:15px"> </a></td>
+      </tr>
+<tr>
+        <td>Memorandum of Association</td>
+		<td><a href="MOA.pdf"> <img src="/Images/pdf.png" style="width:15px"> </a></td>
+      </tr>
+<tr>
+        <td>Code of COnduct for BoD</td>
+		<td><a href="BoD.pdf"> <img src="/Images/pdf.png" style="width:15px"> </a></td>
+      </tr>
+<tr>
+        <td>Related Party Transaction Policy</td>
+		<td><a href="RPT Policy.pdf"> <img src="/Images/pdf.png" style="width:15px"> </a></td>
+      </tr>
+</table>
+</p>
 				</div>
 			</div>
 		</div>
 </div>
 <!-- Container (Join Us Section) -->
-<div id="joinus" class="container-fluid" style="background-color:#f0f5f0">
-	<h2 class="text-center">JOIN OUR TEAM</h2>
+<div id="joinus" class="container-fluid" style="margin-top:10px ; background-color:#f0f5f0">
+	<h3 class="text-center">JOIN OUR TEAM</h3>
 	<div class="row">
 		<div class="col-sm-4">
 			<h5 class="text-center"><strong>WE’RE LOOKING FOR PEOPLE TO JOIN OUR TEAM WHO ARE AS EXCITED AS WE ARE.</strong></h5>
@@ -289,8 +316,8 @@
 	</div>
 </div>
 <!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid" style="background-color:#f0f5f0">
-  <h2 class="text-center" >CONTACT US</h2>
+<div id="contact" class="container-fluid" style="margin-top:10px ; background-color:#f0f5f0">
+  <h3 class="text-center" >CONTACT US</h3>
   <div class="row">
     <div class="col-sm-4">
 	<div class="panel panel-default text-center">
@@ -327,10 +354,10 @@
 		
 		<div class="footer-social__icons">
 		<p class="text-center">
-		<a href="https://www.linkedin.com/company/kisaaninfotechltd"><img src="/Images/linkedin.jfif"  style="width:30px"></a>
-		<a href="https://www.facebook.com/KisaanInfoTechLimited"><img src="/Images/facebook.jfif" style="width:30px"></a>		
-	<a href="https://twitter.com/KisaanLtd"><img src="/Images/Twitter.jfif" style="width:30px"></a>
-	<a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw"><img src="/Images/youtube.jfif" class="img-thumbnail" style="width:90px"></a></p>
+		<a href="https://www.linkedin.com/company/kisaaninfotechltd"><img src="/Images/linkedin.jfif"  style="width:20px"></a>
+		<a href="https://www.facebook.com/KisaanInfoTechLimited"><img src="/Images/facebook.jfif" style="width:20px"></a>		
+	<a href="https://twitter.com/KisaanLtd"><img src="/Images/Twitter.jfif" style="width:20px"></a>
+	<a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw"><img src="/Images/youtube.jfif" class="img-thumbnail" style="width:80px"></a></p>
 		</div>		
 	</div>
 </div>	
