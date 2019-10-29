@@ -20,8 +20,24 @@
 <style>
 .bottom-container
 {background:url(//kisaaninfotech.com/Images/footer-bg.jpg) no-repeat center center;background-size:cover;padding-top:10px}
+.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+     
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
 </style>
-  <style>
+ <style>
     body {
      margin: 0;
    	 padding: 15px;
@@ -39,16 +55,20 @@
     margin-bottom: 10px;
   }
   .panel {
-    border: 1px solid #0489B1; 
+    border: 1px solid #ebf1f2;
     border-radius:0 !important;
     transition: box-shadow 0.5s;
   }
+.panel li {
+   display: inline;
+   font-size: 16px;
+}
   .panel:hover {
     box-shadow: 5px 0px 40px rgba(0,0,0, .2);
   }
   .panel-heading {
     color: #fff !important;
-    background-color: #0489B1 !important;
+    background-color: #70DB93 !important;
     padding: 5PX;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 2px;
@@ -56,9 +76,11 @@
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
   }
+  .panel-body {
+  text-align: left;
+  }
   .navbar {
     margin-bottom: 0;
-    background-color: #0489B1;
     z-index: 9999;
     border: 0;
     font-size: 13px !important;
@@ -68,7 +90,7 @@
 	font-weight:normal
   }
   .navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
+    color: #3d3d3d!important;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
     color: #428042 !important;
@@ -95,11 +117,6 @@
    object-fit: contain; 
 }
 </style>
-<style>
- table, th, td {
-  border: 1px solid black;
-}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -110,7 +127,7 @@
 				<span class="icon-bar"></span>	
 				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/DesktopLogo_Transparent.png" class="img-responsive"></a>
+				<a class="navbar-brand" href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/kisaan.svg" class="img-responsive"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-left">
@@ -282,9 +299,10 @@
           <div class="text-center center-block">
             <h4> FIND US ON SOCIAL MEDIA</h4>
                 <div><a href="https://www.facebook.com/KisaanInfoTechLimited"><img src="//kisaaninfotech.com/Images/ico-facebook.svg"></a> <span>
-              <a href="https://twitter.com/KisaanLtd"><img src="//kisaaninfotech.com/Images/Twitter_Logo_WhiteOnImage.png"></a> <span>
-        <a href="https://www.linkedin.com/company/kisaaninfotechltd"><img src="//kisaaninfotech.com/Images/ico-linkedin.svg"></a> 
-              </div>
+	            <a href="https://twitter.com/KisaanLtd"><img src="//kisaaninfotech.com/Images/twitter-square.svg" width="28px"></a> <span>
+				<a href="https://www.linkedin.com/company/kisaaninfotechltd"><img src="//kisaaninfotech.com/Images/linkedin-square.svg" width="28px"></a> <span>
+				<a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw"><img src="//kisaaninfotech.com/Images/youtube-square.svg" width="28px"></a>
+	            </div>
 <div class="footer-voucher-block">
                                                     </div>
        </div>
