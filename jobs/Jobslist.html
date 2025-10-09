@@ -1,463 +1,878 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>All Job vacancy list with Kisaan Infotech Limited</title>
-<meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://kisaaninfotech.com/bootstrap.min.css">
-  <script src="https://kisaaninfotech.com/jquery.min.js"></script>
-  <script src="https://kisaaninfotech.com/bootstrap.min.js"></script>
-<link rel="icon" href="https://kisaaninfotech.com/favicon.png" type="image/ico" sizes="16x16">
-	<link rel=“canonical” href=“https://kisaaninfotech.com/jobs/Jobslist.html/” />
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-79564470-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-79564470-1');
-</script>
-<style>
-.bottom-container
-{background:url(//kisaaninfotech.com/Images/footer-bg.jpg) no-repeat center center;background-size:cover;padding-top:10px}
-.social:hover {
-     -webkit-transform: scale(1.1);
-     -moz-transform: scale(1.1);
-     -o-transform: scale(1.1);
- }
- .social {
-     -webkit-transform: scale(0.8);
-     /* Browser Variations: */
-     
-     -moz-transform: scale(0.8);
-     -o-transform: scale(0.8);
-     -webkit-transition-duration: 0.5s;
-     -moz-transition-duration: 0.5s;
-     -o-transition-duration: 0.5s;
- }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Opportunities - Kisaan Infotech Limited</title>
+    <link rel="canonical" href="https://kisaaninfotech.com/jobs/Jobslist.html" />
+    <link rel="icon" href="https://kisaaninfotech.com/favicon.png" type="image/ico" sizes="16x16">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEPM4D0EMX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JEPM4D0EMX');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-</style>
- <style>
-    body {
-     margin: 0;
-   	 padding: 15px;
-     text-align: center;
-	 background-color:#ebf1f2;
-	 }
-  .thumbnail {
-    padding: 0 0 15px 0;
-    border: none;
-    border-radius: 0;
-  }
-  .thumbnail img {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 10px;
-  }
-  .panel {
-    border: 1px solid #ebf1f2;
-    border-radius:0 !important;
-    transition: box-shadow 0.5s;
-  }
-.panel li {
-   display: inline;
-   font-size: 16px;
-}
-  .panel:hover {
-    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
-  }
-  .panel-heading {
-    color: #fff !important;
-    background-color: #70DB93 !important;
-    padding: 5PX;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
-  .panel-body {
-  text-align: left;
-  }
-  .navbar {
-    margin-bottom: 0;
-    z-index: 9999;
-    border: 0;
-    font-size: 13px !important;
-    line-height: 1.42857143 !important;
-    letter-spacing: 0px;
-    border-radius: 0;
-	font-weight:normal
-  }
-  .navbar li a, .navbar .navbar-brand {
-    color: #3d3d3d!important;
-  }
-  .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #70db93 !important;
-    background-color: #bbbbb !important;
-  }
-  .navbar-default .navbar-toggle {
-    border-color: transparent;
-    color: #e0e0f0 !important;
-  }
-  @media screen and (max-width: 768px) {
-    .col-sm-4 {
-      text-align: center;
-      margin: 25px 0;
-    }
-  }
-</style>
-<style type="text/css">
-.navbar-brand>img {
-   max-height: 150%;
-   height: 120%;
-   width: auto;
-   margin: 0 auto;
-   -o-object-fit: contain;
-   object-fit: contain; 
-}
-</style>
+        :root {
+            --primary: #70DB93;
+            --primary-dark: #5bc47d;
+            --secondary: #2d5f3f;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Search & Filter */
+        .controls {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--primary);
+            background: var(--white);
+            color: var(--primary);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Jobs Table */
+        .jobs-container {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .jobs-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .jobs-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .jobs-count {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .jobs-table {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f8f9fa;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: #f8fffe;
+            transform: translateX(5px);
+        }
+
+        td {
+            padding: 15px;
+        }
+
+        .job-id {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .job-title a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .job-title a:hover {
+            color: var(--primary);
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .status-open {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-closed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .location {
+            color: var(--text-light);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d3748, #1a202c);
+            color: var(--white);
+            padding: 50px 20px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .jobs-table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 10px 8px;
+            }
+
+            .jobs-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>	
-				<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/kisaan.svg" class="img-responsive"></a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-left">
-				<li><a href="https://kisaaninfotech.com/index.html">ABOUT</a></li>
-				<li><a href="https://kisaaninfotech.com/#board">OUR BOARD</a></li>
-				<li><a href="https://kisaaninfotech.com/#investors">INVESTORS</a></li>
-				<li><a href="https://kisaaninfotech.com/#joinus">JOIN US</a></li>
-				<li><a href="https://kisaaninfotech.com/jobs/Jobslist.html"> JOBS LIST</a>
-				<li><a href="https://kisaaninfotech.com/#contact">CONTACT</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-<div class="container" style="margin-top:50px ; background-color:#f0f5f0">
-		<h3 class="text-center">Jobs List</h3>
-		<br>
-		<div class="panel panel-default">
-			<table class="table table-condensed">
-			<col width="10">
-				<tr>
-					<th class="text-center">#</th>
-					<th class="text-center">Job Title</th>
-					<th class="text-center">Location</th>
-					<th class="text-center">Status</th>
-				</tr>
-				<tr>
-					<td>SD01</td>
-					<td><a href="https://kisaaninfotech.com/jobs/KarnatakaStateDirector_English.jpg">Karnataka State Director</a> </td>
-					<td>Karnataka</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD02</td>
-					<td><a href="https://kisaaninfotech.com/jobs/MahaStateDirector_English.jpg">Maharashtra State Director</a></td>
-					<td>Pune, Maharashtra</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD03</td>
-					<td><a href="https://kisaaninfotech.com/jobs/GujratStateDirector_English.jpg">Gujrat State Director</a></td>
-					<td>Gujrat</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD04</td>
-					<td><a href="https://kisaaninfotech.com/jobs/telanganasd.html">Telangana State Director</a></td>
-					<td>Telangna</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD05</td>
-					<td><a href="https://kisaaninfotech.com/jobs/JharkhandStateDirector_English.jpg">Jharkhand State Director</td>
-					<td>Jharkhand</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD06</td>
-					<td><a href="https://kisaaninfotech.com/jobs/PunjabStateDirector_English.jpg">Punjab State Director</td>
-					<td>Punjab</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD07</td>
-					<td><a href="https://kisaaninfotech.com/jobs/JammuKashmirsd.html">Jammu And Kashmir State Director</td>
-					<td>Jammu & Kashmir</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD08</td>
-					<td><a href="https://kisaaninfotech.com/jobs/RajasthanStateDirector_English.jpg">Rajasthan State Director</td>
-					<td>Rajasthan</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD09</td>
-					<td><a href="https://kisaaninfotech.com/jobs/Madhyapradeshsd.html">Madhya Pradesh State Director</td>
-					<td>MadhyaPradesh</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD10</td>
-					<td><a href="https://kisaaninfotech.com/jobs/Uttarkhandsd.html">UttaraKhand State Director</td>
-					<td>Uttarakhand</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD11</td>
-					<td><a href="https://kisaaninfotech.com/jobs/Uttarpradeshsd.html">Uttar Pradesh State Director</td>
-					<td>UttarPradesh</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD12</td>
-					<td><a href="https://kisaaninfotech.com/jobs/Haryanasd.html">Haryana State Director</td>
-					<td>Haryana</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD13</td>
-					<td><a href="https://kisaaninfotech.com/jobs/Biharsd.html">Bihar State Director</td>
-					<td>Bihar</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD14</td>
-					<td><a href="https://kisaaninfotech.com/jobs/Chhattisgarhsd.html">Chhattisgarh State Director</td>
-					<td>Chhattisgarh</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD15</td>
-					<td><a href="https://kisaaninfotech.com/jobs/Himachalpradeshsd.html">Himachal Pradesh State Director</td>
-					<td>Himachal Pradesh</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD16</td>
-					<td><a href="https://kisaaninfotech.com/jobs/Tamilnadusd.html">TamilNadu State Director</td>
-					<td>Tamilnadu</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD17</td>
-					<td><a href="https://kisaaninfotech.com/jobs/
-WestBengalStateDirector_English.jpg ">Westbengal State Director</td>
-					<td>West Bengal</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD18</td>
-					<td><a href="https://kisaaninfotech.com/jobs/AssamStateDirector_English.jpg ">Assam State Director</td>
-					<td>Guwahati</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD19</td>
-					<td><a href="https://kisaaninfotech.com/jobs/MeghalayaStateDirector_English.jpg ">Meghalaya State Director</td>
-					<td>Shillong</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>SD20</td>
-					<td><a href="https://kisaaninfotech.com/jobs/TripuraStateDirector_English.jpg ">Tripura State Director</td>
-					<td>Agartala</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>DM01</td>
-					<td><a href="https://kisaaninfotech.com/jobs/punedm.html">Pune District Manager</a></td>
-					<td>Pune</td>
-					<td>Open</td>
-				</tr>
-				<tr>
-					<td>DM02</td>
-					<td><a>Amravati District Manager</a></td>
-					<td>Amravati</td>
-					<td>Applications Closed</td>
-				</tr>
-				<tr>
-					<td>DM03</td>
-					<td><a>Aurangabad District Manager</a></td>
-					<td>Aurangabad</td>
-					<td>Applications Closed</td>
-				</tr>
-				<tr>
-					<td>DM04</td>
-        		<td><a>Nanded District Manager</a></td>
-					<td>Nanded</td>
-					<td>Applications Closed</td>
-      			</tr>
-	       		<tr>
-					<td>DM05</td>
-        		<td><a>Nagpur District Manager</a></td>
-					<td>Nagpur</td>
-					<td>Applications Closed</td>
-      			</tr>
-	       		<tr>
-					<td>DM06</td>
-        		<td><a>Thane District Manager</a></td>
-					<td>Thane</td>
-					<td>Applications Closed</td>
-      			</tr>
-	       		<tr>
-				<td>DM07</td>
-						<td><a>Dhule District Manager</a></td>
-						<td>Dhule</td>
-							<td>Applications Closed</td>
-					</tr>
-						<tr>
-				<td>DM08</td>
-						<td><a>Ahemdnager District Manager</a></td>
-						<td>Ahmednagar</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM09</td>
-						<td><a>Nashik District Manager</a></td>
-						<td>Nashik</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM10</td>
-						<td><a>Jalgaon District Manager</a></td>
-						<td>Jalgaon</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM11</td>
-						<td><a>Kolhapur District Manager</a></td>
-						<td>Kolhapur</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM12</td>
-						<td><a>Sangli District Manager</a></td>
-						<td>Sangli</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM13</td>
-						<td><a>Satara District Manager</a></td>
-						<td>Satara</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM14</td>
-						<td><a>Solapur District Manager</a></td>
-						<td>Solapur</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM15</td>
-						<td><a>Latur District Manager</a></td>
-						<td>Latur</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM16</td>
-						<td><a>Beed District Manager</a></td>
-						<td>Beed</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM17</td>
-						<td><a>Ratnagiri District Manager</a></td>
-						<td>Ratnagiri</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM18</td>
-						<td><a>Raigad District Manager</a></td>
-						<td>Raigad</td>
-						<td>Applications Closed</td>
-					</tr>
-					<tr>
-				<td>DM19</td>
-					<td><a>Palghar District Manager</a></td>
-					<td>Palghar</td>
-					<td>Applications Closed</td>
-				</tr>
-				<tr>
-					<td>DM20</td>
-                <td><a>Sindhudurg District Manager</a></td>
-                <td>Sindhudurg</td>
-                <td>Applications Closed</td>
-              </tr>
-				<tr>
-					<td>DM21</td>
-					<td><a href="https://kisaaninfotech.com/jobs/mumbaisubdm.html">Mumbai Suburban District Manager</a></td>
-									<td>Mumbai Suburban</td>
-									<td>Open</td>
-								</tr>
-				<tr>
-					<td>DM22</td>
-					<td><a href="https://kisaaninfotech.com/jobs/newmumbaidm.html">New Mumbai District Manager</a></td>
-									<td>New Mumbai OR Vashi</td>
-									<td>Open</td>
-						</tr>
-				<tr>
-					<td>DM23</td>
-					<td><a>Jalna District Manager</a></td>
-									<td>Jalna</td>
-									<td>Applications Closed</td>
-								</tr>
-				<tr>
-					<td>DM24</td>
-					<td><a>Hingoli District Manager</a></td>
-									<td>Hingoli</td>
-									<td>Applications Closed</td>
-								</tr>
-				<tr>
-					<td>DM25</td>
-					<td><a>Osmanabad District Manager</a></td>
-									<td>Osmanabad</td>
-									<td>Applications Closed</td>
-								</tr>
-				<tr>
-					<td>DM26</td>
-					<td><a>Parbhani District Manager</a></td>
-									<td>Parbhani</td>
-									<td>Applications Closed</td>
-								</tr>
-				<tr>
-					<td>DM27</td>
-					<td><a>Wardha District Manager</a></td>
-									<td>Wardha</td>
-									<td>Applications Closed</td>
-				</tr>
-  		</table>
-	</div></div>
-<!-- Footer -->
-<footer class="bottom-container">
-          <div class="text-center center-block">
-            <h4> FIND US ON SOCIAL MEDIA</h4>
-                <div><a href="https://www.facebook.com/KisaanInfoTechLimited"><img src="//kisaaninfotech.com/Images/ico-facebook.svg"></a> <span>
-	            <a href="https://twitter.com/KisaanLtd"><img src="//kisaaninfotech.com/Images/twitter-square.svg" width="28px"></a> <span>
-				<a href="https://www.linkedin.com/company/kisaaninfotechltd"><img src="//kisaaninfotech.com/Images/linkedin-square.svg" width="28px"></a> <span>
-				<a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw"><img src="//kisaaninfotech.com/Images/youtube-square.svg" width="28px"></a>
-	            </div>
-<div class="footer-voucher-block">
-                                                    </div>
-       </div>
-      <br />
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    Kisaan Infotech Limited
-  </div>
-  <!-- Copyright -->
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/kisaan.svg" alt="Kisaan Infotech"></a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="https://kisaaninfotech.com/index.html">About</a></li>
+                <li><a href="https://kisaaninfotech.com/#investors">Investors</a></li>
+                <li><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Jobs List</a></li>
+                <li><a href="https://kisaaninfotech.com/#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-</footer>
-<!-- Footer -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Career Opportunities</h1>
+        <p>Join our team and make a difference in agriculture technology</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Search & Filter -->
+        <div class="controls">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search by job title, location, or ID..." onkeyup="filterJobs()">
+            </div>
+            <div class="filter-group">
+                <button class="filter-btn active" onclick="filterStatus('all')">All Jobs</button>
+                <button class="filter-btn" onclick="filterStatus('open')">Open Positions</button>
+                <button class="filter-btn" onclick="filterStatus('closed')">Closed</button>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3 id="totalJobs">67</h3>
+                <p>Total Positions</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="openJobs">23</h3>
+                <p>Open Positions</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="stateDirector">20</h3>
+                <p>State Directors</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="districtManager">47</h3>
+                <p>District Managers</p>
+            </div>
+        </div>
+
+        <!-- Jobs Table -->
+        <div class="jobs-container">
+            <div class="jobs-header">
+                <h2>Available Positions</h2>
+                <span class="jobs-count"><span id="displayCount">67</span> positions</span>
+            </div>
+            <div class="jobs-table">
+                <table id="jobsTable">
+                    <thead>
+                        <tr>
+                            <th>Job ID</th>
+                            <th>Position</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jobsTableBody">
+                        <!-- State Director Positions -->
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD01</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/KarnatakaStateDirector_English.jpg">Karnataka State Director</a></td>
+                            <td class="location">Karnataka</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD02</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/MahaStateDirector_English.jpg">Maharashtra State Director</a></td>
+                            <td class="location">Pune, Maharashtra</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD03</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/GujratStateDirector_English.jpg">Gujarat State Director</a></td>
+                            <td class="location">Gujarat</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD04</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/telanganasd.html">Telangana State Director</a></td>
+                            <td class="location">Telangana</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD05</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/JharkhandStateDirector_English.jpg">Jharkhand State Director</a></td>
+                            <td class="location">Jharkhand</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD06</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/PunjabStateDirector_English.jpg">Punjab State Director</a></td>
+                            <td class="location">Punjab</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD07</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/JammuKashmirsd.html">Jammu And Kashmir State Director</a></td>
+                            <td class="location">Jammu & Kashmir</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD08</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/RajasthanStateDirector_English.jpg">Rajasthan State Director</a></td>
+                            <td class="location">Rajasthan</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD09</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/Madhyapradeshsd.html">Madhya Pradesh State Director</a></td>
+                            <td class="location">Madhya Pradesh</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD10</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/Uttarkhandsd.html">Uttarakhand State Director</a></td>
+                            <td class="location">Uttarakhand</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD11</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/Uttarpradeshsd.html">Uttar Pradesh State Director</a></td>
+                            <td class="location">Uttar Pradesh</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD12</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/Haryanasd.html">Haryana State Director</a></td>
+                            <td class="location">Haryana</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD13</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/Biharsd.html">Bihar State Director</a></td>
+                            <td class="location">Bihar</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD14</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/Chhattisgarhsd.html">Chhattisgarh State Director</a></td>
+                            <td class="location">Chhattisgarh</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD15</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/Himachalpradeshsd.html">Himachal Pradesh State Director</a></td>
+                            <td class="location">Himachal Pradesh</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD16</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/Tamilnadusd.html">Tamil Nadu State Director</a></td>
+                            <td class="location">Tamil Nadu</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD17</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/WestBengalStateDirector_English.jpg">West Bengal State Director</a></td>
+                            <td class="location">West Bengal</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD18</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/AssamStateDirector_English.jpg">Assam State Director</a></td>
+                            <td class="location">Guwahati</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD19</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/MeghalayaStateDirector_English.jpg">Meghalaya State Director</a></td>
+                            <td class="location">Shillong</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="state">
+                            <td class="job-id">SD20</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/TripuraStateDirector_English.jpg">Tripura State Director</a></td>
+                            <td class="location">Agartala</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+
+                        <!-- District Manager Positions -->
+                        <tr data-status="open" data-category="district">
+                            <td class="job-id">DM01</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/punedm.html">Pune District Manager</a></td>
+                            <td class="location">Pune</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM02</td>
+                            <td class="job-title">Amravati District Manager</td>
+                            <td class="location">Amravati</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM03</td>
+                            <td class="job-title">Aurangabad District Manager</td>
+                            <td class="location">Aurangabad</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM04</td>
+                            <td class="job-title">Nanded District Manager</td>
+                            <td class="location">Nanded</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM05</td>
+                            <td class="job-title">Nagpur District Manager</td>
+                            <td class="location">Nagpur</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM06</td>
+                            <td class="job-title">Thane District Manager</td>
+                            <td class="location">Thane</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM07</td>
+                            <td class="job-title">Dhule District Manager</td>
+                            <td class="location">Dhule</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM08</td>
+                            <td class="job-title">Ahmednagar District Manager</td>
+                            <td class="location">Ahmednagar</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM09</td>
+                            <td class="job-title">Nashik District Manager</td>
+                            <td class="location">Nashik</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM10</td>
+                            <td class="job-title">Jalgaon District Manager</td>
+                            <td class="location">Jalgaon</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM11</td>
+                            <td class="job-title">Kolhapur District Manager</td>
+                            <td class="location">Kolhapur</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM12</td>
+                            <td class="job-title">Sangli District Manager</td>
+                            <td class="location">Sangli</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM13</td>
+                            <td class="job-title">Satara District Manager</td>
+                            <td class="location">Satara</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM14</td>
+                            <td class="job-title">Solapur District Manager</td>
+                            <td class="location">Solapur</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM15</td>
+                            <td class="job-title">Latur District Manager</td>
+                            <td class="location">Latur</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM16</td>
+                            <td class="job-title">Beed District Manager</td>
+                            <td class="location">Beed</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM17</td>
+                            <td class="job-title">Ratnagiri District Manager</td>
+                            <td class="location">Ratnagiri</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM18</td>
+                            <td class="job-title">Raigad District Manager</td>
+                            <td class="location">Raigad</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM19</td>
+                            <td class="job-title">Palghar District Manager</td>
+                            <td class="location">Palghar</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM20</td>
+                            <td class="job-title">Sindhudurg District Manager</td>
+                            <td class="location">Sindhudurg</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="district">
+                            <td class="job-id">DM21</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/mumbaisubdm.html">Mumbai Suburban District Manager</a></td>
+                            <td class="location">Mumbai Suburban</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="open" data-category="district">
+                            <td class="job-id">DM22</td>
+                            <td class="job-title"><a href="https://kisaaninfotech.com/jobs/newmumbaidm.html">New Mumbai District Manager</a></td>
+                            <td class="location">New Mumbai / Vashi</td>
+                            <td><span class="status-badge status-open">Open</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM23</td>
+                            <td class="job-title">Jalna District Manager</td>
+                            <td class="location">Jalna</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM24</td>
+                            <td class="job-title">Hingoli District Manager</td>
+                            <td class="location">Hingoli</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM25</td>
+                            <td class="job-title">Osmanabad District Manager</td>
+                            <td class="location">Osmanabad</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM26</td>
+                            <td class="job-title">Parbhani District Manager</td>
+                            <td class="location">Parbhani</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                        <tr data-status="closed" data-category="district">
+                            <td class="job-id">DM27</td>
+                            <td class="job-title">Wardha District Manager</td>
+                            <td class="location">Wardha</td>
+                            <td><span class="status-badge status-closed">Applications Closed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="noResults" class="no-results" style="display: none;">
+                    <h3>No jobs found</h3>
+                    <p>Try adjusting your search or filter criteria</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h4>Find Us On Social Media</h4>
+        <div class="social-links">
+            <a href="https://www.facebook.com/KisaanInfoTechLimited" aria-label="Facebook">f</a>
+            <a href="https://twitter.com/KisaanLtd" aria-label="Twitter">𝕏</a>
+            <a href="https://www.linkedin.com/company/kisaaninfotechltd" aria-label="LinkedIn">in</a>
+            <a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw" aria-label="YouTube">▶</a>
+        </div>
+        <p>© 2025 Kisaan Infotech Limited. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let currentFilter = 'all';
+
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function filterJobs() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#jobsTableBody tr');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const jobId = row.querySelector('.job-id').textContent.toLowerCase();
+                const jobTitle = row.querySelector('.job-title').textContent.toLowerCase();
+                const location = row.querySelector('.location').textContent.toLowerCase();
+                const status = row.getAttribute('data-status');
+
+                const matchesSearch = jobId.includes(searchTerm) || 
+                                    jobTitle.includes(searchTerm) || 
+                                    location.includes(searchTerm);
+                
+                const matchesFilter = currentFilter === 'all' || status === currentFilter;
+
+                if (matchesSearch && matchesFilter) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            document.getElementById('displayCount').textContent = visibleCount;
+            document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        function filterStatus(status) {
+            currentFilter = status;
+            
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            filterJobs();
+        }
+
+        // Update stats on page load
+        window.addEventListener('load', () => {
+            const rows = document.querySelectorAll('#jobsTableBody tr');
+            let openCount = 0;
+            let stateCount = 0;
+            let districtCount = 0;
+
+            rows.forEach(row => {
+                if (row.getAttribute('data-status') === 'open') openCount++;
+                if (row.getAttribute('data-category') === 'state') stateCount++;
+                if (row.getAttribute('data-category') === 'district') districtCount++;
+            });
+
+            document.getElementById('totalJobs').textContent = rows.length;
+            document.getElementById('openJobs').textContent = openCount;
+            document.getElementById('stateDirector').textContent = stateCount;
+            document.getElementById('districtManager').textContent = districtCount;
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
