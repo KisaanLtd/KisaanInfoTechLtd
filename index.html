@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kisaan Infotech Limited - AgriTech Innovation</title>
+    <title>Kisaan Infotech Limited - AgriTech Innovation & Precision Farming</title>
     <link rel="canonical" href="https://kisaaninfotech.com/" />
+    <link rel="icon" href="https://kisaaninfotech.com/favicon.png" type="image/ico" sizes="16x16">
     
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEPM4D0EMX"></script>
@@ -14,15 +15,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JEPM4D0EMX');
     </script>
-    
-    <!-- Legacy Universal Analytics (Optional - for transition period) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79564470-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-79564470-1');
-    </script>
+
     <style>
         * {
             margin: 0;
@@ -180,12 +173,23 @@
             font-weight: 600;
             transition: all 0.3s ease;
             animation: fadeInUp 1s ease 0.4s backwards;
+            margin: 0 10px;
         }
 
         .cta-button:hover {
             background: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(112, 219, 147, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--white);
+            color: var(--primary);
         }
 
         /* Section Styles */
@@ -274,7 +278,7 @@
             font-weight: bold;
         }
 
-        /* Investors Section */
+        /* Investors Banner */
         .investors-banner {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
@@ -287,9 +291,26 @@
 
         .investors-banner h3 {
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
+        .investors-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .investors-banner .cta-button {
+            background: var(--white);
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        .investors-banner .cta-button:hover {
+            background: var(--bg-light);
+        }
+
+        /* Resource Grid */
         .resource-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -431,6 +452,11 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .cta-button {
+                display: block;
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
@@ -439,13 +465,13 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="#"><img src="//kisaaninfotech.com/Images/kisaan.svg" alt="Kisaan Infotech"></a>
+                <a href="https://kisaaninfotech.com"><img src="//kisaaninfotech.com/Images/kisaan.svg" alt="Kisaan Infotech"></a>
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#about">About</a></li>
                 <li><a href="https://kisaaninfotech.com/services.html">Services</a></li>
-                <li><a href="#investors">Investors</a></li>
-                <li><a href="#careers">Careers</a></li>
+                <li><a href="https://kisaaninfotech.com/investors.html">Investors</a></li>
+                <li><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Careers</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-toggle" onclick="toggleMenu()">
@@ -460,8 +486,9 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Empowering Agriculture Through Technology</h1>
-            <p>India's leading AgriTech platform connecting farmers with innovative solutions</p>
-            <a href="#about" class="cta-button">Discover More</a>
+            <p>India's leading AgriTech platform connecting farmers with innovative precision farming solutions</p>
+            <a href="https://kisaaninfotech.com/services.html" class="cta-button">Explore Our Services</a>
+            <a href="https://kisaaninfotech.com/investors.html" class="cta-button secondary">Investment Opportunities</a>
         </div>
     </section>
 
@@ -488,14 +515,14 @@
                     <li>Rent/Buy/Sell Agri Resources</li>
                     <li>Promote Export & Co-operative Farming</li>
                     <li>Training & Skill Development Programs</li>
+                    <li>Precision Farming Advisory Services</li>
                 </ul>
             </div>
             <div class="card fade-in">
                 <div class="card-icon">🎯</div>
-                <h3>Our Mission</h3>
-                <p style="color: var(--text-light); padding: 10px 0;">Empower every farmer and agriculture stakeholder with skills training, information, and peer-to-peer shared service platforms to achieve more.</p>
-                <h3 style="margin-top: 20px;">Our Vision</h3>
-                <p style="color: var(--text-light); padding: 10px 0;">Be a self-managing, ever-evolving, conscious and complete organization.</p>
+                <h3>Our Mission & Vision</h3>
+                <p style="color: var(--text-light); padding: 10px 0;"><strong>Mission:</strong> Empower every farmer and agriculture stakeholder with skills training, information, and peer-to-peer shared service platforms to achieve more.</p>
+                <p style="color: var(--text-light); padding: 10px 0;"><strong>Vision:</strong> Be a self-managing, ever-evolving, conscious and complete organization.</p>
             </div>
         </div>
     </section>
@@ -504,36 +531,40 @@
     <section id="investors" style="background: var(--bg-light);">
         <div class="investors-banner">
             <h3>📈 Equity Shares Now Available in Dematerialised Form</h3>
+            <p>Invest in India's leading AgriTech public startup. Join us in transforming agriculture through technology and innovation.</p>
+            <a href="https://kisaaninfotech.com/investors.html" class="cta-button">View Investment Opportunities</a>
         </div>
         
         <div class="resource-grid">
             <div class="resource-card">
                 <h4>Investment Projects</h4>
-                <a href="https://kisaanfishery.blogspot.com">Kisaan Fishery™</a>
-                <a href="https://kisaanorganic.blogspot.com/">Kisaan Organic™</a>
+                <a href="https://kisaanfishery.blogspot.com" target="_blank">Kisaan Fishery™</a>
+                <a href="https://kisaanorganic.blogspot.com/" target="_blank">Kisaan Organic™</a>
                 <a href="https://kisaaninfotech.com">Kisaan Logistics™</a>
-                <a href="https://kisaanexports.blogspot.com">Kisaan Exports™</a>
-                <a href="https://vanille.in">Vanille Bakery™</a>
+                <a href="https://kisaanexports.blogspot.com" target="_blank">Kisaan Exports™</a>
+                <a href="https://vanille.in" target="_blank">Vanille Bakery™</a>
+                <a href="https://kisaanretail.blogspot.com" target="_blank">Kisaan Retail™</a>
             </div>
             
             <div class="resource-card">
                 <h4>Financial Reports</h4>
-                <a href="https://kisaaninfotech.com/FinancialReports/DR2020.pdf">Directors Report 2020</a>
-                <a href="https://kisaaninfotech.com/FinancialReports/DR2021.pdf">Directors Report 2021</a>
-                <a href="https://kisaaninfotech.com/FinancialReports/DR2022.pdf">Directors Report 2022</a>
+                <a href="https://kisaaninfotech.com/FinancialReports/DR2020.pdf" target="_blank">Directors Report 2020</a>
+                <a href="https://kisaaninfotech.com/FinancialReports/DR2021.pdf" target="_blank">Directors Report 2021</a>
+                <a href="https://kisaaninfotech.com/FinancialReports/DR2022.pdf" target="_blank">Directors Report 2022</a>
             </div>
             
             <div class="resource-card">
                 <h4>Company Documents</h4>
-                <a href="https://kisaaninfotech.com/AOA.pdf">Article of Association</a>
-                <a href="https://kisaaninfotech.com/MOA.pdf">Memorandum of Association</a>
-                <a href="https://kisaaninfotech.com/rpt_policy.pdf">Related Party Policy</a>
+                <a href="https://kisaaninfotech.com/AOA.pdf" target="_blank">Article of Association</a>
+                <a href="https://kisaaninfotech.com/MOA.pdf" target="_blank">Memorandum of Association</a>
+                <a href="https://kisaaninfotech.com/rpt_policy.pdf" target="_blank">Related Party Policy</a>
+                <a href="https://kisaaninfotech.com/riskfactors_english.pdf" target="_blank">Risk Factors Assessment</a>
             </div>
             
             <div class="resource-card">
                 <h4>Notice Board</h4>
-                <a href="https://kisaaninfotech.com/egmNotice2018.pdf">EGM Notice 2019</a>
-                <a href="https://kisaaninfotech.com/egmNotice2018.pdf">EGM Notice 2018</a>
+                <a href="https://kisaaninfotech.com/egmNotice2018.pdf" target="_blank">EGM Notice 2019</a>
+                <a href="https://kisaaninfotech.com/egmNotice2018.pdf" target="_blank">EGM Notice 2018</a>
             </div>
         </div>
     </section>
@@ -560,7 +591,8 @@
             <div class="card">
                 <div class="card-icon">💼</div>
                 <h3>Open Positions</h3>
-                <a href="https://kisaaninfotech.com/jobs/Jobslist.html" class="cta-button" style="margin-top: 15px; display: inline-block;">View All Jobs</a>
+                <p style="color: var(--text-light); margin-bottom: 15px;">State Directors, District Managers, and more positions available across India.</p>
+                <a href="https://kisaaninfotech.com/jobs/Jobslist.html" class="cta-button" style="margin: 0;">View All Jobs</a>
             </div>
         </div>
     </section>
