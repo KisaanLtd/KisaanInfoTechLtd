@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investor Relations - Kisaan Infotech Limited | Equity Investment Opportunities</title>
-    <meta name="description" content="Invest in Kisaan Infotech Limited - India's leading AgriTech public startup. Explore investment opportunities, financial reports, and equity shares in dematerialized form.">
+    <title>Investor Relations - Kisaan Infotech Limited</title>
     <link rel="canonical" href="https://kisaaninfotech.com/investors.html" />
     <link rel="icon" href="https://kisaaninfotech.com/favicon.png" type="image/ico" sizes="16x16">
     
@@ -16,7 +15,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JEPM4D0EMX');
     </script>
-    
+
     <style>
         * {
             margin: 0;
@@ -32,16 +31,17 @@
             --text-light: #6c757d;
             --bg-light: #f8f9fa;
             --white: #ffffff;
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-            --accent-gold: #f59e0b;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bronze: #CD7F32;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
-            background: var(--bg-light);
+            overflow-x: hidden;
+            background-color: var(--bg-light);
         }
 
         /* Navigation */
@@ -53,6 +53,11 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
             transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .nav-container {
@@ -84,10 +89,26 @@
             color: var(--text-dark);
             font-weight: 500;
             transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
         }
 
         .nav-menu a:hover {
             color: var(--primary);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .mobile-toggle {
@@ -101,12 +122,13 @@
             width: 25px;
             height: 3px;
             background: var(--text-dark);
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            background: linear-gradient(135deg, #2d5f3f 0%, #70DB93 100%);
             color: var(--white);
             padding: 100px 20px;
             text-align: center;
@@ -117,350 +139,401 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 700px;
-            height: 700px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3rem;
             margin-bottom: 20px;
             animation: fadeInUp 1s ease;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            opacity: 0.95;
+            font-size: 1.3rem;
             margin-bottom: 30px;
+            opacity: 0.95;
             animation: fadeInUp 1s ease 0.2s backwards;
         }
 
-        /* Stats Section */
-        .stats-section {
-            background: var(--white);
-            padding: 60px 20px;
-            margin-top: -40px;
-            position: relative;
-            z-index: 10;
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s backwards;
+            margin: 0 10px;
+            border: none;
+            cursor: pointer;
         }
 
-        .stats-container {
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(112, 219, 147, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
             font-size: 2.5rem;
+            margin-bottom: 50px;
             color: var(--text-dark);
-            margin-bottom: 15px;
+            position: relative;
         }
 
-        .section-title p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            border-radius: 2px;
         }
 
-        /* Announcement Banner */
-        .announcement {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 60px;
-            box-shadow: 0 10px 40px rgba(112, 219, 147, 0.3);
-            text-align: center;
-        }
-
-        .announcement h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .announcement p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-        }
-
-        /* Investment Grid */
-        .investment-grid {
+        /* Cards */
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .investment-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 35px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--primary);
-        }
-
-        .investment-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .investment-card h3 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-icon {
-            font-size: 1.8rem;
-        }
-
-        .investment-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .investment-card li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .investment-card li:last-child {
-            border-bottom: none;
-        }
-
-        .investment-card a {
-            display: inline-block;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .investment-card a:hover {
-            color: var(--primary-dark);
-            padding-left: 5px;
-        }
-
-        .investment-card .btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: var(--primary);
-            color: var(--white);
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .investment-card .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* Projects Section */
-        .projects-section {
-            background: var(--white);
-            padding: 60px 20px;
-            border-radius: 20px;
-            margin-bottom: 60px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
             margin-top: 40px;
         }
 
-        .project-card {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-blue);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .project-card:nth-child(2) {
-            border-left-color: var(--accent-purple);
-        }
-
-        .project-card:nth-child(3) {
-            border-left-color: var(--accent-gold);
-        }
-
-        .project-card:nth-child(4) {
-            border-left-color: #ec4899;
-        }
-
-        .project-card h4 {
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .project-card p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .project-card a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .project-card a:hover {
-            text-decoration: underline;
-        }
-
-        /* Why Invest Section */
-        .why-invest {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-
-        .reason-card {
+        .card {
             background: var(--white);
-            padding: 30px;
             border-radius: 15px;
+            padding: 30px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
-        .reason-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
         }
 
-        .reason-card h3 {
+        .card h3 {
             color: var(--text-dark);
             margin-bottom: 15px;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
-        .reason-card p {
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 8px 0;
             color: var(--text-light);
-            line-height: 1.7;
+            position: relative;
+            padding-left: 25px;
         }
 
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 80px 20px;
-            text-align: center;
-            border-radius: 20px;
-            margin: 60px 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: var(--white);
+        .card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
             color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* Investment Tiers */
+        .investment-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .tier-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card.featured {
+            transform: scale(1.05);
+            border: 3px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(112, 219, 147, 0.3);
+        }
+
+        .tier-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
+        .tier-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .tier-badge.gold {
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+        }
+
+        .tier-badge.silver {
+            background: linear-gradient(135deg, var(--silver), #A9A9A9);
+        }
+
+        .tier-badge.bronze {
+            background: linear-gradient(135deg, var(--bronze), #8B4513);
+        }
+
+        .tier-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin: 20px 0;
+        }
+
+        .tier-features {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .tier-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--bg-light);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .tier-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Business Model */
+        .business-model {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .model-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .model-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .model-card h3 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--bg-light);
+            margin: 0 auto 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--primary);
+        }
+
+        .member-photo i {
+            font-size: 60px;
+            color: var(--primary);
+        }
+
+        .team-member h3 {
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            color: var(--text-light);
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn-light {
+            background-color: white;
+            color: var(--primary-dark);
+        }
+
+        .btn-light:hover {
+            background-color: var(--bg-light);
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--bg-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
         }
 
         /* Footer */
@@ -508,6 +581,10 @@
             }
         }
 
+        .fade-in {
+            animation: fadeInUp 0.8s ease;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .mobile-toggle {
@@ -531,23 +608,28 @@
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
             }
 
-            .section-title h2 {
+            .section-title {
                 font-size: 2rem;
             }
 
-            .stats-container {
-                grid-template-columns: 1fr 1fr;
+            .cta-button {
+                display: block;
+                margin: 10px 0;
             }
 
-            .cta-section h2 {
-                font-size: 2rem;
+            .tier-card.featured {
+                transform: none;
+            }
+
+            .stats {
+                flex-direction: column;
             }
         }
     </style>
@@ -557,14 +639,14 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/kisaan.svg" alt="Kisaan Infotech"></a>
+                <a href="https://kisaaninfotech.com"><img src="//kisaaninfotech.com/Images/kisaan.svg" alt="Kisaan Infotech"></a>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="https://kisaaninfotech.com/index.html">Home</a></li>
+                <li><a href="https://kisaaninfotech.com">Home</a></li>
                 <li><a href="https://kisaaninfotech.com/services.html">Services</a></li>
-                <li><a href="https://kisaaninfotech.com/investors.html">Investors</a></li>
+                <li><a href="https://kisaaninfotech.com/investors.html" class="active">Investors</a></li>
                 <li><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Careers</a></li>
-                <li><a href="https://kisaaninfotech.com/#contact">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-toggle" onclick="toggleMenu()">
                 <span></span>
@@ -577,163 +659,195 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-badge">🎯 PUBLIC STARTUP INVESTMENT</span>
-            <h1>Invest in India's AgriTech Future</h1>
-            <p>Join Kisaan Infotech Limited - Transforming agriculture through technology and innovation</p>
+            <h1>Invest in the Future of Indian Agriculture</h1>
+            <p>Join Kisaan Infotech Limited - India's leading AgriTech public startup transforming agriculture through technology and innovation</p>
+            <a href="#invest" class="cta-button">Explore Investment Opportunities</a>
+            <a href="#contact" class="cta-button secondary">Schedule a Meeting</a>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-card">
-                <span class="stat-number">₹20B</span>
+    <!-- Market Opportunity -->
+    <section id="opportunity">
+        <h2 class="section-title">A $20 Billion Market Opportunity</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--text-light);">
+            Precision farming is transforming agriculture globally, and India represents one of the largest untapped markets with over 120 million farmers.
+        </p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">$20B</span>
                 <span class="stat-label">Indian Precision Ag Market by 2025</span>
             </div>
-            <div class="stat-card">
+            <div class="stat-item">
+                <span class="stat-number">45%</span>
+                <span class="stat-label">Potential Increase in Farmer Income</span>
+            </div>
+            <div class="stat-item">
                 <span class="stat-number">120M+</span>
                 <span class="stat-label">Farmers in India</span>
             </div>
-            <div class="stat-card">
-                <span class="stat-number">45%</span>
-                <span class="stat-label">Potential Income Increase</span>
-            </div>
-            <div class="stat-card">
+            <div class="stat-item">
                 <span class="stat-number">30%</span>
-                <span class="stat-label">Resource Savings</span>
+                <span class="stat-label">Resource Savings with Precision Tech</span>
+            </div>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card fade-in">
+                <div class="card-icon">🚀</div>
+                <h3>Why Invest Now?</h3>
+                <p style="color: var(--text-light);">India's agriculture sector is at a tipping point. With government initiatives like Digital India, Make in India, and increased focus on agricultural technology, the timing has never been better to invest in precision farming solutions.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">📈</div>
+                <h3>Growth Trajectory</h3>
+                <p style="color: var(--text-light);">Our cooperative model addresses the key challenges of small landholdings and limited capital by pooling resources and sharing technology, creating a scalable and sustainable business that benefits all stakeholders.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">🌱</div>
+                <h3>Sustainable Impact</h3>
+                <p style="color: var(--text-light);">By optimizing resource use, we reduce water consumption by 30% and chemical inputs by 25%, creating environmental benefits alongside financial returns.</p>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Announcement -->
-        <div class="announcement">
-            <h3>📈 Equity Shares Now Available in Dematerialized Form</h3>
-            <p>Kisaan Infotech Limited equity shares are now accessible for investment in fully dematerialized format, ensuring secure and seamless transactions.</p>
-        </div>
-
-        <!-- Why Invest -->
-        <div class="section-title">
-            <h2>Why Invest in Kisaan Infotech?</h2>
-            <p>A unique opportunity to be part of India's agricultural transformation</p>
-        </div>
-
-        <div class="why-invest">
-            <div class="reason-card">
-                <div class="reason-icon">🚀</div>
-                <h3>Public Startup Advantage</h3>
-                <p>First-mover advantage in the Indian AgriTech, IT, and ITeS sector with transparent governance and reporting.</p>
+    <!-- Business Model -->
+    <section id="business-model" style="background: var(--bg-light);">
+        <h2 class="section-title">Our Cooperative Business Model</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--text-light);">
+            Creating shared value for farmers, investors, and the environment through our innovative approach
+        </p>
+        
+        <div class="business-model">
+            <div class="model-card">
+                <h3>👥 Farmer-Centric Approach</h3>
+                <p>We aggregate smallholder farmers into cooperatives, giving them access to technology that would otherwise be unaffordable. Members benefit from increased yields and reduced costs.</p>
             </div>
-            <div class="reason-card">
-                <div class="reason-icon">🌾</div>
-                <h3>Diversified Portfolio</h3>
-                <p>Multiple revenue streams including precision farming, digital marketing, export services, and skill development.</p>
+            <div class="model-card">
+                <h3>📊 Multiple Revenue Streams</h3>
+                <p>Our cooperative generates income through service subscriptions, equipment rentals, data analytics, and premium advisory services, creating a diversified and resilient business model.</p>
             </div>
-            <div class="reason-card">
-                <div class="reason-icon">📊</div>
-                <h3>Scalable Business Model</h3>
-                <p>Peer-to-peer shared service platform connecting farmers and stakeholders across India.</p>
-            </div>
-            <div class="reason-card">
-                <div class="reason-icon">🌍</div>
-                <h3>Social Impact</h3>
-                <p>Empowering farmers with skills training, information, and technology while generating returns.</p>
+            <div class="model-card">
+                <h3>🌿 Sustainable Impact</h3>
+                <p>By optimizing resource use, we reduce water consumption by 30% and chemical inputs by 25%, creating environmental benefits alongside financial returns.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Investment Opportunities -->
-        <div class="section-title">
-            <h2>Investment Opportunities</h2>
-            <p>Explore our diverse business verticals and investment projects</p>
-        </div>
-
-        <div class="projects-section">
-            <h3 style="text-align: center; color: var(--text-dark); margin-bottom: 20px;">Our Investment Projects</h3>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h4>🐟 Kisaan Fishery™</h4>
-                    <p>Aquaculture and fishery management solutions</p>
-                    <a href="https://kisaanfishery.blogspot.com" target="_blank">Learn More →</a>
+    <!-- Investment Tiers -->
+    <section id="invest">
+        <h2 class="section-title">Investment Opportunities</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--text-light);">
+            Join us in transforming Indian agriculture with tiered investment options
+        </p>
+        
+        <div class="investment-tiers">
+            <div class="tier-card">
+                <div class="tier-badge bronze">
+                    🌱
                 </div>
-                <div class="project-card">
-                    <h4>🌱 Kisaan Organic™</h4>
-                    <p>Organic farming and sustainable agriculture</p>
-                    <a href="https://kisaanorganic.blogspot.com/" target="_blank">Learn More →</a>
-                </div>
-                <div class="project-card">
-                    <h4>🚚 Kisaan Logistics™</h4>
-                    <p>Agricultural supply chain and logistics</p>
-                    <a href="https://kisaaninfotech.com">Learn More →</a>
-                </div>
-                <div class="project-card">
-                    <h4>🌐 Kisaan Exports™</h4>
-                    <p>International agricultural trade facilitation</p>
-                    <a href="https://kisaanexports.blogspot.com" target="_blank">Learn More →</a>
-                </div>
-                <div class="project-card">
-                    <h4>🏡 Kisaan Farms™</h4>
-                    <p>Direct farm operations and management</p>
-                    <a href="https://kisaaninfotech.com">Learn More →</a>
-                </div>
-                <div class="project-card">
-                    <h4>🍰 Vanille Bakery™</h4>
-                    <p>Farm-to-table food processing</p>
-                    <a href="https://vanille.in" target="_blank">Learn More →</a>
-                </div>
-                <div class="project-card">
-                    <h4>🏪 Kisaan Retail™</h4>
-                    <p>Direct-to-consumer agricultural products</p>
-                    <a href="https://kisaanretail.blogspot.com" target="_blank">Learn More →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Investment Resources -->
-        <div class="section-title">
-            <h2>Investor Resources</h2>
-            <p>Access financial reports, company documents, and regulatory filings</p>
-        </div>
-
-        <div class="investment-grid">
-            <div class="investment-card">
-                <h3><span class="card-icon">📊</span> Financial Reports</h3>
-                <ul>
-                    <li><a href="https://kisaaninfotech.com/FinancialReports/DR2020.pdf" target="_blank">Directors Report 2020 (PDF)</a></li>
-                    <li><a href="https://kisaaninfotech.com/FinancialReports/DR2021.pdf" target="_blank">Directors Report 2021 (PDF)</a></li>
-                    <li><a href="https://kisaaninfotech.com/FinancialReports/DR2022.pdf" target="_blank">Directors Report 2022 (PDF)</a></li>
+                <h3>Seed Investor</h3>
+                <div class="tier-price">₹25 Lakhs</div>
+                <ul class="tier-features">
+                    <li>Access to quarterly financial reports</li>
+                    <li>Invitation to annual investor meetings</li>
+                    <li>5% preferred return</li>
+                    <li>3-year investment horizon</li>
+                    <li>Basic impact reporting</li>
                 </ul>
-                <a href="#" class="btn">View All Reports</a>
+                <a href="#contact" class="cta-button">Express Interest</a>
             </div>
-
-            <div class="investment-card">
-                <h3><span class="card-icon">📄</span> Company Documents</h3>
-                <ul>
-                    <li><a href="https://kisaaninfotech.com/AOA.pdf" target="_blank">Article of Association (PDF)</a></li>
-                    <li><a href="https://kisaaninfotech.com/MOA.pdf" target="_blank">Memorandum of Association (PDF)</a></li>
-                    <li><a href="https://kisaaninfotech.com/rpt_policy.pdf" target="_blank">Related Party Transaction Policy (PDF)</a></li>
-                    <li><a href="https://kisaaninfotech.com/riskfactors_english.pdf" target="_blank">Risk Factors Assessment (PDF)</a></li>
+            
+            <div class="tier-card featured">
+                <div class="tier-badge silver">
+                    🌳
+                </div>
+                <h3>Growth Partner</h3>
+                <div class="tier-price">₹1 Crore</div>
+                <ul class="tier-features">
+                    <li>All Seed Investor benefits</li>
+                    <li>Board observer rights</li>
+                    <li>7% preferred return</li>
+                    <li>Co-branding opportunities</li>
+                    <li>Detailed impact metrics</li>
+                    <li>Priority access to new offerings</li>
                 </ul>
-                <a href="#" class="btn">View All Documents</a>
+                <a href="#contact" class="cta-button">Express Interest</a>
             </div>
-
-            <div class="investment-card">
-                <h3><span class="card-icon">📢</span> Announcements</h3>
-                <ul>
-                    <li><a href="https://kisaaninfotech.com/egmNotice2018.pdf" target="_blank">EGM Notice 2019 (PDF)</a></li>
-                    <li><a href="https://kisaaninfotech.com/egmNotice2018.pdf" target="_blank">EGM Notice 2018 (PDF)</a></li>
+            
+            <div class="tier-card">
+                <div class="tier-badge gold">
+                    🚜
+                </div>
+                <h3>Strategic Investor</h3>
+                <div class="tier-price">₹5 Crores+</div>
+                <ul class="tier-features">
+                    <li>All Growth Partner benefits</li>
+                    <li>Board seat</li>
+                    <li>8% preferred return</li>
+                    <li>Customized impact reporting</li>
+                    <li>Joint venture opportunities</li>
+                    <li>Technology co-development rights</li>
                 </ul>
-                <a href="#" class="btn">View All Notices</a>
+                <a href="#contact" class="cta-button">Express Interest</a>
             </div>
         </div>
+    </section>
 
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2>Ready to Invest in AgriTech Innovation?</h2>
-            <p>Contact our investor relations team to learn more about equity investment opportunities</p>
-            <a href="mailto:info@kisaaninfotech.com" class="cta-btn">Contact Investor Relations</a>
-        </div>
-    </div>
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Ready to Cultivate the Future with Us?</h2>
+        <p>Join our mission to transform Indian agriculture while generating competitive financial returns and creating lasting social impact.</p>
+        <a href="#contact-form" class="cta-button btn-light">Schedule a Meeting</a>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact">
+        <h2 class="section-title">Express Your Interest</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--text-light);">
+            Contact us to learn more about investment opportunities
+        </p>
+        
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="organization">Organization</label>
+                <input type="text" id="organization" name="organization">
+            </div>
+            
+            <div class="form-group">
+                <label for="investment-interest">Investment Interest</label>
+                <select id="investment-interest" name="investment-interest">
+                    <option value="">Select an option</option>
+                    <option value="seed">Seed Investor (₹25 Lakhs)</option>
+                    <option value="growth">Growth Partner (₹1 Crore)</option>
+                    <option value="strategic">Strategic Investor (₹5 Crores+)</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Additional Information</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="cta-button" style="width: 100%;">Submit Interest</button>
+        </form>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -744,12 +858,8 @@
             <a href="https://www.linkedin.com/company/kisaaninfotechltd" aria-label="LinkedIn">in</a>
             <a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw" aria-label="YouTube">▶</a>
         </div>
-        <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-            © 2025 Kisaan Infotech Limited. All Rights Reserved.
-        </p>
-        <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">
-            <em>Investment in equity shares is subject to market risks. Please read all documents carefully before investing.</em>
-        </p>
+        <p>© 2025 Kisaan Infotech Limited. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;"><em>This is not an offer to sell securities. Investment opportunities are available only to accredited investors.</em></p>
     </footer>
 
     <script>
@@ -758,7 +868,6 @@
             menu.classList.toggle('active');
         }
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -768,7 +877,6 @@
             }
         });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -780,7 +888,6 @@
             });
         });
 
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -790,11 +897,17 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.stat-card, .reason-card, .investment-card, .project-card').forEach(el => {
+        document.querySelectorAll('.card, .model-card, .tier-card, .team-member').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! Our team will contact you shortly.');
+            this.reset();
         });
     </script>
 </body>
