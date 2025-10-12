@@ -1,209 +1,658 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>New Mumbai District Manager with Kisaan Infotech Limited</title>
-<meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://kisaaninfotech.com/bootstrap.min.css">
-  <script src="https://kisaaninfotech.com/jquery.min.js"></script>
-  <script src="https://kisaaninfotech.com/bootstrap.min.js"></script>
-<link rel="icon" href="https://kisaaninfotech.com/favicon.png" type="image/ico" sizes="16x16">
-<link rel=“canonical” href=“https://kisaaninfotech.com/jobs/newmumbaidm.html/” />
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-79564470-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-79564470-1');
-</script>
-<style>
-.bottom-container
-{background:url(//kisaaninfotech.com/Images/footer-bg.jpg) no-repeat center center;background-size:cover;padding-top:10px}
-</style>
-  <style>
-    body {
-     margin: 0;
-            padding: 15px;
-     text-align: center;
-         background-color:#ebf1f2;
-         }
-  .thumbnail {
-    padding: 0 0 15px 0;
-    border: none;
-    border-radius: 0;
-  }
-  .thumbnail img {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 10px;
-  }
-  .panel {
-    border: 1px solid #70db93; 
-    border-radius:0 !important;
-    transition: box-shadow 0.5s;
-  }
-  .panel:hover {
-    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
-  }
-  .panel-heading {
-    color: #fff !important;
-    background-color: #70db93 !important;
-    padding: 5PX;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
-  .navbar {
-    margin-bottom: 0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mumbai District Manager - Kisaan Infotech Limited</title>
+    <link rel="canonical" href="https://kisaaninfotech.com/jobs/newmumbaidm.html" />
+    <link rel="icon" href="https://kisaaninfotech.com/favicon.png" type="image/ico" sizes="16x16">
     
-    z-index: 9999;
-    border: 0;
-    font-size: 13px !important;
-    line-height: 1.42857143 !important;
-    letter-spacing: 0px;
-    border-radius: 0;
-        font-weight:normal
-  }
-  .navbar li a, .navbar .navbar-brand {
-    color: #3d3d3d !important;
-  }
-  .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #70db93 !important;
-    background-color: #bbbbb !important;
-  }
-  .navbar-default .navbar-toggle {
-    border-color: transparent;
-    color: #e0e0f0 !important;
-  }
-  @media screen and (max-width: 768px) {
-    .col-sm-4 {
-      text-align: center;
-      margin: 25px 0;
-    }
-  }
-</style>
-<style type="text/css">
-.navbar-brand>img {
-   max-height: 150%;
-   height: 120%;
-   width: auto;
-   margin: 0 auto;
-   -o-object-fit: contain;
-   object-fit: contain; 
-}
-</style>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEPM4D0EMX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JEPM4D0EMX');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary: #70DB93;
+            --primary-dark: #5bc47d;
+            --secondary: #2d5f3f;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --info: #17a2b8;
+            --success: #28a745;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--white);
+            padding: 15px 20px;
+            margin-top: 80px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+        }
+
+        /* Job Header */
+        .job-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(112, 219, 147, 0.3);
+        }
+
+        .job-header h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-icon {
+            font-size: 1.2rem;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Main Content Card */
+        .content-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .responsibilities-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .responsibilities-list li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            color: var(--text-dark);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .responsibilities-list li:last-child {
+            border-bottom: none;
+        }
+
+        .responsibilities-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .apply-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .apply-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(112, 219, 147, 0.4);
+        }
+
+        .apply-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .apply-info h4 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .apply-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .email-highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .equality-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .equality-card h4 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .equality-card p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .highlight-box p {
+            color: #856404;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d3748, #1a202c);
+            color: var(--white);
+            padding: 50px 20px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .sidebar-card {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .job-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .job-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .content-card {
+                padding: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container-fluid">
-                        <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>        
-                                <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/kisaan.svg" class="img-responsive"></a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                                <ul class="nav navbar-nav navbar-left">
-                                <li><a href="https://kisaaninfotech.com/index.html">ABOUT</a></li>
-                                <li><a href="https://kisaaninfotech.com/#board">OUR BOARD</a></li>
-                                <li><a href="https://kisaaninfotech.com/#investors">INVESTORS</a></li>
-                                <li><a href="https://kisaaninfotech.com/#joinus">JOIN US</a></li>
-                                <li><a href="https://kisaaninfotech.com/jobs/Jobslist.html"> JOBS LIST</a>
-                                <li><a href="https://kisaaninfotech.com/#contact">CONTACT</a></li>
-                                </ul>
-                        </div>
-                </div>
-        </nav>
-<div class="container-fluid" style="margin-top:50px ; background-color:#f0f5f0">                        <br>   
-        <div class="row" style="padding:10px">
-                <div class="col-sm-9">
-                        <div class="row">
-                                <div class="col-sm-12">
-                                        <div class="panel panel-default text-center">
-                                                <div class="panel-heading"> <h4><strong>NEW MUMBAI DISTRICT MANAGER</strong></h4>
-                                                </div>
-                                                <div class="panel-body text-center">
-                                                        <dl class="dl-horizontal">
-                                                        <dt  class="text-justify"><strong>JOB TYPE:</strong> </dt><dd class="text-justify">Permanant</dd>
-                                                        </dl>
-                                                        <dl class="dl-horizontal">
-                                                        <dt  class="text-justify"><strong>WORK LOCATION:</strong> </dt><dd class="text-justify">New Mumbai, Maharashtra.</dd>
-                                                        </dl>
-                                                        <dl class="dl-horizontal">
-                                                        <dt class="text-justify"><strong>EXPERIENCE:</strong></dt> <dd class="text-justify">0 to 3 Years.</dd>
-                                                        </dl>
-                                                        <dl class="dl-horizontal">
-                                                        <dt class="text-justify"><strong>SALARY:</strong></dt> <dd class="text-justify">25000/- Per Month.</dd>
-                                                        </dl>
-                                                        <dl class="dl-horizontal">
-                                                        <dt class="text-justify"><strong>SELECTION METHOD:</strong></dt> <dd class="text-justify">please note that The Canndidates willing to accept and buy equity Shares of Kisaan Infoech Limited shall be on higher priority.</dd>
-                                                        </dl>                                                 
-                                                        <dl class="dl-horizontal">
-                                                        <dt class="text-justify"><strong>EDUCATION:</strong> </dt><dd class="text-justify">BSc. / MSc. In Agriculture are preferred or any other equivalent science or commerce background.</dd>
-                                                        </dl>
-                                                        <dl class="dl-horizontal">
-                                                        <dt class="text-justify"><strong>SKILLS: </strong> </dt>
-                                                        <dd class="text-justify">MS Word, Excel. Written English language. Should have Bike & Smart Mobile phone.</dd>
-                                                        </dl>
-                                                        <dl class="dl-horizontal">
-                                                        <dt class="text-justify"><strong>RESPONSIBILITIES: </strong> </dt>
-                                                        <dd class="text-justify"> The New Mumbai District Manager will lead the entire team of New Mumbai district and will ensure timely & quality services to the customers within the district. He / She will organize workshops, events, sales and marketing campaigns throughout the limits of New Mumbai district. also He / She will visit farmers & the stake holders to receive various feedbacks.</dd>
-<dd class="text-justify">
-<ul>
-<li>Channel Sales</li>
-<li>General Trade</li>
-<li>B2B & B2C Sales Lead Generation</li>
-<li>Problem Solving</li>
-<li>Retailer Management</li>
-<li>Key Account Management</li>
-</ul> 
-</dd>
-</dl>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-                <div class="col-sm-3">
-                        <div class="panel panel-default" style="padding:10px">
-                                <h4><strong>HOW TO APPLY</strong></h4>
-                                        <p class="text-justify">Email Resume to <strong>resume@kisaaninfotech.com</strong> with the subject <strong>Mumbai Suburban District Manager.</strong></p>
-                        </div>
-                        <div class="panel panel-default" style="padding:10px">
-                                <h4><strong>WE ARE AN EQUAL OPPORTUNITY EMPLOYER</strong></h4>
-                                <strong>The availble opportunity shall not be biased on:</strong>
-                                <p class="text-justify">Your age, caste, colour, height, disability, ethnicity, family status, gender identity, generation, genetic characteristics, marital status, nationality, race, religion, sex, sexual orientation, and social class.</p>
-      
-                        </div>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/kisaan.svg" alt="Kisaan Infotech"></a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="https://kisaaninfotech.com/index.html">About</a></li>
+                <li><a href="https://kisaaninfotech.com/#investors">Investors</a></li>
+                <li><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Jobs List</a></li>
+                <li><a href="https://kisaaninfotech.com/#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-</div>
-<!-- Footer -->
-<footer class="bottom-container">
-          <div class="text-center center-block">
-            <h4> FIND US ON SOCIAL MEDIA</h4>
-            <div><a href="https://www.facebook.com/KisaanInfoTechLimited"><img src="//kisaaninfotech.com/Images/ico-facebook.svg"></a> <span>
-              <a href="https://twitter.com/KisaanLtd"><img src="//kisaaninfotech.com/Images/twitter-square.svg" width="28px"></a> <span>
-        <a href="https://www.linkedin.com/company/kisaaninfotechltd"><img src="//kisaaninfotech.com/Images/linkedin-square.svg" width="28px"></a> <span>
-        <a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw"><img src="//kisaaninfotech.com/Images/youtube-square.svg" width="28px"></a>
-              </div>
-<div class="footer-voucher-block">
-                                                    </div>
-       </div>
-      <br />
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    Kisaan Infotech Limited
-  </div>
-  <!-- Copyright -->
+    </nav>
 
-</footer>
-<!-- Footer -->
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="https://kisaaninfotech.com">Home</a>
+            <span>›</span>
+            <a href="https://kisaaninfotech.com/jobs/Jobslist.html">Jobs</a>
+            <span>›</span>
+            <span>New Mumbai District Manager</span>
+        </div>
+    </div>
+
+    <!-- Job Header -->
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="job-header">
+            <h1>New Mumbai District Manager</h1>
+            <div class="job-meta">
+                <div class="meta-item">
+                    <span class="meta-icon">📍</span>
+                    <div>
+                        <div class="meta-label">Location</div>
+                        <div class="meta-value">Navi Mumbai / Vashi, Maharashtra</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">💼</span>
+                    <div>
+                        <div class="meta-label">Job Type</div>
+                        <div class="meta-value">Permanent</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">💰</span>
+                    <div>
+                        <div class="meta-label">Salary</div>
+                        <div class="meta-value">₹25,000/month</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">⏱️</span>
+                    <div>
+                        <div class="meta-label">Experience</div>
+                        <div class="meta-value">0-3 Years</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Main Content -->
+        <div>
+            <div class="content-card">
+                <!-- Job Details -->
+                <section class="section">
+                    <h2 class="section-title">Job Details</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Employment Type</div>
+                            <div class="info-value">Permanent Position</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Work Location</div>
+                            <div class="info-value">Navi Mumbai / Vashi, Maharashtra</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Experience Required</div>
+                            <div class="info-value">0 to 3 Years</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Monthly Salary</div>
+                            <div class="info-value">₹25,000 per month</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="section">
+                    <h2 class="section-title">Education Requirements</h2>
+                    <p style="color: var(--text-light); margin-top: 15px;">
+                        BSc./MSc. in Agriculture are preferred, or any other equivalent science or commerce background.
+                    </p>
+                </section>
+
+                <!-- Required Skills -->
+                <section class="section">
+                    <h2 class="section-title">Required Skills</h2>
+                    <div class="skills-tags">
+                        <span class="skill-tag">MS Word</span>
+                        <span class="skill-tag">MS Excel</span>
+                        <span class="skill-tag">Written English</span>
+                        <span class="skill-tag">Two-Wheeler License</span>
+                        <span class="skill-tag">Smartphone Proficiency</span>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 20px;">
+                        <p><strong>Note:</strong> Candidates must have their own bike and smartphone.</p>
+                    </div>
+                </section>
+
+                <!-- Responsibilities -->
+                <section class="section">
+                    <h2 class="section-title">Key Responsibilities</h2>
+                    <p style="color: var(--text-light); margin-top: 15px; margin-bottom: 20px;">
+                        The New Mumbai District Manager will lead the entire team of Navi Mumbai district and ensure timely & quality services to customers within the district. The role includes organizing workshops, events, sales and marketing campaigns throughout Navi Mumbai district, and visiting farmers & stakeholders to receive various feedbacks.
+                    </p>
+                    <ul class="responsibilities-list">
+                        <li>Channel Sales Management</li>
+                        <li>General Trade Operations</li>
+                        <li>B2B & B2C Sales Lead Generation</li>
+                        <li>Problem Solving & Customer Support</li>
+                        <li>Retailer Management</li>
+                        <li>Key Account Management</li>
+                    </ul>
+                </section>
+
+                <!-- Selection Method -->
+                <section class="section">
+                    <h2 class="section-title">Selection Process</h2>
+                    <div class="highlight-box">
+                        <p><strong>Priority Selection:</strong> Candidates willing to accept and purchase equity shares of Kisaan Infotech Limited will be given higher priority in the selection process.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <button class="apply-btn" onclick="applyNow()">Apply Now</button>
+                
+                <div class="apply-info">
+                    <h4>How to Apply</h4>
+                    <p>
+                        Email your resume to <span class="email-highlight">resume@kisaaninfotech.com</span> with the subject line: <strong>"New Mumbai District Manager"</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="equality-card">
+                    <h4>🤝 Equal Opportunity Employer</h4>
+                    <p>
+                        We are committed to creating an inclusive workplace. This opportunity is not biased based on age, caste, color, disability, ethnicity, family status, gender identity, marital status, nationality, race, religion, sex, sexual orientation, or social class.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h4>Find Us On Social Media</h4>
+        <div class="social-links">
+            <a href="https://www.facebook.com/KisaanInfoTechLimited" aria-label="Facebook">f</a>
+            <a href="https://twitter.com/KisaanLtd" aria-label="Twitter">𝕏</a>
+            <a href="https://www.linkedin.com/company/kisaaninfotechltd" aria-label="LinkedIn">in</a>
+            <a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw" aria-label="YouTube">▶</a>
+        </div>
+        <p>© 2025 Kisaan Infotech Limited. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function applyNow() {
+            const subject = encodeURIComponent('Application for New Mumbai District Manager');
+            const body = encodeURIComponent('Dear Hiring Team,\n\nI am writing to express my interest in the New Mumbai District Manager position.\n\nPlease find my resume attached.\n\nBest regards,');
+            window.location.href = `mailto:resume@kisaaninfotech.com?subject=${subject}&body=${body}`;
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
