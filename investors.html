@@ -537,12 +537,62 @@
         }
 
         /* Footer */
-        footer {
-            background: linear-gradient(135deg, #2d3748, #1a202c);
-            color: var(--white);
-            padding: 50px 20px 20px;
-            text-align: center;
-        }
+footer {
+  background: #0a0a0a;
+  color: #eee;
+  padding: 40px 0 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: left;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-section h3 {
+  color: #6cc24a; /* green accent */
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.footer-section p {
+  color: #ccc;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.footer-section a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #6cc24a;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  fill: #6cc24a;
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-section p {
+    justify-content: center;
+  }
+}
+
 
         .social-links {
             display: flex;
@@ -802,44 +852,55 @@
     </section>
 
 <footer>
-    <div class="container">
-        <div class="footer-grid">
-            <!-- Quick Links -->
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="https://kisaaninfotech.com">Home</a></p>
-                <p><a href="https://kisaaninfotech.com/services.html">Services</a></p>
-                <p><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Careers</a></p>
-                <p><a href="https://kisaaninfotech.com/investors.html">Investors</a></p>
-            </div>
+  <div class="container">
+    <div class="footer-grid">
 
-            <!-- Contact Us -->
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:investors@kisaaninfotech.com">investors@kisaaninfotech.com</a></p>
-                <p><i class="fas fa-phone"></i> +91 95958 20288</p>
-                <p><i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India</p>
-            </div>
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="https://kisaaninfotech.com">Home</a></p>
+        <p><a href="https://kisaaninfotech.com/services.html">Services</a></p>
+        <p><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Careers</a></p>
+        <p><a href="https://kisaaninfotech.com/investors.html">Investors</a></p>
+      </div>
 
-            <!-- Legal -->
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <p><a href="#">Private Placement Memorandum</a></p>
-                <p><a href="#">Business Plan</a></p>
-                <p><a href="#">Financial Projections</a></p>
-                <p><a href="#">Terms & Conditions</a></p>
-                <p><a href="#">Privacy Policy</a></p>
-            </div>
-        </div>
+      <!-- Contact Us -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon"><path d="M502.3 190.8L327.4 365.7c-15.1 15.1-39.6 15.1-54.6 0L9.7 102.6C3.9 96.8 0 88.7 0 80V48C0 21.5 21.5 0 48 0h416c26.5 0 48 21.5 48 48v32.2c0 8.7-3.9 16.8-9.7 22.6z"/></svg>
+          <a href="mailto:investors@kisaaninfotech.com">investors@kisaaninfotech.com</a>
+        </p>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon"><path d="M511.1 387.6c-1.4 8.2-7.5 15.2-15.8 17.4l-88 24c-8.1 2.2-16.8-.1-22.7-5.9l-53.5-53.5a391.16 391.16 0 0 1-174.8-174.8L102.7 93.5c-5.8-5.9-8.1-14.6-5.9-22.7l24-88c2.2-8.3 9.2-14.4 17.4-15.8C151.6-36.8 160.1 0 160 0h0c0 0-8.5 36.8-22.6 79.3a23.91 23.91 0 0 0 5.9 22.7l38.8 38.8a439.3 439.3 0 0 0 176.5 176.5l38.8 38.8a23.91 23.91 0 0 0 22.7 5.9C475.2 503.5 512 495 512 495h0s-36.8 8.5-79.3 22.6c-8.2 1.4-15.2 7.5-17.4 15.8l-24 88c-2.2 8.3-9.2 14.4-17.4 15.8C380.4 640 384 512 384 512h0c0 0 8.5-36.8 22.6-79.3a23.91 23.91 0 0 0-5.9-22.7l-38.8-38.8A439.3 439.3 0 0 0 185.4 194.7l-38.8-38.8a23.91 23.91 0 0 0-22.7-5.9C36.8 102.8 0 111.3 0 111.3h0s8.5-36.8 22.6-79.3c1.4-8.2 7.5-15.2 15.8-17.4l88-24c8.3-2.2 16.8.1 22.7 5.9l53.5 53.5a391.16 391.16 0 0 1 174.8 174.8l53.5 53.5c5.9 5.8 8.1 14.6 5.9 22.7l-24 88z"/></svg>
+          +91 95958 20288
+        </p>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon"><path d="M168 0C75.4 0 0 75.4 0 168c0 87.1 146.1 308.1 152.1 316.5 6.5 9.4 21.2 9.4 27.7 0C185.9 476.1 332 255.1 332 168 332 75.4 256.6 0 164 0zM164 256a88 88 0 1 1 0-176 88 88 0 1 1 0 176z"/></svg>
+          Pune, Maharashtra, India
+        </p>
+      </div>
 
-        <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
-
-        <div class="copyright">
-            <p>&copy; 2025 <strong>KISAAN INFOTECH LIMITED</strong>. All rights reserved.</p>
-            <p><em>This website and its content do not constitute an offer to sell or a solicitation of an offer to buy any securities. Investment opportunities are available only to accredited investors.</em></p>
-        </div>
+      <!-- Legal -->
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <p><a href="#">Private Placement Memorandum</a></p>
+        <p><a href="#">Business Plan</a></p>
+        <p><a href="#">Financial Projections</a></p>
+        <p><a href="#">Terms & Conditions</a></p>
+        <p><a href="#">Privacy Policy</a></p>
+      </div>
     </div>
+
+    <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
+
+    <div class="copyright">
+      <p>&copy; 2025 <strong>KISAAN INFOTECH LIMITED</strong>. All rights reserved.</p>
+      <p><em>This website and its content do not constitute an offer to sell or a solicitation of an offer to buy any securities. Investment opportunities are available only to accredited investors.</em></p>
+    </div>
+  </div>
 </footer>
+
 
 
 
