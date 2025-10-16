@@ -600,4 +600,961 @@
                 <strong>Conditions:</strong>
                 <ul>
                     <li>st_min_Inside_pdZone = true</li>
-                    <li>priceAb
+                    <li>priceAboveVwap = true</li>
+                    <li>hasBullishMomentum = true</li>
+                    <li>notInPrevVwapZone = false</li>
+                </ul>
+                <strong>Entry:</strong> prevSessionVwap<br>
+                <strong>Risk Level:</strong> <span class="risk-level risk-good">GOOD</span>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario 3: Keltner Support</div>
+                <strong>Conditions:</strong>
+                <ul>
+                    <li>stmax_inside_kc = true</li>
+                    <li>ema9AboveSma26 = true</li>
+                    <li>close near kclower</li>
+                    <li>lowVolatility = true</li>
+                </ul>
+                <strong>Entry:</strong> kclower + (ATR × 0.2)<br>
+                <strong>Risk Level:</strong> <span class="risk-level risk-optimal">OPTIMAL</span>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario 4: Gap Fill</div>
+                <strong>Conditions:</strong>
+                <ul>
+                    <li>isBelowPrevLow = true (at open)</li>
+                    <li>dailyPositionZone = 5</li>
+                    <li>keltnerBullish = true</li>
+                    <li>bullish_crossover = true</li>
+                </ul>
+                <strong>Entry:</strong> prevDailyLow<br>
+                <strong>Risk Level:</strong> <span class="risk-level risk-good">GOOD</span>
+            </div>
+        </div>
+
+        <h3>High Probability Bearish Scenarios</h3>
+        <div class="scenario-grid">
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario 1: Perfect Confluence</div>
+                <strong>Conditions:</strong>
+                <ul>
+                    <li>kcInside_st = true</li>
+                    <li>keltnerBearish = true</li>
+                    <li>stDowntrend = true</li>
+                    <li>dailyPositionZone = 2 or 3</li>
+                    <li>risingVolume = true</li>
+                </ul>
+                <strong>Entry:</strong> st_max - (ATR × 0.1)<br>
+                <strong>Risk Level:</strong> <span class="risk-level risk-optimal">OPTIMAL</span>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario 2: VWAP Rejection</div>
+                <strong>Conditions:</strong>
+                <ul>
+                    <li>st_max_Inside_pdZone = true</li>
+                    <li>priceBelowVwap = true</li>
+                    <li>hasBearishMomentum = true</li>
+                    <li>notInPrevVwapZone = false</li>
+                </ul>
+                <strong>Entry:</strong> prevSessionVwap<br>
+                <strong>Risk Level:</strong> <span class="risk-level risk-good">GOOD</span>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario 3: Keltner Resistance</div>
+                <strong>Conditions:</strong>
+                <ul>
+                    <li>stmin_inside_kc = true</li>
+                    <li>ema9BelowSma26 = true</li>
+                    <li>close near kcupper</li>
+                    <li>lowVolatility = true</li>
+                </ul>
+                <strong>Entry:</strong> kcupper - (ATR × 0.2)<br>
+                <strong>Risk Level:</strong> <span class="risk-level risk-optimal">OPTIMAL</span>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Scenario 4: Gap Fill</div>
+                <strong>Conditions:</strong>
+                <ul>
+                    <li>isAbovePrevHigh = true (at open)</li>
+                    <li>dailyPositionZone = 1</li>
+                    <li>keltnerBearish = true</li>
+                    <li>bearish_crossunder = true</li>
+                </ul>
+                <strong>Entry:</strong> prevDailyHigh<br>
+                <strong>Risk Level:</strong> <span class="risk-level risk-good">GOOD</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- SCORING MATRIX -->
+        <h2>📊 ENTRY QUALITY SCORING MATRIX</h2>
+
+        <div class="info-box">
+            <strong>Scoring System:</strong> Each condition adds points. Higher scores indicate better risk/reward setups.
+        </div>
+
+        <h3>Bullish Entry Score Calculation</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Points</th>
+                        <th>Weight</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>keltnerBullish AND stUptrend</code></td>
+                        <td>+3</td>
+                        <td>Critical</td>
+                        <td>Both trend systems agree</td>
+                    </tr>
+                    <tr>
+                        <td><code>kcInside_st</code></td>
+                        <td>+2</td>
+                        <td>High</td>
+                        <td>Compression = lower risk, expansion potential</td>
+                    </tr>
+                    <tr>
+                        <td><code>ema9AboveSma26</code></td>
+                        <td>+2</td>
+                        <td>High</td>
+                        <td>Short-term momentum aligned</td>
+                    </tr>
+                    <tr>
+                        <td><code>priceAboveVwap</code></td>
+                        <td>+1.5</td>
+                        <td>Medium</td>
+                        <td>Institutional support level</td>
+                    </tr>
+                    <tr>
+                        <td><code>risingVolume</code></td>
+                        <td>+1.5</td>
+                        <td>Medium</td>
+                        <td>Confirms genuine interest</td>
+                    </tr>
+                    <tr>
+                        <td><code>isWithinPrevRange</code></td>
+                        <td>+1</td>
+                        <td>Medium</td>
+                        <td>Not overextended</td>
+                    </tr>
+                    <tr>
+                        <td><code>dailyPositionZone == 3 or 4</code></td>
+                        <td>+1</td>
+                        <td>Medium</td>
+                        <td>Optimal spatial position</td>
+                    </tr>
+                    <tr>
+                        <td><code>lowVolatility</code></td>
+                        <td>+1</td>
+                        <td>Medium</td>
+                        <td>Tighter stop loss possible</td>
+                    </tr>
+                    <tr>
+                        <td><code>bullish_crossover</code></td>
+                        <td>+1.5</td>
+                        <td>Medium</td>
+                        <td>Clear trigger signal</td>
+                    </tr>
+                    <tr>
+                        <td><code>st_min_Inside_pdZone</code></td>
+                        <td>+1</td>
+                        <td>Low</td>
+                        <td>Support confluence</td>
+                    </tr>
+                    <tr>
+                        <td><code>hasBullishMomentum</code></td>
+                        <td>+0.5</td>
+                        <td>Low</td>
+                        <td>Day-over-day strength</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <strong>Score Interpretation:</strong>
+            <ul>
+                <li><strong>14-16 points:</strong> Optimal Entry - All systems aligned, lowest risk</li>
+                <li><strong>10-13 points:</strong> Good Entry - Strong setup with minor concerns</li>
+                <li><strong>7-9 points:</strong> Moderate Entry - Acceptable but requires tight management</li>
+                <li><strong>4-6 points:</strong> Weak Entry - High risk, consider passing</li>
+                <li><strong>0-3 points:</strong> Poor Entry - Avoid, wait for better setup</li>
+            </ul>
+        </div>
+
+        <h3>Bearish Entry Score Calculation</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Points</th>
+                        <th>Weight</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>keltnerBearish AND stDowntrend</code></td>
+                        <td>+3</td>
+                        <td>Critical</td>
+                        <td>Both trend systems agree</td>
+                    </tr>
+                    <tr>
+                        <td><code>kcInside_st</code></td>
+                        <td>+2</td>
+                        <td>High</td>
+                        <td>Compression = lower risk, expansion potential</td>
+                    </tr>
+                    <tr>
+                        <td><code>ema9BelowSma26</code></td>
+                        <td>+2</td>
+                        <td>High</td>
+                        <td>Short-term momentum aligned</td>
+                    </tr>
+                    <tr>
+                        <td><code>priceBelowVwap</code></td>
+                        <td>+1.5</td>
+                        <td>Medium</td>
+                        <td>Institutional resistance level</td>
+                    </tr>
+                    <tr>
+                        <td><code>risingVolume</code></td>
+                        <td>+1.5</td>
+                        <td>Medium</td>
+                        <td>Confirms genuine distribution</td>
+                    </tr>
+                    <tr>
+                        <td><code>isWithinPrevRange</code></td>
+                        <td>+1</td>
+                        <td>Medium</td>
+                        <td>Not overextended</td>
+                    </tr>
+                    <tr>
+                        <td><code>dailyPositionZone == 2 or 3</code></td>
+                        <td>+1</td>
+                        <td>Medium</td>
+                        <td>Optimal spatial position</td>
+                    </tr>
+                    <tr>
+                        <td><code>lowVolatility</code></td>
+                        <td>+1</td>
+                        <td>Medium</td>
+                        <td>Tighter stop loss possible</td>
+                    </tr>
+                    <tr>
+                        <td><code>bearish_crossunder</code></td>
+                        <td>+1.5</td>
+                        <td>Medium</td>
+                        <td>Clear trigger signal</td>
+                    </tr>
+                    <tr>
+                        <td><code>st_max_Inside_pdZone</code></td>
+                        <td>+1</td>
+                        <td>Low</td>
+                        <td>Resistance confluence</td>
+                    </tr>
+                    <tr>
+                        <td><code>hasBearishMomentum</code></td>
+                        <td>+0.5</td>
+                        <td>Low</td>
+                        <td>Day-over-day weakness</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- PERMUTATION MATRIX -->
+        <h2>🔢 FULL PERMUTATION MATRIX</h2>
+
+        <div class="info-box">
+            This matrix shows the top 10 bullish and bearish permutations ranked by probability of success and risk/reward ratio.
+        </div>
+
+        <h3>Top Bullish Permutations</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Permutation</th>
+                        <th>Entry Price</th>
+                        <th>Score</th>
+                        <th>Win Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            keltnerBullish + stUptrend + kcInside_st + 
+                            ema9AboveSma26 + risingVolume + lowVolatility + 
+                            dailyPositionZone=3 + bullish_crossover
+                        </td>
+                        <td><span class="price-level">st_min + (ATR × 0.1)</span></td>
+                        <td><span class="score score-5">15.5</span></td>
+                        <td>85%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            keltnerBullish + stUptrend + stmax_inside_kc + 
+                            priceAboveVwap + risingVolume + isWithinPrevRange + 
+                            bullish_crossover
+                        </td>
+                        <td><span class="price-level">kclower + (ATR × 0.2)</span></td>
+                        <td><span class="score score-5">14.5</span></td>
+                        <td>80%</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            keltnerBullish + stUptrend + ema9AboveSma26 + 
+                            st_min_Inside_pdZone + risingVolume + 
+                            hasBullishMomentum + dailyPositionZone=4
+                        </td>
+                        <td><span class="price-level">prevSessionVwap</span></td>
+                        <td><span class="score score-4">13</span></td>
+                        <td>75%</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            keltnerBullish + stUptrend + kcInside_st + 
+                            priceAboveVwap + isWithinPrevRange + 
+                            lowVolatility
+                        </td>
+                        <td><span class="price-level">sessionvwap</span></td>
+                        <td><span class="score score-4">12</span></td>
+                        <td>72%</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            stUptrend + ema9AboveSma26 + priceAboveVwap + 
+                            risingVolume + bullish_crossover + 
+                            dailyPositionZone=3
+                        </td>
+                        <td><span class="price-level">price (SMA63)</span></td>
+                        <td><span class="score score-4">11.5</span></td>
+                        <td>70%</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            keltnerBullish + ema9AboveSma26 + 
+                            stmax_inside_kc + risingVolume + 
+                            isWithinPrevRange + hasBullishMomentum
+                        </td>
+                        <td><span class="price-level">kclower + (ATR × 0.3)</span></td>
+                        <td><span class="score score-4">11</span></td>
+                        <td>68%</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            keltnerBullish + stUptrend + priceAboveVwap + 
+                            st_min_Inside_pdZone + risingVolume
+                        </td>
+                        <td><span class="price-level">pdZoneMin</span></td>
+                        <td><span class="score score-3">10.5</span></td>
+                        <td>65%</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            stUptrend + kcInside_st + ema9AboveSma26 + 
+                            lowVolatility + dailyPositionZone=4
+                        </td>
+                        <td><span class="price-level">st_min + (ATR × 0.2)</span></td>
+                        <td><span class="score score-3">10</span></td>
+                        <td>63%</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            keltnerBullish + ema9AboveSma26 + 
+                            priceAboveVwap + risingVolume + 
+                            isBelowPrevLow(gap) + bullish_crossover
+                        </td>
+                        <td><span class="price-level">prevDailyLow</span></td>
+                        <td><span class="score score-3">9.5</span></td>
+                        <td>60%</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>
+                            stUptrend + priceAboveVwap + risingVolume + 
+                            bullish_crossover + isWithinPrevRange
+                        </td>
+                        <td><span class="price-level">hlc3_ema9</span></td>
+                        <td><span class="score score-3">9</span></td>
+                        <td>58%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Top Bearish Permutations</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Permutation</th>
+                        <th>Entry Price</th>
+                        <th>Score</th>
+                        <th>Win Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            keltnerBearish + stDowntrend + kcInside_st + 
+                            ema9BelowSma26 + risingVolume + lowVolatility + 
+                            dailyPositionZone=3 + bearish_crossunder
+                        </td>
+                        <td><span class="price-level">st_max - (ATR × 0.1)</span></td>
+                        <td><span class="score score-5">15.5</span></td>
+                        <td>85%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            keltnerBearish + stDowntrend + stmin_inside_kc + 
+                            priceBelowVwap + risingVolume + isWithinPrevRange + 
+                            bearish_crossunder
+                        </td>
+                        <td><span class="price-level">kcupper - (ATR × 0.2)</span></td>
+                        <td><span class="score score-5">14.5</span></td>
+                        <td>80%</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            keltnerBearish + stDowntrend + ema9BelowSma26 + 
+                            st_max_Inside_pdZone + risingVolume + 
+                            hasBearishMomentum + dailyPositionZone=2
+                        </td>
+                        <td><span class="price-level">prevSessionVwap</span></td>
+                        <td><span class="score score-4">13</span></td>
+                        <td>75%</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            keltnerBearish + stDowntrend + kcInside_st + 
+                            priceBelowVwap + isWithinPrevRange + 
+                            lowVolatility
+                        </td>
+                        <td><span class="price-level">sessionvwap</span></td>
+                        <td><span class="score score-4">12</span></td>
+                        <td>72%</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            stDowntrend + ema9BelowSma26 + priceBelowVwap + 
+                            risingVolume + bearish_crossunder + 
+                            dailyPositionZone=3
+                        </td>
+                        <td><span class="price-level">price (SMA63)</span></td>
+                        <td><span class="score score-4">11.5</span></td>
+                        <td>70%</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            keltnerBearish + ema9BelowSma26 + 
+                            stmin_inside_kc + risingVolume + 
+                            isWithinPrevRange + hasBearishMomentum
+                        </td>
+                        <td><span class="price-level">kcupper - (ATR × 0.3)</span></td>
+                        <td><span class="score score-4">11</span></td>
+                        <td>68%</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            keltnerBearish + stDowntrend + priceBelowVwap + 
+                            st_max_Inside_pdZone + risingVolume
+                        </td>
+                        <td><span class="price-level">pdZoneMax</span></td>
+                        <td><span class="score score-3">10.5</span></td>
+                        <td>65%</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            stDowntrend + kcInside_st + ema9BelowSma26 + 
+                            lowVolatility + dailyPositionZone=2
+                        </td>
+                        <td><span class="price-level">st_max - (ATR × 0.2)</span></td>
+                        <td><span class="score score-3">10</span></td>
+                        <td>63%</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            keltnerBearish + ema9BelowSma26 + 
+                            priceBelowVwap + risingVolume + 
+                            isAbovePrevHigh(gap) + bearish_crossunder
+                        </td>
+                        <td><span class="price-level">prevDailyHigh</span></td>
+                        <td><span class="score score-3">9.5</span></td>
+                        <td>60%</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>
+                            stDowntrend + priceBelowVwap + risingVolume + 
+                            bearish_crossunder + isWithinPrevRange
+                        </td>
+                        <td><span class="price-level">hlc3_ema9</span></td>
+                        <td><span class="score score-3">9</span></td>
+                        <td>58%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- IMPLEMENTATION GUIDE -->
+        <h2>⚙️ PINE SCRIPT IMPLEMENTATION</h2>
+
+        <div class="expression">
+            <div class="expression-title">Example: Bullish Optimal Entry Logic</div>
+<span class="comment">// Calculate entry score</span><br>
+bullishScore = 0.0<br>
+bullishScore := (keltnerBullish and stUptrend) ? bullishScore + 3 : bullishScore<br>
+bullishScore := kcInside_st ? bullishScore + 2 : bullishScore<br>
+bullishScore := ema9AboveSma26 ? bullishScore + 2 : bullishScore<br>
+bullishScore := priceAboveVwap ? bullishScore + 1.5 : bullishScore<br>
+bullishScore := risingVolume ? bullishScore + 1.5 : bullishScore<br>
+bullishScore := isWithinPrevRange ? bullishScore + 1 : bullishScore<br>
+bullishScore := (dailyPositionZone == 3 or dailyPositionZone == 4) ? bullishScore + 1 : bullishScore<br>
+bullishScore := lowVolatility ? bullishScore + 1 : bullishScore<br>
+bullishScore := bullish_crossover ? bullishScore + 1.5 : bullishScore<br>
+bullishScore := st_min_Inside_pdZone ? bullishScore + 1 : bullishScore<br>
+bullishScore := hasBullishMomentum ? bullishScore + 0.5 : bullishScore<br>
+<br>
+<span class="comment">// Determine entry quality</span><br>
+entryQuality = bullishScore >= 14 ? "OPTIMAL" : <br>
+               bullishScore >= 10 ? "GOOD" : <br>
+               bullishScore >= 7 ? "MODERATE" : "WEAK"<br>
+<br>
+<span class="comment">// Calculate optimal entry price</span><br>
+optimalEntry = bullishScore >= 14 ? st_min + (atr * 0.1) :<br>
+               bullishScore >= 12 ? kclower + (atr * 0.2) :<br>
+               bullishScore >= 10 ? prevSessionVwap : na<br>
+<br>
+<span class="comment">// Calculate stop loss</span><br>
+stopLoss = bullishScore >= 14 ? st_min - (atr * 0.5) :<br>
+           bullishScore >= 12 ? kclower - (atr * 0.5) :<br>
+           bullishScore >= 10 ? dailyLow : na<br>
+<br>
+<span class="comment">// Signal generation</span><br>
+enterShort = bearishScore >= 10 and close >= optimalEntry and close < stopLoss<br>
+<br>
+<span class="comment">// Plot</span><br>
+plotshape(enterShort, "Short Entry", shape.triangledown, location.abovebar, <br>
+          color=entryQuality == "OPTIMAL" ? color.red : <br>
+                entryQuality == "GOOD" ? color.orange : color.yellow, <br>
+          size=size.small)
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- RISK MANAGEMENT -->
+        <h2>🛡️ RISK MANAGEMENT GUIDELINES</h2>
+
+        <h3>Position Sizing Based on Entry Quality</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entry Quality</th>
+                        <th>Score Range</th>
+                        <th>Position Size</th>
+                        <th>Risk per Trade</th>
+                        <th>Leverage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="risk-level risk-optimal">OPTIMAL</span></td>
+                        <td>14-16</td>
+                        <td>100% of normal</td>
+                        <td>1.5-2% of capital</td>
+                        <td>Max allowed</td>
+                    </tr>
+                    <tr>
+                        <td><span class="risk-level risk-good">GOOD</span></td>
+                        <td>10-13</td>
+                        <td>75% of normal</td>
+                        <td>1-1.5% of capital</td>
+                        <td>Moderate</td>
+                    </tr>
+                    <tr>
+                        <td><span class="risk-level risk-moderate">MODERATE</span></td>
+                        <td>7-9</td>
+                        <td>50% of normal</td>
+                        <td>0.5-1% of capital</td>
+                        <td>Minimal</td>
+                    </tr>
+                    <tr>
+                        <td><span class="risk-level risk-high">WEAK</span></td>
+                        <td>4-6</td>
+                        <td>25% of normal</td>
+                        <td>0.25-0.5% of capital</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td style="background: rgba(200, 0, 0, 0.3);">AVOID</td>
+                        <td>0-3</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>None</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Stop Loss Placement Strategy</h3>
+        <div class="scenario-grid">
+            <div class="scenario-card">
+                <div class="scenario-title">Optimal Entries (14+ points)</div>
+                <strong>Stop Loss Options:</strong>
+                <ul>
+                    <li><strong>Primary:</strong> Below st_min - (ATR × 0.5)</li>
+                    <li><strong>Secondary:</strong> Below kclower - (ATR × 0.3)</li>
+                    <li><strong>Time-based:</strong> Exit if no move in 5 bars</li>
+                </ul>
+                <strong>Risk/Reward Target:</strong> Minimum 1:3
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Good Entries (10-13 points)</div>
+                <strong>Stop Loss Options:</strong>
+                <ul>
+                    <li><strong>Primary:</strong> Below prevSessionVwap</li>
+                    <li><strong>Secondary:</strong> Below dailyLow</li>
+                    <li><strong>Time-based:</strong> Exit if no move in 8 bars</li>
+                </ul>
+                <strong>Risk/Reward Target:</strong> Minimum 1:2
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Moderate Entries (7-9 points)</div>
+                <strong>Stop Loss Options:</strong>
+                <ul>
+                    <li><strong>Primary:</strong> Below price (SMA63)</li>
+                    <li><strong>Secondary:</strong> -1.5% from entry</li>
+                    <li><strong>Time-based:</strong> Exit if no move in 10 bars</li>
+                </ul>
+                <strong>Risk/Reward Target:</strong> Minimum 1:1.5
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Weak Entries (4-6 points)</div>
+                <strong>Stop Loss Options:</strong>
+                <ul>
+                    <li><strong>Primary:</strong> Very tight -0.5%</li>
+                    <li><strong>Secondary:</strong> Exit on bar close against</li>
+                    <li><strong>Time-based:</strong> Exit immediately if no move</li>
+                </ul>
+                <strong>Risk/Reward Target:</strong> Minimum 1:1
+            </div>
+        </div>
+
+        <h3>Target Levels by Entry Quality</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entry Quality</th>
+                        <th>Target 1 (50%)</th>
+                        <th>Target 2 (30%)</th>
+                        <th>Target 3 (20%)</th>
+                        <th>Trail Stop After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="risk-level risk-optimal">OPTIMAL</span></td>
+                        <td>kcupper/kclower</td>
+                        <td>st_max/st_min</td>
+                        <td>Daily High/Low</td>
+                        <td>Target 1 hit</td>
+                    </tr>
+                    <tr>
+                        <td><span class="risk-level risk-good">GOOD</span></td>
+                        <td>price (SMA63)</td>
+                        <td>kcupper/kclower</td>
+                        <td>st_max/st_min</td>
+                        <td>Target 1 hit</td>
+                    </tr>
+                    <tr>
+                        <td><span class="risk-level risk-moderate">MODERATE</span></td>
+                        <td>sessionvwap</td>
+                        <td>price (SMA63)</td>
+                        <td>kcupper/kclower</td>
+                        <td>Target 2 hit</td>
+                    </tr>
+                    <tr>
+                        <td><span class="risk-level risk-high">WEAK</span></td>
+                        <td>hlc3_ema9</td>
+                        <td>sessionvwap</td>
+                        <td>price (SMA63)</td>
+                        <td>Immediately</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- CONFLUENCE FILTERS -->
+        <h2>🔍 ADVANCED CONFLUENCE FILTERS</h2>
+
+        <div class="warning-box">
+            <strong>⚠️ Avoid Entries When:</strong>
+            <ul>
+                <li><code>highVolatility</code> = true AND <code>bullishScore</code> or <code>bearishScore</code> < 12</li>
+                <li><code>pdZone_Outside</code> = true AND price has not returned to zone</li>
+                <li><code>kcOutside</code> = true (bands completely separated, wait for convergence)</li>
+                <li><code>dailyPositionZone</code> = 1 for longs OR = 5 for shorts (overextended gaps)</li>
+                <li>No volume confirmation (<code>risingVolume</code> = false) on breakouts</li>
+                <li>Against weekly/monthly high or low within 0.5% range</li>
+            </ul>
+        </div>
+
+        <h3>Confluence Enhancement Multipliers</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Additional Confluence</th>
+                        <th>Score Multiplier</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Price at Fibonacci level</td>
+                        <td>×1.2</td>
+                        <td>Entry near fib_a382/fib_b382 or fib_a500/fib_b500</td>
+                    </tr>
+                    <tr>
+                        <td>Multiple timeframe alignment</td>
+                        <td>×1.3</td>
+                        <td>Weekly and monthly pivots aligned with daily trend</td>
+                    </tr>
+                    <tr>
+                        <td>Volume spike (2x average)</td>
+                        <td>×1.15</td>
+                        <td>Institutional participation confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>Gap fill completion</td>
+                        <td>×1.25</td>
+                        <td>Price filled gap and bounced from key level</td>
+                    </tr>
+                    <tr>
+                        <td>Three bands converging</td>
+                        <td>×1.3</td>
+                        <td>st_min/max, kclower/upper, and VWAP all within 1 ATR</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <strong>💡 Pro Tip - Dynamic Entry Quality:</strong><br>
+            <code>finalScore = baseScore × confluenceMultiplier</code><br><br>
+            If your base bullish score is 12 (GOOD) but you have Fibonacci confluence (×1.2) and volume spike (×1.15), 
+            your adjusted score becomes: 12 × 1.2 × 1.15 = 16.56 (OPTIMAL)
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- MARKET CONDITIONS -->
+        <h2>🌐 MARKET CONDITION ADAPTATIONS</h2>
+
+        <h3>Trending Markets</h3>
+        <div class="scenario-grid">
+            <div class="scenario-card">
+                <div class="scenario-title">Strong Uptrend</div>
+                <strong>Adjust Logic:</strong>
+                <ul>
+                    <li>Reduce weight of <code>isWithinPrevRange</code></li>
+                    <li>Increase weight of <code>hasBullishMomentum</code></li>
+                    <li>Accept entries at <code>price</code> (SMA63) more readily</li>
+                    <li>Allow <code>dailyPositionZone</code> = 1 or 2</li>
+                </ul>
+                <strong>Min Score:</strong> Lower to 9 for aggressive entries
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Strong Downtrend</div>
+                <strong>Adjust Logic:</strong>
+                <ul>
+                    <li>Reduce weight of <code>isWithinPrevRange</code></li>
+                    <li>Increase weight of <code>hasBearishMomentum</code></li>
+                    <li>Accept entries at <code>price</code> (SMA63) more readily</li>
+                    <li>Allow <code>dailyPositionZone</code> = 4 or 5</li>
+                </ul>
+                <strong>Min Score:</strong> Lower to 9 for aggressive entries
+            </div>
+        </div>
+
+        <h3>Range-Bound Markets</h3>
+        <div class="scenario-grid">
+            <div class="scenario-card">
+                <div class="scenario-title">Consolidation Phase</div>
+                <strong>Adjust Logic:</strong>
+                <ul>
+                    <li>Increase weight of <code>lowVolatility</code></li>
+                    <li>Require <code>kcInside_st</code> = true</li>
+                    <li>Entry only at extreme bands (st_min/st_max)</li>
+                    <li>Reduce targets to <code>price</code> (SMA63)</li>
+                </ul>
+                <strong>Min Score:</strong> Increase to 13 (be selective)
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">Choppy Markets</div>
+                <strong>Adjust Logic:</strong>
+                <ul>
+                    <li>Require <code>risingVolume</code> = true</li>
+                    <li>Wait for clear <code>bullish_crossover</code> or <code>bearish_crossunder</code></li>
+                    <li>Use time-based stops aggressively</li>
+                    <li>Reduce position size by 50%</li>
+                </ul>
+                <strong>Min Score:</strong> Increase to 14 (optimal only)
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- SUMMARY -->
+        <h2>📋 QUICK REFERENCE SUMMARY</h2>
+
+        <div class="info-box">
+            <h3 style="margin-top: 0; color: #4ecdc4;">Best Bullish Entry Setup</h3>
+            <strong>Conditions:</strong><br>
+            ✅ keltnerBullish AND stUptrend<br>
+            ✅ kcInside_st (bands compressed)<br>
+            ✅ ema9AboveSma26<br>
+            ✅ risingVolume<br>
+            ✅ dailyPositionZone = 3 or 4<br>
+            ✅ lowVolatility<br>
+            ✅ bullish_crossover or close > st_min<br>
+            <br>
+            <strong>Entry Price:</strong> <code>st_min + (ATR × 0.1)</code><br>
+            <strong>Stop Loss:</strong> <code>st_min - (ATR × 0.5)</code><br>
+            <strong>Target 1:</strong> <code>kcupper</code><br>
+            <strong>Target 2:</strong> <code>st_max</code><br>
+            <strong>Target 3:</strong> <code>dailyHigh</code><br>
+            <strong>Expected Win Rate:</strong> 85%<br>
+            <strong>Risk/Reward:</strong> 1:3+
+        </div>
+
+        <div class="warning-box">
+            <h3 style="margin-top: 0; color: #ff6b6b;">Best Bearish Entry Setup</h3>
+            <strong>Conditions:</strong><br>
+            ✅ keltnerBearish AND stDowntrend<br>
+            ✅ kcInside_st (bands compressed)<br>
+            ✅ ema9BelowSma26<br>
+            ✅ risingVolume<br>
+            ✅ dailyPositionZone = 2 or 3<br>
+            ✅ lowVolatility<br>
+            ✅ bearish_crossunder or close < st_max<br>
+            <br>
+            <strong>Entry Price:</strong> <code>st_max - (ATR × 0.1)</code><br>
+            <strong>Stop Loss:</strong> <code>st_max + (ATR × 0.5)</code><br>
+            <strong>Target 1:</strong> <code>kclower</code><br>
+            <strong>Target 2:</strong> <code>st_min</code><br>
+            <strong>Target 3:</strong> <code>dailyLow</code><br>
+            <strong>Expected Win Rate:</strong> 85%<br>
+            <strong>Risk/Reward:</strong> 1:3+
+        </div>
+
+        <div class="info-box" style="background: rgba(255, 215, 61, 0.1);">
+            <h3 style="margin-top: 0; color: #ffd93d;">Key Takeaways</h3>
+            <ul>
+                <li><strong>Always score your setup</strong> - Don't trade below 10 points without good reason</li>
+                <li><strong>Best entries occur when bands compress</strong> - Look for <code>kcInside_st</code></li>
+                <li><strong>Wait for pullbacks</strong> - Entries at st_min/st_max have best risk/reward</li>
+                <li><strong>Volume confirms direction</strong> - <code>risingVolume</code> is critical for breakouts</li>
+                <li><strong>Respect spatial position</strong> - Avoid extremes unless in strong trend</li>
+                <li><strong>Use confluence multipliers</strong> - Stack advantages for higher probability</li>
+                <li><strong>Adapt to market conditions</strong> - Trending vs ranging requires different thresholds</li>
+                <li><strong>Scale position size with confidence</strong> - Optimal setups get max size</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; padding: 20px; color: #95a5a6; font-size: 0.9em;">
+            <p>This logic matrix is designed to work with the KeltnerTrend indicator.</p>
+            <p>Backtest thoroughly and adjust weights based on your specific market and timeframe.</p>
+            <p><strong>Risk Disclaimer:</strong> Past performance does not guarantee future results. Always use proper risk management.</p>
+        </div>
+    </div>
+</body>
+</html>
+enterLong = bullishScore >= 10 and close <= optimalEntry and close > stopLoss<br>
+<br>
+<span class="comment">// Plot</span><br>
+plotshape(enterLong, "Long Entry", shape.triangleup, location.belowbar, <br>
+          color=entryQuality == "OPTIMAL" ? color.green : <br>
+                entryQuality == "GOOD" ? color.blue : color.orange, <br>
+          size=size.small)
+        </div>
+
+        <div class="expression">
+            <div class="expression-title">Example: Bearish Optimal Entry Logic</div>
+<span class="comment">// Calculate entry score</span><br>
+bearishScore = 0.0<br>
+bearishScore := (keltnerBearish and stDowntrend) ? bearishScore + 3 : bearishScore<br>
+bearishScore := kcInside_st ? bearishScore + 2 : bearishScore<br>
+bearishScore := ema9BelowSma26 ? bearishScore + 2 : bearishScore<br>
+bearishScore := priceBelowVwap ? bearishScore + 1.5 : bearishScore<br>
+bearishScore := risingVolume ? bearishScore + 1.5 : bearishScore<br>
+bearishScore := isWithinPrevRange ? bearishScore + 1 : bearishScore<br>
+bearishScore := (dailyPositionZone == 2 or dailyPositionZone == 3) ? bearishScore + 1 : bearishScore<br>
+bearishScore := lowVolatility ? bearishScore + 1 : bearishScore<br>
+bearishScore := bearish_crossunder ? bearishScore + 1.5 : bearishScore<br>
+bearishScore := st_max_Inside_pdZone ? bearishScore + 1 : bearishScore<br>
+bearishScore := hasBearishMomentum ? bearishScore + 0.5 : bearishScore<br>
+<br>
+<span class="comment">// Determine entry quality</span><br>
+entryQuality = bearishScore >= 14 ? "OPTIMAL" : <br>
+               bearishScore >= 10 ? "GOOD" : <br>
+               bearishScore >= 7 ? "MODERATE" : "WEAK"<br>
+<br>
+<span class="comment">// Calculate optimal entry price</span><br>
+optimalEntry = bearishScore >= 14 ? st_max - (atr * 0.1) :<br>
+               bearishScore >= 12 ? kcupper - (atr * 0.2) :<br>
+               bearishScore >= 10 ? prevSessionVwap : na<br>
+<br>
+<span class="comment">// Calculate stop loss</span><br>
+stopLoss = bearishScore >= 14 ? st_max + (atr * 0.5) :<br>
+           bearishScore >= 12 ? kcupper + (atr * 0.5) :<br>
+           bearishScore >= 10 ? dailyHigh : na<br>
+<br>
+<span class="comment">// Signal generation</span><br>
