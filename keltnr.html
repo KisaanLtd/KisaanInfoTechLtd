@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeltnerTrend Indicator Analysis Values</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        h1 {
+            color: #4ecdc4;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            color: #ff6b6b;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 5px solid #ff6b6b;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #ffd93d;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        tbody tr {
+            transition: background-color 0.3s ease;
+        }
+        
+        tbody tr:hover {
+            background: rgba(78, 205, 196, 0.1);
+        }
+        
+        tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #4ecdc4;
+            font-size: 0.9em;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2px;
+        }
+        
+        .badge-boolean {
+            background: #3498db;
+            color: white;
+        }
+        
+        .badge-float {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .badge-integer {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .notes {
+            background: rgba(255, 215, 61, 0.1);
+            border-left: 4px solid #ffd93d;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 8px;
+        }
+        
+        .notes h2 {
+            margin-top: 0;
+            color: #ffd93d;
+            border: none;
+            padding: 0;
+        }
+        
+        .notes ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .notes li {
+            margin-bottom: 10px;
+        }
+        
+        .zone-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 8px;
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 50px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KeltnerTrend Indicator - Analysis Values Reference</h1>
+        
+        <h2>1. Daily Spatial Position Analysis (<code>calculateDailySpatialPosition()</code>)</h2>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Value Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>dailyRangePosition</code></td>
+                        <td><span class="badge badge-float">Float</span></td>
+                        <td>Current daily close position within previous day's range (%)</td>
+                        <td>0-100%</td>
+                    </tr>
+                    <tr>
+                        <td><code>isAbovePrevHigh</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Daily close is above previous day's high</td>
+                        <td>true/false</td>
+                    </tr>
+                    <tr>
+                        <td><code>isBelowPrevLow</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Daily close is below previous day's low</td>
+                        <td>true/false</td>
+                    </tr>
+                    <tr>
+                        <td><code>isWithinPrevRange</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Daily close is within previous day's range</td>
+                        <td>true/false</td>
+                    </tr>
+                    <tr>
+                        <td><code>isAbovePrevClose</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Daily close is above previous day's close</td>
+                        <td>true/false</td>
+                    </tr>
+                    <tr>
+                        <td><code>isBelowPrevClose</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Daily close is below previous day's close</td>
+                        <td>true/false</td>
+                    </tr>
+                    <tr>
+                        <td><code>isAtPrevClose</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Daily close equals previous day's close</td>
+                        <td>true/false</td>
+                    </tr>
+                    <tr>
+                        <td><code>distFromPrevClose</code></td>
+                        <td><span class="badge badge-float">Float</span></td>
+                        <td>Distance from previous close (% of prev range)</td>
+                        <td>-∞ to +∞</td>
+                    </tr>
+                    <tr>
+                        <td><code>dailyPositionZone</code></td>
+                        <td><span class="badge badge-integer">Integer</span></td>
+                        <td>Categorized position zone</td>
+                        <td>1-5</td>
+                    </tr>
+                    <tr>
+                        <td><code>hasBullishMomentum</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Daily close > previous day's close</td>
+                        <td>true/false</td>
+                    </tr>
+                    <tr>
+                        <td><code>hasBearishMomentum</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Daily close < previous day's close</td>
+                        <td>true/false</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <h3>Position Zone Categories</h3>
+        
+        <div class="zone-card">
+            <strong>Zone 1 - Gap Up:</strong> Above previous high
+        </div>
+        <div class="zone-card">
+            <strong>Zone 2 - Upper Range:</strong> Between prev close and prev high (>75% range)
+        </div>
+        <div class="zone-card">
+            <strong>Zone 3 - Middle Range:</strong> Around 50% of range (25-75%)
+        </div>
+        <div class="zone-card">
+            <strong>Zone 4 - Lower Range:</strong> Between prev low and prev close (<25% range)
+        </div>
+        <div class="zone-card">
+            <strong>Zone 5 - Gap Down:</strong> Below previous low
+        </div>
+        
+        <div class="divider"></div>
+        
+        <h2>2. Previous Day Zone Boundaries</h2>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Calculation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>pdZoneMax</code></td>
+                        <td><span class="badge badge-float">Float</span></td>
+                        <td>Upper boundary of prev day zone</td>
+                        <td><code>math.max(prevSessionVwap, dailyClose)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>pdZoneMin</code></td>
+                        <td><span class="badge badge-float">Float</span></td>
+                        <td>Lower boundary of prev day zone</td>
+                        <td><code>math.min(prevSessionVwap, dailyClose)</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <h3>Previous Day Zone vs SuperTrend Confluence</h3>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>st_InsidepdZone</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>SuperTrend contained within PD zone</td>
+                        <td><code>pdZoneMin < st_min AND pdZoneMax > st_max</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>pdZone_Inside_st</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>PD zone contained within SuperTrend</td>
+                        <td><code>st_max > pdZoneMax AND st_min < pdZoneMin</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>pdZone_Outside_aboveST</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>PD zone completely above SuperTrend</td>
+                        <td><code>st_max < pdZoneMin</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>pdZone_Outside_belowST</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>PD zone completely below SuperTrend</td>
+                        <td><code>st_min > pdZoneMax</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>pdZone_Outside</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>PD zone outside SuperTrend (either side)</td>
+                        <td><code>pdZone_Outside_aboveST OR pdZone_Outside_belowST</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>st_max_Inside_pdZone</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>ST max line inside PD zone</td>
+                        <td><code>st_max > pdZoneMin AND st_min < pdZoneMin</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>st_min_Inside_pdZone</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>ST min line inside PD zone</td>
+                        <td><code>st_min < pdZoneMax AND st_max > pdZoneMax</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <h2>3. Band Confluence Analysis</h2>
+        
+        <h3>Keltner Channel vs SuperTrend Relationships</h3>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>kcInside_st</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Keltner Channel inside SuperTrend bands</td>
+                        <td><code>kclower > st_min AND kcupper < st_max</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>stOutside_above_kc</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>SuperTrend completely above Keltner</td>
+                        <td><code>kclower > st_max</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>stOutside_below_kc</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>SuperTrend completely below Keltner</td>
+                        <td><code>kcupper < st_min</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>kcOutside</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Keltner outside SuperTrend (either side)</td>
+                        <td><code>stOutside_below_kc OR stOutside_above_kc</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>stmin_inside_kc</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>ST min line inside Keltner Channel</td>
+                        <td><code>st_min > kclower AND st_max > kcupper</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>stmax_inside_kc</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>ST max line inside Keltner Channel</td>
+                        <td><code>st_max < kcupper AND st_min < kclower</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>bandConfluence</code></td>
+                        <td><span class="badge badge-boolean">Boolean</span></td>
+                        <td>Any band confluence detected</td>
+                        <td><code>kcInside_st OR kcOutside OR stmin_inside_kc OR stmax_inside_kc</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="notes">
+            <h2>Usage Notes</h2>
+            <ul>
+                <li><strong>Daily Spatial Position:</strong> Use to understand momentum and gap behavior relative to previous day</li>
+                <li><strong>Previous Day Zone:</strong> Identifies key support/resistance zones from previous session</li>
+                <li><strong>Band Confluence:</strong> Determines relationship between volatility bands for trend confirmation</li>
+                <li>All boolean values return <code>true</code> when condition is met, <code>false</code> otherwise</li>
+                <li>Percentage values are calculated relative to previous day's range</li>
+                <li>Position zones help categorize market structure quickly</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
