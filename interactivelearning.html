@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confluence Matrix Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .control-panel {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        
+        .sliders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .slider-group {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .slider-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .slider-value {
+            float: right;
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 0.85em;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .result-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .result-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        
+        .result-card h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+        
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+        
+        .score-bar {
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .score-fill {
+            height: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .conditions-list {
+            margin-top: 15px;
+        }
+        
+        .condition-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 8px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            border-left: 4px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .condition-item.met {
+            border-left-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.2);
+        }
+        
+        .condition-item.not-met {
+            border-left-color: #f44336;
+            background: rgba(244, 67, 54, 0.1);
+        }
+        
+        .condition-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .matrix-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        
+        .matrix-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .matrix-table th,
+        .matrix-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .matrix-table th {
+            background: rgba(255,255,255,0.15);
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+        
+        .matrix-table td {
+            font-size: 0.9em;
+        }
+        
+        .cell-bullish {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
+        .cell-bearish {
+            background: rgba(244, 67, 54, 0.3);
+        }
+        
+        .cell-neutral {
+            background: rgba(158, 158, 158, 0.2);
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-box {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .education-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        
+        .education-section h3 {
+            color: #4CAF50;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .education-section ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .combo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .combo-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid;
+        }
+        
+        .combo-card.bullish {
+            border-left-color: #4CAF50;
+        }
+        
+        .combo-card.bearish {
+            border-left-color: #f44336;
+        }
+        
+        .combo-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .combo-desc {
+            font-size: 0.9em;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .result-panel {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .sliders-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Confluence Matrix Analysis</h1>
+        <p class="subtitle">Interactive Tool for Building Systematic Trade Setups</p>
+        
+        <div class="control-panel">
+            <h2 style="margin-bottom: 20px;">📊 Adjust Market Conditions</h2>
+            <div class="sliders-grid">
+                <div class="slider-group">
+                    <label>
+                        dist_ema26 (Close vs EMA26)
+                        <span class="slider-value" id="val_ema26">0.5</span>
+                    </label>
+                    <input type="range" id="dist_ema26" min="-3" max="3" step="0.1" value="0.5">
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        dist_ema252 (Close vs EMA252)
+                        <span class="slider-value" id="val_ema252">1.0</span>
+                    </label>
+                    <input type="range" id="dist_ema252" min="-3" max="3" step="0.1" value="1.0">
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        dist_dh (Close vs Daily High)
+                        <span class="slider-value" id="val_dh">-0.3</span>
+                    </label>
+                    <input type="range" id="dist_dh" min="-2" max="2" step="0.1" value="-0.3">
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        dist_dl (Close vs Daily Low)
+                        <span class="slider-value" id="val_dl">0.8</span>
+                    </label>
+                    <input type="range" id="dist_dl" min="-2" max="2" step="0.1" value="0.8">
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        dist_st_min (Close vs ST Support)
+                        <span class="slider-value" id="val_st_min">0.4</span>
+                    </label>
+                    <input type="range" id="dist_st_min" min="-2" max="2" step="0.1" value="0.4">
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        dist_st_max (Close vs ST Resistance)
+                        <span class="slider-value" id="val_st_max">-0.8</span>
+                    </label>
+                    <input type="range" id="dist_st_max" min="-2" max="2" step="0.1" value="-0.8">
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        dist_ema26_252 (EMA26 vs EMA252)
+                        <span class="slider-value" id="val_ema26_252">2.0</span>
+                    </label>
+                    <input type="range" id="dist_ema26_252" min="-5" max="5" step="0.1" value="2.0">
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        width_ratio (2D Range vs ST Range)
+                        <span class="slider-value" id="val_width">1.2</span>
+                    </label>
+                    <input type="range" id="width_ratio" min="0.3" max="2.5" step="0.1" value="1.2">
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-panel">
+            <div class="result-card">
+                <h2>🟢 Bullish Confluence</h2>
+                <div class="score-display" id="bullish-score">0</div>
+                <div class="score-bar">
+                    <div class="score-fill" id="bullish-bar" style="width: 0%; background: linear-gradient(90deg, #4CAF50, #8BC34A);">0%</div>
+                </div>
+                <div class="conditions-list" id="bullish-conditions"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2>🔴 Bearish Confluence</h2>
+                <div class="score-display" id="bearish-score">0</div>
+                <div class="score-bar">
+                    <div class="score-fill" id="bearish-bar" style="width: 0%; background: linear-gradient(90deg, #f44336, #e91e63);">0%</div>
+                </div>
+                <div class="conditions-list" id="bearish-conditions"></div>
+            </div>
+        </div>
+        
+        <div class="matrix-section">
+            <h2>📈 Correlation Matrix: Bullish Conditions</h2>
+            <div style="overflow-x: auto;">
+                <table class="matrix-table" id="bullish-matrix"></table>
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-box cell-bullish"></div>
+                    <span>Strong Bullish (+2)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box cell-neutral"></div>
+                    <span>Neutral (0)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box cell-bearish"></div>
+                    <span>Conflicting (-1)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="matrix-section">
+            <h2>📉 Correlation Matrix: Bearish Conditions</h2>
+            <div style="overflow-x: auto;">
+                <table class="matrix-table" id="bearish-matrix"></table>
+            </div>
+        </div>
+        
+        <div class="education-section">
+            <h2>📚 Understanding Confluence Building</h2>
+            
+            <h3>🎓 What Each Metric Tells You:</h3>
+            <ul>
+                <li><strong>dist_ema26:</strong> Short-term momentum (0.3-0.8 = healthy trend, >1.5 = overextended)</li>
+                <li><strong>dist_ema252:</strong> Long-term trend context (>0 = bull market, <0 = bear market)</li>
+                <li><strong>dist_dh/dist_dl:</strong> Position within daily range (-0.2 to 0.5 = optimal entry zone)</li>
+                <li><strong>dist_st_min/max:</strong> Distance from dynamic support/resistance (>0.2 = clear of noise)</li>
+                <li><strong>dist_ema26_252:</strong> Trend strength (>2 = strong uptrend, <-2 = strong downtrend)</li>
+                <li><strong>width_ratio:</strong> Consolidation vs expansion (>1.3 = breakout potential)</li>
+            </ul>
+            
+            <h3>🎯 High-Probability Bullish Combinations:</h3>
+            <div class="combo-grid">
+                <div class="combo-card bullish">
+                    <div class="combo-title">🚀 Momentum Breakout</div>
+                    <div class="combo-desc">
+                        • dist_ema26 > 0.8<br>
+                        • dist_st_min > 0.3<br>
+                        • width_ratio > 1.3<br>
+                        <em>→ Strong momentum with room to run</em>
+                    </div>
+                </div>
+                
+                <div class="combo-card bullish">
+                    <div class="combo-title">📊 Structure Play</div>
+                    <div class="combo-desc">
+                        • dist_ema26_252 > 2.0<br>
+                        • dist_dl > 0.5<br>
+                        • dist_st_min > 0<br>
+                        <em>→ Strong trend with support holding</em>
+                    </div>
+                </div>
+                
+                <div class="combo-card bullish">
+                    <div class="combo-title">🎯 Sweet Spot Entry</div>
+                    <div class="combo-desc">
+                        • dist_ema26: 0.3-0.8<br>
+                        • dist_dh: -0.2 to 0.3<br>
+                        • dist_st_min > 0.2<br>
+                        <em>→ Not overextended, room to daily high</em>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>⚠️ High-Probability Bearish Combinations:</h3>
+            <div class="combo-grid">
+                <div class="combo-card bearish">
+                    <div class="combo-title">📉 Momentum Breakdown</div>
+                    <div class="combo-desc">
+                        • dist_ema26 < -0.8<br>
+                        • dist_st_max < -0.3<br>
+                        • width_ratio > 1.3<br>
+                        <em>→ Strong downside with expansion</em>
+                    </div>
+                </div>
+                
+                <div class="combo-card bearish">
+                    <div class="combo-title">🔻 Structure Failure</div>
+                    <div class="combo-desc">
+                        • dist_ema26_252 < -2.0<br>
+                        • dist_dh < -0.5<br>
+                        • dist_st_max < 0<br>
+                        <em>→ Weak trend with resistance overhead</em>
+                    </div>
+                </div>
+                
+                <div class="combo-card bearish">
+                    <div class="combo-title">⛔ Reversal Zone</div>
+                    <div class="combo-desc">
+                        • dist_ema26: -0.8 to -0.3<br>
+                        • dist_dl: -0.3 to 0.2<br>
+                        • dist_st_max < -0.2<br>
+                        <em>→ Below key levels, room to daily low</em>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>💡 How to Build Your Own Confluence:</h3>
+            <ul>
+                <li><strong>Step 1:</strong> Identify market context (dist_ema252, dist_ema26_252)</li>
+                <li><strong>Step 2:</strong> Check short-term momentum (dist_ema26)</li>
+                <li><strong>Step 3:</strong> Verify structure support (dist_st_min, dist_dl)</li>
+                <li><strong>Step 4:</strong> Assess room to move (dist_dh, width_ratio)</li>
+                <li><strong>Step 5:</strong> Require 3+ conditions to align for entry</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        const indicators = [
+            'dist_ema26',
+            'dist_ema252', 
+            'dist_dh',
+            'dist_dl',
+            'dist_st_min',
+            'dist_st_max',
+            'dist_ema26_252',
+            'width_ratio'
+        ];
+        
+        // Bullish conditions
+        const bullishConditions = [
+            {
+                name: 'Strong Uptrend Context',
+                check: (v) => v.dist_ema26_252 > 2.0,
+                weight: 2,
+                desc: 'EMA26 significantly above EMA252'
+            },
+            {
+                name: 'Above Long-term Trend',
+                check: (v) => v.dist_ema252 > 0,
+                weight: 1,
+                desc: 'Price above 252-day moving average'
+            },
+            {
+                name: 'Positive Momentum',
+                check: (v) => v.dist_ema26 > 0.3,
+                weight: 2,
+                desc: 'Price extended above EMA26'
+            },
+            {
+                name: 'Above ST Support',
+                check: (v) => v.dist_st_min > 0.2,
+                weight: 2,
+                desc: 'Clear of SuperTrend support noise'
+            },
+            {
+                name: 'Room to Daily High',
+                check: (v) => v.dist_dh < 0.5 && v.dist_dh > -0.2,
+                weight: 1,
+                desc: 'Not at resistance, has upside room'
+            },
+            {
+                name: 'Above Daily Low',
+                check: (v) => v.dist_dl > 0.5,
+                weight: 1,
+                desc: 'Strong position in daily range'
+            },
+            {
+                name: 'Expansion Phase',
+                check: (v) => v.width_ratio > 1.3,
+                weight: 1,
+                desc: '2-day range expanding vs ST range'
+            },
+            {
+                name: 'Below ST Resistance',
+                check: (v) => v.dist_st_max < 0,
+                weight: 1,
+                desc: 'Not hitting resistance yet'
+            }
+        ];
+        
+        // Bearish conditions
+        const bearishConditions = [
+            {
+                name: 'Strong Downtrend Context',
+                check: (v) => v.dist_ema26_252 < -2.0,
+                weight: 2,
+                desc: 'EMA26 significantly below EMA252'
+            },
+            {
+                name: 'Below Long-term Trend',
+                check: (v) => v.dist_ema252 < 0,
+                weight: 1,
+                desc: 'Price below 252-day moving average'
+            },
+            {
+                name: 'Negative Momentum',
+                check: (v) => v.dist_ema26 < -0.3,
+                weight: 2,
+                desc: 'Price extended below EMA26'
+            },
+            {
+                name: 'Below ST Resistance',
+                check: (v) => v.dist_st_max < -0.2,
+                weight: 2,
+                desc: 'Clear of SuperTrend resistance noise'
+            },
+            {
+                name: 'Room to Daily Low',
+                check: (v) => v.dist_dl > -0.5 && v.dist_dl < 0.2,
+                weight: 1,
+                desc: 'Not at support, has downside room'
+            },
+            {
+                name: 'Below Daily High',
+                check: (v) => v.dist_dh < -0.5,
+                weight: 1,
+                desc: 'Weak position in daily range'
+            },
+            {
+                name: 'Expansion Phase',
+                check: (v) => v.width_ratio > 1.3,
+                weight: 1,
+                desc: '2-day range expanding vs ST range'
+            },
+            {
+                name: 'Above ST Support',
+                check: (v) => v.dist_st_min > 0,
+                weight: 1,
+                desc: 'Not hitting support yet'
+            }
+        ];
+        
+        function getValues() {
+            const values = {};
+            indicators.forEach(id => {
+                values[id] = parseFloat(document.getElementById(id).value);
+            });
+            return values;
+        }
+        
+        function updateDisplay() {
+            const values = getValues();
+            
+            // Update value displays
+            indicators.forEach(id => {
+                document.getElementById(`val_${id.replace('dist_', '').replace('_ratio', '')}`).textContent = values[id].toFixed(1);
+            });
+            
+            // Calculate bullish score
+            let bullishScore = 0;
+            let bullishMax = 0;
+            let bullishHtml = '';
+            
+            bullishConditions.forEach(cond => {
+                const met = cond.check(values);
+                bullishMax += cond.weight;
+                if (met) bullishScore += cond.weight;
+                
+                bullishHtml += `
+                    <div class="condition-item ${met ? 'met' : 'not-met'}">
+                        <span class="condition-icon">${met ? '✅' : '❌'}</span>
+                        <div>
+                            <strong>${cond.name}</strong>
+                            <div style="font-size: 0.85em; opacity: 0.8;">${cond.desc}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            const bullishPercent = (bullishScore / bullishMax * 100).toFixed(0);
+            document.getElementById('bullish-score').textContent = bullishPercent + '%';
+            document.getElementById('bullish-bar').style.width = bullishPercent + '%';
+            document.getElementById('bullish-bar').textContent = bullishPercent + '%';
+            document.getElementById('bullish-conditions').innerHTML = bullishHtml;
+            
+            // Calculate bearish score
+            let bearishScore = 0;
+            let bearishMax = 0;
+            let bearishHtml = '';
+            
+            bearishConditions.forEach(cond => {
+                const met = cond.check(values);
+                bearishMax += cond.weight;
+                if (met) bearishScore += cond.weight;
+                
+                bearishHtml += `
+                    <div class="condition-item ${met ? 'met' : 'not-met'}">
+                        <span class="condition-icon">${met ? '✅' : '❌'}</span>
+                        <div>
+                            <strong>${cond.name}</strong>
+                            <div style="font-size: 0.85em; opacity: 0.8;">${cond.desc}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            const bearishPercent = (bearishScore / bearishMax * 100).toFixed(0);
+            document.getElementById('bearish-score').textContent = bearishPercent + '%';
+            document.getElementById('bearish-bar').style.width = bearishPercent + '%';
+            document.getElementById('bearish-bar').textContent = bearishPercent + '%';
+            document.getElementById('bearish-conditions').innerHTML = bearishHtml;
+            
+            // Update matrices
+            updateMatrix('bullish', values);
+            updateMatrix('bearish', values);
+        }
+        
+        function updateMatrix(type, values) {
+            const matrix = document.getElementById(`${type}-matrix`);
+            const conditions = type === 'bullish' ? bullishConditions : bearishConditions;
+            
+            let html = '<thead><tr><th>Condition</th>';
+            indicators.forEach(ind => {
+                html += `<th>${ind.replace('dist_', '').replace('_', ' ')}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            
+            conditions.forEach(cond => {
+                html += `<tr><td style="text-align: left;"><strong>${cond.name}</strong></td>`;
+                
+                indicators.forEach(ind => {
+                    // Determine correlation
+                    let correlation = 0;
+                    const currentValue = values[ind];
+                    
+                    // Test how this indicator contributes to this condition
+                    const testValues = {...values};
+                    const originalMet = cond.check(values);
+                    
+                    // Increase indicator value
+                    testValues[ind] = currentValue + 0.5;
+                    const increasedMet = cond.check(testValues);
+                    
+                    // Decrease indicator value
+                    testValues[ind] = currentValue - 0.5;
+                    const decreasedMet = cond.check(testValues);
+                    
+                    if (increasedMet && !originalMet) correlation = 2;
+                    else if (decreasedMet && !originalMet) correlation = -1;
+                    else if (!increasedMet && originalMet) correlation = -1;
+                    else if (!decreasedMet && originalMet) correlation = 2;
+                    
+                    const cellClass = correlation > 0 ? 'cell-bullish' : correlation < 0 ? 'cell-bearish' : 'cell-neutral';
+                    const symbol = correlation > 0 ? '++' : correlation < 0 ? '--' : '○';
+                    
+                    html += `<td class="${cellClass}">${symbol}</td>`;
+                });
+                
+                html += '</tr>';
+            });
+            
+            html += '</tbody>';
+            matrix.innerHTML = html;
+        }
+        
+        // Add event listeners
+        indicators.forEach(id => {
+            document.getElementById(id).addEventListener('input', updateDisplay);
+        });
+        
+        // Initial update
+        updateDisplay();
+    </script>
+</body>
+</html>
