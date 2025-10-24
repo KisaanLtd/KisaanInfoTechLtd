@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeltnerTrend Confluence System v4.0 - Standard Operating Procedure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .header .meta {
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .nav {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            border-bottom: 2px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-links a {
+            color: #2a5298;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: #2a5298;
+            color: white;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section h2 {
+            color: #1e3c72;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section h3 {
+            color: #2a5298;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .section h4 {
+            color: #4a5568;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .blockquote {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 6px;
+        }
+        
+        .alert {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #2a5298;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 1.3em;
+            color: #667eea;
+        }
+        
+        .score-zone {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 4px;
+        }
+        
+        .zone-extreme-bull {
+            background: #28a745;
+            color: white;
+        }
+        
+        .zone-strong-bull {
+            background: #5cb85c;
+            color: white;
+        }
+        
+        .zone-moderate-bull {
+            background: #5bc0de;
+            color: white;
+        }
+        
+        .zone-weak {
+            background: #f0ad4e;
+            color: white;
+        }
+        
+        .zone-neutral {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .zone-moderate-bear {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .zone-strong-bear {
+            background: #f44336;
+            color: white;
+        }
+        
+        .zone-extreme-bear {
+            background: #c62828;
+            color: white;
+        }
+        
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .matrix-card {
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid;
+            text-align: center;
+        }
+        
+        .matrix-bullish {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        
+        .matrix-neutral {
+            background: #e2e3e5;
+            border-color: #6c757d;
+        }
+        
+        .matrix-bearish {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .pillar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .pillar h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .pillar-points {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: transform 0.3s;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .print-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .nav, .print-btn {
+                display: none;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .nav-links {
+                flex-direction: column;
+            }
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>KeltnerTrend Confluence System v4.0</h1>
+            <div class="subtitle">Unified Standard Operating Procedure & Complete Trading Manual</div>
+            <div class="meta">
+                Document Classification: Mandatory Operational Protocol<br>
+                Last Updated: October 2025 | Version: 4.0
+            </div>
+        </div>
+        
+        <div class="nav">
+            <div class="nav-links">
+                <a href="#philosophy">Philosophy</a>
+                <a href="#pillars">Six Pillars</a>
+                <a href="#matrix">Position Matrix</a>
+                <a href="#scoring">Scoring</a>
+                <a href="#entry">Entry Rules</a>
+                <a href="#execution">Execution</a>
+                <a href="#management">Trade Management</a>
+                <a href="#learning">Learning Path</a>
+                <a href="#reference">Quick Reference</a>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- INTRODUCTION -->
+            <div class="section" id="philosophy">
+                <h2>📋 System Philosophy & Core Principles</h2>
+                
+                <div class="blockquote">
+                    "We don't predict—we respond to probability clusters. A trade signal is not an opinion; it is the output of a quantitative model indicating that a high-probability condition exists."
+                </div>
+                
+                <h3>The Problem This System Solves</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Trading Failure</th>
+                            <th>System Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Emotional Decision-Making</strong></td>
+                            <td>Binary, data-driven choices replacing fear, greed, and hope</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cherry-Picking Signals</strong></td>
+                            <td>Multi-factor validation preventing impulsive entries</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ignoring Market Structure</strong></td>
+                            <td>Position Matrix forcing contextual assessment</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Inconsistent Position Sizing</strong></td>
+                            <td>Mathematical formula tying size to signal quality</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trading Unfavorable Conditions</strong></td>
+                            <td>Protective filters automatically prohibiting low-edge trades</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>The Three Confirmations Rule</h3>
+                <div class="alert alert-info">
+                    <strong>Never enter unless you have ALL three:</strong>
+                    <ol style="margin-top: 10px; margin-left: 20px;">
+                        <li><strong>Structural Confirmation</strong> → Position Matrix indicates favorable scenario</li>
+                        <li><strong>Trend Confirmation</strong> → KC trend aligned with intended direction</li>
+                        <li><strong>Momentum Confirmation</strong> → Confluence Score in actionable zone</li>
+                    </ol>
+                </div>
+                
+                <h3>Four Pillars of System Integrity</h3>
+                <div class="pillars">
+                    <div class="pillar">
+                        <h4>1. Quantifiable Inputs</h4>
+                        <p>Every component derives from objective, numerical data. No subjective interpretation permitted.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4>2. Multi-Factor Validation</h4>
+                        <p>No single indicator triggers trades. Signals require multiple uncorrelated factors to align.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4>3. Protective Filters</h4>
+                        <p>Non-negotiable rules prevent execution in high-risk, low-probability environments.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4>4. Consistent Execution</h4>
+                        <p>Same rules, same procedures, every single trade. The edge manifests over sample size.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SIX PILLARS -->
+            <div class="section" id="pillars">
+                <h2>🎯 The Six Pillars of Confluence</h2>
+                
+                <div class="alert alert-success">
+                    <strong>Total Points Available: 100</strong><br>
+                    When multiple pillars align (confluence), probability of directional movement increases substantially.
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pillar</th>
+                            <th>Purpose</th>
+                            <th>Max Points</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. ALIGNMENT</strong></td>
+                            <td>Structural positioning via Matrix</td>
+                            <td>25</td>
+                            <td>25%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. TREND</strong></td>
+                            <td>Multi-timeframe directional bias</td>
+                            <td>20</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. MOMENTUM</strong></td>
+                            <td>Distance from key levels</td>
+                            <td>20</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. STRUCTURE</strong></td>
+                            <td>Quality of price structure</td>
+                            <td>15</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. VOLATILITY/VOLUME</strong></td>
+                            <td>Energy & participation</td>
+                            <td>12</td>
+                            <td>12%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. LONG-TERM CONTEXT</strong></td>
+                            <td>Yearly trend alignment</td>
+                            <td>8</td>
+                            <td>8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="card">
+                    <div class="card-header">Pillar 1: Position Alignment (25 Points)</div>
+                    <p><strong>What it measures:</strong> Structural positioning - WHERE price sits in the market's hierarchy</p>
+                    <p><strong>Components:</strong></p>
+                    <ul>
+                        <li>EMA26 position relative to P2D range</li>
+                        <li>EMA26 position relative to Keltner Channel</li>
+                        <li>KC trend direction</li>
+                        <li>Matrix scenario strength (0-10 rating)</li>
+                    </ul>
+                    <p><strong>Calculation:</strong> Base Score = Matrix Scenario Strength × 2.5</p>
+                    <div class="alert alert-warning">
+                        <strong>Why It Matters:</strong> Structure creates probability. This is your PRIMARY filter. Without good alignment, other factors won't save you.
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Pillar 2: Trend Direction (20 Points)</div>
+                    <p><strong>Components:</strong></p>
+                    <ul>
+                        <li><strong>Price vs EMAs (7 pts):</strong> Close above/below both EMA9 & EMA26</li>
+                        <li><strong>EMA Cross (7 pts):</strong> EMA9 above/below EMA26</li>
+                        <li><strong>KC Breakout (6 pts):</strong> Price breaking KC bands</li>
+                    </ul>
+                    <div class="alert alert-danger">
+                        <strong>Critical Rule:</strong> Never trade if Trend Score is between -7 and +7. This indicates choppy, directionless conditions.
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Pillar 3: Momentum Strength (20 Points)</div>
+                    <p><strong>What it measures:</strong> Distance from key levels to assess entry quality</p>
+                    <p><strong>Optimal Entry Zones:</strong></p>
+                    <ul>
+                        <li><strong>Long:</strong> +8 to +12 pts (pullback complete, above support)</li>
+                        <li><strong>Short:</strong> -8 to -12 pts (rally complete, below resistance)</li>
+                    </ul>
+                    <p><strong>Warning Zones:</strong></p>
+                    <ul>
+                        <li>> +15 pts: Overextended bullish (take profit, don't enter)</li>
+                        <li>< -15 pts: Overextended bearish (take profit, don't enter)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- POSITION MATRIX -->
+            <div class="section" id="matrix">
+                <h2>🗺️ The Position Matrix Framework</h2>
+                
+                <div class="blockquote">
+                    "Indicators tell you WHAT. Structure tells you WHERE."
+                </div>
+                
+                <h3>The 12 Market Scenarios</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Scenario</th>
+                            <th>Strength</th>
+                            <th>Bias</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #d4edda;">
+                            <td><strong>11</strong></td>
+                            <td>Above P2D + Above KC</td>
+                            <td>10/10</td>
+                            <td>Extreme Bull</td>
+                            <td><strong>BEST LONG</strong></td>
+                        </tr>
+                        <tr style="background: #d4edda;">
+                            <td><strong>10</strong></td>
+                            <td>Above P2D + Upper KC</td>
+                            <td>9/10</td>
+                            <td>Strong Bull</td>
+                            <td><strong>EXCELLENT LONG</strong></td>
+                        </tr>
+                        <tr style="background: #d4edda;">
+                            <td><strong>9</strong></td>
+                            <td>Above P2D + Lower KC</td>
+                            <td>7/10</td>
+                            <td>Bull</td>
+                            <td>Quality long on dip</td>
+                        </tr>
+                        <tr style="background: #e2e3e5;">
+                            <td><strong>8</strong></td>
+                            <td>Above P2D + Below KC</td>
+                            <td>5/10</td>
+                            <td>Pullback</td>
+                            <td>Wait for support</td>
+                        </tr>
+                        <tr style="background: #d4edda;">
+                            <td><strong>7</strong></td>
+                            <td>Inside P2D + Above KC</td>
+                            <td>7/10</td>
+                            <td>Bull</td>
+                            <td>Quality long entry</td>
+                        </tr>
+                        <tr style="background: #e2e3e5;">
+                            <td><strong>6</strong></td>
+                            <td>Inside P2D + Upper KC</td>
+                            <td>6/10</td>
+                            <td>Neutral-Bull</td>
+                            <td>Range/scalp</td>
+                        </tr>
+                        <tr style="background: #e2e3e5;">
+                            <td><strong>5</strong></td>
+                            <td>Inside P2D + Lower KC</td>
+                            <td>5/10</td>
+                            <td>Neutral</td>
+                            <td>Range/scalp</td>
+                        </tr>
+                        <tr style="background: #f8d7da;">
+                            <td><strong>4</strong></td>
+                            <td>Inside P2D + Below KC</td>
+                            <td>3/10</td>
+                            <td>Bear</td>
+                            <td>Short on breakdown</td>
+                        </tr>
+                        <tr style="background: #e2e3e5;">
+                            <td><strong>3</strong></td>
+                            <td>Below P2D + Above KC</td>
+                            <td>6/10</td>
+                            <td>Emerging Bull</td>
+                            <td><strong>WAIT - transition</strong></td>
+                        </tr>
+                        <tr style="background: #e2e3e5;">
+                            <td><strong>2</strong></td>
+                            <td>Below P2D + Upper KC</td>
+                            <td>4/10</td>
+                            <td>Recovery</td>
+                            <td><strong>WAIT - transition</strong></td>
+                        </tr>
+                        <tr style="background: #f8d7da;">
+                            <td><strong>1</strong></td>
+                            <td>Below P2D + Lower KC</td>
+                            <td>2/10</td>
+                            <td>Strong Bear</td>
+                            <td><strong>EXCELLENT SHORT</strong></td>
+                        </tr>
+                        <tr style="background: #f8d7da;">
+                            <td><strong>0</strong></td>
+                            <td>Below P2D + Below KC</td>
+                            <td>1/10</td>
+                            <td>Extreme Bear</td>
+                            <td><strong>BEST SHORT</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- SCORING SYSTEM -->
+            <div class="section" id="scoring">
+                <h2>📊 Confluence Scoring Engine</h2>
+                
+                <h3>Score Zones & Required Actions</h3>
+                
+                <div style="margin: 30px 0;">
+                    <div class="score-zone zone-extreme-bull">85-100: EXTREME BULL → HP LONG (100% size)</div>
+                    <div class="score-zone zone-strong-bull">70-84: STRONG BULL → MP LONG (75% size)</div>
+                    <div class="score-zone zone-moderate-bull">60-69: MODERATE BULL → Caution (50% size)</div>
+                    <div class="score-zone zone-weak">52-59: WEAK BULL → Skip/Min (25% size)</div>
+                    <div class="score-zone zone-neutral">48-51: NEUTRAL → ⛔ NEVER TRADE</div>
+                    <div class="score-zone zone-weak">41-47: WEAK BEAR → Skip/Min (25% size)</div>
+                    <div class="score-zone zone-moderate-bear">30-40: MODERATE BEAR → Caution (50% size)</div>
+                    <div class="score-zone zone-strong-bear">16-29: STRONG BEAR → MP SHORT (75% size)</div>
+                    <div class="score-zone zone-extreme-bear">0-15: EXTREME BEAR → HP SHORT (100% size)</div>
+                </div>
+                
+                <div class="alert alert-danger">
+                    <strong>Neutral Zone Rule (48-51):</strong> This is a DO NOT TRADE ZONE. Scores in this range indicate conflicting signals, choppy conditions, or lack of conviction. Wait for clear direction.
+                </div>
+                
+                <h3>Score Movement Patterns</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pattern</th>
+                            <th>Interpretation</th>
+                            <th>Trading Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rising steadily 60→75→85</td>
+                            <td>Building momentum</td>
+                            <td>Prepare for entry</td>
+                        </tr>
+                        <tr>
+                            <td>Stable at 80-90</td>
+                            <td>Strong trend in play</td>
+                            <td>Hold position</td>
+                        </tr>
+                        <tr>
+                            <td>Falling 85→70→60</td>
+                            <td>Weakening</td>
+                            <td>Tighten stops, prepare exit</td>
+                        </tr>
+                        <tr>
+                            <td>Whipsawing 55→45→55</td>
+                            <td>Choppy, no trend</td>
+                            <td><strong>DO NOT TRADE</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Sharp spike 60→85 in 1-2 bars</td>
+                            <td>Breakout beginning</td>
+                            <td>Immediate entry</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- ENTRY RULES -->
+            <div class="section" id="entry">
+                <h2>✅ Signal Validation & Entry Criteria</h2>
+                
+                <h3>High-Probability Long Entry (100% Size)</h3>
+                
+                <div class="card">
+                    <div class="card-header">✅ Required Conditions (ALL must be TRUE)</div>
+                    <ul class="checklist">
+                        <li><strong>Pattern Check:</strong> BC1, BC2, or BC3 identified</li>
+                        <li><strong>Matrix Validation:</strong> Code ≥ 7 (Inside/Above P2D + Upper/Above KC)</li>
+                        <li><strong>Scenario Strength:</strong> ≥ 6</li>
+                        <li><strong>Score Threshold:</strong> ≥ 80 (Extreme Bull zone)</li>
+                        <li><strong>Momentum Quality:</strong> dist_ema26 > -0.3 ATR</li>
+                        <li><strong>Trend Confirmation:</strong> KC Bullish = TRUE</li>
+                        <li><strong>Trend Pillar:</strong> Score ≥ 10</li>
+                    </ul>
+                    
+                    <div class="card-header" style="margin-top: 20px;">❌ Instant Rejection - None Can Be TRUE</div>
+                    <ul class="checklist">
+                        <li>|dist_ema26_252| < 1.0 (no clear yearly trend)</li>
+                        <li>dist_ema26 > 2.0 (overextended)</li>
+                        <li>dist_dh > -0.2 (at ceiling/resistance)</li>
+                        <li>dist_st_min < 0 (below support)</li>
+                        <li>ATR Percentile < 20 (dead volatility)</li>
+                    </ul>
+                </div>
+                
+                <h3>High-Probability Short Entry (100% Size)</h3>
+                
+                <div class="card">
+                    <div class="card-header">✅ Required Conditions (ALL must be TRUE)</div>
+                    <ul class="checklist">
+                        <li><strong>Pattern Check:</strong> BR1, BR2, or BR3 identified</li>
+                        <li><strong>Matrix Validation:</strong> Code ≤ 5 AND Code ≠ 2, 3</li>
+                        <li><strong>Scenario Strength:</strong> ≤ 4</li>
+                        <li><strong>Score Threshold:</strong> < 20 (Extreme Bear zone)</li>
+                        <li><strong>Momentum Quality:</strong> dist_ema26 < 0.3 ATR</li>
+                        <li><strong>Trend Confirmation:</strong> KC Bearish = TRUE</li>
+                        <li><strong>Trend Pillar:</strong> Score ≤ -10</li>
+                    </ul>
+                </div>
+                
+                <h3>Confluence Patterns</h3>
+                
+                <div class="matrix-grid">
+                    <div class="matrix-card matrix-bullish">
+                        <h4>BC1: Strong Trend Above Structure</h4>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>close > ema26</li>
+                            <li>EMA26 "Above P2D"</li>
+                            <li>dist_st_min > 0</li>
+                            <li>Matrix Code ≥ 7</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="matrix-card matrix-bullish">
+                        <h4>BC2: Extended Momentum</h4>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>dist_ema26 > 1.2</li>
+                            <li>dist_p2d_avg > 0</li>
+                            <li>close > st_min</li>
+                            <li>Matrix Code ≥ 6</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="matrix-card matrix-bullish">
+                        <h4>BC3: Clean Breakout</h4>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>dist_p2d_avg > 0.3</li>
+                            <li>-0.2 < dist_dh < 0.5</li>
+                            <li>Width ratio > 1.1</li>
+                            <li>Matrix Code ≥ 7</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="matrix-card matrix-bearish">
+                        <h4>BR1: Strong Downtrend</h4>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>close < ema26</li>
+                            <li>EMA26 "Below P2D"</li>
+                            <li>dist_st_max < 0</li>
+                            <li>Matrix Code ≤ 5</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="matrix-card matrix-bearish">
+                        <h4>BR2: Extended Momentum</h4>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>dist_ema26 < -1.2</li>
+                            <li>dist_p2d_avg < 0</li>
+                            <li>close < st_max</li>
+                            <li>Matrix Code ≤ 6</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="matrix-card matrix-bearish">
+                        <h4>BR3: Clean Breakdown</h4>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>dist_p2d_avg < -0.3</li>
+                            <li>-0.5 < dist_dl < 0.2</li>
+                            <li>Width ratio > 1.1</li>
+                            <li>Matrix Code ≤ 5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- EXECUTION PROTOCOL -->
+            <div class="section" id="execution">
+                <h2>⚡ Trade Execution Protocol</h2>
+                
+                <h3>Pre-Market Checklist (10 Minutes)</h3>
+                
+                <div class="card">
+                    <div class="card-header">STEP 1: Market Regime Analysis (3 min)</div>
+                    <ul class="checklist">
+                        <li>Record dist_ema252: _____ ATR</li>
+                        <li>Record dist_ema26_252: _____ ATR</li>
+                        <li><strong>CRITICAL:</strong> If |dist_ema26_252| < 1.0 → NO TRADING TODAY</li>
+                        <li>Classify Regime: Bull / Bear / SKIP</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">STEP 2: System Status (2 min)</div>
+                    <ul class="checklist">
+                        <li>Indicator loaded and functioning</li>
+                        <li>Current Score: _____%</li>
+                        <li>Current Matrix: _____</li>
+                        <li>KC Trend: Bullish / Bearish</li>
+                        <li>ATR Percentile: _____ (need >20)</li>
+                        <li>Alerts configured</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">STEP 3: Key Levels (3 min)</div>
+                    <ul class="checklist">
+                        <li>P2D Max: _____</li>
+                        <li>P2D Min: _____</li>
+                        <li>KC Upper: _____</li>
+                        <li>KC Lower: _____</li>
+                        <li>EMA26: _____</li>
+                        <li>SuperTrend: _____</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">STEP 4: Strategic Assessment (2 min)</div>
+                    <ul class="checklist">
+                        <li>Structure favorable for: Long / Short / Wait</li>
+                        <li>Bias today: Long / Short / Neutral</li>
+                        <li>Mental state: Ready / Tired / Emotional</li>
+                    </ul>
+                    <div class="alert alert-success" style="margin-top: 15px;">
+                        <strong>DECISION:</strong><br>
+                        □ READY TO TRADE<br>
+                        □ REDUCED SIZE ONLY<br>
+                        □ NO TRADING TODAY
+                    </div>
+                </div>
+                
+                <h3>Trade Execution Sequence (60 Seconds)</h3>
+                
+                <div class="card">
+                    <div class="card-header">STEP 1: Calculate Position Size (20 seconds)</div>
+                    <div class="code-block">
+Standard Position Value = Account × Position Size %
+    HP: 100%
+    MP: 75%
+
+Risk Amount = Account × 0.02 (2% max)
+
+Stop Distance = ATR × Stop Multiplier
+    HP: 1.8 ATR
+    MP: 2.2 ATR
+
+Position Size (shares) = Risk Amount / Stop Distance
+                    </div>
+                    
+                    <div style="margin-top: 15px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                        <strong>Example:</strong><br>
+                        Account: $100,000 | Signal: HP Long (Score 85)<br>
+                        Entry: $50 | ATR: $1.50<br><br>
+                        Position Value = $100,000 × 100% = $100,000<br>
+                        Risk = $100,000 × 0.02 = $2,000<br>
+                        Stop Distance = $1.50 × 1.8 = $2.70<br>
+                        Position Size = $2,000 / $2.70 = <strong>740 shares</strong>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">STEP 2: Define Levels (20 seconds)</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Long Formula</th>
+                                <th>Short Formula</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Entry</strong></td>
+                                <td colspan="2">Market price at signal</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stop Loss</strong></td>
+                                <td>Entry - (ATR × Multiplier)</td>
+                                <td>Entry + (ATR × Multiplier)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Target</strong></td>
+                                <td>Entry + (ATR × 4.5 HP / 3.5 MP)</td>
+                                <td>Entry - (ATR × 4.5 HP / 3.5 MP)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>R:R Ratio</strong></td>
+                                <td colspan="2">HP: 1:2.5 | MP: 1:1.6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">STEP 3: Place Orders (20 seconds)</div>
+                    <ol style="margin-left: 20px;">
+                        <li><strong>Entry Order</strong> → Market or limit at current price</li>
+                        <li><strong>Stop Loss Order</strong> → Immediately upon fill (non-negotiable)</li>
+                        <li><strong>Target Order</strong> → Limit order (optional)</li>
+                    </ol>
+                    <ul class="checklist" style="margin-top: 15px;">
+                        <li>Entry filled</li>
+                        <li>Stop loss order active</li>
+                        <li>Target order active</li>
+                        <li>Position size correct</li>
+                        <li>Screenshot taken</li>
+                        <li>Journal entry started</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- TRADE MANAGEMENT -->
+            <div class="section" id="management">
+                <h2>📈 In-Trade Management & Exit Protocol</h2>
+                
+                <h3>Position Monitoring Schedule</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time Interval</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Every 15-30 min</strong></td>
+                            <td>Quick status check</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Every hour</strong></td>
+                            <td>Full system review</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Score change alert</strong></td>
+                            <td>Immediate assessment</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Opposite signal</strong></td>
+                            <td>Immediate action</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Mandatory Exit Triggers</h3>
+                
+                <div class="alert alert-danger">
+                    <strong>Exit IMMEDIATELY if ANY of these occur:</strong>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">EXIT TRIGGER 1: Score Deterioration</div>
+                    <p><strong>For Long Positions:</strong></p>
+                    <ul>
+                        <li>Score drops below 52 (neutral zone)</li>
+                        <li>Score drops 15+ points in 1 hour</li>
+                    </ul>
+                    <p><strong>For Short Positions:</strong></p>
+                    <ul>
+                        <li>Score rises above 48 (neutral zone)</li>
+                        <li>Score rises 15+ points in 1 hour</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">EXIT TRIGGER 2: Opposite Signal</div>
+                    <ul>
+                        <li>Long position + HP/MP Short signal → Exit immediately</li>
+                        <li>Short position + HP/MP Long signal → Exit immediately</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Action:</strong> Close current, evaluate opposite for entry</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">EXIT TRIGGER 3: Filter Violation</div>
+                    <ul>
+                        <li>Matrix Code changes to unfavorable zone</li>
+                        <li>|dist_ema26_252| drops below 1.0</li>
+                        <li>Long: Price breaks below ST support</li>
+                        <li>Short: Price breaks above ST resistance</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">EXIT TRIGGER 4: Slope Weakening</div>
+                    <p><strong>For Longs:</strong></p>
+                    <ul>
+                        <li>EMA9 crosses below EMA26</li>
+                        <li>Bearish slope signal appears</li>
+                    </ul>
+                    <p><strong>For Shorts:</strong></p>
+                    <ul>
+                        <li>EMA9 crosses above EMA26</li>
+                        <li>Bullish slope signal appears</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">EXIT TRIGGER 5: Stop/Target Hit</div>
+                    <ul>
+                        <li><strong>Stop Hit:</strong> Accept loss, do NOT move stop</li>
+                        <li><strong>Target Hit:</strong> Exit 100%, system worked perfectly</li>
+                    </ul>
+                </div>
+                
+                <h3>Trailing Stop Guidelines</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Profit Level</th>
+                            <th>Long Stop Adjustment</th>
+                            <th>Short Stop Adjustment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>≥ 2 ATR</td>
+                            <td>Move to breakeven</td>
+                            <td>Move to breakeven</td>
+                        </tr>
+                        <tr>
+                            <td>≥ 3 ATR</td>
+                            <td>Entry + 1 ATR</td>
+                            <td>Entry - 1 ATR</td>
+                        </tr>
+                        <tr>
+                            <td>≥ 4 ATR</td>
+                            <td>Entry + 2 ATR</td>
+                            <td>Entry - 2 ATR</td>
+                        </tr>
+                        <tr>
+                            <td>Each +1 ATR</td>
+                            <td>Trail by +0.5 ATR</td>
+                            <td>Trail by -0.5 ATR</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Risk Control Framework</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risk Parameter</th>
+                            <th>Limit</th>
+                            <th>Action if Exceeded</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Per Trade</strong></td>
+                            <td>2% of account</td>
+                            <td>Reduce position size</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Per Day</strong></td>
+                            <td>6% of account</td>
+                            <td>Stop trading for day</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Per Week</strong></td>
+                            <td>12% of account</td>
+                            <td>Stop trading, review system</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Per Month</strong></td>
+                            <td>20% of account</td>
+                            <td>Stop trading, full audit</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- LEARNING PATH -->
+            <div class="section" id="learning">
+                <h2>🎓 Four-Phase Learning Path</h2>
+                
+                <div class="alert alert-info">
+                    <strong>Timeline:</strong> Minimum 14 weeks (3.5 months) to full competency<br>
+                    <strong>Philosophy:</strong> Master each phase before advancing. Speed kills accounts.
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">PHASE 1: Foundation & Observation (Weeks 1-2)</div>
+                    <p><strong>Goal:</strong> Understand the system intellectually without risking capital</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Week 1: System Internalization (2 hrs/day)</strong></p>
+                    <ul>
+                        <li>Read SOP completely twice</li>
+                        <li>Study Six Pillars until explainable without notes</li>
+                        <li>Memorize Matrix Codes 0, 1, 10, 11</li>
+                        <li>Load indicator, observe 50+ bars</li>
+                    </ul>
+                    
+                    <p style="margin-top: 15px;"><strong>Week 2: Signal Recognition (2 hrs/day)</strong></p>
+                    <ul>
+                        <li>Watch indicator real-time (no trading)</li>
+                        <li>Record every HP/MP signal</li>
+                        <li>Document: Time, Score, Matrix, Pattern</li>
+                        <li>Track hypothetical outcomes</li>
+                    </ul>
+                    
+                    <div class="alert alert-success" style="margin-top: 15px;">
+                        <strong>Success Metric:</strong> Identified 10+ valid signals, can explain why each qualified
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">PHASE 2: Simulated Trading (Weeks 3-6)</div>
+                    <p><strong>Goal:</strong> Execute system with simulated money, build muscle memory</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Week 3-4: HP Signals Only</strong></p>
+                    <ul>
+                        <li>Start with $100,000 simulated account</li>
+                        <li>Take every HP signal that qualifies</li>
+                        <li>Maximum 2 trades per day</li>
+                        <li>Follow sizing exactly</li>
+                        <li>Log all trades completely</li>
+                    </ul>
+                    
+                    <p style="margin-top: 15px;"><strong>Week 5-6: All Signals</strong></p>
+                    <ul>
+                        <li>Add MP signals</li>
+                        <li>Manage multiple positions</li>
+                        <li>Handle varying sizes</li>
+                    </ul>
+                    
+                    <div class="alert alert-warning" style="margin-top: 15px;">
+                        <strong>Gate Check:</strong><br>
+                        □ 20+ trades executed<br>
+                        □ Win rate > 45%<br>
+                        □ Avg win > Avg loss<br>
+                        □ Zero rule violations last 10 trades<br>
+                        <br>
+                        <strong>If not achieved, REPEAT Phase 2</strong>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">PHASE 3: Live Trading - Micro Capital (Weeks 7-10)</div>
+                    <p><strong>Goal:</strong> Experience real emotions with minimal risk</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Week 7-8: 10% Size, HP Only</strong></p>
+                    <ul>
+                        <li>Real money, 10% of intended sizes</li>
+                        <li>Maximum 1 trade per day</li>
+                        <li>Journal emotional responses</li>
+                        <li>Document fear/greed levels (1-10)</li>
+                    </ul>
+                    
+                    <p style="margin-top: 15px;"><strong>Week 9-10: 10% Size, All Signals</strong></p>
+                    <ul>
+                        <li>HP and MP signals</li>
+                        <li>Maximum 2 trades per day</li>
+                    </ul>
+                    
+                    <div class="alert alert-success" style="margin-top: 15px;">
+                        <strong>Success Metrics:</strong><br>
+                        □ 15+ trades executed<br>
+                        □ Positive net P&L<br>
+                        □ Zero discipline violations<br>
+                        □ Emotional control improving
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">PHASE 4: Graduated Sizing (Weeks 11-14+)</div>
+                    <p><strong>Goal:</strong> Scale to full deployment</p>
+                    
+                    <table style="margin-top: 15px;">
+                        <thead>
+                            <tr>
+                                <th>Weeks</th>
+                                <th>Position Size</th>
+                                <th>Requirement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11-12</td>
+                                <td>25%</td>
+                                <td>Must be profitable</td>
+                            </tr>
+                            <tr>
+                                <td>13-14</td>
+                                <td>50%</td>
+                                <td>Profitable at 25% for 2 weeks</td>
+                            </tr>
+                            <tr>
+                                <td>15-16</td>
+                                <td>75%</td>
+                                <td>Profitable at 50% for 2 weeks</td>
+                            </tr>
+                            <tr>
+                                <td>17+</td>
+                                <td>100%</td>
+                                <td>Profitable at 75% for 2 weeks</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="alert alert-danger" style="margin-top: 15px;">
+                        <strong>NEVER skip steps in scaling progression</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- QUICK REFERENCE -->
+            <div class="section" id="reference">
+                <h2>📋 Quick Reference Cards</h2>
+                
+                <div class="card">
+                    <div class="card-header">Score Zone Reference (Print & Display)</div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; font-family: monospace; line-height: 1.8;">
+                        🟢 85-100  EXTREME BULL    → HP LONG  (100% size)<br>
+                        🟢 70-84   STRONG BULL     → MP LONG  (75% size)<br>
+                        🟡 60-69   MODERATE BULL   → Caution  (50% size)<br>
+                        🟡 52-59   WEAK BULL       → Skip/Min (25% size)<br>
+                        ⚪ 48-51   NEUTRAL         → NEVER TRADE<br>
+                        🟡 41-47   WEAK BEAR       → Skip/Min (25% size)<br>
+                        🟡 30-40   MODERATE BEAR   → Caution  (50% size)<br>
+                        🔴 16-29   STRONG BEAR     → MP SHORT (75% size)<br>
+                        🔴 0-15    EXTREME BEAR    → HP SHORT (100% size)<br>
+                        <br>
+                        <strong>NEVER TRADE IF:</strong><br>
+                        ❌ |dist_ema26_252| < 1.0  (choppy)<br>
+                        ❌ |dist_ema26| > 2.0      (overextended)<br>
+                        ❌ Score 48-51             (neutral)<br>
+                        ❌ ATR %ile < 20           (dead volatility)
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Matrix Code Quick Reference</div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; font-family: monospace; line-height: 1.8;">
+                        <strong>OPTIMAL LONG CODES:</strong><br>
+                        • 11 = Above P2D + Above KC     [Best - 10/10]<br>
+                        • 10 = Above P2D + Upper KC     [Excellent - 9/10]<br>
+                        • 9  = Above P2D + Lower KC     [Very Good - 7/10]<br>
+                        • 7  = Inside P2D + Above KC    [Good - 7/10]<br>
+                        <br>
+                        <strong>OPTIMAL SHORT CODES:</strong><br>
+                        • 0  = Below P2D + Below KC     [Best - 1/10]<br>
+                        • 1  = Below P2D + Lower KC     [Excellent - 2/10]<br>
+                        • 4  = Inside P2D + Below KC    [Very Good - 3/10]<br>
+                        <br>
+                        <strong>AVOID THESE:</strong><br>
+                        • 2, 3 = Transition zones (unstable)<br>
+                        • 8    = Pullback (wait for support)
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Exit Decision Flowchart</div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; font-family: monospace; line-height: 1.8;">
+                        <strong>While in Trade, Ask:</strong><br>
+                        <br>
+                        1. Did STOP or TARGET hit?<br>
+                           └─ YES → EXIT 100% immediately<br>
+                           └─ NO → Continue to Q2<br>
+                        <br>
+                        2. Did Score enter neutral zone (48-52)?<br>
+                           └─ YES → EXIT 100% immediately<br>
+                           └─ NO → Continue to Q3<br>
+                        <br>
+                        3. Did OPPOSITE HP/MP signal appear?<br>
+                           └─ YES → EXIT 100%, consider reverse<br>
+                           └─ NO → Continue to Q4<br>
+                        <br>
+                        4. Did any FILTER BREAK?<br>
+                           └─ YES → EXIT 100% immediately<br>
+                           └─ NO → Continue to Q5<br>
+                        <br>
+                        5. Did SLOPE weaken significantly?<br>
+                           └─ YES → EXIT 100% immediately<br>
+                           └─ NO → Continue to Q6<br>
+                        <br>
+                        6. Is position at 2+ ATR profit?<br>
+                           └─ YES → Consider partial OR trail<br>
+                           └─ NO → HOLD, check in 15-30 min
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">Key Metrics Glossary</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>dist_ema26</strong></td>
+                                <td>Distance from 26-day trend (momentum)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>dist_ema252</strong></td>
+                                <td>Distance from yearly trend (regime)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>dist_ema26_252</strong></td>
+                                <td>Trend clarity (MUST be >1.0 or <-1.0)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>dist_st_min</strong></td>
+                                <td>Distance above SuperTrend support</td>
+                            </tr>
+                            <tr>
+                                <td><strong>dist_st_max</strong></td>
+                                <td>Distance below SuperTrend resistance</td>
+                            </tr>
+                            <tr>
+                                <td><strong>dist_dh</strong></td>
+                                <td>Distance from yesterday's high</td>
+                            </tr>
+                            <tr>
+                                <td><strong>dist_dl</strong></td>
+                                <td>Distance from yesterday's low</td>
+                            </tr>
+                            <tr>
+                                <td><strong>width_ratio</strong></td>
+                                <td>p2d_width / st_width (expansion indicator)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>matrix_code</strong></td>
+                                <td>Structural scenario (0-11)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- CONCLUSION -->
+            <div class="section">
+                <h2>🎯 The Path to Consistent Profitability</h2>
+                
+                <div class="blockquote" style="font-size: 1.2em; text-align: center;">
+                    "Most traders fail not because they lack a good system, but because they lack the discipline to follow it consistently."
+                </div>
+                
+                <h3>The Three Pillars of Long-Term Success</h3>
+                
+                <div class="pillars">
+                    <div class="pillar">
+                        <h4>1. Master the System</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>Know rules automatically</li>
+                            <li>Trust the quantitative edge</li>
+                            <li>Execute mechanically</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pillar">
+                        <h4>2. Manage Risk Religiously</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>Never risk more than 2% per trade</li>
+                            <li>Always use stops</li>
+                            <li>Accept losses as business cost</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pillar">
+                        <h4>3. Maintain Discipline</h4>
+                        <ul style="margin-top: 10px;">
+                            <li>Follow protocols daily</li>
+                            <li>Log every trade completely</li>
+                            <li>Review systematically</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>The Truth About Trading</h3>
+                
+                <div class="alert alert-info" style="font-size: 1.1em;">
+                    This system works <strong>IF</strong> you work the system. The edge exists in the confluence of signals, mathematical position sizing, and protective filters. But that edge only manifests over 100+ trades with perfect execution.
+                </div>
+                
+                <div style="text-align: center; margin: 40px 0;">
+                    <div style="font-size: 1.3em; margin-bottom: 20px;">
+                        <strong>One perfect trade means nothing.</strong><br>
+                        <strong style="color: #28a745;">One hundred executed trades following this protocol means everything.</strong>
+                    </div>
+                </div>
+                
+                <h3>Your Commitment</h3>
+                
+                <div class="card">
+                    <div class="card-header">By using this system, you commit to:</div>
+                    <ul class="checklist">
+                        <li>Following all protocols exactly as written</li>
+                        <li>Logging every trade completely</li>
+                        <li>Accepting losses without emotional response</li>
+                        <li>Taking every valid signal without hesitation</li>
+                        <li>Reviewing performance systematically</li>
+                        <li>Scaling position sizes gradually through phases</li>
+                        <li>Never violating risk management rules</li>
+                        <li>Treating trading as a statistical business</li>
+                    </ul>
+                </div>
+                
+                <div class="blockquote" style="text-align: center; font-size: 1.3em; margin: 40px 0;">
+                    <strong>The system provides the edge.<br>Your discipline creates the profit.</strong>
+                </div>
+                
+                <h3>Final Words</h3>
+                
+                <div class="alert alert-success" style="font-size: 1.1em;">
+                    You now have a complete, professional-grade trading system with:
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Clear entry and exit rules</li>
+                        <li>Quantitative scoring methodology</li>
+                        <li>Position matrix framework</li>
+                        <li>Risk management protocols</li>
+                        <li>Learning path to mastery</li>
+                    </ul>
+                    <br>
+                    <strong>Everything you need to succeed is in this document.</strong>
+                </div>
+                
+                <div style="text-align: center; margin: 50px 0; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
+                    <div style="font-size: 1.5em; margin-bottom: 20px;">
+                        The question is not whether the system works.
+                    </div>
+                    <div style="font-size: 2em; font-weight: bold;">
+                        The question is whether you will work the system.
+                    </div>
+                    <div style="font-size: 1.3em; margin-top: 30px;">
+                        Trade with discipline. Trust the process. Execute the plan.
+                    </div>
+                    <div style="font-size: 1.5em; margin-top: 20px; font-weight: bold;">
+                        The edge is yours to claim.
+                    </div>
+                </div>
+                
+                <div class="alert alert-danger">
+                    <strong>⚠️ Risk Disclosure:</strong><br>
+                    Trading involves substantial risk of loss. Past performance does not guarantee future results. This system, like all trading systems, will experience losing periods. You must be prepared financially and psychologically for drawdowns. Never trade with money you cannot afford to lose entirely. The strategies described in this document are for educational purposes. Consult with a financial advisor before risking capital.
+                </div>
+            </div>
+            
+            <!-- APPENDIX -->
+            <div class="section">
+                <h2>📚 Additional Resources</h2>
+                
+                <h3>Weekly Review Template</h3>
+                <div class="card">
+                    <div class="card-header">Weekly Performance Summary</div>
+                    <div class="code-block">
+Week of: __________
+
+TRADE STATISTICS
+----------------
+Total Trades:            _____
+Winning Trades:          _____
+Losing Trades:           _____
+Win Rate:                _____%
+
+FINANCIAL PERFORMANCE
+--------------------
+Gross Profit:            $_____
+Gross Loss:              $_____
+Net Profit:              $_____
+Return on Account:       _____%
+
+Average Win:             $_____ (_____ R)
+Average Loss:            $_____ (_____ R)
+Largest Win:             $_____ (_____ R)
+Largest Loss:            $_____ (_____ R)
+
+Profit Factor:           _____
+Expectancy:              $_____ per trade
+
+SIGNAL BREAKDOWN
+----------------
+HP Signals:              _____ trades, ____% win rate
+MP Signals:              _____ trades, ____% win rate
+
+BEST PATTERNS
+-------------
+Top Matrix Code:         _____
+Top Confluence Pattern:  _____
+
+DISCIPLINE SCORE
+----------------
+Rule Violations:         _____
+Pre-Market Completion:   _____%
+Exit Rule Adherence:     _____%
+
+IMPROVEMENT AREAS
+-----------------
+1. ________________________________
+2. ________________________________
+3. ________________________________
+                    </div>
+                </div>
+                
+                <h3>Common Troubleshooting</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Problem</th>
+                            <th>Symptom</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Too Many Signals</strong></td>
+                            <td>5+ trades per day, overwhelmed</td>
+                            <td>Trade HP only, require Score >82/<18</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Choppy Losses</strong></td>
+                            <td>Win-loss-win pattern, whipsaw</td>
+                            <td>Skip when ATR %ile <30, avoid Matrix 4-6</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Missing Moves</strong></td>
+                            <td>Market runs without you</td>
+                            <td>Set alerts at 70/30, use Matrix 9 for late entries</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Holding Losers</strong></td>
+                            <td>Not exiting on score deterioration</td>
+                            <td>Set 30-min check-in alarm, exit first analyze later</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exiting Winners Early</strong></td>
+                            <td>Taking 0.5R profits, missing 3R moves</td>
+                            <td>Hide P&L, focus on score only, don't exit until rules trigger</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>System Limitations</h3>
+                
+                <div class="matrix-grid">
+                    <div class="matrix-card matrix-bullish">
+                        <h4>✓ What This System IS</h4>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>High-probability framework</li>
+                            <li>Emotion eliminator</li>
+                            <li>Complete methodology</li>
+                            <li>Positive expectancy</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="matrix-card matrix-bearish">
+                        <h4>✗ What This System IS NOT</h4>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Profit guarantee</li>
+                            <li>100% accurate</li>
+                            <li>Works in all conditions</li>
+                            <li>Holy grail system</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Market Conditions Guide</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>System Performance</th>
+                            <th>Recommendation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #d4edda;">
+                            <td><strong>Trending + High Vol</strong></td>
+                            <td>EXCELLENT</td>
+                            <td>Take all valid signals</td>
+                        </tr>
+                        <tr style="background: #d4edda;">
+                            <td><strong>Trending + Medium Vol</strong></td>
+                            <td>GOOD</td>
+                            <td>Take HP signals, selective MP</td>
+                        </tr>
+                        <tr style="background: #fff3cd;">
+                            <td><strong>Choppy + High Vol</strong></td>
+                            <td>CAUTION</td>
+                            <td>HP only, reduce size 50%</td>
+                        </tr>
+                        <tr style="background: #f8d7da;">
+                            <td><strong>Choppy + Low Vol</strong></td>
+                            <td>POOR</td>
+                            <td>DO NOT TRADE</td>
+                        </tr>
+                        <tr style="background: #f8d7da;">
+                            <td><strong>News Events</strong></td>
+                            <td>UNPREDICTABLE</td>
+                            <td>Exit positions before, re-enter after</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3 style="margin-bottom: 20px;">KeltnerTrend Confluence System v4.0</h3>
+            <p>Document Version: 4.0 | Last Updated: October 2025</p>
+            <p>Status: Production - Approved for Live Trading</p>
+            <p style="margin-top: 30px; opacity: 0.8;">
+                © 2025 KeltnerTrend Confluence System. For educational purposes only.<br>
+                Trading involves risk. Past performance does not guarantee future results.
+            </p>
+            <div style="margin-top: 30px;">
+                <a href="#" class="btn" onclick="window.print(); return false;">📄 Print This Document</a>
+                <a href="#" class="btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">⬆️ Back to Top</a>
+            </div>
+        </div>
+    </div>
+    
+    <button class="print-btn" onclick="window.print()">🖨️ Print SOP</button>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add active state to nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.background = '';
+                link.style.color = '#2a5298';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.background = '#2a5298';
+                    link.style.color = 'white';
+                }
+            });
+        });
+        
+        // Print preparation
+        window.addEventListener('beforeprint', () => {
+            document.body.style.background = 'white';
+        });
+        
+        window.addEventListener('afterprint', () => {
+            document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        });
+    </script>
+</body>
+</html>
