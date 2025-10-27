@@ -60,9 +60,7 @@
 ---
 
 ## Score Interpretation Guide
-
 ### Component Score Analysis
-
 #### 1. Alignment Score (-10 to +10)
 **Measures**: Structural synchronization across EMA, SuperTrend, and Keltner Channel frameworks
 
@@ -193,6 +191,19 @@
 **Misalignment Penalty (-2)**:
 - Applied when `matrix_code ≥ 8` AND `kc_bullish = false`
 - Applied when `matrix_code ≤ 3` AND `kc_bullish = true`
+
+---
+### Bullish Score
+
+* Weighted sum of EMA and KC relationships + KC trend factor.
+* Range: 0–100.
+* Used to quantify *active bullish pressure.*
+
+**Thresholds:**
+
+* ≥70 → Strong uptrend zone
+* 50–70 → Neutral / transition
+* ≤30 → Dominant bearish control
 
 ---
 
