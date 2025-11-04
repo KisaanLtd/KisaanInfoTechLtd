@@ -26,13 +26,13 @@
 | **Sub-Total (Earnings)** | **83.60%** | **3,00,960** | **25,080** |
 | | | | |
 | **BENEFITS & PROVISIONS** | | | |
-| Provident Fund (Employer Contribution) | 5.71% | 17,130 | 1,428 |
-| ESI (Employer Contribution) | 1.99% | 5,970 | 498 |
-| Bonus | 6.96% | 20,880 | 1,740 |
-| Leave Encashment (15 Days Paid Leave) | 1.74% | 5,220 | 435 |
-| **Sub-Total (Benefits)** | **16.40%** | **49,200** | **4,100** |
+| Provident Fund (Employer Contribution) | 5.71% | 20,556 | 1,713 |
+| ESI (Employer Contribution) | 1.99% | 7,164 | 597 |
+| Bonus | 6.96% | 25,056 | 2,088 |
+| Leave Encashment (15 Days Paid Leave) | 1.74% | 6,264 | 522 |
+| **Sub-Total (Benefits)** | **16.40%** | **59,040** | **4,920** |
 | | | | |
-| **TOTAL COST TO COMPANY (CTC)** | **100.00%** | **3,00,000** | **25,000** |
+| **TOTAL COST TO COMPANY (CTC)** | **100.00%** | **3,60,000** | **30,000** |
 
 ---
 
