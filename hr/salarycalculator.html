@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisaan Infotech Limited - Salary Structure Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        header {
+            text-align: center;
+            background-color: #2c5f2d;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: normal;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+        }
+        
+        .input-section {
+            flex: 1;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preview-section {
+            flex: 2;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c5f2d;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #2c5f2d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background-color: #1e421f;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .salary-structure {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .salary-structure th, .salary-structure td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .salary-structure th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        
+        .salary-structure tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .section-title {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2c5f2d;
+            color: #2c5f2d;
+        }
+        
+        .notes {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        .signature-area {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .signature-box {
+            width: 45%;
+        }
+        
+        .signature-line {
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            padding-top: 5px;
+        }
+        
+        .confidential {
+            text-align: center;
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .company-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo-placeholder {
+            width: 150px;
+            height: 80px;
+            background-color: #f0f0f0;
+            display: inline-block;
+            line-height: 80px;
+            color: #999;
+            border: 1px dashed #ccc;
+        }
+        
+        .print-only {
+            display: none;
+        }
+        
+        @media print {
+            .input-section, .button-group {
+                display: none;
+            }
+            
+            .print-only {
+                display: block;
+            }
+            
+            body {
+                padding: 0;
+                background-color: white;
+            }
+            
+            .preview-section {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>KISAAN INFOTECH LIMITED</h1>
+            <p class="subtitle">Salary Structure Generator</p>
+        </header>
+        
+        <div class="content-wrapper">
+            <div class="input-section">
+                <h2>Employee Details</h2>
+                
+                <div class="form-group">
+                    <label for="employeeName">Employee Name:</label>
+                    <input type="text" id="employeeName" placeholder="Enter employee name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="designation">Designation:</label>
+                    <input type="text" id="designation" value="General Administrative Assistant (Agri-Logistics & Farmer Coordination)" placeholder="Enter designation">
+                </div>
+                
+                <div class="form-group">
+                    <label for="employeeId">Employee ID:</label>
+                    <input type="text" id="employeeId" placeholder="Enter employee ID">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dateOfJoining">Date of Joining:</label>
+                    <input type="date" id="dateOfJoining">
+                </div>
+                
+                <div class="form-group">
+                    <label for="workLocation">Work Location:</label>
+                    <input type="text" id="workLocation" placeholder="Enter work location">
+                </div>
+                
+                <div class="form-group">
+                    <label for="annualCtc">Annual CTC (₹):</label>
+                    <input type="number" id="annualCtc" value="360000" min="0" step="1000">
+                </div>
+                
+                <div class="button-group">
+                    <button id="generateBtn">Generate Salary Structure</button>
+                    <button id="savePdfBtn">Save as PDF</button>
+                    <button id="printBtn">Print</button>
+                    <button id="resetBtn">Reset Form</button>
+                </div>
+            </div>
+            
+            <div class="preview-section" id="salaryStructure">
+                <div class="company-logo">
+                    <div class="logo-placeholder">Company Logo</div>
+                </div>
+                
+                <h1 style="text-align: center; margin-bottom: 20px;">Annexure A</h1>
+                <h2 style="text-align: center; margin-bottom: 30px;">KISAAN INFOTECH LIMITED</h2>
+                <h3 style="text-align: center; margin-bottom: 30px;">SALARY STRUCTURE</h3>
+                
+                <table style="width: 100%; margin-bottom: 30px;">
+                    <tr>
+                        <td style="width: 30%; font-weight: bold;">Name:</td>
+                        <td id="previewName" style="border-bottom: 1px solid #333;">_________________</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Designation:</td>
+                        <td id="previewDesignation" style="border-bottom: 1px solid #333;">_________________</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Annual CTC:</td>
+                        <td id="previewCtc" style="border-bottom: 1px solid #333;">_________________</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Employee ID:</td>
+                        <td id="previewId" style="border-bottom: 1px solid #333;">_________________</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Date of Joining:</td>
+                        <td id="previewDoj" style="border-bottom: 1px solid #333;">_________________</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Work Location:</td>
+                        <td id="previewLocation" style="border-bottom: 1px solid #333;">_________________</td>
+                    </tr>
+                </table>
+                
+                <h3 class="section-title">SALARY COMPONENTS</h3>
+                <table class="salary-structure">
+                    <thead>
+                        <tr>
+                            <th>SALARY COMPONENTS</th>
+                            <th>PERCENTAGE</th>
+                            <th>PER ANNUM (₹)</th>
+                            <th>PER MONTH (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" style="font-weight: bold;">EARNINGS</td>
+                        </tr>
+                        <tr>
+                            <td>Basic Salary</td>
+                            <td>41.80%</td>
+                            <td id="basicAnnual">0</td>
+                            <td id="basicMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>House Rent Allowance (HRA)</td>
+                            <td>25.08%</td>
+                            <td id="hraAnnual">0</td>
+                            <td id="hraMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>Medical Allowance</td>
+                            <td>8.36%</td>
+                            <td id="medicalAnnual">0</td>
+                            <td id="medicalMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>Conveyance Allowance</td>
+                            <td>2.51%</td>
+                            <td id="conveyanceAnnual">0</td>
+                            <td id="conveyanceMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>Education Allowance</td>
+                            <td>0.84%</td>
+                            <td id="educationAnnual">0</td>
+                            <td id="educationMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>Special Allowance</td>
+                            <td>5.01%</td>
+                            <td id="specialAnnual">0</td>
+                            <td id="specialMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Sub-Total (Earnings)</td>
+                            <td style="font-weight: bold;">83.60%</td>
+                            <td id="earningsAnnual" style="font-weight: bold;">0</td>
+                            <td id="earningsMonthly" style="font-weight: bold;">0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="font-weight: bold;">BENEFITS & PROVISIONS</td>
+                        </tr>
+                        <tr>
+                            <td>Provident Fund (Employer Contribution)</td>
+                            <td>5.71%</td>
+                            <td id="pfAnnual">0</td>
+                            <td id="pfMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>ESI (Employer Contribution)</td>
+                            <td>1.99%</td>
+                            <td id="esiAnnual">0</td>
+                            <td id="esiMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>Bonus</td>
+                            <td>6.96%</td>
+                            <td id="bonusAnnual">0</td>
+                            <td id="bonusMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>Leave Encashment (15 Days Paid Leave)</td>
+                            <td>1.74%</td>
+                            <td id="leaveAnnual">0</td>
+                            <td id="leaveMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Sub-Total (Benefits)</td>
+                            <td style="font-weight: bold;">16.40%</td>
+                            <td id="benefitsAnnual" style="font-weight: bold;">0</td>
+                            <td id="benefitsMonthly" style="font-weight: bold;">0</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">TOTAL COST TO COMPANY (CTC)</td>
+                            <td style="font-weight: bold;">100.00%</td>
+                            <td id="totalAnnual" style="font-weight: bold;">0</td>
+                            <td id="totalMonthly" style="font-weight: bold;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3 class="section-title">MONTHLY SALARY BREAKUP</h3>
+                <table class="salary-structure">
+                    <thead>
+                        <tr>
+                            <th>MONTHLY EARNINGS</th>
+                            <th>AMOUNT (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Basic Salary</td>
+                            <td id="monthlyBasic">0</td>
+                        </tr>
+                        <tr>
+                            <td>House Rent Allowance</td>
+                            <td id="monthlyHra">0</td>
+                        </tr>
+                        <tr>
+                            <td>Medical Allowance</td>
+                            <td id="monthlyMedical">0</td>
+                        </tr>
+                        <tr>
+                            <td>Conveyance Allowance</td>
+                            <td id="monthlyConveyance">0</td>
+                        </tr>
+                        <tr>
+                            <td>Education Allowance</td>
+                            <td id="monthlyEducation">0</td>
+                        </tr>
+                        <tr>
+                            <td>Special Allowance</td>
+                            <td id="monthlySpecial">0</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Gross Monthly Salary</td>
+                            <td id="monthlyGross" style="font-weight: bold;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3 class="section-title">MONTHLY DEDUCTIONS</h3>
+                <table class="salary-structure">
+                    <thead>
+                        <tr>
+                            <th>DEDUCTION HEAD</th>
+                            <th>AMOUNT (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Provident Fund (Employee @ 12%)*</td>
+                            <td id="monthlyPf">0</td>
+                        </tr>
+                        <tr>
+                            <td>ESI (Employee @ 0.75%)**</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Professional Tax***</td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td>TDS (If Applicable)****</td>
+                            <td>Variable</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Total Deductions</td>
+                            <td id="totalDeductions" style="font-weight: bold;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3 class="section-title">NET MONTHLY SALARY</h3>
+                <table class="salary-structure">
+                    <thead>
+                        <tr>
+                            <th>PARTICULARS</th>
+                            <th>AMOUNT (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gross Monthly Salary</td>
+                            <td id="netGross">0</td>
+                        </tr>
+                        <tr>
+                            <td>Less: Total Deductions</td>
+                            <td id="netDeductions">0</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Net Salary Payable (In Hand)</td>
+                            <td id="netSalary" style="font-weight: bold;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="notes">
+                    <p><strong>NOTES:</strong></p>
+                    <p>1. <strong>Provident Fund (PF):</strong> Employee Contribution: 12% of Basic Salary</p>
+                    <p>2. <strong>Employee State Insurance (ESI):</strong> NOT APPLICABLE as gross monthly salary exceeds the ESI threshold of ₹21,000 per month</p>
+                    <p>3. <strong>Professional Tax:</strong> Deducted as per applicable state regulations</p>
+                    <p>4. <strong>Income Tax (TDS):</strong> Will be deducted at source as per applicable Income Tax slabs</p>
+                </div>
+                
+                <div class="signature-area">
+                    <div class="signature-box">
+                        <p><strong>EMPLOYEE ACKNOWLEDGMENT:</strong></p>
+                        <p>I, _________________, hereby acknowledge that I have received and understood the above salary structure.</p>
+                        <div class="signature-line">
+                            <p>Employee Signature</p>
+                        </div>
+                        <p>Date: _________________</p>
+                    </div>
+                    
+                    <div class="signature-box">
+                        <p><strong>For KISAAN INFOTECH LIMITED:</strong></p>
+                        <div class="signature-line">
+                            <p>Authorized Signatory</p>
+                        </div>
+                        <p>Name: _________________</p>
+                        <p>Designation: _________________</p>
+                        <p>Date: _________________</p>
+                        <p>Company Seal:</p>
+                    </div>
+                </div>
+                
+                <div class="confidential">
+                    <p>This document is confidential and is intended solely for the employee named above. Unauthorized disclosure or distribution is prohibited.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const savePdfBtn = document.getElementById('savePdfBtn');
+            const printBtn = document.getElementById('printBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            
+            // Initialize with default values
+            calculateSalaryStructure();
+            
+            generateBtn.addEventListener('click', calculateSalaryStructure);
+            
+            savePdfBtn.addEventListener('click', function() {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+                
+                // Capture the salary structure element
+                html2canvas(document.getElementById('salaryStructure')).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const imgWidth = 210; // A4 width in mm
+                    const pageHeight = 295; // A4 height in mm
+                    const imgHeight = canvas.height * imgWidth / canvas.width;
+                    let heightLeft = imgHeight;
+                    
+                    let position = 0;
+                    
+                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                    
+                    // Add additional pages if needed
+                    while (heightLeft >= 0) {
+                        position = heightLeft - imgHeight;
+                        doc.addPage();
+                        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                        heightLeft -= pageHeight;
+                    }
+                    
+                    doc.save('Salary_Structure_' + document.getElementById('employeeName').value + '.pdf');
+                });
+            });
+            
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            resetBtn.addEventListener('click', function() {
+                document.getElementById('employeeName').value = '';
+                document.getElementById('designation').value = 'General Administrative Assistant (Agri-Logistics & Farmer Coordination)';
+                document.getElementById('employeeId').value = '';
+                document.getElementById('dateOfJoining').value = '';
+                document.getElementById('workLocation').value = '';
+                document.getElementById('annualCtc').value = '360000';
+                
+                calculateSalaryStructure();
+            });
+            
+            function calculateSalaryStructure() {
+                // Get input values
+                const employeeName = document.getElementById('employeeName').value;
+                const designation = document.getElementById('designation').value;
+                const employeeId = document.getElementById('employeeId').value;
+                const dateOfJoining = document.getElementById('dateOfJoining').value;
+                const workLocation = document.getElementById('workLocation').value;
+                const annualCtc = parseFloat(document.getElementById('annualCtc').value) || 0;
+                
+                // Update preview section
+                document.getElementById('previewName').textContent = employeeName || '_________________';
+                document.getElementById('previewDesignation').textContent = designation || '_________________';
+                document.getElementById('previewCtc').textContent = annualCtc ? '₹' + formatNumber(annualCtc) + '/-' : '_________________';
+                document.getElementById('previewId').textContent = employeeId || '_________________';
+                document.getElementById('previewDoj').textContent = dateOfJoining || '_________________';
+                document.getElementById('previewLocation').textContent = workLocation || '_________________';
+                
+                // Calculate salary components
+                const basicAnnual = annualCtc * 0.418;
+                const hraAnnual = annualCtc * 0.2508;
+                const medicalAnnual = annualCtc * 0.0836;
+                const conveyanceAnnual = annualCtc * 0.0251;
+                const educationAnnual = annualCtc * 0.0084;
+                const specialAnnual = annualCtc * 0.0501;
+                const earningsAnnual = basicAnnual + hraAnnual + medicalAnnual + conveyanceAnnual + educationAnnual + specialAnnual;
+                
+                const pfAnnual = annualCtc * 0.0571;
+                const esiAnnual = annualCtc * 0.0199;
+                const bonusAnnual = annualCtc * 0.0696;
+                const leaveAnnual = annualCtc * 0.0174;
+                const benefitsAnnual = pfAnnual + esiAnnual + bonusAnnual + leaveAnnual;
+                
+                // Monthly calculations
+                const basicMonthly = basicAnnual / 12;
+                const hraMonthly = hraAnnual / 12;
+                const medicalMonthly = medicalAnnual / 12;
+                const conveyanceMonthly = conveyanceAnnual / 12;
+                const educationMonthly = educationAnnual / 12;
+                const specialMonthly = specialAnnual / 12;
+                const earningsMonthly = earningsAnnual / 12;
+                
+                const pfMonthly = pfAnnual / 12;
+                const esiMonthly = esiAnnual / 12;
+                const bonusMonthly = bonusAnnual / 12;
+                const leaveMonthly = leaveAnnual / 12;
+                const benefitsMonthly = benefitsAnnual / 12;
+                
+                const totalMonthly = annualCtc / 12;
+                
+                // Update annual table
+                document.getElementById('basicAnnual').textContent = formatNumber(Math.round(basicAnnual));
+                document.getElementById('hraAnnual').textContent = formatNumber(Math.round(hraAnnual));
+                document.getElementById('medicalAnnual').textContent = formatNumber(Math.round(medicalAnnual));
+                document.getElementById('conveyanceAnnual').textContent = formatNumber(Math.round(conveyanceAnnual));
+                document.getElementById('educationAnnual').textContent = formatNumber(Math.round(educationAnnual));
+                document.getElementById('specialAnnual').textContent = formatNumber(Math.round(specialAnnual));
+                document.getElementById('earningsAnnual').textContent = formatNumber(Math.round(earningsAnnual));
+                
+                document.getElementById('pfAnnual').textContent = formatNumber(Math.round(pfAnnual));
+                document.getElementById('esiAnnual').textContent = formatNumber(Math.round(esiAnnual));
+                document.getElementById('bonusAnnual').textContent = formatNumber(Math.round(bonusAnnual));
+                document.getElementById('leaveAnnual').textContent = formatNumber(Math.round(leaveAnnual));
+                document.getElementById('benefitsAnnual').textContent = formatNumber(Math.round(benefitsAnnual));
+                
+                document.getElementById('totalAnnual').textContent = formatNumber(Math.round(annualCtc));
+                
+                // Update monthly table
+                document.getElementById('basicMonthly').textContent = formatNumber(Math.round(basicMonthly));
+                document.getElementById('hraMonthly').textContent = formatNumber(Math.round(hraMonthly));
+                document.getElementById('medicalMonthly').textContent = formatNumber(Math.round(medicalMonthly));
+                document.getElementById('conveyanceMonthly').textContent = formatNumber(Math.round(conveyanceMonthly));
+                document.getElementById('educationMonthly').textContent = formatNumber(Math.round(educationMonthly));
+                document.getElementById('specialMonthly').textContent = formatNumber(Math.round(specialMonthly));
+                document.getElementById('earningsMonthly').textContent = formatNumber(Math.round(earningsMonthly));
+                
+                document.getElementById('pfMonthly').textContent = formatNumber(Math.round(pfMonthly));
+                document.getElementById('esiMonthly').textContent = formatNumber(Math.round(esiMonthly));
+                document.getElementById('bonusMonthly').textContent = formatNumber(Math.round(bonusMonthly));
+                document.getElementById('leaveMonthly').textContent = formatNumber(Math.round(leaveMonthly));
+                document.getElementById('benefitsMonthly').textContent = formatNumber(Math.round(benefitsMonthly));
+                
+                document.getElementById('totalMonthly').textContent = formatNumber(Math.round(totalMonthly));
+                
+                // Update monthly salary breakup
+                document.getElementById('monthlyBasic').textContent = formatNumber(Math.round(basicMonthly));
+                document.getElementById('monthlyHra').textContent = formatNumber(Math.round(hraMonthly));
+                document.getElementById('monthlyMedical').textContent = formatNumber(Math.round(medicalMonthly));
+                document.getElementById('monthlyConveyance').textContent = formatNumber(Math.round(conveyanceMonthly));
+                document.getElementById('monthlyEducation').textContent = formatNumber(Math.round(educationMonthly));
+                document.getElementById('monthlySpecial').textContent = formatNumber(Math.round(specialMonthly));
+                document.getElementById('monthlyGross').textContent = formatNumber(Math.round(earningsMonthly));
+                
+                // Update monthly deductions
+                const pfDeduction = basicMonthly * 0.12;
+                document.getElementById('monthlyPf').textContent = formatNumber(Math.round(pfDeduction));
+                const totalDeductions = Math.round(pfDeduction) + 200; // Adding professional tax
+                document.getElementById('totalDeductions').textContent = formatNumber(totalDeductions);
+                
+                // Update net monthly salary
+                document.getElementById('netGross').textContent = formatNumber(Math.round(earningsMonthly));
+                document.getElementById('netDeductions').textContent = formatNumber(totalDeductions);
+                const netSalary = Math.round(earningsMonthly) - totalDeductions;
+                document.getElementById('netSalary').textContent = formatNumber(netSalary);
+            }
+            
+            function formatNumber(num) {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+        });
+    </script>
+</body>
+</html>
