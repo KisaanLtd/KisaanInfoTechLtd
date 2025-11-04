@@ -8,7 +8,7 @@
 |---------------------|----------------------|
 | **Name:** | _________________ |
 | **Designation:** | General Administrative Assistant (Agri-Logistics & Farmer Coordination) |
-| **Annual CTC:** | ₹3,00,000/- |
+| **Annual CTC:** | ₹3,60,000/- |
 | **Employee ID:** | _________________ |
 | **Date of Joining:** | _________________ |
 
@@ -17,13 +17,13 @@
 | **SALARY COMPONENTS** | **PERCENTAGE** | **PER ANNUM (₹)** | **PER MONTH (₹)** |
 |----------------------|----------------|-------------------|-------------------|
 | **EARNINGS** | | | |
-| Basic Salary | 41.80% | 1,25,400 | 10,450 |
-| House Rent Allowance (HRA) | 25.08% | 75,240 | 6,270 |
-| Medical Allowance | 8.36% | 25,080 | 2,090 |
-| Conveyance Allowance | 2.51% | 7,530 | 628 |
-| Education Allowance | 0.84% | 2,520 | 210 |
-| Special Allowance | 5.01% | 15,030 | 1,253 |
-| **Sub-Total (Earnings)** | **83.60%** | **2,50,800** | **20,900** |
+| Basic Salary | 41.80% | 1,50,480 | 12,540 |
+| House Rent Allowance (HRA) | 25.08% | 90,288 | 7,524 |
+| Medical Allowance | 8.36% | 30,096 | 2,508 |
+| Conveyance Allowance | 2.51% | 9,036 | 753 |
+| Education Allowance | 0.84% | 3,024 | 252 |
+| Special Allowance | 5.01% | 18,036| 1,503 |
+| **Sub-Total (Earnings)** | **83.60%** | **3,00,960** | **25,080** |
 | | | | |
 | **BENEFITS & PROVISIONS** | | | |
 | Provident Fund (Employer Contribution) | 5.71% | 17,130 | 1,428 |
