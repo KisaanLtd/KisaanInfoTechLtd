@@ -9,30 +9,29 @@
 | **Name:** | _________________ |
 | **Designation:** | General Administrative Assistant (Agri-Logistics & Farmer Coordination) |
 | **Annual CTC:** | ₹3,60,000/- |
-| **Employee ID:** | _________________ |
 | **Date of Joining:** | _________________ |
 
 ---
 
-| **SALARY COMPONENTS** | **PERCENTAGE** | **PER ANNUM (₹)** | **PER MONTH (₹)** |
-|----------------------|----------------|-------------------|-------------------|
-| **EARNINGS** | | | |
-| Basic Salary | 41.80% | 1,50,480 | 12,540 |
-| House Rent Allowance (HRA) | 25.08% | 90,288 | 7,524 |
-| Medical Allowance | 8.36% | 30,096 | 2,508 |
-| Conveyance Allowance | 2.51% | 9,036 | 753 |
-| Education Allowance | 0.84% | 3,024 | 252 |
-| Special Allowance | 5.01% | 18,036 | 1,503 |
-| **Sub-Total (Earnings)** | **83.60%** | **3,00,960** | **25,080** |
-| | | | |
-| **BENEFITS & PROVISIONS** | | | |
-| Provident Fund (Employer Contribution) | 5.71% | 20,556 | 1,713 |
-| ESI (Employer Contribution) | 1.99% | 7,164 | 597 |
-| Bonus | 6.96% | 25,056 | 2,088 |
-| Leave Encashment (15 Days Paid Leave) | 1.74% | 6,264 | 522 |
-| **Sub-Total (Benefits)** | **16.40%** | **59,040** | **4,920** |
-| | | | |
-| **TOTAL COST TO COMPANY (CTC)** | **100.00%** | **3,60,000** | **30,000** |
+| **SALARY COMPONENTS** | **PER ANNUM (₹)** | **PER MONTH (₹)** |
+|----------------------|-------------------|-------------------|
+| **EARNINGS** | | |
+| Basic Salary | 1,50,480 | 12,540 |
+| House Rent Allowance (HRA) | 90,288 | 7,524 |
+| Medical Allowance | 30,096 | 2,508 |
+| Conveyance Allowance | 9,036 | 753 |
+| Education Allowance | 3,024 | 252 |
+| Special Allowance | 18,036 | 1,503 |
+| **Sub-Total (Earnings)** | **3,00,960** | **25,080** |
+| | | |
+| **BENEFITS & PROVISIONS** | | |
+| Provident Fund (Employer Contribution) | 20,556 | 1,713 |
+| ESI (Employer Contribution) | 7,164 | 597 |
+| Bonus | 25,056 | 2,088 |
+| Leave Encashment (15 Days Paid Leave) | 6,264 | 522 |
+| **Sub-Total (Benefits)** | **59,040** | **4,920** |
+| | | |
+| **TOTAL COST TO COMPANY (CTC)** | **3,60,000** | **30,000** |
 
 ---
 
