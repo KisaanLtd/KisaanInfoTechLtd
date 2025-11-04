@@ -233,11 +233,6 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="employeeId">Employee ID:</label>
-                    <input type="text" id="employeeId" placeholder="Enter employee ID">
-                </div>
-                
-                <div class="form-group">
                     <label for="dateOfJoining">Date of Joining:</label>
                     <input type="date" id="dateOfJoining">
                 </div>
@@ -281,10 +276,6 @@
                     <tr>
                         <td style="font-weight: bold;">Annual CTC:</td>
                         <td id="previewCtc" style="border-bottom: 1px solid #333;">_________________</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: bold;">Employee ID:</td>
-                        <td id="previewId" style="border-bottom: 1px solid #333;">_________________</td>
                     </tr>
                     <tr>
                         <td style="font-weight: bold;">Date of Joining:</td>
@@ -501,7 +492,7 @@
                 <div class="signature-area">
                     <div class="signature-box">
                         <p><strong>EMPLOYEE ACKNOWLEDGMENT:</strong></p>
-                        <p>I, _________________, hereby acknowledge that I have received and understood the above salary structure.</p>
+                        <p>I, <span id="acknowledgmentName">_________________</span>, hereby acknowledge that I have received and understood the above salary structure.</p>
                         <div class="signature-line">
                             <p>Employee Signature</p>
                         </div>
@@ -516,7 +507,6 @@
                         <p>Name: _________________</p>
                         <p>Designation: _________________</p>
                         <p>Date: _________________</p>
-                        <p>Company Seal:</p>
                     </div>
                 </div>
                 
@@ -575,7 +565,6 @@
             resetBtn.addEventListener('click', function() {
                 document.getElementById('employeeName').value = '';
                 document.getElementById('designation').value = 'General Administrative Assistant (Agri-Logistics & Farmer Coordination)';
-                document.getElementById('employeeId').value = '';
                 document.getElementById('dateOfJoining').value = '';
                 document.getElementById('workLocation').value = '';
                 document.getElementById('annualCtc').value = '360000';
@@ -587,7 +576,6 @@
                 // Get input values
                 const employeeName = document.getElementById('employeeName').value;
                 const designation = document.getElementById('designation').value;
-                const employeeId = document.getElementById('employeeId').value;
                 const dateOfJoining = document.getElementById('dateOfJoining').value;
                 const workLocation = document.getElementById('workLocation').value;
                 const annualCtc = parseFloat(document.getElementById('annualCtc').value) || 0;
@@ -596,9 +584,11 @@
                 document.getElementById('previewName').textContent = employeeName || '_________________';
                 document.getElementById('previewDesignation').textContent = designation || '_________________';
                 document.getElementById('previewCtc').textContent = annualCtc ? '₹' + formatNumber(annualCtc) + '/-' : '_________________';
-                document.getElementById('previewId').textContent = employeeId || '_________________';
                 document.getElementById('previewDoj').textContent = dateOfJoining || '_________________';
                 document.getElementById('previewLocation').textContent = workLocation || '_________________';
+                
+                // Update employee acknowledgment name
+                document.getElementById('acknowledgmentName').textContent = employeeName || '_________________';
                 
                 // Calculate salary components
                 const basicAnnual = annualCtc * 0.418;
