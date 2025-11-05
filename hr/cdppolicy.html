@@ -3,166 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confidentiality and Data Protection Policy - Kisaan Infotech Limited</title>
+    <title>Kisaan Infotech Limited - Confidentiality and Data Protection Policy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            font-family: 'Times New Roman', Times, serif;
+            background-color: #f5f7fa;
+            color: #333;
             line-height: 1.6;
-            color: #000;
-            background: #f5f5f5;
             padding: 20px;
         }
-
+        
         .container {
-            max-width: 210mm;
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            padding: 20mm;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        .edit-mode .container {
-            padding-top: 80px;
-        }
-
-        .controls {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #2c3e50;
-            color: white;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 1000;
             display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 20px;
         }
-
-        .controls button {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .controls button:hover {
-            background: #2980b9;
-        }
-
-        .controls button.print {
-            background: #27ae60;
-        }
-
-        .controls button.print:hover {
-            background: #229954;
-        }
-
-        .controls button.reset {
-            background: #e74c3c;
-        }
-
-        .controls button.reset:hover {
-            background: #c0392b;
-        }
-
-        .editable {
-            background: #fff3cd;
-            border-bottom: 2px solid #856404;
-            padding: 2px 5px;
-            min-width: 100px;
-            display: inline-block;
-            cursor: text;
-        }
-
-        .editable:focus {
-            outline: 2px solid #007bff;
-            background: #e7f3ff;
-        }
-
-        .header {
+        
+        header {
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #000;
-            padding-bottom: 20px;
+            background-color: #2c5f2d;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .header h1 {
-            font-size: 20px;
-            font-weight: bold;
+        
+        h1 {
+            font-size: 28px;
             margin-bottom: 10px;
         }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: normal;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+        }
+        
+        .input-section {
+            flex: 1;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preview-section {
+            flex: 2;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c5f2d;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
 
-        .header h2 {
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        button {
+            background-color: #2c5f2d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background-color: #1e421f;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .company-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo-img {
+            height: 80px;
+            width: auto;
+        }
+
+        .policy-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .policy-header h1 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2c5f2d;
+        }
+
+        .policy-header h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .policy-header h3 {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .employee-details-box {
+            border: 2px solid #2c5f2d;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .employee-details-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .employee-details-box td {
+            padding: 8px;
+            border: none;
+        }
+
+        .employee-details-box td:first-child {
+            font-weight: bold;
+            width: 30%;
+            color: #2c5f2d;
+        }
+
+        .editable-field {
+            border-bottom: 1px solid #333;
+            min-width: 200px;
+            display: inline-block;
+            padding: 2px 5px;
+        }
+        
+        .section-title {
             font-size: 16px;
             font-weight: bold;
-            margin-top: 15px;
-        }
-
-        .section {
-            margin: 25px 0;
-        }
-
-        .section-title {
-            font-size: 14px;
-            font-weight: bold;
-            margin: 20px 0 10px 0;
-            text-transform: uppercase;
+            margin: 25px 0 15px 0;
+            padding: 10px;
+            background-color: #2c5f2d;
+            color: white;
+            border-radius: 4px;
         }
 
         .subsection-title {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: bold;
-            margin: 15px 0 8px 0;
+            margin: 15px 0 10px 0;
+            color: #2c5f2d;
         }
 
         .content {
-            font-size: 12px;
+            font-size: 14px;
             text-align: justify;
-            margin-bottom: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 11px;
-        }
-
-        table, th, td {
-            border: 1px solid #000;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background: #e8e8e8;
-            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.8;
         }
 
         ul, ol {
-            margin-left: 25px;
-            margin-bottom: 10px;
+            margin-left: 30px;
+            margin-bottom: 15px;
         }
 
         li {
-            margin-bottom: 5px;
-            font-size: 12px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        table.data-table th, table.data-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table.data-table th {
+            background-color: #2c5f2d;
+            color: white;
+            font-weight: 600;
+        }
+
+        table.data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .emphasis {
+            font-weight: bold;
+            color: #2c5f2d;
+        }
+
+        .note-box {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13px;
         }
 
         .signature-section {
@@ -171,10 +262,11 @@
         }
 
         .signature-box {
-            border: 1px solid #000;
+            border: 2px solid #2c5f2d;
             padding: 20px;
             margin: 20px 0;
-            background: #f9f9f9;
+            background-color: #f9f9f9;
+            border-radius: 8px;
         }
 
         .signature-line {
@@ -187,51 +279,78 @@
         .signature-label {
             font-weight: bold;
             min-width: 150px;
-            font-size: 12px;
+            font-size: 14px;
+            color: #2c5f2d;
         }
 
         .signature-input {
             flex: 1;
-            border-bottom: 1px solid #000;
+            border-bottom: 1px solid #333;
             min-height: 25px;
         }
 
-        .note {
+        .acknowledgment-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .acknowledgment-list li {
+            margin-bottom: 10px;
+        }
+
+        .version-info {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .confidential-footer {
+            text-align: center;
             font-style: italic;
-            font-size: 11px;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f0f0f0;
-            border-left: 3px solid #666;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #666;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
         }
 
-        .emphasis {
-            font-weight: bold;
+        .contact-box {
+            background-color: #e8f5e9;
+            border: 2px solid #2c5f2d;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
         }
-
+        
         @media print {
             body {
-                background: white;
                 padding: 0;
+                background-color: white;
             }
 
-            .container {
+            .input-section, .button-group, header {
+                display: none;
+            }
+            
+            .preview-section {
                 box-shadow: none;
                 padding: 15mm;
-                max-width: 100%;
             }
 
-            .controls {
-                display: none !important;
+            .content-wrapper {
+                display: block;
             }
 
-            .editable {
-                background: transparent;
-                border-bottom: 1px solid #000;
+            .section-title {
+                page-break-after: avoid;
             }
 
-            .edit-mode .container {
-                padding-top: 20mm;
+            .signature-section {
+                page-break-before: always;
             }
 
             @page {
@@ -241,659 +360,623 @@
         }
     </style>
 </head>
-<body class="edit-mode">
-    <div class="controls">
-        <button onclick="toggleEditMode()" class="edit">Toggle Edit Mode</button>
-        <button onclick="window.print()" class="print">Print / Save as PDF</button>
-        <button onclick="saveData()" class="save">Save Data</button>
-        <button onclick="loadData()" class="load">Load Data</button>
-        <button onclick="resetForm()" class="reset">Reset Form</button>
-        <span style="margin-left: auto; font-size: 12px;">Fill in yellow fields, then Print/Save as PDF</span>
-    </div>
-
+<body>
     <div class="container">
-        <div class="header">
-            <h1>Annexure C</h1>
+        <header>
             <h1>KISAAN INFOTECH LIMITED</h1>
-            <h2>CONFIDENTIALITY AND DATA PROTECTION POLICY</h2>
-        </div>
-
-        <div class="section">
-            <div class="section-title">1. POLICY OVERVIEW</div>
-            
-            <div class="subsection-title">1.1 Purpose</div>
-            <div class="content">
-                This Confidentiality and Data Protection Policy establishes guidelines for handling, protecting, and maintaining the confidentiality of sensitive information belonging to Kisaan Infotech Limited ("the Company"), its customers, farmers, business partners, and employees. This policy aims to:
-            </div>
-            <ul>
-                <li>Protect the Company's proprietary and confidential information</li>
-                <li>Ensure compliance with applicable data protection laws in India</li>
-                <li>Maintain trust and integrity in business relationships</li>
-                <li>Prevent unauthorized disclosure, misuse, or loss of confidential data</li>
-                <li>Define employee responsibilities regarding information security</li>
-            </ul>
-
-            <div class="subsection-title">1.2 Scope</div>
-            <div class="content">This policy applies to:</div>
-            <ul>
-                <li>All employees (permanent, probationary, contractual, and temporary)</li>
-                <li>Consultants, contractors, and third-party service providers</li>
-                <li>Interns, trainees, and apprentices</li>
-                <li>All forms of information (physical, electronic, verbal, and visual)</li>
-                <li>Information accessed, created, stored, or transmitted during employment</li>
-            </ul>
-
-            <div class="subsection-title">1.3 Effective Date</div>
-            <div class="content">
-                This policy is effective from the date of employee's joining and continues to remain in force even after termination of employment.
-            </div>
-
-            <div class="subsection-title">1.4 Policy Owner</div>
-            <div class="content">
-                This policy is owned and maintained by the Management of Kisaan Infotech Limited. Any questions or clarifications should be directed to the HR Department or immediate supervisor.
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">2. DEFINITIONS</div>
-            
-            <div class="subsection-title">2.1 Confidential Information</div>
-            <div class="content">Confidential Information includes, but is not limited to:</div>
-            
-            <div class="content"><span class="emphasis">A. Business Information</span></div>
-            <ul>
-                <li>Business strategies, plans, and forecasts</li>
-                <li>Marketing and sales strategies</li>
-                <li>Pricing information, cost structures, and profit margins</li>
-                <li>Financial data, budgets, and projections</li>
-                <li>Procurement and sourcing strategies</li>
-                <li>Vendor and supplier information</li>
-                <li>Business proposals and contracts</li>
-                <li>Market research and competitive intelligence</li>
-                <li>Operational procedures and processes</li>
-                <li>Trade secrets and proprietary methodologies</li>
-            </ul>
-
-            <div class="content"><span class="emphasis">B. Farmer & Customer Data</span></div>
-            <ul>
-                <li>Farmer personal details (names, addresses, contact numbers, bank details, Aadhaar, PAN)</li>
-                <li>Farmer production data, crop patterns, and landholding information</li>
-                <li>Procurement prices, payment terms, and transaction history</li>
-                <li>Customer details (names, addresses, contact information)</li>
-                <li>Customer orders, purchase history, and preferences</li>
-                <li>Delivery addresses and schedules</li>
-                <li>Credit terms and payment information</li>
-                <li>Customer complaints and feedback</li>
-            </ul>
-
-            <div class="content"><span class="emphasis">C. Employee Information</span></div>
-            <ul>
-                <li>Personal employee data (addresses, contact details, family information)</li>
-                <li>Salary information and compensation details</li>
-                <li>Performance reviews and appraisal records</li>
-                <li>Disciplinary actions and grievances</li>
-                <li>Medical records and health information</li>
-                <li>Bank account details and tax information</li>
-            </ul>
-
-            <div class="subsection-title">2.2 Personal Data</div>
-            <div class="content">
-                Personal Data means any information relating to an identified or identifiable natural person, including biographical data, contact information, identification numbers, financial information, biometric data, photographic images, and any other information that can identify an individual.
-            </div>
-
-            <div class="subsection-title">2.3 Sensitive Personal Data</div>
-            <div class="content">Sensitive Personal Data includes:</div>
-            <ul>
-                <li>Passwords and financial information (bank account, credit card, debit card)</li>
-                <li>Physical, physiological, and mental health conditions</li>
-                <li>Medical records and history</li>
-                <li>Biometric information</li>
-                <li>Sexual orientation</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">3. CONFIDENTIALITY OBLIGATIONS</div>
-            
-            <div class="subsection-title">3.1 General Obligations</div>
-            <div class="content">All employees must:</div>
-            <ol>
-                <li><span class="emphasis">Maintain Confidentiality:</span> Keep all Confidential Information strictly confidential during and after employment</li>
-                <li><span class="emphasis">Use Only for Business Purposes:</span> Use Confidential Information solely for performing authorized job duties</li>
-                <li><span class="emphasis">Need-to-Know Basis:</span> Access only the information necessary for job responsibilities</li>
-                <li><span class="emphasis">Prevent Unauthorized Disclosure:</span> Take all reasonable measures to prevent unauthorized access, use, or disclosure</li>
-                <li><span class="emphasis">Secure Storage:</span> Store documents and data securely when not in use</li>
-                <li><span class="emphasis">Report Breaches:</span> Immediately report any suspected or actual breach of confidentiality</li>
-                <li><span class="emphasis">Return Materials:</span> Return all confidential materials upon termination or when no longer needed</li>
-            </ol>
-
-            <div class="subsection-title">3.2 Prohibited Actions</div>
-            <div class="content">Employees must NOT:</div>
-            <ol>
-                <li>Disclose Confidential Information to unauthorized persons, including family members and friends</li>
-                <li>Discuss confidential matters in public places</li>
-                <li>Remove confidential documents from office premises without authorization</li>
-                <li>Copy, photograph, or reproduce confidential materials without permission</li>
-                <li>Use Confidential Information for personal benefit or gain</li>
-                <li>Use Confidential Information to compete with the Company</li>
-                <li>Disclose Confidential Information to competitors, media, or any third parties</li>
-                <li>Post or share confidential information on social media, forums, or public platforms</li>
-                <li>Access information beyond their authorized level or job requirements</li>
-                <li>Share passwords, login credentials, or access codes with others</li>
-            </ol>
-        </div>
-
-        <div class="section">
-            <div class="section-title">4. DATA PROTECTION PRINCIPLES</div>
-            <div class="content">The Company and its employees shall adhere to the following data protection principles:</div>
-            
-            <div class="subsection-title">4.1 Lawfulness and Fairness</div>
-            <ul>
-                <li>Data shall be collected and processed lawfully and fairly</li>
-                <li>Purpose of data collection shall be clearly communicated</li>
-                <li>Consent shall be obtained where required by law</li>
-            </ul>
-
-            <div class="subsection-title">4.2 Purpose Limitation</div>
-            <ul>
-                <li>Data shall be collected only for specified, explicit, and legitimate purposes</li>
-                <li>Data shall not be used for purposes incompatible with the original purpose</li>
-            </ul>
-
-            <div class="subsection-title">4.3 Data Minimization</div>
-            <ul>
-                <li>Only necessary and relevant data shall be collected</li>
-                <li>Excessive or irrelevant data collection shall be avoided</li>
-            </ul>
-
-            <div class="subsection-title">4.4 Accuracy</div>
-            <ul>
-                <li>Data shall be accurate, complete, and kept up to date</li>
-                <li>Reasonable steps shall be taken to correct or delete inaccurate data</li>
-            </ul>
-
-            <div class="subsection-title">4.5 Storage Limitation</div>
-            <ul>
-                <li>Data shall be retained only for as long as necessary for the stated purpose</li>
-                <li>Data shall be securely deleted or destroyed when no longer required</li>
-            </ul>
-
-            <div class="subsection-title">4.6 Integrity and Confidentiality</div>
-            <ul>
-                <li>Appropriate security measures shall be implemented to protect data</li>
-                <li>Data shall be protected against unauthorized access, loss, damage, or destruction</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">5. DATA SECURITY MEASURES</div>
-            
-            <div class="subsection-title">5.1 Physical Security</div>
-            <div class="content"><span class="emphasis">Documents and Records:</span></div>
-            <ul>
-                <li>Store all physical documents containing confidential information in locked cabinets/drawers</li>
-                <li>Do not leave confidential documents unattended on desks</li>
-                <li>Shred or destroy confidential documents before disposal</li>
-                <li>Lock office premises when leaving</li>
-            </ul>
-
-            <div class="subsection-title">5.2 Digital Security</div>
-            <div class="content"><span class="emphasis">Computer and Device Security:</span></div>
-            <ul>
-                <li>Use strong passwords (minimum 8 characters with alphanumeric and special characters)</li>
-                <li>Change passwords regularly (every 90 days minimum)</li>
-                <li>Do not share passwords or login credentials</li>
-                <li>Lock computer/device when leaving workstation</li>
-                <li>Install and update antivirus software regularly</li>
-                <li>Encrypt sensitive data stored on laptops or portable devices</li>
-            </ul>
-
-            <div class="content"><span class="emphasis">Email Security:</span></div>
-            <ul>
-                <li>Use company email only for business communication</li>
-                <li>Do not send confidential information to personal email accounts</li>
-                <li>Verify recipient email addresses before sending confidential information</li>
-                <li>Mark emails containing sensitive information as "Confidential"</li>
-                <li>Report phishing attempts to IT department immediately</li>
-            </ul>
-
-            <div class="subsection-title">5.3 Communication Security</div>
-            <ul>
-                <li>Do not discuss confidential matters in public places</li>
-                <li>Use private meeting rooms for confidential discussions</li>
-                <li>Be mindful of phone conversations in open areas</li>
-                <li>Do not post or share any company information on social media platforms</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">6. SPECIFIC DATA PROTECTION REQUIREMENTS</div>
-            
-            <div class="subsection-title">6.1 Farmer Data Protection</div>
-            <div class="content"><span class="emphasis">Collection:</span></div>
-            <ul>
-                <li>Collect farmer data only for legitimate business purposes</li>
-                <li>Obtain verbal or written consent from farmers for data collection</li>
-                <li>Inform farmers about how their data will be used</li>
-                <li>Collect only necessary information</li>
-            </ul>
-
-            <div class="content"><span class="emphasis">Protection:</span></div>
-            <ul>
-                <li>Do not share farmer contact details with competitors or unauthorized parties</li>
-                <li>Protect farmer bank account and payment information with highest security</li>
-                <li>Do not use farmer data for personal benefit or unauthorized purposes</li>
-                <li>Ensure farmers' Aadhaar and PAN information is stored securely</li>
-            </ul>
-
-            <div class="subsection-title">6.2 Customer Data Protection</div>
-            <ul>
-                <li>Use customer data only for order processing, delivery, and customer service</li>
-                <li>Do not share customer lists or contact details with third parties without consent</li>
-                <li>Protect customer payment and financial information</li>
-                <li>Maintain customer privacy during delivery and service interactions</li>
-            </ul>
-
-            <div class="subsection-title">6.3 Employee Data Protection</div>
-            <ul>
-                <li>Use employee data only for HR, payroll, compliance, and administrative purposes</li>
-                <li>Maintain strict confidentiality of salary and compensation information</li>
-                <li>Protect employee Aadhaar, PAN, bank details, and other sensitive information</li>
-                <li>Maintain confidentiality of performance reviews and disciplinary records</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">7. DATA RETENTION AND DISPOSAL</div>
-            
-            <div class="subsection-title">7.1 Retention Periods</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Type of Data</th>
-                        <th>Retention Period</th>
-                        <th>Legal Basis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Farmer procurement records</td>
-                        <td>7 years from last transaction</td>
-                        <td>Income Tax Act, 1961</td>
-                    </tr>
-                    <tr>
-                        <td>Customer transaction records</td>
-                        <td>7 years from transaction date</td>
-                        <td>Income Tax Act, 1961</td>
-                    </tr>
-                    <tr>
-                        <td>Employee records (current)</td>
-                        <td>During employment + 7 years</td>
-                        <td>Various labor laws</td>
-                    </tr>
-                    <tr>
-                        <td>Financial records</td>
-                        <td>7 years from financial year end</td>
-                        <td>Companies Act, 2013</td>
-                    </tr>
-                    <tr>
-                        <td>Tax documents (PF, ESI, TDS)</td>
-                        <td>7 years from relevant year</td>
-                        <td>Respective tax laws</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="subsection-title">7.2 Data Disposal</div>
-            <div class="content"><span class="emphasis">Physical Documents:</span></div>
-            <ul>
-                <li>Shred documents using cross-cut shredder</li>
-                <li>Do not dispose confidential documents in regular trash</li>
-                <li>Maintain disposal log for sensitive documents</li>
-            </ul>
-
-            <div class="content"><span class="emphasis">Digital Data:</span></div>
-            <ul>
-                <li>Permanently delete files from systems</li>
-                <li>Overwrite deleted data using secure deletion tools</li>
-                <li>Physically destroy hard drives containing highly sensitive data</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">8. DATA BREACH MANAGEMENT</div>
-            
-            <div class="subsection-title">8.1 What is a Data Breach?</div>
-            <div class="content">A data breach is any incident where confidential or personal data is:</div>
-            <ul>
-                <li>Accessed by unauthorized persons</li>
-                <li>Disclosed to unauthorized parties</li>
-                <li>Lost, stolen, or misplaced</li>
-                <li>Damaged or destroyed</li>
-                <li>Modified or corrupted without authorization</li>
-            </ul>
-
-            <div class="subsection-title">8.2 Reporting Data Breaches</div>
-            <div class="content">Any employee who discovers or suspects a data breach must:</div>
-            <ol>
-                <li>Stop the breach if possible</li>
-                <li>Do not attempt to cover up or ignore the breach</li>
-                <li>Immediately inform immediate supervisor and HR department</li>
-                <li>Document the incident</li>
-                <li>Report within <span class="emphasis">1 hour</span> of discovering a potential breach</li>
-                <li>Cooperate fully with investigation</li>
-            </ol>
-
-            <div class="subsection-title">8.3 Consequences of Data Breach</div>
-            <div class="content">Depending on severity and intent, consequences may include:</div>
-            <ul>
-                <li>Verbal or written warning</li>
-                <li>Suspension without pay</li>
-                <li>Termination of employment</li>
-                <li>Legal action and prosecution</li>
-                <li>Recovery of damages caused by the breach</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">9. THIRD-PARTY DATA SHARING</div>
-            
-            <div class="subsection-title">9.1 Authorized Sharing</div>
-            <div class="content">Confidential Information may be shared with third parties only when:</div>
-            <ul>
-                <li>Required for legitimate business purposes</li>
-                <li>Authorized in writing by management</li>
-                <li>Third party has signed confidentiality/non-disclosure agreement</li>
-                <li>Minimum necessary information is shared</li>
-            </ul>
-
-            <div class="subsection-title">9.2 Prohibited Sharing</div>
-            <ul>
-                <li>Sharing with competitors or potential competitors</li>
-                <li>Sharing with media or press without authorization</li>
-                <li>Sharing with family, friends, or personal contacts</li>
-                <li>Selling or commercializing company data</li>
-                <li>Sharing on public forums, social media, or websites</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">10. EMPLOYEE RIGHTS AND RESPONSIBILITIES</div>
-            
-            <div class="subsection-title">10.1 Employee Rights</div>
-            <ul>
-                <li>Access their own personal data held by the Company</li>
-                <li>Request correction of inaccurate personal data</li>
-                <li>Understand how their personal data is being used</li>
-                <li>Report data breaches without fear of retaliation</li>
-            </ul>
-
-            <div class="subsection-title">10.2 Employee Responsibilities</div>
-            <ul>
-                <li>Reading and understanding this policy</li>
-                <li>Attending data protection training programs</li>
-                <li>Following all security procedures and protocols</li>
-                <li>Protecting their own login credentials and access rights</li>
-                <li>Reporting security incidents or policy violations</li>
-                <li>Maintaining confidentiality even after leaving employment</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">11. COMPLIANCE AND LEGAL FRAMEWORK</div>
-            <div class="content">This policy is designed to ensure compliance with applicable Indian laws including:</div>
-            <ol>
-                <li>Information Technology Act, 2000 and IT Rules, 2011</li>
-                <li>Information Technology (Reasonable Security Practices) Rules, 2011</li>
-                <li>Companies Act, 2013</li>
-                <li>Aadhaar Act, 2016</li>
-                <li>Payment of Wages Act, 1936</li>
-                <li>Employees' Provident Funds Act, 1952</li>
-                <li>Income Tax Act, 1961</li>
-                <li>Food Safety and Standards Act, 2006</li>
-                <li>Indian Penal Code, 1860</li>
-                <li>Digital Personal Data Protection Act, 2023</li>
-            </ol>
-        </div>
-
-        <div class="section">
-            <div class="section-title">12. CONSEQUENCES OF NON-COMPLIANCE</div>
-            
-            <div class="subsection-title">12.1 Disciplinary Action</div>
-            <ul>
-                <li><span class="emphasis">First Offense:</span> Written warning and mandatory retraining</li>
-                <li><span class="emphasis">Second Offense:</span> Suspension without pay and final warning</li>
-                <li><span class="emphasis">Serious/Willful Violation:</span> Immediate termination of employment</li>
-            </ul>
-
-            <div class="subsection-title">12.2 Legal Action</div>
-            <div class="content">The Company reserves the right to:</div>
-            <ul>
-                <li>Initiate civil proceedings for damages</li>
-                <li>File criminal complaints under applicable laws</li>
-                <li>Seek injunctions to prevent further breaches</li>
-                <li>Recover monetary losses caused by breach</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">13. TRAINING AND AWARENESS</div>
-            <ul>
-                <li>All new employees must complete confidentiality and data protection training during induction</li>
-                <li>Annual refresher training on data protection</li>
-                <li>Training on new policies or regulatory changes</li>
-                <li>All employees must sign an acknowledgment form</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <div class="section-title">14. CONTACT INFORMATION</div>
-            <div class="content">For questions, concerns, or to report data breaches, contact:</div>
-            <div class="content">
-                <span class="emphasis">Data Protection Officer / HR Manager</span><br>
-                Kisaan Infotech Limited<br>
-                Email: <span class="editable" contenteditable="true">hr@kisaaninfotech.com</span><br>
-                Phone: <span class="editable" contenteditable="true">+91-XXXXXXXXXX</span><br>
-                Address: <span class="editable" contenteditable="true">______________________________</span>
-            </div>
-        </div>
-
-        <div class="signature-section">
-            <div class="section-title">15. POLICY ACKNOWLEDGMENT</div>
-            
-            <div class="signature-box">
-                <div class="content">
-                    I, <span class="editable" contenteditable="true">_________________________</span> (Employee Name), acknowledge that:
+            <p class="subtitle">Confidentiality and Data Protection Policy Generator</p>
+        </header>
+        
+        <div class="content-wrapper">
+            <div class="input-section">
+                <h2>Employee Details</h2>
+                
+                <div class="form-group">
+                    <label for="employeeName">Employee Name:</label>
+                    <input type="text" id="employeeName" placeholder="Enter employee name">
                 </div>
                 
-                <ol style="margin: 15px 0;">
-                    <li>I have received, read, and understood the Confidentiality and Data Protection Policy of Kisaan Infotech Limited</li>
-                    <li>I agree to comply with all provisions of this policy during and after my employment</li>
-                    <li>I understand that violation of this policy may result in disciplinary action including termination and legal prosecution</li>
-                    <li>I will maintain the confidentiality of all information I access during my employment</li>
-                    <li>I will report any data breach or security incident immediately to management</li>
-                    <li>I understand my obligations continue even after termination of employment</li>
-                    <li>I will return all confidential materials and delete all company data from personal devices upon termination</li>
+                <div class="form-group">
+                    <label for="employeeId">Employee ID:</label>
+                    <input type="text" id="employeeId" placeholder="Enter employee ID (optional)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="designation">Designation:</label>
+                    <input type="text" id="designation" value="General Administrative Assistant (Agri-Logistics & Farmer Coordination)" placeholder="Enter designation">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dateOfJoining">Date of Joining:</label>
+                    <input type="date" id="dateOfJoining">
+                </div>
+
+                <h2 style="margin-top: 30px;">Contact Information</h2>
+                
+                <div class="form-group">
+                    <label for="dpoEmail">DPO/HR Email:</label>
+                    <input type="email" id="dpoEmail" value="hr@kisaaninfotech.com" placeholder="hr@kisaaninfotech.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dpoPhone">DPO/HR Phone:</label>
+                    <input type="tel" id="dpoPhone" value="+91-XXXXXXXXXX" placeholder="+91-XXXXXXXXXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="companyAddress">Company Address:</label>
+                    <textarea id="companyAddress" placeholder="Enter company address"></textarea>
+                </div>
+
+                <h2 style="margin-top: 30px;">Version & Dates</h2>
+                
+                <div class="form-group">
+                    <label for="effectiveDate">Effective Date:</label>
+                    <input type="date" id="effectiveDate">
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastReviewed">Last Reviewed:</label>
+                    <input type="date" id="lastReviewed">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nextReview">Next Review Date:</label>
+                    <input type="date" id="nextReview">
+                </div>
+                
+                <div class="button-group">
+                    <button id="generateBtn">Update Preview</button>
+                    <button id="savePdfBtn">Save as PDF</button>
+                    <button id="printBtn">Print</button>
+                    <button id="resetBtn">Reset Form</button>
+                </div>
+            </div>
+            
+            <div class="preview-section" id="policyDocument">
+                <div class="company-logo">
+                    <img src="https://kisaaninfotech.com/Images/kisaan.svg" alt="Kisaan Infotech Logo" class="logo-img">
+                </div>
+                
+                <div class="policy-header">
+                    <h1>Annexure C</h1>
+                    <h2>KISAAN INFOTECH LIMITED</h2>
+                    <h3>CONFIDENTIALITY AND DATA PROTECTION POLICY</h3>
+                </div>
+
+                <div class="employee-details-box">
+                    <table>
+                        <tr>
+                            <td>Employee Name:</td>
+                            <td><span id="previewName" class="editable-field">_________________</span></td>
+                        </tr>
+                        <tr>
+                            <td>Employee ID:</td>
+                            <td><span id="previewId" class="editable-field">_________________</span></td>
+                        </tr>
+                        <tr>
+                            <td>Designation:</td>
+                            <td><span id="previewDesignation" class="editable-field">_________________</span></td>
+                        </tr>
+                        <tr>
+                            <td>Date of Joining:</td>
+                            <td><span id="previewDoj" class="editable-field">_________________</span></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="section-title">1. POLICY OVERVIEW</div>
+                
+                <div class="subsection-title">1.1 Purpose</div>
+                <div class="content">
+                    This Confidentiality and Data Protection Policy establishes guidelines for handling, protecting, and maintaining the confidentiality of sensitive information belonging to Kisaan Infotech Limited ("the Company"), its customers, farmers, business partners, and employees. This policy aims to:
+                </div>
+                <ul>
+                    <li>Protect the Company's proprietary and confidential information</li>
+                    <li>Ensure compliance with applicable data protection laws in India</li>
+                    <li>Maintain trust and integrity in business relationships</li>
+                    <li>Prevent unauthorized disclosure, misuse, or loss of confidential data</li>
+                    <li>Define employee responsibilities regarding information security</li>
+                </ul>
+
+                <div class="subsection-title">1.2 Scope</div>
+                <div class="content">This policy applies to:</div>
+                <ul>
+                    <li>All employees (permanent, probationary, contractual, and temporary)</li>
+                    <li>Consultants, contractors, and third-party service providers</li>
+                    <li>Interns, trainees, and apprentices</li>
+                    <li>All forms of information (physical, electronic, verbal, and visual)</li>
+                    <li>Information accessed, created, stored, or transmitted during employment</li>
+                </ul>
+
+                <div class="subsection-title">1.3 Effective Date</div>
+                <div class="content">
+                    This policy is effective from the date of employee's joining and continues to remain in force even after termination of employment.
+                </div>
+
+                <div class="section-title">2. DEFINITIONS</div>
+                
+                <div class="subsection-title">2.1 Confidential Information</div>
+                <div class="content">Confidential Information includes, but is not limited to:</div>
+                
+                <div class="content"><span class="emphasis">A. Business Information</span></div>
+                <ul>
+                    <li>Business strategies, plans, and forecasts</li>
+                    <li>Marketing and sales strategies</li>
+                    <li>Pricing information, cost structures, and profit margins</li>
+                    <li>Financial data, budgets, and projections</li>
+                    <li>Procurement and sourcing strategies</li>
+                    <li>Vendor and supplier information</li>
+                </ul>
+
+                <div class="content"><span class="emphasis">B. Farmer & Customer Data</span></div>
+                <ul>
+                    <li>Farmer personal details (names, addresses, contact numbers, bank details, Aadhaar, PAN)</li>
+                    <li>Farmer production data, crop patterns, and landholding information</li>
+                    <li>Procurement prices, payment terms, and transaction history</li>
+                    <li>Customer details (names, addresses, contact information)</li>
+                    <li>Customer orders, purchase history, and preferences</li>
+                </ul>
+
+                <div class="content"><span class="emphasis">C. Employee Information</span></div>
+                <ul>
+                    <li>Personal employee data (addresses, contact details, family information)</li>
+                    <li>Salary information and compensation details</li>
+                    <li>Performance reviews and appraisal records</li>
+                    <li>Medical records and health information</li>
+                    <li>Bank account details and tax information</li>
+                </ul>
+
+                <div class="section-title">3. CONFIDENTIALITY OBLIGATIONS</div>
+                
+                <div class="subsection-title">3.1 General Obligations</div>
+                <div class="content">All employees must:</div>
+                <ol>
+                    <li><span class="emphasis">Maintain Confidentiality:</span> Keep all Confidential Information strictly confidential during and after employment</li>
+                    <li><span class="emphasis">Use Only for Business Purposes:</span> Use Confidential Information solely for performing authorized job duties</li>
+                    <li><span class="emphasis">Need-to-Know Basis:</span> Access only the information necessary for job responsibilities</li>
+                    <li><span class="emphasis">Prevent Unauthorized Disclosure:</span> Take all reasonable measures to prevent unauthorized access, use, or disclosure</li>
+                    <li><span class="emphasis">Secure Storage:</span> Store documents and data securely when not in use</li>
+                    <li><span class="emphasis">Report Breaches:</span> Immediately report any suspected or actual breach of confidentiality</li>
+                    <li><span class="emphasis">Return Materials:</span> Return all confidential materials upon termination or when no longer needed</li>
                 </ol>
 
-                <div class="signature-line">
-                    <span class="signature-label">Employee Signature:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
+                <div class="subsection-title">3.2 Prohibited Actions</div>
+                <div class="content">Employees must NOT:</div>
+                <ol>
+                    <li>Disclose Confidential Information to unauthorized persons, including family members and friends</li>
+                    <li>Discuss confidential matters in public places</li>
+                    <li>Remove confidential documents from office premises without authorization</li>
+                    <li>Copy, photograph, or reproduce confidential materials without permission</li>
+                    <li>Use Confidential Information for personal benefit or gain</li>
+                    <li>Share passwords, login credentials, or access codes with others</li>
+                </ol>
+
+                <div class="section-title">4. DATA PROTECTION PRINCIPLES</div>
+                
+                <div class="subsection-title">4.1 Key Principles</div>
+                <ul>
+                    <li><span class="emphasis">Lawfulness and Fairness:</span> Data shall be collected and processed lawfully and fairly with clear communication of purpose</li>
+                    <li><span class="emphasis">Purpose Limitation:</span> Data shall be collected only for specified, explicit, and legitimate purposes</li>
+                    <li><span class="emphasis">Data Minimization:</span> Only necessary and relevant data shall be collected</li>
+                    <li><span class="emphasis">Accuracy:</span> Data shall be accurate, complete, and kept up to date</li>
+                    <li><span class="emphasis">Storage Limitation:</span> Data shall be retained only for as long as necessary</li>
+                    <li><span class="emphasis">Integrity and Confidentiality:</span> Appropriate security measures shall be implemented to protect data</li>
+                </ul>
+
+                <div class="section-title">5. DATA SECURITY MEASURES</div>
+                
+                <div class="subsection-title">5.1 Physical Security</div>
+                <ul>
+                    <li>Store all physical documents containing confidential information in locked cabinets/drawers</li>
+                    <li>Do not leave confidential documents unattended on desks</li>
+                    <li>Shred or destroy confidential documents before disposal</li>
+                    <li>Lock office premises when leaving</li>
+                    <li>Restrict access to sensitive areas</li>
+                </ul>
+
+                <div class="subsection-title">5.2 Digital Security</div>
+                <ul>
+                    <li>Use strong passwords (minimum 8 characters with alphanumeric and special characters)</li>
+                    <li>Change passwords regularly (every 90 days minimum)</li>
+                    <li>Do not share passwords or login credentials</li>
+                    <li>Lock computer/device when leaving workstation</li>
+                    <li>Install and update antivirus software regularly</li>
+                    <li>Use company email only for business communication</li>
+                    <li>Verify recipient email addresses before sending confidential information</li>
+                </ul>
+
+                <div class="subsection-title">5.3 Communication Security</div>
+                <ul>
+                    <li>Do not discuss confidential matters in public places</li>
+                    <li>Use private meeting rooms for confidential discussions</li>
+                    <li>Be mindful of phone conversations in open areas</li>
+                    <li>Do not post or share any company information on social media platforms</li>
+                </ul>
+
+                <div class="section-title">6. SPECIFIC DATA PROTECTION REQUIREMENTS</div>
+                
+                <div class="subsection-title">6.1 Farmer Data Protection</div>
+                <ul>
+                    <li>Collect farmer data only for legitimate business purposes (procurement, payment, communication)</li>
+                    <li>Obtain verbal or written consent from farmers for data collection</li>
+                    <li>Do not share farmer contact details with competitors or unauthorized parties</li>
+                    <li>Protect farmer bank account and payment information with highest security</li>
+                    <li>Ensure farmers' Aadhaar and PAN information is stored securely</li>
+                </ul>
+
+                <div class="subsection-title">6.2 Customer Data Protection</div>
+                <ul>
+                    <li>Use customer data only for order processing, delivery, and customer service</li>
+                    <li>Do not share customer lists or contact details with third parties without consent</li>
+                    <li>Protect customer payment and financial information</li>
+                    <li>Maintain customer privacy during delivery and service interactions</li>
+                </ul>
+
+                <div class="subsection-title">6.3 Employee Data Protection</div>
+                <ul>
+                    <li>Use employee data only for HR, payroll, compliance, and administrative purposes</li>
+                    <li>Maintain strict confidentiality of salary and compensation information</li>
+                    <li>Protect employee Aadhaar, PAN, bank details, and other sensitive information</li>
+                    <li>Maintain confidentiality of performance reviews and disciplinary records</li>
+                </ul>
+
+                <div class="section-title">7. DATA RETENTION AND DISPOSAL</div>
+                
+                <div class="subsection-title">7.1 Retention Periods</div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Type of Data</th>
+                            <th>Retention Period</th>
+                            <th>Legal Basis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Farmer procurement records</td>
+                            <td>7 years from last transaction</td>
+                            <td>Income Tax Act, 1961</td>
+                        </tr>
+                        <tr>
+                            <td>Customer transaction records</td>
+                            <td>7 years from transaction date</td>
+                            <td>Income Tax Act, 1961</td>
+                        </tr>
+                        <tr>
+                            <td>Employee records (current)</td>
+                            <td>During employment + 7 years</td>
+                            <td>Various labor laws</td>
+                        </tr>
+                        <tr>
+                            <td>Financial records</td>
+                            <td>7 years from financial year end</td>
+                            <td>Companies Act, 2013</td>
+                        </tr>
+                        <tr>
+                            <td>Tax documents (PF, ESI, TDS)</td>
+                            <td>7 years from relevant year</td>
+                            <td>Respective tax laws</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="subsection-title">7.2 Data Disposal</div>
+                <div class="content"><span class="emphasis">Physical Documents:</span> Shred using cross-cut shredder, do not dispose in regular trash, maintain disposal log for sensitive documents.</div>
+                <div class="content"><span class="emphasis">Digital Data:</span> Permanently delete files, overwrite deleted data using secure deletion tools, physically destroy hard drives containing highly sensitive data.</div>
+
+                <div class="section-title">8. DATA BREACH MANAGEMENT</div>
+                
+                <div class="subsection-title">8.1 What is a Data Breach?</div>
+                <div class="content">A data breach is any incident where confidential or personal data is:</div>
+                <ul>
+                    <li>Accessed by unauthorized persons</li>
+                    <li>Disclosed to unauthorized parties</li>
+                    <li>Lost, stolen, or misplaced</li>
+                    <li>Damaged or destroyed</li>
+                    <li>Modified or corrupted without authorization</li>
+                </ul>
+
+                <div class="subsection-title">8.2 Reporting Data Breaches</div>
+                <div class="content">Any employee who discovers or suspects a data breach must:</div>
+                <ol>
+                    <li>Stop the breach if possible</li>
+                    <li>Immediately inform immediate supervisor and HR department</li>
+                    <li>Document the incident</li>
+                    <li>Report within <span class="emphasis">1 hour</span> of discovering a potential breach</li>
+                    <li>Cooperate fully with investigation</li>
+                </ol>
+
+                <div class="note-box">
+                    <strong>Important:</strong> Do not attempt to cover up or ignore any data breach. Depending on severity and intent, consequences may include verbal/written warning, suspension without pay, termination of employment, legal action and prosecution, or recovery of damages.
                 </div>
 
-                <div class="signature-line">
-                    <span class="signature-label">Employee Name:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
+                <div class="section-title">9. COMPLIANCE AND LEGAL FRAMEWORK</div>
+                <div class="content">This policy is designed to ensure compliance with applicable Indian laws including:</div>
+                <ol>
+                    <li>Information Technology Act, 2000 and IT Rules, 2011</li>
+                    <li>Information Technology (Reasonable Security Practices) Rules, 2011</li>
+                    <li>Companies Act, 2013</li>
+                    <li>Aadhaar Act, 2016</li>
+                    <li>Payment of Wages Act, 1936</li>
+                    <li>Employees' Provident Funds Act, 1952</li>
+                    <li>Income Tax Act, 1961</li>
+                    <li>Food Safety and Standards Act, 2006</li>
+                    <li>Digital Personal Data Protection Act, 2023</li>
+                </ol>
+
+                <div class="section-title">10. CONSEQUENCES OF NON-COMPLIANCE</div>
+                
+                <div class="subsection-title">10.1 Disciplinary Action</div>
+                <ul>
+                    <li><span class="emphasis">First Offense:</span> Written warning and mandatory retraining</li>
+                    <li><span class="emphasis">Second Offense:</span> Suspension without pay and final warning</li>
+                    <li><span class="emphasis">Serious/Willful Violation:</span> Immediate termination of employment</li>
+                </ul>
+
+                <div class="subsection-title">10.2 Legal Action</div>
+                <div class="content">The Company reserves the right to initiate civil proceedings for damages, file criminal complaints under applicable laws, seek injunctions to prevent further breaches, and recover monetary losses caused by breach.</div>
+
+                <div class="section-title">11. EMPLOYEE RIGHTS AND RESPONSIBILITIES</div>
+                
+                <div class="subsection-title">11.1 Employee Rights</div>
+                <ul>
+                    <li>Access their own personal data held by the Company</li>
+                    <li>Request correction of inaccurate personal data</li>
+                    <li>Understand how their personal data is being used</li>
+                    <li>Report data breaches without fear of retaliation</li>
+                </ul>
+
+                <div class="subsection-title">11.2 Employee Responsibilities</div>
+                <ul>
+                    <li>Reading and understanding this policy</li>
+                    <li>Attending data protection training programs</li>
+                    <li>Following all security procedures and protocols</li>
+                    <li>Reporting security incidents or policy violations</li>
+                    <li>Maintaining confidentiality even after leaving employment</li>
+                </ul>
+
+                <div class="section-title">12. CONTACT INFORMATION</div>
+                <div class="content">For questions, concerns, or to report data breaches, contact:</div>
+                
+                <div class="contact-box">
+                    <p><strong>Data Protection Officer / HR Manager</strong></p>
+                    <p>Kisaan Infotech Limited</p>
+                    <p>Email: <span id="previewEmail">hr@kisaaninfotech.com</span></p>
+                    <p>Phone: <span id="previewPhone">+91-XXXXXXXXXX</span></p>
+                    <p>Address: <span id="previewAddress">_______________________</span></p>
                 </div>
 
-                <div class="signature-line">
-                    <span class="signature-label">Employee ID:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
+                <div class="signature-section">
+                    <div class="section-title">13. POLICY ACKNOWLEDGMENT</div>
+                    
+                    <div class="signature-box">
+                        <div class="content">
+                            I, <span id="acknowledgmentName" class="editable-field">_________________________</span> (Employee Name), acknowledge that:
+                        </div>
+                        
+                        <ol class="acknowledgment-list">
+                            <li>I have received, read, and understood the Confidentiality and Data Protection Policy of Kisaan Infotech Limited</li>
+                            <li>I agree to comply with all provisions of this policy during and after my employment</li>
+                            <li>I understand that violation of this policy may result in disciplinary action including termination and legal prosecution</li>
+                            <li>I will maintain the confidentiality of all information I access during my employment</li>
+                            <li>I will report any data breach or security incident immediately to management</li>
+                            <li>I understand my obligations continue even after termination of employment</li>
+                            <li>I will return all confidential materials and delete all company data from personal devices upon termination</li>
+                        </ol>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Employee Signature:</span>
+                            <span class="signature-input"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Employee Name:</span>
+                            <span class="signature-input" id="signatureName"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Employee ID:</span>
+                            <span class="signature-input" id="signatureId"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Date:</span>
+                            <span class="signature-input"></span>
+                        </div>
+                    </div>
+
+                    <div class="signature-box">
+                        <div class="content"><span class="emphasis">Witnessed By (HR/Manager):</span></div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Signature:</span>
+                            <span class="signature-input"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Name:</span>
+                            <span class="signature-input"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Designation:</span>
+                            <span class="signature-input"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Date:</span>
+                            <span class="signature-input"></span>
+                        </div>
+                    </div>
+
+                    <div class="signature-box">
+                        <div class="content"><span class="emphasis">FOR KISAAN INFOTECH LIMITED:</span></div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Authorized Signatory:</span>
+                            <span class="signature-input"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Name:</span>
+                            <span class="signature-input"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Designation:</span>
+                            <span class="signature-input"></span>
+                        </div>
+
+                        <div class="signature-line">
+                            <span class="signature-label">Date:</span>
+                            <span class="signature-input"></span>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <div class="content"><span class="emphasis">Company Seal:</span></div>
+                            <div style="border: 2px dashed #999; height: 80px; width: 200px; margin-top: 10px; background-color: white;"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="signature-line">
-                    <span class="signature-label">Date:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
-                </div>
-            </div>
-
-            <div class="signature-box">
-                <div class="content"><span class="emphasis">Witnessed By (HR/Manager):</span></div>
-
-                <div class="signature-line">
-                    <span class="signature-label">Signature:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
+                <div class="version-info">
+                    <p><span class="emphasis">Version:</span> 1.0</p>
+                    <p><span class="emphasis">Effective Date:</span> <span id="versionEffective">_____________</span></p>
+                    <p><span class="emphasis">Last Reviewed:</span> <span id="versionReviewed">_____________</span></p>
+                    <p><span class="emphasis">Next Review Date:</span> <span id="versionNext">_____________</span></p>
                 </div>
 
-                <div class="signature-line">
-                    <span class="signature-label">Name:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
+                <div class="confidential-footer">
+                    This policy is confidential and proprietary to Kisaan Infotech Limited. Unauthorized distribution is prohibited.
                 </div>
-
-                <div class="signature-line">
-                    <span class="signature-label">Designation:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
-                </div>
-
-                <div class="signature-line">
-                    <span class="signature-label">Date:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
-                </div>
-            </div>
-
-            <div class="signature-box">
-                <div class="content"><span class="emphasis">FOR KISAAN INFOTECH LIMITED:</span></div>
-
-                <div class="signature-line">
-                    <span class="signature-label">Authorized Signatory:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
-                </div>
-
-                <div class="signature-line">
-                    <span class="signature-label">Name:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
-                </div>
-
-                <div class="signature-line">
-                    <span class="signature-label">Designation:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
-                </div>
-
-                <div class="signature-line">
-                    <span class="signature-label">Date:</span>
-                    <span class="signature-input editable" contenteditable="true"></span>
-                </div>
-
-                <div style="margin-top: 30px;">
-                    <div class="content"><span class="emphasis">Company Seal:</span></div>
-                    <div style="border: 1px dashed #999; height: 80px; width: 200px; margin-top: 10px;"></div>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px; text-align: center; font-size: 11px;">
-                <div><span class="emphasis">Version:</span> 1.0</div>
-                <div><span class="emphasis">Effective Date:</span> <span class="editable" contenteditable="true">_____________</span></div>
-                <div><span class="emphasis">Last Reviewed:</span> <span class="editable" contenteditable="true">_____________</span></div>
-                <div><span class="emphasis">Next Review Date:</span> <span class="editable" contenteditable="true">_____________</span></div>
-            </div>
-
-            <div class="note" style="margin-top: 30px;">
-                This policy is confidential and proprietary to Kisaan Infotech Limited. Unauthorized distribution is prohibited.
             </div>
         </div>
     </div>
 
     <script>
-        // Toggle edit mode
-        function toggleEditMode() {
-            document.body.classList.toggle('edit-mode');
-            const editables = document.querySelectorAll('.editable');
-            editables.forEach(el => {
-                const isEditable = el.getAttribute('contenteditable') === 'true';
-                el.setAttribute('contenteditable', !isEditable);
-            });
-        }
-
-        // Save data to localStorage
-        function saveData() {
-            const editables = document.querySelectorAll('.editable');
-            const data = {};
-            editables.forEach((el, index) => {
-                data[`field_${index}`] = el.innerText || el.textContent;
-            });
-            localStorage.setItem('dataProtectionPolicy', JSON.stringify(data));
-            alert('Data saved successfully! You can close and reopen this page, and your data will be preserved.');
-        }
-
-        // Load data from localStorage
-        function loadData() {
-            const saved = localStorage.getItem('dataProtectionPolicy');
-            if (saved) {
-                const data = JSON.parse(saved);
-                const editables = document.querySelectorAll('.editable');
-                editables.forEach((el, index) => {
-                    if (data[`field_${index}`]) {
-                        el.innerText = data[`field_${index}`];
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const savePdfBtn = document.getElementById('savePdfBtn');
+            const printBtn = document.getElementById('printBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            
+            // Initialize with default values
+            updatePreview();
+            
+            generateBtn.addEventListener('click', updatePreview);
+            
+            savePdfBtn.addEventListener('click', function() {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+                
+                // Show loading message
+                const originalText = savePdfBtn.textContent;
+                savePdfBtn.textContent = 'Generating PDF...';
+                savePdfBtn.disabled = true;
+                
+                // Capture the policy document element
+                html2canvas(document.getElementById('policyDocument'), {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const imgWidth = 210; // A4 width in mm
+                    const pageHeight = 297; // A4 height in mm
+                    const imgHeight = canvas.height * imgWidth / canvas.width;
+                    let heightLeft = imgHeight;
+                    let position = 0;
+                    
+                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                    
+                    // Add additional pages if needed
+                    while (heightLeft >= 0) {
+                        position = heightLeft - imgHeight;
+                        doc.addPage();
+                        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                        heightLeft -= pageHeight;
                     }
+                    
+                    const employeeName = document.getElementById('employeeName').value || 'Employee';
+                    doc.save('Data_Protection_Policy_' + employeeName.replace(/\s+/g, '_') + '.pdf');
+                    
+                    // Reset button
+                    savePdfBtn.textContent = originalText;
+                    savePdfBtn.disabled = false;
                 });
-                alert('Data loaded successfully!');
-            } else {
-                alert('No saved data found.');
-            }
-        }
-
-        // Reset form
-        function resetForm() {
-            if (confirm('Are you sure you want to reset all fields? This will clear all entered data.')) {
-                const editables = document.querySelectorAll('.editable');
-                editables.forEach(el => {
-                    if (el.classList.contains('signature-input')) {
-                        el.innerText = '';
-                    } else {
-                        // Reset to default placeholder values
-                        const text = el.innerText;
-                        if (text.includes('@') || text.includes('+91')) {
-                            el.innerText = el.innerText.replace(/[^_\s@+\-]/g, 'X');
-                        } else if (text.match(/_{2,}/)) {
-                            // Keep underscores as is
-                        }
-                    }
-                });
-                localStorage.removeItem('dataProtectionPolicy');
-                alert('Form reset successfully!');
-            }
-        }
-
-        // Auto-load data on page load
-        window.addEventListener('load', () => {
-            const saved = localStorage.getItem('dataProtectionPolicy');
-            if (saved) {
-                const shouldLoad = confirm('Previously saved data found. Would you like to load it?');
-                if (shouldLoad) {
-                    loadData();
+            });
+            
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            resetBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to reset all fields?')) {
+                    document.getElementById('employeeName').value = '';
+                    document.getElementById('employeeId').value = '';
+                    document.getElementById('designation').value = 'General Administrative Assistant (Agri-Logistics & Farmer Coordination)';
+                    document.getElementById('dateOfJoining').value = '';
+                    document.getElementById('dpoEmail').value = 'hr@kisaaninfotech.com';
+                    document.getElementById('dpoPhone').value = '+91-XXXXXXXXXX';
+                    document.getElementById('companyAddress').value = '';
+                    document.getElementById('effectiveDate').value = '';
+                    document.getElementById('lastReviewed').value = '';
+                    document.getElementById('nextReview').value = '';
+                    
+                    updatePreview();
                 }
-            }
-        });
-
-        // Print setup
-        window.addEventListener('beforeprint', () => {
-            document.body.classList.remove('edit-mode');
-        });
-
-        // Prevent accidental navigation away
-        let hasEdited = false;
-        document.querySelectorAll('.editable').forEach(el => {
-            el.addEventListener('input', () => {
-                hasEdited = true;
             });
-        });
-
-        window.addEventListener('beforeunload', (e) => {
-            if (hasEdited && !localStorage.getItem('dataProtectionPolicy')) {
-                e.preventDefault();
-                e.returnValue = 'You have unsaved changes. Save your data before leaving.';
-                return e.returnValue;
+            
+            function updatePreview() {
+                // Get input values
+                const employeeName = document.getElementById('employeeName').value;
+                const employeeId = document.getElementById('employeeId').value;
+                const designation = document.getElementById('designation').value;
+                const dateOfJoining = document.getElementById('dateOfJoining').value;
+                const dpoEmail = document.getElementById('dpoEmail').value;
+                const dpoPhone = document.getElementById('dpoPhone').value;
+                const companyAddress = document.getElementById('companyAddress').value;
+                const effectiveDate = document.getElementById('effectiveDate').value;
+                const lastReviewed = document.getElementById('lastReviewed').value;
+                const nextReview = document.getElementById('nextReview').value;
+                
+                // Format dates
+                const formatDate = (dateStr) => {
+                    if (!dateStr) return '_____________';
+                    const date = new Date(dateStr);
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    return date.toLocaleDateString('en-IN', options);
+                };
+                
+                // Update employee details box
+                document.getElementById('previewName').textContent = employeeName || '_________________';
+                document.getElementById('previewId').textContent = employeeId || '_________________';
+                document.getElementById('previewDesignation').textContent = designation || '_________________';
+                document.getElementById('previewDoj').textContent = formatDate(dateOfJoining);
+                
+                // Update contact information
+                document.getElementById('previewEmail').textContent = dpoEmail || 'hr@kisaaninfotech.com';
+                document.getElementById('previewPhone').textContent = dpoPhone || '+91-XXXXXXXXXX';
+                document.getElementById('previewAddress').textContent = companyAddress || '_______________________';
+                
+                // Update acknowledgment section
+                document.getElementById('acknowledgmentName').textContent = employeeName || '_________________________';
+                document.getElementById('signatureName').textContent = employeeName || '';
+                document.getElementById('signatureId').textContent = employeeId || '';
+                
+                // Update version information
+                document.getElementById('versionEffective').textContent = formatDate(effectiveDate);
+                document.getElementById('versionReviewed').textContent = formatDate(lastReviewed);
+                document.getElementById('versionNext').textContent = formatDate(nextReview);
             }
+            
+            // Auto-update on input change
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', updatePreview);
+            });
         });
     </script>
 </body>
