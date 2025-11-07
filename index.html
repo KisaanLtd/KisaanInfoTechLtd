@@ -24,20 +24,28 @@
         }
 
         :root {
-            --primary: #70DB93;
-            --primary-dark: #5bc47d;
-            --secondary: #2d5f3f;
-            --text-dark: #2c3e50;
-            --text-light: #6c757d;
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --secondary: #1976d2;
+            --secondary-dark: #0d47a1;
+            --accent: #ff9800;
+            --text-dark: #263238;
+            --text-light: #546e7a;
             --bg-light: #f8f9fa;
             --white: #ffffff;
+            --light-green: #e8f5e9;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            background-color: var(--white);
         }
 
         /* Navigation */
@@ -48,7 +56,7 @@
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .navbar.scrolled {
@@ -65,9 +73,21 @@
             padding: 15px 20px;
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .logo img {
             height: 50px;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
         }
 
         .logo:hover img {
@@ -84,19 +104,20 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: var(--transition);
             position: relative;
+            padding: 8px 0;
         }
 
         .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background: var(--primary);
-            transition: width 0.3s ease;
+            transition: var(--transition);
         }
 
         .nav-menu a:hover {
@@ -118,13 +139,13 @@
             width: 25px;
             height: 3px;
             background: var(--text-dark);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
             padding: 100px 20px;
             text-align: center;
@@ -166,25 +187,29 @@
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background: var(--primary);
-            color: var(--white);
+            background: var(--white);
+            color: var(--primary);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             animation: fadeInUp 1s ease 0.4s backwards;
             margin: 0 10px;
+            border: 2px solid transparent;
         }
 
         .cta-button:hover {
-            background: var(--primary-dark);
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(112, 219, 147, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
         }
 
         .cta-button.secondary {
             background: transparent;
             border: 2px solid var(--white);
+            color: var(--white);
         }
 
         .cta-button.secondary:hover {
@@ -227,29 +252,41 @@
 
         .card {
             background: var(--white);
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border-color: var(--primary);
         }
 
         .card-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: var(--light-green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
             font-size: 1.8rem;
+            color: var(--primary);
         }
 
         .card h3 {
@@ -283,10 +320,23 @@
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
             padding: 40px;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             text-align: center;
             margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(112, 219, 147, 0.3);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .investors-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ffffff" fill-opacity="0.1" d="M30,30 Q50,10 70,30 T90,50 Q70,70 50,90 T30,70 Q10,50 30,30 Z"></path></svg>') no-repeat;
+            background-size: contain;
         }
 
         .investors-banner h3 {
@@ -298,6 +348,9 @@
             font-size: 1.1rem;
             margin-bottom: 20px;
             opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .investors-banner .cta-button {
@@ -307,7 +360,7 @@
         }
 
         .investors-banner .cta-button:hover {
-            background: var(--bg-light);
+            background: var(--light-green);
         }
 
         /* Resource Grid */
@@ -320,9 +373,10 @@
         .resource-card {
             background: var(--white);
             padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .resource-card:hover {
@@ -334,6 +388,18 @@
             color: var(--primary);
             margin-bottom: 15px;
             font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .resource-card h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
         }
 
         .resource-card a {
@@ -341,7 +407,8 @@
             padding: 8px 0;
             color: var(--text-dark);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .resource-card a:hover {
@@ -359,9 +426,14 @@
         .contact-card {
             background: var(--white);
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
             text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
         }
 
         .contact-card h4 {
@@ -372,7 +444,7 @@
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #2d3748, #1a202c);
+            background: linear-gradient(135deg, var(--primary-dark), var(--text-dark));
             color: var(--white);
             padding: 50px 20px 20px;
             text-align: center;
@@ -395,7 +467,7 @@
             justify-content: center;
             color: var(--white);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .social-links a:hover {
@@ -457,6 +529,10 @@
                 display: block;
                 margin: 10px 0;
             }
+            
+            .logo-text {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -465,7 +541,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="https://kisaaninfotech.com"><img src="//kisaaninfotech.com/Images/KisaanInfotech.svg" alt="Kisaan Infotech"></a>
+                <a href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/KisaanInfotech.svg" alt="Kisaan Infotech"></a>
             </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#about">About</a></li>
