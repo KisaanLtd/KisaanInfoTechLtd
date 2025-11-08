@@ -1012,9 +1012,8 @@ Sharpe Ratio: 1.2
 - May be distribution in disguise (becomes Regime 7)
 - Time-based decay of momentum
 - Requires patience and discipline
-
+```
 ---
-
 ## REGIME 4: BEARISH CONTINUATION
 
 ### Classification Criteria
@@ -1213,9 +1212,9 @@ Sharpe Ratio: 1.2
 ### Edge Analysis
 
 Mirror of Regime 3 with bearish bias. Works best when transitioning to Regime 2, fails when transitioning to Regime 8.
+```
 
 ---
-
 ## REGIME 5: BULLISH DIVERGENCE (Power Leading)
 
 ### Classification Criteria
@@ -1528,6 +1527,7 @@ Regime 5 is where professional traders make their money. It requires:
 - Conviction to enter early
 - Discipline to hold through consolidation
 - Trust in the system
+```
 
 ---
 
@@ -1769,6 +1769,8 @@ Mirror of Regime 5 with bearish edge:
 4. Clear invalidation
 
 **Expected Value: +1.736 ATR per trade** (identical to Regime 5)
+
+```
 
 ---
 
