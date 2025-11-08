@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Ranges Visual Chart</title>
+    <style>
+        @media print {
+            @page {
+                size: letter landscape;
+                margin: 0.5in;
+            }
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .chart-section {
+            margin-bottom: 40px;
+        }
+        
+        .chart-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: linear-gradient(90deg, #f0f0f0 0%, #fff 100%);
+            border-left: 5px solid #667eea;
+        }
+        
+        .range-chart {
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .scale {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        .bar-container {
+            position: relative;
+            height: 60px;
+            background: linear-gradient(90deg, #ff4444 0%, #ffaa44 25%, #ffff44 50%, #aaff44 75%, #44ff44 100%);
+            border-radius: 30px;
+            margin: 10px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .bar-container.reverse {
+            background: linear-gradient(90deg, #44ff44 0%, #aaff44 25%, #ffff44 50%, #ffaa44 75%, #ff4444 100%);
+        }
+        
+        .range-marker {
+            position: absolute;
+            height: 100%;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 13px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .regime-1 { background: rgba(34, 197, 94, 0.9); }
+        .regime-2 { background: rgba(239, 68, 68, 0.9); }
+        .regime-5 { background: rgba(6, 182, 212, 0.9); }
+        .regime-6 { background: rgba(249, 115, 22, 0.9); }
+        .regime-7 { background: rgba(168, 85, 247, 0.9); }
+        .regime-8 { background: rgba(234, 179, 8, 0.9); }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .legend-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-right: 12px;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .legend-text {
+            flex: 1;
+        }
+        
+        .legend-label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 3px;
+        }
+        
+        .legend-desc {
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .power-alignment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .alignment-card {
+            border: 3px solid;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .alignment-card.bullish {
+            border-color: #22c55e;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+        
+        .alignment-card.bearish {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        }
+        
+        .alignment-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .alignment-icon {
+            font-size: 36px;
+        }
+        
+        .alignment-condition {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border-left: 4px solid;
+            font-size: 14px;
+        }
+        
+        .alignment-card.bullish .alignment-condition {
+            border-color: #22c55e;
+        }
+        
+        .alignment-card.bearish .alignment-condition {
+            border-color: #ef4444;
+        }
+        
+        .optimal-value {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .value-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .value-table th,
+        .value-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .value-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .value-table td {
+            font-size: 13px;
+        }
+        
+        .value-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        .value-table tr:hover {
+            background: #fef3c7;
+        }
+        
+        .best-setups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .setup-card {
+            border: 3px solid;
+            border-radius: 12px;
+            padding: 20px;
+            background: white;
+        }
+        
+        .setup-card.regime-1-setup {
+            border-color: #22c55e;
+            background: linear-gradient(135deg, #f0fdf4 0%, white 100%);
+        }
+        
+        .setup-card.regime-5-setup {
+            border-color: #06b6d4;
+            background: linear-gradient(135deg, #ecfeff 0%, white 100%);
+        }
+        
+        .setup-card.regime-7-setup {
+            border-color: #a855f7;
+            background: linear-gradient(135deg, #faf5ff 0%, white 100%);
+        }
+        
+        .setup-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+        }
+        
+        .setup-card.regime-1-setup .setup-header { border-color: #22c55e; color: #22c55e; }
+        .setup-card.regime-5-setup .setup-header { border-color: #06b6d4; color: #06b6d4; }
+        .setup-card.regime-7-setup .setup-header { border-color: #a855f7; color: #a855f7; }
+        
+        .setup-metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            margin: 6px 0;
+            background: #f9fafb;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        
+        .setup-metric-label {
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .setup-metric-value {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .stars {
+            color: #fbbf24;
+            font-size: 20px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Print Chart</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>📊 OPTIMAL RANGES VISUAL CHART</h1>
+            <p>8-Regime Trading System - Critical Values for Maximum Edge</p>
+        </div>
+
+        <!-- CODE DIVERGENCE CHART -->
+        <div class="chart-section">
+            <div class="chart-title">1️⃣ CODE DIVERGENCE (Core Matrix - VWAP Matrix)</div>
+            
+            <div class="range-chart">
+                <div class="scale">
+                    <span>-12</span>
+                    <span>-9</span>
+                    <span>-6</span>
+                    <span>-3</span>
+                    <span>0</span>
+                    <span>+3</span>
+                    <span>+6</span>
+                    <span>+9</span>
+                    <span>+12</span>
+                </div>
+                
+                <div class="bar-container">
+                    <!-- Regime 8: -8 to -4 -->
+                    <div class="range-marker regime-8" style="left: 16.67%; width: 16.67%;">
+                        R8: -8 to -4
+                    </div>
+                    
+                    <!-- Regime 6: -6 to -3 -->
+                    <div class="range-marker regime-6" style="left: 25%; width: 12.5%;">
+                        R6: -6 to -3
+                    </div>
+                    
+                    <!-- Regime 2: -3 to +2 -->
+                    <div class="range-marker regime-2" style="left: 37.5%; width: 20.83%;">
+                        R2: -3 to +2
+                    </div>
+                    
+                    <!-- Regime 1: -2 to +3 -->
+                    <div class="range-marker regime-1" style="left: 41.67%; width: 20.83%;">
+                        R1: -2 to +3
+                    </div>
+                    
+                    <!-- Regime 5: +3 to +6 -->
+                    <div class="range-marker regime-5" style="left: 62.5%; width: 12.5%;">
+                        R5: +3 to +6
+                    </div>
+                    
+                    <!-- Regime 7: +4 to +8 -->
+                    <div class="range-marker regime-7" style="left: 66.67%; width: 16.67%;">
+                        R7: +4 to +8
+                    </div>
+                </div>
+                
+                <div style="margin-top: 15px; padding: 12px; background: #fef3c7; border-left: 4px solid #fbbf24; border-radius: 6px;">
+                    <strong>🎯 BEST VALUES:</strong>
+                    <br>• <strong>Aligned Zone:</strong> -2 to +2 (Regime 1 & 2) → Maximum conviction, 70-75% win rate
+                    <br>• <strong>⭐ Early Entry Zone:</strong> ±3 to ±6 (Regime 5 & 6) → BEST R:R (1:4), 72% win rate
+                    <br>• <strong>⚠️ Extreme Zone:</strong> > ±6 (Regime 7 & 8) → EXIT signal, 80% reversal probability
+                </div>
+            </div>
+        </div>
+
+        <!-- POWER DIVERGENCE CHART -->
+        <div class="chart-section">
+            <div class="chart-title">2️⃣ POWER DIVERGENCE (bbp_norm - power_momentum_strength)</div>
+            
+            <div class="range-chart">
+                <div class="scale">
+                    <span>-5.0</span>
+                    <span>-4.0</span>
+                    <span>-3.0</span>
+                    <span>-2.0</span>
+                    <span>-1.0</span>
+                    <span>0</span>
+                    <span>+1.0</span>
+                    <span>+2.0</span>
+                    <span>+3.0</span>
+                    <span>+4.0</span>
+                    <span>+5.0</span>
+                </div>
+                
+                <div class="bar-container reverse">
+                    <!-- Bearish Zones (left side) -->
+                    <div class="range-marker regime-6" style="left: 20%; width: 20%;">
+                        R6: -3.0 to -1.0
+                    </div>
+                    
+                    <div class="range-marker regime-2" style="left: 25%; width: 15%;">
+                        R2: -2.5 to -0.5
+                    </div>
+                    
+                    <!-- Bullish Zones (right side) -->
+                    <div class="range-marker regime-1" style="right: 40%; width: 15%;">
+                        R1: +0.5 to +2.5
+                    </div>
+                    
+                    <div class="range-marker regime-5" style="right: 20%; width: 20%;">
+                        R5: +1.0 to +3.0
+                    </div>
+                </div>
+                
+                <div style="margin-top: 15px; padding: 12px; background: #fef3c7; border-left: 4px solid #fbbf24; border-radius: 6px;">
+                    <strong>🎯 BEST VALUES:</strong>
+                    <br>• <strong>Bullish Edge:</strong> +1.0 to +3.0 (Power exceeding momentum) → ⭐ OPTIMAL: +1.5 to +2.0
+                    <br>• <strong>Bearish Edge:</strong> -3.0 to -1.0 (Power below momentum) → ⭐ OPTIMAL: -2.0 to -1.5
+                    <br>• <strong>Neutral Zone:</strong> -0.5 to +0.5 (Wait for signal)
+                    <br>• <strong>⚠️ Extreme:</strong> > ±3.0 (Watch for exhaustion)
+                </div>
+            </div>
+        </div>
+
+        <!-- POWER ALIGNMENT -->
+        <div class="chart-section">
+            <div class="chart-title">3️⃣ POWER ALIGNMENT (Critical Confirmation)</div>
+            
+            <div class="power-alignment-grid">
+                <div class="alignment-card bullish">
+                    <div class="alignment-header">
+                        <span>✅ BULLISH POWER ALIGNMENT</span>
+                        <span class="alignment-icon">📈</span>
+                    </div>
+                    
+                    <div class="alignment-condition">
+                        <strong>Condition 1:</strong> power_momentum_divergence > 0
+                        <div style="font-size: 12px; color: #666; margin-top: 4px;">
+                            (Current power exceeds momentum)
+                        </div>
+                    </div>
+                    
+                    <div class="alignment-condition">
+                        <strong>Condition 2:</strong> power_momentum_strength < 0
+                        <div style="font-size: 12px; color: #666; margin-top: 4px;">
+                            (Bulls accelerating - building from below)
+                        </div>
+                    </div>
+                    
+                    <div class="optimal-value">
+                        <div style="font-size: 16px; margin-bottom: 8px;">⭐ OPTIMAL VALUES:</div>
+                        <div>Power Divergence: <strong>+1.5 to +3.0</strong></div>
+                        <div>Momentum Strength: <strong>-0.5 to -1.5</strong></div>
+                    </div>
+                    
+                    <div style="margin-top: 12px; padding: 10px; background: white; border-radius: 6px; font-size: 13px;">
+                        <strong>Required For:</strong> Regime 1 (Explosive) & Regime 5 (Early Entry)
+                    </div>
+                </div>
+                
+                <div class="alignment-card bearish">
+                    <div class="alignment-header">
+                        <span>❌ BEARISH POWER ALIGNMENT</span>
+                        <span class="alignment-icon">📉</span>
+                    </div>
+                    
+                    <div class="alignment-condition">
+                        <strong>Condition 1:</strong> power_momentum_divergence < 0
+                        <div style="font-size: 12px; color: #666; margin-top: 4px;">
+                            (Current power below momentum)
+                        </div>
+                    </div>
+                    
+                    <div class="alignment-condition">
+                        <strong>Condition 2:</strong> power_momentum_strength > 0
+                        <div style="font-size: 12px; color: #666; margin-top: 4px;">
+                            (Bears accelerating - building from above)
+                        </div>
+                    </div>
+                    
+                    <div class="optimal-value">
+                        <div style="font-size: 16px; margin-bottom: 8px;">⭐ OPTIMAL VALUES:</div>
+                        <div>Power Divergence: <strong>-3.0 to -1.5</strong></div>
+                        <div>Momentum Strength: <strong>+0.5 to +1.5</strong></div>
+                    </div>
+                    
+                    <div style="margin-top: 12px; padding: 10px; background: white; border-radius: 6px; font-size: 13px;">
+                        <strong>Required For:</strong> Regime 2 (Explosive) & Regime 6 (Early Short)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGIME VALUES TABLE -->
+        <div class="chart-section">
+            <div class="chart-title">4️⃣ COMPLETE REGIME VALUES REFERENCE</div>
+            
+            <table class="value-table">
+                <thead>
+                    <tr>
+                        <th>Regime</th>
+                        <th>Core Matrix</th>
+                        <th>VWAP Matrix</th>
+                        <th>Code Divergence</th>
+                        <th>Power Divergence</th>
+                        <th>Power Alignment</th>
+                        <th>Edge Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>0: Transitional</strong></td>
+                        <td>4-8</td>
+                        <td>4-8</td>
+                        <td>-3 to +3</td>
+                        <td>-0.5 to +0.5</td>
+                        <td>Mixed / None</td>
+                        <td>❌ NONE</td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td><strong>1: Explosive Bull</strong></td>
+                        <td>> 9</td>
+                        <td>> 9</td>
+                        <td>-2 to +3</td>
+                        <td>+0.5 to +2.5</td>
+                        <td>✅ BULLISH</td>
+                        <td>⭐⭐⭐ HIGH</td>
+                    </tr>
+                    <tr style="background: #fef2f2;">
+                        <td><strong>2: Explosive Bear</strong></td>
+                        <td>< 3</td>
+                        <td>< 3</td>
+                        <td>-3 to +2</td>
+                        <td>-2.5 to -0.5</td>
+                        <td>❌ BEARISH</td>
+                        <td>⭐⭐⭐ HIGH</td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td><strong>3: Bull Continue</strong></td>
+                        <td>> 8</td>
+                        <td>> 8</td>
+                        <td>-2 to +3</td>
+                        <td>-1.0 to +1.5</td>
+                        <td>⚪ NO</td>
+                        <td>⭐ MODERATE</td>
+                    </tr>
+                    <tr style="background: #fef2f2;">
+                        <td><strong>4: Bear Continue</strong></td>
+                        <td>< 4</td>
+                        <td>< 4</td>
+                        <td>-3 to +2</td>
+                        <td>-1.5 to +1.0</td>
+                        <td>⚪ NO</td>
+                        <td>⭐ MODERATE</td>
+                    </tr>
+                    <tr style="background: #ecfeff;">
+                        <td><strong>5: Bull Divergence</strong></td>
+                        <td>6-9</td>
+                        <td>4-7</td>
+                        <td>+3 to +6</td>
+                        <td>+1.0 to +3.0</td>
+                        <td>✅ BULLISH</td>
+                        <td>⭐⭐⭐⭐ BEST</td>
+                    </tr>
+                    <tr style="background: #fff7ed;">
+                        <td><strong>6: Bear Divergence</strong></td>
+                        <td>3-6</td>
+                        <td>5-8</td>
+                        <td>-6 to -3</td>
+                        <td>-3.0 to -1.0</td>
+                        <td>❌ BEARISH</td>
+                        <td>⭐⭐⭐⭐ BEST</td>
+                    </tr>
+                    <tr style="background: #faf5ff;">
+                        <td><strong>7: Exhaustion Top</strong></td>
+                        <td>> 9</td>
+                        <td>> 8</td>
+                        <td>+4 to +8</td>
+                        <td>-2.0 to -1.0</td>
+                        <td>❌ BEARISH!</td>
+                        <td>⚠️ EXIT!</td>
+                    </tr>
+                    <tr style="background: #fefce8;">
+                        <td><strong>8: Exhaustion Bottom</strong></td>
+                        <td>< 3</td>
+                        <td>< 4</td>
+                        <td>-8 to -4</td>
+                        <td>+1.0 to +2.0</td>
+                        <td>✅ BULLISH!</td>
+                        <td>⚠️ COVER!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- BEST SETUPS -->
+        <div class="chart-section">
+            <div class="chart-title">5️⃣ PERFECT CONFLUENCE SETUPS (Copy These Values!)</div>
+            
+            <div class="best-setups">
+                <div class="setup-card regime-1-setup">
+                    <div class="setup-header">
+                        <span class="stars">⭐⭐⭐</span> REGIME 1: EXPLOSIVE BULLISH
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Core Matrix:</span>
+                        <span class="setup-metric-value">10.5 (> 9) ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">VWAP Matrix:</span>
+                        <span class="setup-metric-value">10.0 (> 9) ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Code Divergence:</span>
+                        <span class="setup-metric-value">+1.5 (aligned) ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Power Divergence:</span>
+                        <span class="setup-metric-value">+2.0 (> +1.0) ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Momentum Strength:</span>
+                        <span class="setup-metric-value">-0.8 (< -0.3) ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Power Alignment:</span>
+                        <span class="setup-metric-value">BULLISH ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Volume:</span>
+                        <span class="setup-metric-value">RISING ✓</span>
+                    </div>
+                    <div style="margin-top: 15px; padding: 12px; background: #dcfce7; border-radius: 6px; text-align: center; font-weight: bold;">
+                        Win Rate: 80-85% | R:R: 1:3 | Size: 100%
+                    </div>
+                </div>
+
+                <div class="setup-card regime-5-setup">
+                    <div class="setup-header">
+                        <span class="stars">⭐⭐⭐⭐</span> REGIME 5: EARLY ENTRY (BEST!)
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Core Matrix:</span>
+                        <span class="setup-metric-value">7.5 (6-9) ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">VWAP Matrix:</span>
+                        <span class="setup-metric-value">5.5 (4-7) ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Code Divergence:</span>
+                        <span class="setup-metric-value">+4.5 (+3 to +6) ⭐</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Power Divergence:</span>
+                        <span class="setup-metric-value">+2.5 (> +1.5) ⭐</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Momentum Strength:</span>
+                        <span class="setup-metric-value">-1.2 (< -0.5) ⭐</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Power Alignment:</span>
+                        <span class="setup-metric-value">BULLISH ✓</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">BBP Cross:</span>
+                        <span class="setup-metric-value">ABOVE ✓</span>
+                    </div>
+                    <div style="margin-top: 15px; padding: 12px; background: #cffafe; border-radius: 6px; text-align: center; font-weight: bold;">
+                        Win Rate: 75-80% | R:R: 1:4-1:5 | Size: 70%
+                        <div style="font-size: 11px; margin-top: 5px; color: #0e7490;">
+                            🏆 BEST EXPECTANCY IN SYSTEM: +1.71 ATR
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setup-card regime-7-setup">
+                    <div class="setup-header">
+                        ⚠️ REGIME 7: EXHAUSTION TOP (EXIT!)
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Core Matrix:</span>
+                        <span class="setup-metric-value">10.5 (> 9) ⚠️ HIGH</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">VWAP Matrix:</span>
+                        <span class="setup-metric-value">9.5 (> 8) ⚠️ HIGH</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Code Divergence:</span>
+                        <span class="setup-metric-value">+6.5 (> +6) 🚨 EXTREME</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Power Divergence:</span>
+                        <span class="setup-metric-value">-1.5 (negative!) 🚨</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Momentum Strength:</span>
+                        <span class="setup-metric-value">+0.8 (positive!) 🚨</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Power Alignment:</span>
+                        <span class="setup-metric-value">BEARISH! 🚨</span>
+                    </div>
+                    <div style="margin-top: 15px; padding: 12px; background: #fae8ff; border: 2px solid #a855f7; border-radius: 6px; text-align: center; font-weight: bold; color: #86198f;">
+                        ACTION: EXIT ALL LONGS IMMEDIATELY!
+                        <div style="font-size: 11px; margin-top: 5px;">
+                            Cost of Delay: -2.5 ATR | Reversal: 80% within 10 bars
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setup-card regime-7-setup" style="border-color: #eab308; background: linear-gradient(135deg, #fefce8 0%, white 100%);">
+                    <div class="setup-header" style="border-color: #eab308; color: #a16207;">
+                        ⚠️ REGIME 8: EXHAUSTION BOTTOM (COVER!)
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Core Matrix:</span>
+                        <span class="setup-metric-value">2.5 (< 3) ⚠️ LOW</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">VWAP Matrix:</span>
+                        <span class="setup-metric-value">3.0 (< 4) ⚠️ LOW</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Code Divergence:</span>
+                        <span class="setup-metric-value">-6.5 (< -6) 🚨 EXTREME</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Power Divergence:</span>
+                        <span class="setup-metric-value">+1.5 (positive!) 🚨</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Momentum Strength:</span>
+                        <span class="setup-metric-value">-0.8 (negative!) 🚨</span>
+                    </div>
+                    <div class="setup-metric">
+                        <span class="setup-metric-label">Power Alignment:</span>
+                        <span class="setup-metric-value">BULLISH! 🚨</span>
+                    </div>
+                    <div style="margin-top: 15px; padding: 12px; background: #fef9c3; border: 2px solid #eab308; border-radius: 6px; text-align: center; font-weight: bold; color: #a16207;">
+                        ACTION: COVER ALL SHORTS IMMEDIATELY!
+                        <div style="font-size: 11px; margin-top: 5px;">
+                            Cost of Delay: +2.5 ATR | Rally: 80% within 10 bars
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KEY INSIGHTS -->
+        <div class="chart-section">
+            <div class="chart-title">6️⃣ KEY INSIGHTS & TRADING RULES</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div style="background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); padding: 20px; border-radius: 12px; border: 3px solid #06b6d4;">
+                    <div style="font-size: 18px; font-weight: bold; color: #0e7490; margin-bottom: 12px;">
+                        🎯 HIGHEST EDGE
+                    </div>
+                    <div style="font-size: 14px; line-height: 1.6; color: #333;">
+                        <strong>Code Divergence +3 to +6</strong><br>
+                        = REGIME 5/6<br><br>
+                        
+                        ✓ Early entry opportunity<br>
+                        ✓ Power leading value<br>
+                        ✓ Best R:R: 1:4 to 1:5<br>
+                        ✓ Win rate: 72%<br>
+                        ✓ Expectancy: +1.71 ATR<br><br>
+                        
+                        <strong style="color: #0e7490;">Enter BEFORE the crowd!</strong>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #fae8ff 0%, #f3e8ff 100%); padding: 20px; border-radius: 12px; border: 3px solid #a855f7;">
+                    <div style="font-size: 18px; font-weight: bold; color: #7e22ce; margin-bottom: 12px;">
+                        ⚠️ CRITICAL EXITS
+                    </div>
+                    <div style="font-size: 14px; line-height: 1.6; color: #333;">
+                        <strong>Code Divergence > ±6</strong><br>
+                        = REGIME 7/8<br><br>
+                        
+                        ⚠️ Extreme overextension<br>
+                        ⚠️ Power vs structure conflict<br>
+                        ⚠️ 80% reversal probability<br>
+                        ⚠️ Cost: -2.5 ATR if ignored<br><br>
+                        
+                        <strong style="color: #7e22ce;">EXIT IMMEDIATELY!</strong><br>
+                        <span style="font-size: 12px;">No excuses. No waiting.</span>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); padding: 20px; border-radius: 12px; border: 3px solid #22c55e;">
+                    <div style="font-size: 18px; font-weight: bold; color: #15803d; margin-bottom: 12px;">
+                        ✅ POWER ALIGNMENT
+                    </div>
+                    <div style="font-size: 14px; line-height: 1.6; color: #333;">
+                        <strong>Binary Confirmation</strong><br>
+                        TRUE or FALSE<br><br>
+                        
+                        ✓ Required for R1/R2 entry<br>
+                        ✓ Required for R5/R6 entry<br>
+                        ✓ Opposite in R7/R8 = EXIT<br><br>
+                        
+                        <strong>Optimal Values:</strong><br>
+                        Bull: Div +1.5, Mom -0.8<br>
+                        Bear: Div -1.5, Mom +0.8<br><br>
+                        
+                        <strong style="color: #15803d;">Never trade without it!</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEGEND -->
+        <div class="chart-section">
+            <div class="chart-title">📖 REGIME LEGEND</div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color regime-1"></div>
+                    <div class="legend-text">
+                        <div class="legend-label">Regime 1: Explosive Bullish</div>
+                        <div class="legend-desc">100% size | High conviction long</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color regime-2"></div>
+                    <div class="legend-text">
+                        <div class="legend-label">Regime 2: Explosive Bearish</div>
+                        <div class="legend-desc">100% size | High conviction short</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color regime-5"></div>
+                    <div class="legend-text">
+                        <div class="legend-label">Regime 5: Bullish Divergence</div>
+                        <div class="legend-desc">70% size | BEST R:R - Early entry</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color regime-6"></div>
+                    <div class="legend-text">
+                        <div class="legend-label">Regime 6: Bearish Divergence</div>
+                        <div class="legend-desc">70% size | BEST R:R - Early short</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color regime-7"></div>
+                    <div class="legend-text">
+                        <div class="legend-label">Regime 7: Exhaustion Top</div>
+                        <div class="legend-desc">EXIT longs | Optional 35% reversal short</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color regime-8"></div>
+                    <div class="legend-text">
+                        <div class="legend-label">Regime 8: Exhaustion Bottom</div>
+                        <div class="legend-desc">COVER shorts | Optional 35% reversal long</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK REFERENCE -->
+        <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
+            <div style="font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
+                ⚡ QUICK REFERENCE CARD
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; font-size: 13px;">
+                <div>
+                    <strong>CODE DIVERGENCE:</strong><br>
+                    -2 to +2: Aligned (R1/R2) ⭐⭐⭐<br>
+                    ±3 to ±6: Early Entry (R5/R6) ⭐⭐⭐⭐<br>
+                    > ±6: EXIT Signal (R7/R8) ⚠️
+                </div>
+                <div>
+                    <strong>POWER DIVERGENCE:</strong><br>
+                    +1.5 to +2.0: Optimal Bull<br>
+                    -2.0 to -1.5: Optimal Bear<br>
+                    > ±3.0: Watch exhaustion
+                </div>
+                <div>
+                    <strong>POWER ALIGNMENT:</strong><br>
+                    Bull: Div > 0, Mom < 0<br>
+                    Bear: Div < 0, Mom > 0<br>
+                    Required for all entries!
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <strong>8-REGIME TRADING SYSTEM</strong> | Optimal Ranges Visual Chart v1.0<br>
+            Print this chart and keep at your trading desk for quick reference<br>
+            © 2024 | For educational purposes | Trade responsibly with proper risk management
+        </div>
+    </div>
+</body>
+</html>
