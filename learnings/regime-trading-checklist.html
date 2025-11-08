@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-Regime Trading Checklist</title>
+    <style>
+        @media print {
+            @page {
+                size: letter portrait;
+                margin: 0.5in;
+            }
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-size: 9px;
+            line-height: 1.2;
+            background: white;
+            color: #000;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.25in;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        .header h1 {
+            font-size: 18px;
+            margin-bottom: 2px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            font-size: 8px;
+            opacity: 0.9;
+        }
+        
+        .section {
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: #f0f0f0;
+            padding: 4px 6px;
+            font-weight: bold;
+            font-size: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .section-content {
+            padding: 6px;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+        }
+        
+        .regime-card {
+            border: 2px solid #333;
+            border-radius: 3px;
+            padding: 4px;
+            background: white;
+        }
+        
+        .regime-card.bullish {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+        
+        .regime-card.bearish {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .regime-card.neutral {
+            border-color: #6b7280;
+            background: #f9fafb;
+        }
+        
+        .regime-card.warning {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+        
+        .regime-header {
+            font-weight: bold;
+            font-size: 10px;
+            margin-bottom: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .regime-number {
+            background: #333;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .regime-card.bullish .regime-number {
+            background: #22c55e;
+        }
+        
+        .regime-card.bearish .regime-number {
+            background: #ef4444;
+        }
+        
+        .regime-card.warning .regime-number {
+            background: #f59e0b;
+        }
+        
+        .regime-details {
+            font-size: 7.5px;
+            line-height: 1.3;
+        }
+        
+        .regime-details div {
+            margin-bottom: 1px;
+        }
+        
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            min-width: 35px;
+        }
+        
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px 8px;
+            font-size: 8px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1px 0;
+        }
+        
+        .checkbox {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #333;
+            margin-right: 4px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 7px;
+        }
+        
+        .metrics-table th,
+        .metrics-table td {
+            border: 1px solid #ddd;
+            padding: 2px 3px;
+            text-align: center;
+        }
+        
+        .metrics-table th {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .metrics-table .regime-col {
+            background: #333;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .quick-ref {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            font-size: 7px;
+        }
+        
+        .quick-ref-item {
+            border: 1px solid #ddd;
+            padding: 3px;
+            border-radius: 2px;
+        }
+        
+        .quick-ref-item strong {
+            display: block;
+            font-size: 8px;
+            margin-bottom: 2px;
+        }
+        
+        .footer {
+            margin-top: 8px;
+            padding-top: 4px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 7px;
+            color: #666;
+        }
+        
+        .trade-log {
+            display: grid;
+            grid-template-columns: 0.6fr 0.4fr 0.5fr 0.5fr 0.5fr 0.6fr 0.5fr 0.5fr;
+            gap: 2px;
+            font-size: 7px;
+            margin-top: 3px;
+        }
+        
+        .trade-log-header {
+            font-weight: bold;
+            background: #f0f0f0;
+            padding: 2px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .trade-log-cell {
+            border: 1px solid #ddd;
+            padding: 2px;
+            min-height: 16px;
+        }
+        
+        .stars {
+            color: #fbbf24;
+            font-size: 9px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>8-REGIME TRADING SYSTEM - DAILY CHECKLIST</h1>
+        <p>Date: __________ | Instrument: __________ | Timeframe: __________</p>
+    </div>
+
+    <!-- Pre-Market Checklist -->
+    <div class="section">
+        <div class="section-header">☀️ PRE-MARKET CHECKLIST (15 min)</div>
+        <div class="section-content">
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>Check overnight regime changes</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>Note gaps vs key levels (VWAP, EMA26)</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>Review open positions & their regimes</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>Check macro events (Fed, earnings, news)</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>Set regime change alerts</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <span>Plan today's expected regime</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8 Regime Quick Reference -->
+    <div class="section">
+        <div class="section-header">📊 8-REGIME QUICK REFERENCE</div>
+        <div class="section-content">
+            <div class="three-column">
+                <div class="regime-card neutral">
+                    <div class="regime-header">
+                        <span>TRANSITIONAL</span>
+                        <span class="regime-number">0</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> STAY FLAT</div>
+                        <div><span class="label">Size:</span> 0%</div>
+                        <div><span class="label">Edge:</span> NONE - Wait for clarity</div>
+                    </div>
+                </div>
+
+                <div class="regime-card bullish">
+                    <div class="regime-header">
+                        <span>EXPLOSIVE BULLISH</span>
+                        <span class="regime-number">1</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> LONG <span class="stars">★★★</span></div>
+                        <div><span class="label">Size:</span> 100% (Maximum)</div>
+                        <div><span class="label">Entry:</span> Breakout/Pullback/Cross</div>
+                        <div><span class="label">Exit:</span> Regime 7 or breakdown</div>
+                        <div><span class="label">R:R:</span> 1:2.5 | Win: 72%</div>
+                    </div>
+                </div>
+
+                <div class="regime-card bearish">
+                    <div class="regime-header">
+                        <span>EXPLOSIVE BEARISH</span>
+                        <span class="regime-number">2</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> SHORT <span class="stars">★★★</span></div>
+                        <div><span class="label">Size:</span> 100% (Maximum)</div>
+                        <div><span class="label">Entry:</span> Breakdown/Fade/Cross</div>
+                        <div><span class="label">Exit:</span> Regime 8 or reversal</div>
+                        <div><span class="label">R:R:</span> 1:2.5 | Win: 72%</div>
+                    </div>
+                </div>
+
+                <div class="regime-card bullish">
+                    <div class="regime-header">
+                        <span>BULLISH CONT.</span>
+                        <span class="regime-number">3</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> LONG <span class="stars">★</span></div>
+                        <div><span class="label">Size:</span> 60% (Reduced)</div>
+                        <div><span class="label">Entry:</span> Support test, wait upgrade</div>
+                        <div><span class="label">Exit:</span> Early if no progress</div>
+                        <div><span class="label">R:R:</span> 1:1.8 | Win: 62%</div>
+                    </div>
+                </div>
+
+                <div class="regime-card bearish">
+                    <div class="regime-header">
+                        <span>BEARISH CONT.</span>
+                        <span class="regime-number">4</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> SHORT <span class="stars">★</span></div>
+                        <div><span class="label">Size:</span> 60% (Reduced)</div>
+                        <div><span class="label">Entry:</span> Resistance fade, wait</div>
+                        <div><span class="label">Exit:</span> Early if no progress</div>
+                        <div><span class="label">R:R:</span> 1:1.8 | Win: 62%</div>
+                    </div>
+                </div>
+
+                <div class="regime-card bullish">
+                    <div class="regime-header">
+                        <span>BULLISH DIVERGENCE</span>
+                        <span class="regime-number">5</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> LONG EARLY <span class="stars">★★★★</span></div>
+                        <div><span class="label">Size:</span> 70% (Aggressive)</div>
+                        <div><span class="label">Entry:</span> First detection + power</div>
+                        <div><span class="label">Exit:</span> Wait for Regime 1</div>
+                        <div><span class="label">R:R:</span> 1:4 | Win: 72% | BEST!</div>
+                    </div>
+                </div>
+
+                <div class="regime-card bearish">
+                    <div class="regime-header">
+                        <span>BEARISH DIVERGENCE</span>
+                        <span class="regime-number">6</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> SHORT EARLY <span class="stars">★★★★</span></div>
+                        <div><span class="label">Size:</span> 70% (Aggressive)</div>
+                        <div><span class="label">Entry:</span> First detection + power</div>
+                        <div><span class="label">Exit:</span> Wait for Regime 2</div>
+                        <div><span class="label">R:R:</span> 1:4 | Win: 72% | BEST!</div>
+                    </div>
+                </div>
+
+                <div class="regime-card warning">
+                    <div class="regime-header">
+                        <span>EXHAUSTION TOP</span>
+                        <span class="regime-number">7</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> EXIT ALL LONGS! ⚠️</div>
+                        <div><span class="label">Size:</span> 35% short (optional)</div>
+                        <div><span class="label">What:</span> Power failing at top</div>
+                        <div><span class="label">Cost:</span> -2.5 ATR if ignored</div>
+                        <div><span class="label">Rev R:R:</span> 1:2 | Win: 68%</div>
+                    </div>
+                </div>
+
+                <div class="regime-card warning">
+                    <div class="regime-header">
+                        <span>EXHAUSTION BOTTOM</span>
+                        <span class="regime-number">8</span>
+                    </div>
+                    <div class="regime-details">
+                        <div><span class="label">Action:</span> COVER ALL SHORTS! ⚠️</div>
+                        <div><span class="label">Size:</span> 35% long (optional)</div>
+                        <div><span class="label">What:</span> Power recovering at low</div>
+                        <div><span class="label">Cost:</span> +2.5 ATR if ignored</div>
+                        <div><span class="label">Rev R:R:</span> 1:2 | Win: 68%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entry Checklist -->
+    <div class="section">
+        <div class="section-header">✅ ENTRY CHECKLIST (Before Every Trade)</div>
+        <div class="section-content">
+            <div class="two-column">
+                <div>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Current regime identified? R___</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Core Matrix: ___ (Target: >9 or <3)</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>VWAP Matrix: ___ (Aligned?)</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Code Divergence: ___ (< ±6?)</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Power alignment confirmed?</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Volume state: Rising/Neutral/Falling</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Position size calculated? ___ shares</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Stop loss set? $___</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Critical Values -->
+    <div class="section">
+        <div class="section-header">📈 TODAY'S CRITICAL VALUES</div>
+        <div class="section-content">
+            <div class="quick-ref">
+                <div class="quick-ref-item">
+                    <strong>Prev Session VWAP</strong>
+                    $_____________
+                </div>
+                <div class="quick-ref-item">
+                    <strong>EMA26</strong>
+                    $_____________
+                </div>
+                <div class="quick-ref-item">
+                    <strong>Daily High (tHigh)</strong>
+                    $_____________
+                </div>
+                <div class="quick-ref-item">
+                    <strong>Daily Low (tLow)</strong>
+                    $_____________
+                </div>
+                <div class="quick-ref-item">
+                    <strong>SuperTrend Avg</strong>
+                    $_____________
+                </div>
+                <div class="quick-ref-item">
+                    <strong>KC Upper</strong>
+                    $_____________
+                </div>
+                <div class="quick-ref-item">
+                    <strong>KC Lower</strong>
+                    $_____________
+                </div>
+                <div class="quick-ref-item">
+                    <strong>Current ATR</strong>
+                    $_____________
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trade Log -->
+    <div class="section">
+        <div class="section-header">📝 TODAY'S TRADE LOG</div>
+        <div class="section-content">
+            <div class="trade-log">
+                <div class="trade-log-header">Time</div>
+                <div class="trade-log-header">Regime</div>
+                <div class="trade-log-header">Action</div>
+                <div class="trade-log-header">Price</div>
+                <div class="trade-log-header">Size</div>
+                <div class="trade-log-header">Stop</div>
+                <div class="trade-log-header">Target</div>
+                <div class="trade-log-header">Notes</div>
+                
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+                <div class="trade-log-cell"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of Day -->
+    <div class="section">
+        <div class="section-header">🌙 END-OF-DAY REVIEW</div>
+        <div class="section-content">
+            <div class="two-column">
+                <div>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Final regime check: R___</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>All stops in place for overnight</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Regime change alerts set</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Journal updated with lessons</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>Tomorrow's plan prepared</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <span>P&L: $_______  (__R)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Reminders -->
+    <div class="section">
+        <div class="section-header">⚡ KEY REMINDERS</div>
+        <div class="section-content">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; font-size: 7.5px;">
+                <div>
+                    <strong>HIGHEST EDGE:</strong><br>
+                    • Regime 5/6 (Early entry: 1:4 R:R)<br>
+                    • Regime 1/2 (Explosive: 1:2.5 R:R)<br>
+                    • Enter in 5/6, hold to 1/2, exit at 7/8
+                </div>
+                <div>
+                    <strong>CRITICAL EXITS:</strong><br>
+                    • Regime 7: EXIT LONGS NOW!<br>
+                    • Regime 8: COVER SHORTS NOW!<br>
+                    • Cost of delay: 2.5 ATR average<br>
+                    • No excuses, no waiting
+                </div>
+                <div>
+                    <strong>POSITION SIZING:</strong><br>
+                    • R0: 0% | R1/2: 100% | R3/4: 60%<br>
+                    • R5/6: 70% | R7/8: 35% (reversal)<br>
+                    • Always use stops<br>
+                    • Risk max 2% per trade
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <strong>DISCIPLINE = EDGE</strong> | Trust the system. Follow the rules. Manage risk. | Version 1.0 | © 2024 8-Regime Trading System
+    </div>
+</body>
+</html>
