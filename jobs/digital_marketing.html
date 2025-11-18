@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing & Content Specialist - Kisaan Infotech Limited</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 4px solid #2c5f2d;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .company-name {
+            color: #2c5f2d;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 32px;
+            color: #1a3a1a;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .job-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            font-size: 15px;
+        }
+        
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .job-meta-item strong {
+            color: #2c5f2d;
+        }
+        
+        .section {
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            color: #2c5f2d;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .subsection-title {
+            color: #1a3a1a;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+        }
+        
+        .company-description {
+            background: #f8fdf8;
+            padding: 20px;
+            border-left: 4px solid #2c5f2d;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box {
+            background: #fff9e6;
+            border: 2px solid #ffd700;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box strong {
+            color: #cc6600;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .responsibility-category {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            border-left: 3px solid #2c5f2d;
+        }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .kpi-item {
+            background: #f8fdf8;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid #2c5f2d;
+        }
+        
+        .application-box {
+            background: #e8f5e9;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border: 2px solid #2c5f2d;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .print-button {
+            background: #2c5f2d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .print-button:hover {
+            background: #1a3a1a;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .print-button {
+                display: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2c5f2d;
+            padding: 5px 12px;
+            margin: 5px;
+            border-radius: 15px;
+            font-size: 14px;
+            border: 1px solid #2c5f2d;
+        }
+        
+        .requirement-type {
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="print-button" onclick="window.print()">🖨️ Print or Save as PDF</button>
+        
+        <div class="header">
+            <div class="company-name">KISAAN INFOTECH LIMITED</div>
+            <div class="job-title">Digital Marketing & Content Specialist</div>
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <strong>📍 Location:</strong> Pune, Maharashtra, India
+                </div>
+                <div class="job-meta-item">
+                    <strong>💼 Type:</strong> Full-Time
+                </div>
+                <div class="job-meta-item">
+                    <strong>📅 Posted:</strong> November 2025
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ABOUT KISAAN INFOTECH LIMITED</div>
+            <div class="company-description">
+                <p>Kisaan Infotech Limited is a pioneering Agritech, IT, and ITeS public startup company based in India. We operate as a peer-to-peer shared service platform connecting farmers and agriculture stakeholders. Our comprehensive ecosystem includes digital marketing services, business coaching, skill development programs, and export operations.</p>
+                <p style="margin-top: 10px;">Through our omnichannel marketplace, we enable farmers and agricultural stakeholders to rent, buy, sell, invest, and access lending for agricultural inputs, services, agribusiness projects, and produce.</p>
+                <p style="margin-top: 10px;"><strong>Our Brands:</strong> KISAAN FISHERY™, KISAAN ORGANIC™, KISAAN LOGISTICS™, KISAAN EXPORTS™, KISAAN FARMS™, VANILLE BAKERY™, and KISAAN RETAIL™</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">POSITION OVERVIEW</div>
+            <p>The Digital Marketing & Content Specialist will play a critical role in building and amplifying Kisaan Infotech's digital presence across multiple platforms. This multifaceted position requires a creative and strategic individual who can develop compelling content, execute targeted advertising campaigns, and drive engagement with our diverse audience of farmers, agricultural stakeholders, and agribusiness professionals.</p>
+            <p style="margin-top: 10px;">The ideal candidate will understand both digital marketing best practices and the unique nuances of agricultural sector communication.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">KEY RESPONSIBILITIES</div>
+            
+            <div class="responsibility-category">
+                <div class="subsection-title">A. Social Media Management (30% of time)</div>
+                <strong>Platform Management & Growth:</strong>
+                <ul>
+                    <li>Manage company presence across Facebook, Instagram, LinkedIn, Twitter, YouTube, and emerging platforms</li>
+                    <li>Develop and maintain content calendars aligned with agricultural seasons and company objectives</li>
+                    <li>Monitor, respond to, and engage with audience within 24 hours across all platforms</li>
+                    <li>Track and analyze social media metrics, engagement rates, and audience demographics</li>
+                    <li>Maintain brand voice consistency across all channels</li>
+                </ul>
+                
+                <strong style="display: block; margin-top: 15px;">Community Engagement:</strong>
+                <ul>
+                    <li>Build and nurture online communities of farmers and agricultural professionals</li>
+                    <li>Organize online events, webinars, and live sessions with agricultural experts</li>
+                    <li>Address customer queries and concerns promptly and professionally</li>
+                    <li>Collect customer feedback and testimonials for marketing use</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-category">
+                <div class="subsection-title">B. Content Creation & Development (35% of time)</div>
+                <strong>Visual Content Creation:</strong>
+                <ul>
+                    <li>Design graphics, infographics, and visual assets using Canva, Adobe Photoshop, or similar tools</li>
+                    <li>Create short-form videos (Reels, Shorts, Stories) showcasing farmer success stories and product features</li>
+                    <li>Develop long-form video content for YouTube including tutorials and interviews</li>
+                    <li>Capture and edit high-quality photographs from field visits and events</li>
+                    <li>Create branded templates for consistent visual identity</li>
+                </ul>
+                
+                <strong style="display: block; margin-top: 15px;">Written Content Development:</strong>
+                <ul>
+                    <li>Write compelling social media captions in English, Hindi, and Marathi</li>
+                    <li>Create blog posts and articles on agricultural trends and farmer stories</li>
+                    <li>Develop persuasive ad copy for social media campaigns</li>
+                    <li>Write scripts for video content and promotional materials</li>
+                    <li>Craft email marketing content and newsletters</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-category">
+                <div class="subsection-title">C. Social Media Advertising & Campaign Management (25% of time)</div>
+                <strong>Paid Advertising Execution:</strong>
+                <ul>
+                    <li>Plan, create, and manage campaigns across Facebook Ads, Instagram Ads, LinkedIn Ads, and Google Ads</li>
+                    <li>Design ad creatives including images, videos, carousels, and collection ads</li>
+                    <li>Configure campaign objectives for awareness, engagement, traffic, and conversions</li>
+                    <li>Manage advertising budgets efficiently to maximize ROI</li>
+                    <li>Conduct A/B testing of ad creatives, copy, and targeting strategies</li>
+                </ul>
+                
+                <strong style="display: block; margin-top: 15px;">Campaign Analytics & Optimization:</strong>
+                <ul>
+                    <li>Monitor performance using Facebook Ads Manager, Google Analytics, and other tools</li>
+                    <li>Track key metrics: CPM, CPC, CTR, conversion rates, and ROAS</li>
+                    <li>Generate weekly and monthly performance reports with actionable insights</li>
+                    <li>Optimize campaigns based on performance data</li>
+                </ul>
+            </div>
+
+            <div class="responsibility-category">
+                <div class="subsection-title">D. Marketing Strategy & Documentation (10% of time)</div>
+                <ul>
+                    <li>Collaborate with management to develop comprehensive digital marketing strategies</li>
+                    <li>Coordinate with sales team for product launches and promotions</li>
+                    <li>Maintain detailed records of content and campaigns</li>
+                    <li>Prepare monthly reports summarizing growth, engagement, and ROI</li>
+                    <li>Stay updated on digital marketing trends and best practices</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">REQUIRED QUALIFICATIONS</div>
+            
+            <div class="subsection-title">Educational Requirements</div>
+            <ul>
+                <li><strong>Minimum:</strong> Bachelor's degree in Marketing, Mass Communication, Journalism, Business Administration, or related field</li>
+                <li><strong>Preferred:</strong> Degree or diploma in Digital Marketing, Social Media Marketing, or Graphic Design</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <strong>🏆 HIGHLY VALUED CERTIFICATIONS:</strong>
+                <div style="margin-top: 10px;">
+                    <span class="skill-badge">Facebook Blueprint</span>
+                    <span class="skill-badge">Google Ads</span>
+                    <span class="skill-badge">Google Analytics</span>
+                    <span class="skill-badge">HubSpot Content/Social Media</span>
+                </div>
+            </div>
+            
+            <div class="subsection-title">Experience Requirements</div>
+            <ul>
+                <li><strong>Minimum:</strong> 2-3 years of proven experience in social media management, digital marketing, or content creation</li>
+                <li><strong>Preferred:</strong> Experience in agricultural sector, agritech companies, or rural marketing</li>
+                <li>Demonstrated portfolio of social media campaigns with measurable results</li>
+                <li>Experience managing paid advertising campaigns with budgets of ₹50,000+ per month</li>
+                <li>Track record of growing social media following and engagement organically</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">REQUIRED SKILLS & COMPETENCIES</div>
+            
+            <div class="highlight-box">
+                <p class="requirement-type">⚠️ ESSENTIAL TECHNICAL REQUIREMENTS</p>
+            </div>
+            
+            <div class="subsection-title">Social Media Platform Expertise</div>
+            <ul>
+                <li>Deep understanding of Facebook, Instagram, LinkedIn, Twitter, YouTube, and WhatsApp Business</li>
+                <li>Proficiency in Facebook Ads Manager and Meta Business Suite</li>
+                <li>Experience with LinkedIn Campaign Manager and Google Ads platform</li>
+                <li>Knowledge of platform-specific analytics and insights tools</li>
+                <li>Understanding of social media algorithms and organic reach optimization</li>
+            </ul>
+            
+            <div class="subsection-title">Content Creation Tools</div>
+            <ul>
+                <li><strong>Mandatory:</strong> Proficiency in Canva or Adobe Creative Suite (Photoshop, Illustrator, Premiere Pro)</li>
+                <li>Video editing skills using CapCut, InShot, Adobe Premiere Pro, or Final Cut Pro</li>
+                <li>Basic photography skills and understanding of composition and lighting</li>
+                <li>Ability to create motion graphics and animated content (plus point)</li>
+                <li>Experience with live streaming tools and equipment</li>
+            </ul>
+            
+            <div class="subsection-title">Advertising & Analytics</div>
+            <ul>
+                <li>Hands-on experience with Facebook Ads Manager, Instagram Ads, LinkedIn Ads</li>
+                <li>Working knowledge of Google Ads (Search, Display, YouTube campaigns)</li>
+                <li>Proficiency in Google Analytics, Facebook Pixel, and conversion tracking</li>
+                <li>Experience with UTM parameters and campaign tracking</li>
+                <li>Ability to interpret data and generate actionable insights</li>
+            </ul>
+            
+            <div class="subsection-title">Soft Skills & Personal Attributes</div>
+            <ul>
+                <li><strong>Communication:</strong> Excellent written and verbal skills in English and Hindi (Marathi is highly advantageous)</li>
+                <li><strong>Creativity:</strong> Ability to generate fresh, engaging content ideas aligned with farmer perspectives</li>
+                <li><strong>Analytical Thinking:</strong> Data-driven approach to decision-making and campaign optimization</li>
+                <li><strong>Storytelling:</strong> Strong ability to craft compelling narratives about farming communities</li>
+                <li><strong>Self-Motivation:</strong> Ability to work independently and manage multiple projects</li>
+                <li><strong>Adaptability:</strong> Quick to learn new tools and adapt to social media platform changes</li>
+                <li><strong>Agricultural Understanding:</strong> Willingness to learn about farming practices and rural ecosystems</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">KEY PERFORMANCE INDICATORS (KPIs)</div>
+            <p style="margin-bottom: 15px;">Success in this role will be measured by:</p>
+            <div class="kpi-grid">
+                <div class="kpi-item">📈 Social media follower growth rate (monthly/quarterly)</div>
+                <div class="kpi-item">💬 Engagement rate across platforms</div>
+                <div class="kpi-item">👁️ Reach and impressions of content</div>
+                <div class="kpi-item">🖱️ Click-through rates (CTR)</div>
+                <div class="kpi-item">💰 Cost per click (CPC) and cost per acquisition (CPA)</div>
+                <div class="kpi-item">📊 Return on ad spend (ROAS)</div>
+                <div class="kpi-item">🎯 Lead generation through social channels</div>
+                <div class="kpi-item">🎬 Video completion rates</div>
+                <div class="kpi-item">❤️ Brand sentiment and positive mentions</div>
+                <div class="kpi-item">⭐ Content quality and consistency</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">WORKING CONDITIONS</div>
+            <ul>
+                <li><strong>Work Environment:</strong> Office-based in Pune with occasional field visits to farmer locations and agricultural events</li>
+                <li><strong>Collaboration:</strong> Regular interaction with sales, logistics, and operations teams</li>
+                <li><strong>Events:</strong> Participation in agricultural fairs, farmer meets, and company events for content creation</li>
+                <li><strong>Flexibility:</strong> May require occasional weekend or evening work to manage campaigns or respond to social media activity</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">COMPENSATION & BENEFITS</div>
+            <ul>
+                <li><strong>Salary:</strong> Competitive compensation based on experience and qualifications</li>
+                <li>Professional development opportunities including certifications and training</li>
+                <li>Exposure to diverse agricultural sector projects and stakeholders</li>
+                <li>Opportunity to make meaningful impact in farming community</li>
+                <li>Creative freedom to experiment with innovative content formats</li>
+                <li>Growth opportunities within an expanding agritech company</li>
+            </ul>
+        </div>
+
+        <div class="application-box">
+            <div class="section-title" style="border: none; color: #1a3a1a;">HOW TO APPLY</div>
+            <p style="margin-bottom: 15px;">Interested candidates should submit the following documents:</p>
+            
+            <ol>
+                <li style="margin: 10px 0;"><strong>Updated Resume/CV</strong> highlighting relevant experience and achievements</li>
+                <li style="margin: 10px 0;"><strong>Portfolio</strong> including:
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>Links to social media accounts you've managed (with metrics)</li>
+                        <li>Examples of content created (graphics, videos, written content)</li>
+                        <li>Screenshots or reports of successful advertising campaigns</li>
+                        <li>Published articles or blog posts</li>
+                    </ul>
+                </li>
+                <li style="margin: 10px 0;"><strong>Cover Letter</strong> explaining your interest in agritech and experience with agricultural communities</li>
+                <li style="margin: 10px 0;"><strong>Relevant Certifications</strong> (if any)</li>
+            </ol>
+            
+            <div class="subsection-title" style="color: #1a3a1a; margin-top: 20px;">Contact Details</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>📧 Email:</strong> info@kisaaninfotech.com
+                </div>
+                <div class="contact-item">
+                    <strong>📱 Phone:</strong> +91-9595820288
+                </div>
+                <div class="contact-item">
+                    <strong>🌐 Website:</strong> kisaaninfotech.com/jobs/
+                </div>
+            </div>
+            <p style="margin-top: 15px;"><strong>Subject Line:</strong> "Application for Digital Marketing & Content Specialist - [Your Name]"</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ABOUT WORKING WITH US</div>
+            <p>At Kisaan Infotech Limited, you'll be part of a mission-driven organization committed to empowering farmers and transforming Indian agriculture through technology and innovation. We offer a dynamic work environment where your creativity and strategic thinking can make a real difference in the lives of farming communities.</p>
+            <p style="margin-top: 10px;">If you're passionate about digital marketing, content creation, and want to contribute to sustainable agricultural development, we encourage you to apply.</p>
+        </div>
+
+        <div class="footer">
+            <p><strong>KISAAN INFOTECH LIMITED</strong></p>
+            <p>An Equal Opportunity Employer</p>
+            <p style="margin-top: 10px;">We celebrate diversity and are committed to creating an inclusive environment for all employees.</p>
+            <p style="margin-top: 15px;">For more information: <strong>https://kisaaninfotech.com/jobs/</strong></p>
+        </div>
+    </div>
+</body>
+</html>
