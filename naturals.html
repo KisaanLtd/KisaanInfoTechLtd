@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisaan Naturals - Pure Herbal Products | Kisaan Infotech Limited</title>
+    <meta name="description" content="Kisaan Naturals offers 100% pure herbal powders and dried products. Organic Moringa, Ashwagandha, Shatavari powders direct from farms to you.">
+    <style>
+        :root {
+            --primary-green: #2d5a27;
+            --light-green: #4caf50;
+            --cream: #f5f5dc;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --text-dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-green), #3d7a35);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(45, 90, 39, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%232d5a27" width="1200" height="800"/><path fill="%233d7a35" d="M0,400L1200,200L1200,800L0,800Z"/></svg>');
+            background-size: cover;
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary-green);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #e6c34e;
+            transform: translateY(-2px);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 4rem 0;
+            background: var(--cream);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-green);
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-type {
+            color: var(--light-green);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* Business Info */
+        .business-info {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>KISAAN <span>NATURALS</span></h1>
+                </div>
+                <div class="tagline">
+                    Pure Wellness, Direct from the Farm
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>100% Pure Herbal Powders & Natural Products</h2>
+            <p>Harnessing the healing power of nature with authentic, farm-fresh herbal supplements for your holistic well-being.</p>
+            <a href="#products" class="cta-button">Explore Our Products</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Product Range</h2>
+                <p>Carefully processed to preserve natural potency and nutrients</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        🌿
+                    </div>
+                    <div class="product-info">
+                        <h3>Moringa Leaf Powder</h3>
+                        <div class="product-type">Superfood Nutrition</div>
+                        <p>Rich in vitamins, minerals, and antioxidants. Boosts energy and overall vitality.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        🍃
+                    </div>
+                    <div class="product-info">
+                        <h3>Ashwagandha Powder</h3>
+                        <div class="product-type">Stress Relief & Vitality</div>
+                        <p>Ancient adaptogen for stress reduction, energy, and male vitality.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        🌸
+                    </div>
+                    <div class="product-info">
+                        <h3>Shatavari Powder</h3>
+                        <div class="product-type">Women's Wellness</div>
+                        <p>Supports female hormonal balance, vitality, and overall wellness.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        🍂
+                    </div>
+                    <div class="product-info">
+                        <h3>Turmeric Powder</h3>
+                        <div class="product-type">Anti-inflammatory</div>
+                        <p>High-curcumin content for joint health, immunity, and culinary use.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        🍁
+                    </div>
+                    <div class="product-info">
+                        <h3>Brahmi Powder</h3>
+                        <div class="product-type">Brain & Memory</div>
+                        <p>Enhances cognitive function, memory, and concentration.</p>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        🌱
+                    </div>
+                    <div class="product-info">
+                        <h3>Dried Giloy Slices</h3>
+                        <div class="product-type">Immunity Booster</div>
+                        <p>Perfect for traditional kadha to strengthen immune system.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Information -->
+    <section class="business-info">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Kisaan Naturals?</h2>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🌍</div>
+                    <h3>100% Organic</h3>
+                    <p>Sourced directly from certified organic farms, ensuring pesticide-free purity.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">⚡</div>
+                    <h3>Potency Preserved</h3>
+                    <p>Careful shade-drying and processing to retain maximum nutritional value.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">🏭</div>
+                    <h3>Direct from Farm</h3>
+                    <p>Eliminating middlemen for better quality control and fair farmer prices.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">🔬</div>
+                    <h3>Quality Assured</h3>
+                    <p>Rigorous quality checks at every stage from farm to packaging.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kisaan Naturals</h3>
+                    <p>A venture of Kisaan Infotech Limited</p>
+                    <p>Pure Wellness, Direct from the Farm</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Products</h3>
+                    <p>Herbal Powders</p>
+                    <p>Dried Slices</p>
+                    <p>Tea Blends</p>
+                    <p>Organic Supplements</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>Email: naturals@kisaaninfotech.com</p>
+                    <p>Website: kisaaninfotech.com/naturals</p>
+                    <p>Coming Soon to Major E-commerce Platforms</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Kisaan Infotech Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
