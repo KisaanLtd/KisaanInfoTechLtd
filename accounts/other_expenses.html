@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule 8 - Other Expenses</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid #667eea; }
+        .header h1 { color: #2c3e50; font-size: 24px; margin-bottom: 5px; }
+        .header p { color: #7f8c8d; font-size: 14px; }
+        
+        .year-selector { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+        .year-btn { padding: 10px 20px; border: 2px solid #667eea; background: white; color: #667eea; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .year-btn.active { background: #667eea; color: white; }
+        .year-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px; }
+        th, td { padding: 12px 15px; text-align: left; border: 1px solid #e0e0e0; }
+        th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 600; position: sticky; top: 0; z-index: 10; }
+        .category-header { background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%); font-weight: 700; color: #2c3e50; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
+        .total-row { background: linear-gradient(90deg, #d4edda 0%, #c3e6cb 100%); font-weight: 700; color: #155724; font-size: 16px; }
+        .amount { text-align: right; font-family: 'Courier New', monospace; font-weight: 600; }
+        
+        input[type="number"] { 
+            width: 100%; 
+            padding: 8px 10px; 
+            border: 2px solid #e0e0e0; 
+            border-radius: 6px; 
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+        input[type="number"]:focus { 
+            outline: none; 
+            border-color: #667eea; 
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        input[type="number"]:hover { background: white; }
+        
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin: 25px 0; flex-wrap: wrap; }
+        .btn { 
+            padding: 12px 30px; 
+            border: none; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-size: 15px; 
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .btn-calculate { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; }
+        .btn-clear { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; }
+        .btn-export { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; }
+        .btn-copy { background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); color: white; }
+        
+        .notes { background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .notes h3 { color: #856404; margin-bottom: 15px; font-size: 18px; }
+        .notes ul { margin-left: 20px; }
+        .notes li { color: #856404; margin-bottom: 8px; line-height: 1.6; }
+        .notes strong { color: #533f03; }
+        
+        .summary-box { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            margin: 25px 0;
+        }
+        .summary-card { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            padding: 20px; 
+            border-radius: 12px; 
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .summary-card h4 { font-size: 14px; opacity: 0.9; margin-bottom: 10px; }
+        .summary-card .value { font-size: 28px; font-weight: 700; font-family: 'Courier New', monospace; }
+        
+        .change-indicator { 
+            display: inline-block; 
+            padding: 4px 10px; 
+            border-radius: 12px; 
+            font-size: 12px; 
+            margin-top: 8px;
+            font-weight: 600;
+        }
+        .change-positive { background: rgba(46, 204, 113, 0.3); color: #27ae60; }
+        .change-negative { background: rgba(231, 76, 60, 0.3); color: #c0392b; }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .btn-group, .year-selector { display: none; }
+            .container { box-shadow: none; }
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            table { font-size: 12px; }
+            th, td { padding: 8px 6px; }
+            .header h1 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 SCHEDULE 8: OTHER EXPENSES</h1>
+            <p>KISAAN INFOTECH LIMITED - Profit & Loss Statement</p>
+        </div>
+        
+        <div class="year-selector">
+            <button class="year-btn active" onclick="setActiveYear(2022)">FY 2021-22</button>
+            <button class="year-btn" onclick="setActiveYear(2021)">FY 2020-21</button>
+        </div>
+
+        <div class="summary-box">
+            <div class="summary-card">
+                <h4>Current Year Total (2021-22)</h4>
+                <div class="value" id="summaryCurrentYear">₹ 1,25,810</div>
+                <div class="change-indicator change-positive" id="changeIndicator">↑ 5.22%</div>
+            </div>
+            <div class="summary-card">
+                <h4>Previous Year Total (2020-21)</h4>
+                <div class="value" id="summaryPreviousYear">₹ 1,19,570</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%">Nature of Expense</th>
+                        <th style="width: 30%">Particulars</th>
+                        <th style="width: 22%">FY 2021-22 (₹)</th>
+                        <th style="width: 22%">FY 2020-21 (₹)</th>
+                    </tr>
+                </thead>
+                <tbody id="expensesTable">
+                    <!-- Employee Related Expenses -->
+                    <tr class="category-header">
+                        <td colspan="4">A. EMPLOYEE BENEFITS EXPENSES</td>
+                    </tr>
+                    <tr>
+                        <td>Salaries, Wages & Bonus</td>
+                        <td>Gross salaries to employees</td>
+                        <td><input type="number" id="salaries" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="salaries_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Contribution to PF/ESI</td>
+                        <td>PF & ESI employer contribution</td>
+                        <td><input type="number" id="pf" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="pf_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Staff Welfare Expenses</td>
+                        <td>Medical, insurance, benefits</td>
+                        <td><input type="number" id="welfare" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="welfare_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Training & Development</td>
+                        <td>Training programs, workshops</td>
+                        <td><input type="number" id="training" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="training_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+
+                    <!-- Professional & Consultancy -->
+                    <tr class="category-header">
+                        <td colspan="4">B. PROFESSIONAL & CONSULTANCY CHARGES</td>
+                    </tr>
+                    <tr>
+                        <td>Audit Fees</td>
+                        <td>Statutory audit charges</td>
+                        <td><input type="number" id="audit" value="18850" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="audit_py" value="18850" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Legal & Professional Fees</td>
+                        <td>Lawyers, CS, consultants</td>
+                        <td><input type="number" id="legal" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="legal_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Technical Consultancy</td>
+                        <td>IT consultants, advisors</td>
+                        <td><input type="number" id="tech_consultancy" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="tech_consultancy_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Outsourced Services</td>
+                        <td>Contract labor, freelancers</td>
+                        <td><input type="number" id="outsourced" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="outsourced_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+
+                    <!-- Office & Administrative -->
+                    <tr class="category-header">
+                        <td colspan="4">C. OFFICE & ADMINISTRATIVE EXPENSES</td>
+                    </tr>
+                    <tr>
+                        <td>Rent for Office Premises</td>
+                        <td>Office space rent</td>
+                        <td><input type="number" id="rent" value="96000" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="rent_py" value="96000" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Electricity & Water</td>
+                        <td>Utility bills for office</td>
+                        <td><input type="number" id="electricity" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="electricity_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Telephone & Internet</td>
+                        <td>Mobile, internet bills</td>
+                        <td><input type="number" id="telephone" value="2360" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="telephone_py" value="2360" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Office Maintenance</td>
+                        <td>Repairs, housekeeping, AMC</td>
+                        <td><input type="number" id="maintenance" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="maintenance_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Printing & Stationery</td>
+                        <td>Office supplies, printing</td>
+                        <td><input type="number" id="stationery" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="stationery_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Postage & Courier</td>
+                        <td>Shipping, courier charges</td>
+                        <td><input type="number" id="courier" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="courier_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+
+                    <!-- Travel & Conveyance -->
+                    <tr class="category-header">
+                        <td colspan="4">D. TRAVEL & CONVEYANCE EXPENSES</td>
+                    </tr>
+                    <tr>
+                        <td>Local Conveyance</td>
+                        <td>Fuel, taxi, auto charges</td>
+                        <td><input type="number" id="local_travel" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="local_travel_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Traveling Expenses</td>
+                        <td>Outstation travel</td>
+                        <td><input type="number" id="travel" value="3500" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="travel_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Hotel & Boarding</td>
+                        <td>Hotel stays during travel</td>
+                        <td><input type="number" id="hotel" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="hotel_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Daily Allowance</td>
+                        <td>Food, incidentals</td>
+                        <td><input type="number" id="allowance" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="allowance_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+
+                    <!-- Business Promotion -->
+                    <tr class="category-header">
+                        <td colspan="4">E. BUSINESS PROMOTION & MARKETING</td>
+                    </tr>
+                    <tr>
+                        <td>Advertisement & Publicity</td>
+                        <td>Online ads, print media</td>
+                        <td><input type="number" id="advertisement" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="advertisement_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Business Promotion</td>
+                        <td>Client meetings, gifts</td>
+                        <td><input type="number" id="business_promo" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="business_promo_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Refreshments & Entertainment</td>
+                        <td>Client meetings, events</td>
+                        <td><input type="number" id="entertainment" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="entertainment_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+
+                    <!-- Financial Expenses -->
+                    <tr class="category-header">
+                        <td colspan="4">F. FINANCIAL & BANK CHARGES</td>
+                    </tr>
+                    <tr>
+                        <td>Bank Charges</td>
+                        <td>Transaction fees, charges</td>
+                        <td><input type="number" id="bank_charges" value="3600" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="bank_charges_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Payment Gateway Charges</td>
+                        <td>Card, online payment fees</td>
+                        <td><input type="number" id="payment_gateway" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="payment_gateway_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Interest on Loans</td>
+                        <td>Business loan interest</td>
+                        <td><input type="number" id="interest" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="interest_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+
+                    <!-- Miscellaneous -->
+                    <tr class="category-header">
+                        <td colspan="4">G. MISCELLANEOUS EXPENSES</td>
+                    </tr>
+                    <tr>
+                        <td>Software Subscriptions</td>
+                        <td>SaaS, cloud services</td>
+                        <td><input type="number" id="software" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="software_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Books & Periodicals</td>
+                        <td>Technical books, magazines</td>
+                        <td><input type="number" id="books" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="books_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Insurance Premium</td>
+                        <td>Business insurance</td>
+                        <td><input type="number" id="insurance" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="insurance_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Donations & CSR</td>
+                        <td>Charitable contributions</td>
+                        <td><input type="number" id="donations" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="donations_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Repairs & Maintenance</td>
+                        <td>Equipment, vehicle repairs</td>
+                        <td><input type="number" id="repairs" value="0" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="repairs_py" value="0" onchange="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <td>Other Expenses</td>
+                        <td>Miscellaneous unclassified</td>
+                        <td><input type="number" id="other" value="1500" onchange="calculateTotal()"></td>
+                        <td><input type="number" id="other_py" value="2360" onchange="calculateTotal()"></td>
+                    </tr>
+
+                    <!-- TOTAL -->
+                    <tr class="total-row">
+                        <td colspan="2"><b>TOTAL OTHER EXPENSES</b></td>
+                        <td class="amount" id="totalCurrent">₹ 1,25,810</td>
+                        <td class="amount" id="totalPrevious">₹ 1,19,570</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="btn-group">
+                <button class="btn btn-calculate" onclick="calculateTotal()">🔢 Recalculate</button>
+                <button class="btn btn-clear" onclick="clearAll()">🗑️ Clear All</button>
+                <button class="btn btn-export" onclick="exportToCSV()">📥 Export CSV</button>
+                <button class="btn btn-copy" onclick="copyTable()">📋 Copy Table</button>
+            </div>
+        </div>
+
+        <div class="notes">
+            <h3>📝 Classification Guidelines for Expenses</h3>
+            <ul>
+                <li><strong>Salaries:</strong> Include basic pay, allowances, bonuses, and incentives to all employees</li>
+                <li><strong>PF/ESI:</strong> Employer's contribution to Provident Fund and ESI</li>
+                <li><strong>Professional Fees:</strong> Payments to CA, lawyers, consultants, technical advisors</li>
+                <li><strong>Rent:</strong> Office premises rent (exclude residential rent)</li>
+                <li><strong>Utilities:</strong> Electricity, water charges for business premises only</li>
+                <li><strong>Communication:</strong> Business mobile bills, internet, landline charges</li>
+                <li><strong>Travel:</strong> Business travel expenses - local and outstation</li>
+                <li><strong>Marketing:</strong> Advertising, promotions, client entertainment</li>
+                <li><strong>Bank Charges:</strong> Transaction fees, payment gateway charges</li>
+                <li><strong>Software:</strong> Annual subscriptions, cloud services, SaaS products</li>
+                <li><strong>Insurance:</strong> Business insurance premiums only</li>
+                <li><strong>Interest:</strong> Interest on business loans (may need separate disclosure)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            let totalCurrent = 0;
+            let totalPrevious = 0;
+            
+            // Get all current year inputs
+            const currentInputs = document.querySelectorAll('input[type="number"]:not([id$="_py"])');
+            currentInputs.forEach(input => {
+                totalCurrent += parseFloat(input.value) || 0;
+            });
+            
+            // Get all previous year inputs
+            const previousInputs = document.querySelectorAll('input[type="number"][id$="_py"]');
+            previousInputs.forEach(input => {
+                totalPrevious += parseFloat(input.value) || 0;
+            });
+            
+            document.getElementById('totalCurrent').textContent = '₹ ' + formatNumber(totalCurrent);
+            document.getElementById('totalPrevious').textContent = '₹ ' + formatNumber(totalPrevious);
+            document.getElementById('summaryCurrentYear').textContent = '₹ ' + formatNumber(totalCurrent);
+            document.getElementById('summaryPreviousYear').textContent = '₹ ' + formatNumber(totalPrevious);
+            
+            // Calculate change percentage
+            const change = totalPrevious !== 0 ? ((totalCurrent - totalPrevious) / totalPrevious * 100).toFixed(2) : 0;
+            const changeIndicator = document.getElementById('changeIndicator');
+            
+            if (change > 0) {
+                changeIndicator.textContent = `↑ ${change}%`;
+                changeIndicator.className = 'change-indicator change-positive';
+            } else if (change < 0) {
+                changeIndicator.textContent = `↓ ${Math.abs(change)}%`;
+                changeIndicator.className = 'change-indicator change-negative';
+            } else {
+                changeIndicator.textContent = '→ 0%';
+                changeIndicator.className = 'change-indicator';
+            }
+        }
+
+        function formatNumber(num) {
+            return new Intl.NumberFormat('en-IN', {
+                maximumFractionDigits: 0,
+                minimumFractionDigits: 0
+            }).format(Math.round(num));
+        }
+
+        function clearAll() {
+            if (confirm('Are you sure you want to clear all expense entries?')) {
+                const inputs = document.querySelectorAll('input[type="number"]');
+                inputs.forEach(input => input.value = 0);
+                calculateTotal();
+            }
+        }
+
+        function setActiveYear(year) {
+            const buttons = document.querySelectorAll('.year-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function exportToCSV() {
+            let csv = 'Nature of Expense,Particulars,FY 2021-22 (₹),FY 2020-21 (₹)\n';
+            
+            const rows = document.querySelectorAll('#expensesTable tr');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length > 0) {
+                    let rowData = [];
+                    cells.forEach(cell => {
+                        const input = cell.querySelector('input');
+                        if (input) {
+                            rowData.push(input.value);
+                        } else {
+                            rowData.push(cell.textContent.replace(/,/g, ''));
+                        }
+                    });
+                    csv += rowData.join(',') + '\n';
+                }
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Schedule8_Other_Expenses_KISAAN_INFOTECH.csv';
+            a.click();
+        }
+
+        function copyTable() {
+            const table = document.querySelector('table');
+            const range = document.createRange();
+            range.selectNode(table);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            alert('Table copied to clipboard!');
+        }
+
+        // Initialize calculation on load
+        document.addEventListener('DOMContentLoaded', calculateTotal);
+    </script>
+</body>
+</html>
