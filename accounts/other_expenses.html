@@ -112,19 +112,25 @@
             <p>KISAAN INFOTECH LIMITED - Profit & Loss Statement</p>
         </div>
         
-        <div class="year-selector">
-            <button class="year-btn active" onclick="setActiveYear(2022)">FY 2021-22</button>
-            <button class="year-btn" onclick="setActiveYear(2021)">FY 2020-21</button>
+        <div class="year-input-section" style="display: flex; gap: 20px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label style="font-weight: 600; color: #2c3e50;">Current FY:</label>
+                <input type="text" id="currentYear" value="2022-23" style="padding: 8px 15px; border: 2px solid #667eea; border-radius: 8px; font-weight: 600; width: 100px; text-align: center;" onchange="updateYearLabels()">
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label style="font-weight: 600; color: #2c3e50;">Previous FY:</label>
+                <input type="text" id="previousYear" value="2021-22" style="padding: 8px 15px; border: 2px solid #667eea; border-radius: 8px; font-weight: 600; width: 100px; text-align: center;" onchange="updateYearLabels()">
+            </div>
         </div>
 
         <div class="summary-box">
             <div class="summary-card">
-                <h4>Current Year Total (2021-22)</h4>
+                <h4 id="summaryCurrentLabel">Current Year Total (2022-23)</h4>
                 <div class="value" id="summaryCurrentYear">₹ 1,25,810</div>
                 <div class="change-indicator change-positive" id="changeIndicator">↑ 5.22%</div>
             </div>
             <div class="summary-card">
-                <h4>Previous Year Total (2020-21)</h4>
+                <h4 id="summaryPreviousLabel">Previous Year Total (2021-22)</h4>
                 <div class="value" id="summaryPreviousYear">₹ 1,19,570</div>
             </div>
         </div>
@@ -135,8 +141,8 @@
                     <tr>
                         <th style="width: 25%">Nature of Expense</th>
                         <th style="width: 30%">Particulars</th>
-                        <th style="width: 22%">FY 2021-22 (₹)</th>
-                        <th style="width: 22%">FY 2020-21 (₹)</th>
+                        <th style="width: 22%" id="tableCurrentYear">FY 2022-23 (₹)</th>
+                        <th style="width: 22%" id="tablePreviousYear">FY 2021-22 (₹)</th>
                     </tr>
                 </thead>
                 <tbody id="expensesTable">
@@ -448,6 +454,19 @@
             const buttons = document.querySelectorAll('.year-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
+        }
+
+        function updateYearLabels() {
+            const currentYear = document.getElementById('currentYear').value;
+            const previousYear = document.getElementById('previousYear').value;
+            
+            // Update table headers
+            document.getElementById('tableCurrentYear').textContent = `FY ${currentYear} (₹)`;
+            document.getElementById('tablePreviousYear').textContent = `FY ${previousYear} (₹)`;
+            
+            // Update summary cards
+            document.getElementById('summaryCurrentLabel').textContent = `Current Year Total (${currentYear})`;
+            document.getElementById('summaryPreviousLabel').textContent = `Previous Year Total (${previousYear})`;
         }
 
         function exportToCSV() {
