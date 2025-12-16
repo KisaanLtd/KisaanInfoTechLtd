@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agronomist (Plant Pathology) - Kisaan Infotech Limited</title>
+    <link rel="canonical" href="https://kisaaninfotech.com/jobs/agronomist.html" />
+    <link rel="icon" href="https://kisaaninfotech.com/favicon.png" type="image/ico" sizes="16x16">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEPM4D0EMX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JEPM4D0EMX');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #70DB93;
+            --primary-dark: #5bc47d;
+            --secondary: #2d5f3f;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --info: #17a2b8;
+            --success: #28a745;
+            --agronomy: #10b981;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--white);
+            padding: 15px 20px;
+            margin-top: 80px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+        }
+
+        /* Job Header - Agronomy Style */
+        .job-header {
+            background: linear-gradient(135deg, var(--agronomy), #059669);
+            color: var(--white);
+            padding: 50px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .specialization-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .job-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .job-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meta-icon {
+            font-size: 1.3rem;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Main Content Card */
+        .content-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--agronomy);
+            display: inline-block;
+        }
+
+        .section-intro {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+            border-left: 4px solid var(--agronomy);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        .responsibilities-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .responsibilities-list li {
+            padding: 15px 15px 15px 50px;
+            position: relative;
+            color: var(--text-dark);
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .responsibilities-list li:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .responsibilities-list li::before {
+            content: '🌱';
+            position: absolute;
+            left: 18px;
+            color: var(--agronomy);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: var(--white);
+            border: 2px solid #e9ecef;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            border-color: var(--agronomy);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+        }
+
+        .skill-item::before {
+            content: '◆';
+            color: var(--agronomy);
+            font-size: 0.8rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .apply-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--agronomy);
+            color: var(--white);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .apply-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .apply-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .apply-info h4 {
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .apply-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .email-highlight {
+            color: var(--agronomy);
+            font-weight: 600;
+        }
+
+        .quick-facts {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quick-facts h4 {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .fact-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .fact-item:last-child {
+            border-bottom: none;
+        }
+
+        .fact-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .fact-value {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .equality-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .equality-card h4 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .equality-card p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border-left: 4px solid var(--agronomy);
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .highlight-box p {
+            color: #065f46;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d3748, #1a202c);
+            color: var(--white);
+            padding: 50px 20px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .sidebar-card {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .job-header {
+                padding: 30px 25px;
+            }
+
+            .job-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .job-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .content-card {
+                padding: 25px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="https://kisaaninfotech.com"><img src="https://kisaaninfotech.com/Images/kisaan.svg" alt="Kisaan Infotech"></a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="https://kisaaninfotech.com/index.html">About</a></li>
+                <li><a href="https://kisaaninfotech.com/#investors">Investors</a></li>
+                <li><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Jobs List</a></li>
+                <li><a href="https://kisaaninfotech.com/#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="https://kisaaninfotech.com">Home</a>
+            <span>›</span>
+            <a href="https://kisaaninfotech.com/jobs/Jobslist.html">Jobs</a>
+            <span>›</span>
+            <span>Agronomist (Plant Pathology)</span>
+        </div>
+    </div>
+
+    <!-- Job Header -->
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="job-header">
+            <span class="specialization-badge">🔬 PLANT PATHOLOGY SPECIALIZATION</span>
+            <h1>Agronomist</h1>
+            <div class="job-subtitle">Field Technology Specialist with Plant Pathology Expertise</div>
+            <div class="job-meta">
+                <div class="meta-item">
+                    <span class="meta-icon">📍</span>
+                    <div>
+                        <div class="meta-label">Work Location</div>
+                        <div class="meta-value">Hybrid (Field & Office)</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">💼</span>
+                    <div>
+                        <div class="meta-label">Position Type</div>
+                        <div class="meta-value">Full-Time</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">🎓</span>
+                    <div>
+                        <div class="meta-label">Qualification</div>
+                        <div class="meta-value">M.Sc. Agronomy/Plant Pathology</div>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">⏱️</span>
+                    <div>
+                        <div class="meta-label">Experience</div>
+                        <div class="meta-value">2-3+ Years</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Main Content -->
+        <div>
+            <div class="content-card">
+                <!-- Job Overview -->
+                <section class="section">
+                    <h2 class="section-title">About The Role</h2>
+                    <p class="section-intro">
+                        We are seeking a dedicated and knowledgeable Agronomist to provide expert technical guidance and support to our farming community and internal product teams. The ideal candidate will have a strong background in plant pathology or related fields, enabling them to diagnose crop health issues, develop effective management strategies, and contribute to our digital tools that predict and mitigate crop disease risks.
+                    </p>
+                    <p class="section-intro">
+                        This role is critical in translating on-ground agricultural challenges into scalable tech solutions that empower farmers and enhance productivity across the agricultural value chain.
+                    </p>
+                </section>
+
+                <!-- Key Responsibilities -->
+                <section class="section">
+                    <h2 class="section-title">Key Responsibilities</h2>
+                    <p class="section-intro">
+                        You will bridge the gap between field-level agricultural science and our technology platforms, with a special focus on plant health:
+                    </p>
+                    <ul class="responsibilities-list">
+                        <li>Provide direct agronomic advisory to farmers on crop cultivation, soil health, nutrient management, irrigation, and IPM/IDM</li>
+                        <li><strong>Diagnose field-level crop disorders, with specialized focus on identifying bacterial, fungal, viral, and nematode diseases</strong></li>
+                        <li>Develop and curate localized content (advisories, blogs, treatment protocols) for farmer-facing mobile applications</li>
+                        <li>Collaborate with software teams to improve disease diagnostic algorithms and forecasting models</li>
+                        <li>Conduct field trials and demonstrations to validate recommended practices and new Agri-inputs</li>
+                        <li>Collect, analyze, and report field data to track disease trends and outbreak patterns</li>
+                        <li>Train internal teams and key farmer partners on best agronomic practices</li>
+                        <li>Contribute to the development of decision support systems for crop protection</li>
+                    </ul>
+                </section>
+
+                <!-- Required Skills -->
+                <section class="section">
+                    <h2 class="section-title">Required Skills & Competencies</h2>
+                    <p class="section-intro">
+                        The ideal candidate will possess expertise in the following areas:
+                    </p>
+                    <div class="skills-grid">
+                        <div class="skill-item">Plant Disease Diagnosis</div>
+                        <div class="skill-item">Field Pathology</div>
+                        <div class="skill-item">Integrated Pest Management</div>
+                        <div class="skill-item">Soil Science</div>
+                        <div class="skill-item">Crop Nutrition</div>
+                        <div class="skill-item">Digital Agriculture Tools</div>
+                        <div class="skill-item">Data Collection & Analysis</div>
+                        <div class="skill-item">Farmer Training & Extension</div>
+                        <div class="skill-item">Field Trial Management</div>
+                        <div class="skill-item">Technical Communication</div>
+                        <div class="skill-item">Problem-Solving</div>
+                        <div class="skill-item">Agri-tech Platforms</div>
+                    </div>
+                </section>
+
+                <!-- Education & Qualifications -->
+                <section class="section">
+                    <h2 class="section-title">Education & Qualifications</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Required Qualification</div>
+                            <div class="info-value">M.Sc. in Agronomy, Plant Pathology, Agriculture, or closely related field</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Preferred Qualification</div>
+                            <div class="info-value">Ph.D. in Plant Pathology or related discipline</div>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <p><strong>Specialization Note:</strong> Candidates with demonstrated experience in plant pathology, disease management, or crop protection will be given priority. This role requires hands-on field expertise in identifying and managing crop diseases.</p>
+                    </div>
+                </section>
+
+                <!-- Experience & Requirements -->
+                <section class="section">
+                    <h2 class="section-title">Experience & Requirements</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Required Experience</div>
+                            <div class="info-value">Minimum 2-3 years of practical field experience in agronomy with focus on plant disease management</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Technical Requirements</div>
+                            <div class="info-value">Proficiency in digital tools and interest in technology-driven agriculture</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Language Skills</div>
+                            <div class="info-value">Fluency in English and local language(s)</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Travel Requirement</div>
+                            <div class="info-value">Extensive travel within assigned region</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- What We Offer -->
+                <section class="section">
+                    <h2 class="section-title">What We Offer</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Opportunity</div>
+                            <div class="info-value">Work at intersection of agriculture and technology</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Environment</div>
+                            <div class="info-value">Dynamic, mission-driven workplace</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Growth</div>
+                            <div class="info-value">Continuous learning & development</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Compensation</div>
+                            <div class="info-value">Competitive salary & benefits package</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <div class="quick-facts">
+                    <h4>📊 Quick Facts</h4>
+                    <div class="fact-item">
+                        <span class="fact-label">Department</span>
+                        <span class="fact-value">Agri-Tech Solutions</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-label">Work Model</span>
+                        <span class="fact-value">Hybrid</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-label">Specialization</span>
+                        <span class="fact-value">Plant Pathology</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-label">Experience Level</span>
+                        <span class="fact-value">Mid-Level</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-label">Application Deadline</span>
+                        <span class="fact-value">Open until filled</span>
+                    </div>
+                </div>
+
+                <button class="apply-btn" onclick="applyNow()">Apply for This Role</button>
+                
+                <div class="apply-info">
+                    <h4>How to Apply</h4>
+                    <p>
+                        Email your resume to <span class="email-highlight">careers@kisaaninfotech.com</span> with the subject: <strong>"Agronomist - Plant Pathology"</strong>
+                    </p>
+                    <p style="margin-top: 15px;">
+                        Please highlight your specific experience in plant pathology and disease management in your cover letter. Include details of field projects, diagnostic work, or research related to crop protection. LinkedIn profile is appreciated.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="equality-card">
+                    <h4>🤝 Equal Opportunity Employer</h4>
+                    <p>
+                        Kisaan Infotech is committed to creating an inclusive workplace. We do not discriminate based on age, caste, color, disability, ethnicity, gender identity, marital status, nationality, race, religion, sex, sexual orientation, or social class.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="highlight-box">
+                    <p><strong>🌾 About Kisaan Infotech:</strong> We are a leading Agri-Tech company empowering farmers through innovative technology solutions and data-driven insights. Join us in bridging the gap between cutting-edge research and practical farm management.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h4>Find Us On Social Media</h4>
+        <div class="social-links">
+            <a href="https://www.facebook.com/KisaanInfoTechLimited" aria-label="Facebook">f</a>
+            <a href="https://twitter.com/KisaanLtd" aria-label="Twitter">𝕏</a>
+            <a href="https://www.linkedin.com/company/kisaaninfotechltd" aria-label="LinkedIn">in</a>
+            <a href="https://www.youtube.com/channel/UCWFCXOanuZTFnmbHVLzj8Vw" aria-label="YouTube">▶</a>
+        </div>
+        <p>© 2025 Kisaan Infotech Limited. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function applyNow() {
+            const subject = encodeURIComponent('Application for Agronomist - Plant Pathology');
+            const body = encodeURIComponent(`Dear Hiring Team,
+
+I am writing to express my interest in the Agronomist position with specialization in Plant Pathology at Kisaan Infotech Limited.
+
+My relevant experience includes:
+- [X] years in field agronomy with focus on plant pathology
+- Expertise in [mention specific disease diagnosis/management areas]
+- Experience with [mention any Agri-tech tools or platforms]
+
+Key achievements:
+1. [Achievement 1 related to disease management]
+2. [Achievement 2 in field trials or farmer training]
+
+I believe my background in plant pathology aligns well with your requirements for this hybrid role.
+
+Please find my resume attached.
+
+LinkedIn Profile: [Your Profile URL]
+
+Best regards,
+[Your Name]`);
+            window.location.href = `mailto:careers@kisaaninfotech.com?subject=${subject}&body=${body}`;
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
