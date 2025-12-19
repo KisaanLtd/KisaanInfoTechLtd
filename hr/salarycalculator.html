@@ -209,13 +209,24 @@
                 padding: 0;
             }
         }
+        
+        .compliance-badge {
+            display: inline-block;
+            background-color: #2c5f2d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>KISAAN INFOTECH LIMITED</h1>
-            <p class="subtitle">Salary Structure Generator</p>
+            <p class="subtitle">Salary Structure Generator <span class="compliance-badge">Compliant with Latest Labor Laws</span></p>
         </header>
         
         <div class="content-wrapper">
@@ -252,6 +263,15 @@
                     <button id="savePdfBtn">Save as PDF</button>
                     <button id="printBtn">Print</button>
                     <button id="resetBtn">Reset Form</button>
+                </div>
+                
+                <div class="notes">
+                    <p><strong>Note:</strong> This structure is compliant with:</p>
+                    <ul>
+                        <li>Code on Wages, 2019 (50% Basic for statutory calculations)</li>
+                        <li>Includes Gratuity as per Code on Social Security, 2020</li>
+                        <li>Provides Group Insurance coverage</li>
+                    </ul>
                 </div>
             </div>
             
@@ -302,43 +322,37 @@
                         </tr>
                         <tr>
                             <td>Basic Salary</td>
-                            <td>41.80%</td>
+                            <td>50.00%</td>
                             <td id="basicAnnual">0</td>
                             <td id="basicMonthly">0</td>
                         </tr>
                         <tr>
                             <td>House Rent Allowance (HRA)</td>
-                            <td>25.08%</td>
+                            <td>18.50%</td>
                             <td id="hraAnnual">0</td>
                             <td id="hraMonthly">0</td>
                         </tr>
                         <tr>
                             <td>Medical Allowance</td>
-                            <td>8.36%</td>
+                            <td>7.50%</td>
                             <td id="medicalAnnual">0</td>
                             <td id="medicalMonthly">0</td>
                         </tr>
                         <tr>
                             <td>Conveyance Allowance</td>
-                            <td>2.51%</td>
+                            <td>2.26%</td>
                             <td id="conveyanceAnnual">0</td>
                             <td id="conveyanceMonthly">0</td>
                         </tr>
                         <tr>
                             <td>Education Allowance</td>
-                            <td>0.84%</td>
+                            <td>0.74%</td>
                             <td id="educationAnnual">0</td>
                             <td id="educationMonthly">0</td>
                         </tr>
                         <tr>
-                            <td>Special Allowance</td>
-                            <td>5.01%</td>
-                            <td id="specialAnnual">0</td>
-                            <td id="specialMonthly">0</td>
-                        </tr>
-                        <tr>
                             <td style="font-weight: bold;">Sub-Total (Earnings)</td>
-                            <td style="font-weight: bold;">83.60%</td>
+                            <td style="font-weight: bold;">79.00%</td>
                             <td id="earningsAnnual" style="font-weight: bold;">0</td>
                             <td id="earningsMonthly" style="font-weight: bold;">0</td>
                         </tr>
@@ -346,32 +360,44 @@
                             <td colspan="4" style="font-weight: bold;">BENEFITS & PROVISIONS</td>
                         </tr>
                         <tr>
-                            <td>Provident Fund (Employer Contribution)</td>
-                            <td>5.71%</td>
+                            <td>Employer's Provident Fund (EPF)*</td>
+                            <td>12.00%**</td>
                             <td id="pfAnnual">0</td>
                             <td id="pfMonthly">0</td>
                         </tr>
                         <tr>
-                            <td>ESI (Employer Contribution)</td>
-                            <td>1.99%</td>
+                            <td>Employee State Insurance (ESI)</td>
+                            <td>0.75%***</td>
                             <td id="esiAnnual">0</td>
                             <td id="esiMonthly">0</td>
                         </tr>
                         <tr>
-                            <td>Bonus</td>
-                            <td>6.96%</td>
+                            <td>Statutory Bonus</td>
+                            <td>8.33%****</td>
                             <td id="bonusAnnual">0</td>
                             <td id="bonusMonthly">0</td>
                         </tr>
                         <tr>
                             <td>Leave Encashment (15 Days Paid Leave)</td>
-                            <td>1.74%</td>
+                            <td>2.00%</td>
                             <td id="leaveAnnual">0</td>
                             <td id="leaveMonthly">0</td>
                         </tr>
                         <tr>
+                            <td>Gratuity Provision</td>
+                            <td>4.81%</td>
+                            <td id="gratuityAnnual">0</td>
+                            <td id="gratuityMonthly">0</td>
+                        </tr>
+                        <tr>
+                            <td>Group Insurance Premium</td>
+                            <td>1.50%</td>
+                            <td id="insuranceAnnual">0</td>
+                            <td id="insuranceMonthly">0</td>
+                        </tr>
+                        <tr>
                             <td style="font-weight: bold;">Sub-Total (Benefits)</td>
-                            <td style="font-weight: bold;">16.40%</td>
+                            <td style="font-weight: bold;">21.00%</td>
                             <td id="benefitsAnnual" style="font-weight: bold;">0</td>
                             <td id="benefitsMonthly" style="font-weight: bold;">0</td>
                         </tr>
@@ -414,10 +440,6 @@
                             <td id="monthlyEducation">0</td>
                         </tr>
                         <tr>
-                            <td>Special Allowance</td>
-                            <td id="monthlySpecial">0</td>
-                        </tr>
-                        <tr>
                             <td style="font-weight: bold;">Gross Monthly Salary</td>
                             <td id="monthlyGross" style="font-weight: bold;">0</td>
                         </tr>
@@ -439,7 +461,7 @@
                         </tr>
                         <tr>
                             <td>ESI (Employee @ 0.75%)**</td>
-                            <td>N/A</td>
+                            <td id="monthlyEsiEmployee">0</td>
                         </tr>
                         <tr>
                             <td>Professional Tax***</td>
@@ -482,10 +504,13 @@
                 
                 <div class="notes">
                     <p><strong>NOTES:</strong></p>
-                    <p>1. <strong>Provident Fund (PF):</strong> Employee Contribution: 12% of Basic Salary</p>
-                    <p>2. <strong>Employee State Insurance (ESI):</strong> NOT APPLICABLE as gross monthly salary exceeds the ESI threshold of ₹21,000 per month</p>
-                    <p>3. <strong>Professional Tax:</strong> Deducted as per applicable state regulations</p>
-                    <p>4. <strong>Income Tax (TDS):</strong> Will be deducted at source as per applicable Income Tax slabs</p>
+                    <p>1. <strong>Provident Fund (PF):</strong> Employee Contribution: 12% of Basic Salary. Employer Contribution: 12% of Basic (capped at ₹15,000 per month as per statute, company contributes on full Basic voluntarily).</p>
+                    <p>2. <strong>Employee State Insurance (ESI):</strong> Applicable if gross monthly salary ≤ ₹21,000. Employee Contribution: 0.75% of gross salary, Employer Contribution: 3.25% of gross salary.</p>
+                    <p>3. <strong>Statutory Bonus:</strong> Calculated at 8.33% of wages (capped at ₹21,000 per month as per Payment of Bonus Act).</p>
+                    <p>4. <strong>Gratuity:</strong> Accrued at 4.81% of Basic Salary annually, payable after 5 years of continuous service.</p>
+                    <p>5. <strong>Group Insurance:</strong> Includes Group Term Life Insurance, Group Health Insurance, and Personal Accident Cover.</p>
+                    <p>6. <strong>Professional Tax:</strong> Deducted as per applicable state regulations.</p>
+                    <p>7. <strong>Income Tax (TDS):</strong> Will be deducted at source as per applicable Income Tax slabs.</p>
                 </div>
                 
                 <div class="signature-area">
@@ -589,34 +614,51 @@
                 // Update employee acknowledgment name
                 document.getElementById('acknowledgmentName').textContent = employeeName || '_________________';
                 
-                // Calculate salary components
-                const basicAnnual = annualCtc * 0.418;
-                const hraAnnual = annualCtc * 0.2508;
-                const medicalAnnual = annualCtc * 0.0836;
-                const conveyanceAnnual = annualCtc * 0.0251;
-                const educationAnnual = annualCtc * 0.0084;
-                const specialAnnual = annualCtc * 0.0501;
-                const earningsAnnual = basicAnnual + hraAnnual + medicalAnnual + conveyanceAnnual + educationAnnual + specialAnnual;
+                // Calculate salary components based on new percentages
+                const basicAnnual = annualCtc * 0.50; // 50.00%
+                const hraAnnual = annualCtc * 0.185; // 18.50%
+                const medicalAnnual = annualCtc * 0.075; // 7.50%
+                const conveyanceAnnual = annualCtc * 0.0226; // 2.26%
+                const educationAnnual = annualCtc * 0.0074; // 0.74%
+                const earningsAnnual = basicAnnual + hraAnnual + medicalAnnual + conveyanceAnnual + educationAnnual; // 79.00%
                 
-                const pfAnnual = annualCtc * 0.0571;
-                const esiAnnual = annualCtc * 0.0199;
-                const bonusAnnual = annualCtc * 0.0696;
-                const leaveAnnual = annualCtc * 0.0174;
-                const benefitsAnnual = pfAnnual + esiAnnual + bonusAnnual + leaveAnnual;
+                // Calculate benefits - IMPORTANT: These are calculated differently
+                // EPF: 12% of Basic (capped at ₹15,000 monthly wage for statutory contribution)
+                const basicMonthly = basicAnnual / 12;
+                const pfWageBase = Math.min(basicMonthly, 15000); // Statutory cap
+                const pfAnnual = pfWageBase * 12 * 0.12;
+                
+                // ESI: 0.75% of Gross Salary (if gross ≤ ₹21,000)
+                const grossMonthly = earningsAnnual / 12;
+                let esiAnnual = 0;
+                if (grossMonthly <= 21000) {
+                    esiAnnual = grossMonthly * 12 * 0.0075; // 0.75%
+                }
+                
+                // Bonus: 8.33% of wages (capped at ₹21,000 monthly)
+                const bonusWageBase = Math.min(grossMonthly, 21000);
+                const bonusAnnual = bonusWageBase * 12 * 0.0833;
+                
+                // Other benefits as percentages of CTC
+                const leaveAnnual = annualCtc * 0.02; // 2.00%
+                const gratuityAnnual = annualCtc * 0.0481; // 4.81%
+                const insuranceAnnual = annualCtc * 0.015; // 1.50%
+                
+                const benefitsAnnual = pfAnnual + esiAnnual + bonusAnnual + leaveAnnual + gratuityAnnual + insuranceAnnual;
                 
                 // Monthly calculations
-                const basicMonthly = basicAnnual / 12;
                 const hraMonthly = hraAnnual / 12;
                 const medicalMonthly = medicalAnnual / 12;
                 const conveyanceMonthly = conveyanceAnnual / 12;
                 const educationMonthly = educationAnnual / 12;
-                const specialMonthly = specialAnnual / 12;
                 const earningsMonthly = earningsAnnual / 12;
                 
                 const pfMonthly = pfAnnual / 12;
                 const esiMonthly = esiAnnual / 12;
                 const bonusMonthly = bonusAnnual / 12;
                 const leaveMonthly = leaveAnnual / 12;
+                const gratuityMonthly = gratuityAnnual / 12;
+                const insuranceMonthly = insuranceAnnual / 12;
                 const benefitsMonthly = benefitsAnnual / 12;
                 
                 const totalMonthly = annualCtc / 12;
@@ -627,13 +669,14 @@
                 document.getElementById('medicalAnnual').textContent = formatNumber(Math.round(medicalAnnual));
                 document.getElementById('conveyanceAnnual').textContent = formatNumber(Math.round(conveyanceAnnual));
                 document.getElementById('educationAnnual').textContent = formatNumber(Math.round(educationAnnual));
-                document.getElementById('specialAnnual').textContent = formatNumber(Math.round(specialAnnual));
                 document.getElementById('earningsAnnual').textContent = formatNumber(Math.round(earningsAnnual));
                 
                 document.getElementById('pfAnnual').textContent = formatNumber(Math.round(pfAnnual));
                 document.getElementById('esiAnnual').textContent = formatNumber(Math.round(esiAnnual));
                 document.getElementById('bonusAnnual').textContent = formatNumber(Math.round(bonusAnnual));
                 document.getElementById('leaveAnnual').textContent = formatNumber(Math.round(leaveAnnual));
+                document.getElementById('gratuityAnnual').textContent = formatNumber(Math.round(gratuityAnnual));
+                document.getElementById('insuranceAnnual').textContent = formatNumber(Math.round(insuranceAnnual));
                 document.getElementById('benefitsAnnual').textContent = formatNumber(Math.round(benefitsAnnual));
                 
                 document.getElementById('totalAnnual').textContent = formatNumber(Math.round(annualCtc));
@@ -644,13 +687,14 @@
                 document.getElementById('medicalMonthly').textContent = formatNumber(Math.round(medicalMonthly));
                 document.getElementById('conveyanceMonthly').textContent = formatNumber(Math.round(conveyanceMonthly));
                 document.getElementById('educationMonthly').textContent = formatNumber(Math.round(educationMonthly));
-                document.getElementById('specialMonthly').textContent = formatNumber(Math.round(specialMonthly));
                 document.getElementById('earningsMonthly').textContent = formatNumber(Math.round(earningsMonthly));
                 
                 document.getElementById('pfMonthly').textContent = formatNumber(Math.round(pfMonthly));
                 document.getElementById('esiMonthly').textContent = formatNumber(Math.round(esiMonthly));
                 document.getElementById('bonusMonthly').textContent = formatNumber(Math.round(bonusMonthly));
                 document.getElementById('leaveMonthly').textContent = formatNumber(Math.round(leaveMonthly));
+                document.getElementById('gratuityMonthly').textContent = formatNumber(Math.round(gratuityMonthly));
+                document.getElementById('insuranceMonthly').textContent = formatNumber(Math.round(insuranceMonthly));
                 document.getElementById('benefitsMonthly').textContent = formatNumber(Math.round(benefitsMonthly));
                 
                 document.getElementById('totalMonthly').textContent = formatNumber(Math.round(totalMonthly));
@@ -661,13 +705,19 @@
                 document.getElementById('monthlyMedical').textContent = formatNumber(Math.round(medicalMonthly));
                 document.getElementById('monthlyConveyance').textContent = formatNumber(Math.round(conveyanceMonthly));
                 document.getElementById('monthlyEducation').textContent = formatNumber(Math.round(educationMonthly));
-                document.getElementById('monthlySpecial').textContent = formatNumber(Math.round(specialMonthly));
                 document.getElementById('monthlyGross').textContent = formatNumber(Math.round(earningsMonthly));
                 
                 // Update monthly deductions
                 const pfDeduction = basicMonthly * 0.12;
                 document.getElementById('monthlyPf').textContent = formatNumber(Math.round(pfDeduction));
-                const totalDeductions = Math.round(pfDeduction) + 200; // Adding professional tax
+                
+                let esiDeduction = 0;
+                if (grossMonthly <= 21000) {
+                    esiDeduction = grossMonthly * 0.0075; // 0.75% employee contribution
+                }
+                document.getElementById('monthlyEsiEmployee').textContent = formatNumber(Math.round(esiDeduction));
+                
+                const totalDeductions = Math.round(pfDeduction) + Math.round(esiDeduction) + 200; // Adding professional tax
                 document.getElementById('totalDeductions').textContent = formatNumber(totalDeductions);
                 
                 // Update net monthly salary
@@ -675,6 +725,20 @@
                 document.getElementById('netDeductions').textContent = formatNumber(totalDeductions);
                 const netSalary = Math.round(earningsMonthly) - totalDeductions;
                 document.getElementById('netSalary').textContent = formatNumber(netSalary);
+                
+                // Update ESI note based on eligibility
+                const notesElement = document.querySelector('.notes');
+                if (grossMonthly <= 21000) {
+                    notesElement.innerHTML = notesElement.innerHTML.replace(
+                        'Applicable if gross monthly salary ≤ ₹21,000',
+                        '<strong style="color: #2c5f2d;">✓ APPLICABLE</strong> (Gross salary ≤ ₹21,000)'
+                    );
+                } else {
+                    notesElement.innerHTML = notesElement.innerHTML.replace(
+                        'Applicable if gross monthly salary ≤ ₹21,000',
+                        '<strong style="color: #cc0000;">✗ NOT APPLICABLE</strong> (Gross salary > ₹21,000)'
+                    );
+                }
             }
             
             function formatNumber(num) {
