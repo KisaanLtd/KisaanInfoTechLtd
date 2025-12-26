@@ -34,6 +34,7 @@
             --gold: #FFD700;
             --silver: #C0C0C0;
             --bronze: #CD7F32;
+            --platinum: #E5E4E2;
         }
 
         body {
@@ -287,7 +288,7 @@
         /* Investment Tiers */
         .investment-tiers {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -322,6 +323,24 @@
             transform: rotate(45deg);
         }
 
+        .tier-card.new-opportunity {
+            border: 3px solid #FF6B35;
+            background: linear-gradient(135deg, #fff 0%, #fff5f0 100%);
+        }
+
+        .tier-card.new-opportunity::before {
+            content: 'NEW OPPORTUNITY';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: #FF6B35;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
         .tier-badge {
             width: 80px;
             height: 80px;
@@ -346,11 +365,20 @@
             background: linear-gradient(135deg, var(--bronze), #8B4513);
         }
 
+        .tier-badge.platinum {
+            background: linear-gradient(135deg, var(--platinum), #B0B0B0);
+        }
+
         .tier-price {
             font-size: 2.5rem;
             font-weight: bold;
             color: var(--primary-dark);
             margin: 20px 0;
+        }
+
+        .tier-price.variable {
+            font-size: 1.8rem;
+            color: #FF6B35;
         }
 
         .tier-features {
@@ -434,46 +462,7 @@
             font-size: 1.5rem;
         }
 
-        /* Team Section */
-        .team {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .team-member {
-            text-align: center;
-        }
-
-        .member-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: var(--bg-light);
-            margin: 0 auto 20px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid var(--primary);
-        }
-
-        .member-photo i {
-            font-size: 60px;
-            color: var(--primary);
-        }
-
-        .team-member h3 {
-            color: var(--primary-dark);
-            margin-bottom: 5px;
-        }
-
-        .team-member p {
-            color: var(--text-light);
-        }
-
-        /* Contact Form */
+        /* Contact Section */
         .contact-section {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -501,122 +490,50 @@
             background-color: var(--bg-light);
         }
 
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--bg-light);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border 0.3s ease;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
-
         /* Footer */
-footer {
-  background: #0a0a0a;
-  color: #eee;
-  padding: 40px 0 20px;
-  font-family: "Segoe UI", sans-serif;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  text-align: left;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.footer-section h3 {
-  color: #6cc24a; /* green accent */
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-}
-
-.footer-section p {
-  color: #ccc;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-}
-
-.footer-section a {
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-section a:hover {
-  color: #6cc24a;
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  vertical-align: middle;
-  fill: #6cc24a;
-  margin-right: 8px;
-}
-
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .footer-section p {
-    justify-content: center;
-  }
-}
-
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
+        footer {
+            background: #0a0a0a;
+            color: #eee;
+            padding: 40px 20px 20px;
+            font-family: "Segoe UI", sans-serif;
         }
 
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            color: #6cc24a;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: #ccc;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
+        .footer-section a:hover {
+            color: #6cc24a;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         /* Animations */
@@ -674,12 +591,21 @@ footer {
                 margin: 10px 0;
             }
 
-            .tier-card.featured {
+            .tier-card.featured, .tier-card.new-opportunity {
                 transform: none;
             }
 
             .stats {
                 flex-direction: column;
+            }
+
+            .investment-tiers {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
         }
     </style>
@@ -788,7 +714,7 @@ footer {
     <section id="invest">
         <h2 class="section-title">Investment Opportunities</h2>
         <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--text-light);">
-            Join us in transforming Indian agriculture with tiered investment options
+            Join us in transforming Indian agriculture with flexible investment options including our new Employment Sponsorship program
         </p>
         
         <div class="investment-tiers">
@@ -841,68 +767,73 @@ footer {
                 </ul>
                 <a href="#contact" class="cta-button">Express Interest</a>
             </div>
+
+            <div class="tier-card new-opportunity">
+                <div class="tier-badge platinum">
+                    💼
+                </div>
+                <h3>Employment Sponsorship Investor</h3>
+                <div class="tier-price variable">Equal to 1 Month CTC</div>
+                <ul class="tier-features">
+                    <li>Equity ownership in the company</li>
+                    <li>Employment opportunity (if qualified)</li>
+                    <li>Minimum investment: 1 month expected CTC</li>
+                    <li>Subject to qualification & job availability</li>
+                    <li>Alignment of personal & company success</li>
+                    <li>Dual benefit: ownership + income</li>
+                </ul>
+                <a href="#contact" class="cta-button" style="background: #FF6B35;">Apply Now</a>
+                <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 15px; font-style: italic;">
+                    *Example: For ₹8L annual CTC position, minimum investment is ₹66,667
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <h2>Ready to Cultivate the Future with Us?</h2>
         <p>Join our mission to transform Indian agriculture while generating competitive financial returns and creating lasting social impact.</p>
-        <a href="#contact-form" class="cta-button btn-light">Schedule a Meeting</a>
+        <a href="https://wa.me/919595820288?text=Hello%2C%20I%20am%20interested%20in%20investment%20opportunities%20with%20Kisaan%20Infotech.%20I%20would%20like%20to%20schedule%20a%20meeting." class="cta-button btn-light" target="_blank">Schedule a Meeting</a>
     </section>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="https://kisaaninfotech.com">Home</a></p>
+                    <p><a href="https://kisaaninfotech.com/services.html">Services</a></p>
+                    <p><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Careers</a></p>
+                    <p><a href="https://kisaaninfotech.com/investors.html">Investors</a></p>
+                </div>
 
-      <!-- Quick Links -->
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <p><a href="https://kisaaninfotech.com">Home</a></p>
-        <p><a href="https://kisaaninfotech.com/services.html">Services</a></p>
-        <p><a href="https://kisaaninfotech.com/jobs/Jobslist.html">Careers</a></p>
-        <p><a href="https://kisaaninfotech.com/investors.html">Investors</a></p>
-      </div>
+                <!-- Contact Us -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><a href="mailto:investors@kisaaninfotech.com">investors@kisaaninfotech.com</a></p>
+                    <p>+91 95958 20288</p>
+                    <p>Pune, Maharashtra, India</p>
+                </div>
 
-      <!-- Contact Us -->
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon"><path d="M502.3 190.8L327.4 365.7c-15.1 15.1-39.6 15.1-54.6 0L9.7 102.6C3.9 96.8 0 88.7 0 80V48C0 21.5 21.5 0 48 0h416c26.5 0 48 21.5 48 48v32.2c0 8.7-3.9 16.8-9.7 22.6z"/></svg>
-          <a href="mailto:investors@kisaaninfotech.com">investors@kisaaninfotech.com</a>
-        </p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon"><path d="M511.1 387.6c-1.4 8.2-7.5 15.2-15.8 17.4l-88 24c-8.1 2.2-16.8-.1-22.7-5.9l-53.5-53.5a391.16 391.16 0 0 1-174.8-174.8L102.7 93.5c-5.8-5.9-8.1-14.6-5.9-22.7l24-88c2.2-8.3 9.2-14.4 17.4-15.8C151.6-36.8 160.1 0 160 0h0c0 0-8.5 36.8-22.6 79.3a23.91 23.91 0 0 0 5.9 22.7l38.8 38.8a439.3 439.3 0 0 0 176.5 176.5l38.8 38.8a23.91 23.91 0 0 0 22.7 5.9C475.2 503.5 512 495 512 495h0s-36.8 8.5-79.3 22.6c-8.2 1.4-15.2 7.5-17.4 15.8l-24 88c-2.2 8.3-9.2 14.4-17.4 15.8C380.4 640 384 512 384 512h0c0 0 8.5-36.8 22.6-79.3a23.91 23.91 0 0 0-5.9-22.7l-38.8-38.8A439.3 439.3 0 0 0 185.4 194.7l-38.8-38.8a23.91 23.91 0 0 0-22.7-5.9C36.8 102.8 0 111.3 0 111.3h0s8.5-36.8 22.6-79.3c1.4-8.2 7.5-15.2 15.8-17.4l88-24c8.3-2.2 16.8.1 22.7 5.9l53.5 53.5a391.16 391.16 0 0 1 174.8 174.8l53.5 53.5c5.9 5.8 8.1 14.6 5.9 22.7l-24 88z"/></svg>
-          +91 95958 20288
-        </p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon"><path d="M168 0C75.4 0 0 75.4 0 168c0 87.1 146.1 308.1 152.1 316.5 6.5 9.4 21.2 9.4 27.7 0C185.9 476.1 332 255.1 332 168 332 75.4 256.6 0 164 0zM164 256a88 88 0 1 1 0-176 88 88 0 1 1 0 176z"/></svg>
-          Pune, Maharashtra, India
-        </p>
-      </div>
+                <!-- Legal -->
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <p><a href="#">Private Placement Memorandum</a></p>
+                    <p><a href="#">Business Plan</a></p>
+                    <p><a href="#">Financial Projections</a></p>
+                    <p><a href="#">Terms & Conditions</a></p>
+                    <p><a href="#">Privacy Policy</a></p>
+                </div>
+            </div>
 
-      <!-- Legal -->
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <p><a href="#">Private Placement Memorandum</a></p>
-        <p><a href="#">Business Plan</a></p>
-        <p><a href="#">Financial Projections</a></p>
-        <p><a href="#">Terms & Conditions</a></p>
-        <p><a href="#">Privacy Policy</a></p>
-      </div>
-    </div>
-
-    <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
-
-    <div class="copyright">
-      <p>&copy; 2025 <strong>KISAAN INFOTECH LIMITED</strong>. All rights reserved.</p>
-      <p><em>This website and its content do not constitute an offer to sell or a solicitation of an offer to buy any securities. Investment opportunities are available only to accredited investors.</em></p>
-    </div>
-  </div>
-</footer>
-
-
-
+            <div class="copyright">
+                <p>&copy; 2025 <strong>KISAAN INFOTECH LIMITED</strong>. All rights reserved.</p>
+                <p><em>This website and its content do not constitute an offer to sell or a solicitation of an offer to buy any securities. Investment opportunities are available only to accredited investors.</em></p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         function toggleMenu() {
@@ -918,39 +849,3 @@ footer {
                 navbar.classList.remove('scrolled');
             }
         });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.getElementById('navMenu').classList.remove('active');
-                }
-            });
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.card, .model-card, .tier-card, .team-member').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your interest! Our team will contact you shortly.');
-            this.reset();
-        });
-    </script>
-</body>
-</html>
