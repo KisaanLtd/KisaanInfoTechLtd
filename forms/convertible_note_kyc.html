@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Application Form - Convertible Notes | Kisaan InfoTech Limited</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #333;
+            font-size: 11pt;
+            line-height: 1.4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                padding: 15mm;
+                box-shadow: none;
+                margin: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .avoid-break {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c5282;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .company-logo {
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .company-name {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 5px;
+        }
+
+        .company-details {
+            font-size: 9pt;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Form Title */
+        .form-title {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .form-title h1 {
+            font-size: 16pt;
+            color: #2c5282;
+            margin-bottom: 5px;
+        }
+
+        .form-title h2 {
+            font-size: 13pt;
+            color: #555;
+        }
+
+        /* Application Number */
+        .application-number {
+            text-align: right;
+            font-weight: bold;
+            color: #d32f2f;
+            margin-bottom: 15px;
+            font-size: 12pt;
+            padding: 8px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            background: #2c5282;
+            color: white;
+            padding: 8px 12px;
+            font-size: 11pt;
+            font-weight: bold;
+            margin-bottom: 12px;
+            border-radius: 3px;
+        }
+
+        /* Special styling for SECTION H */
+        .section-h {
+            background-color: #fff3e0 !important;
+            border: 2px solid #ff9800 !important;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .section-h .section-title {
+            background: #ff9800 !important;
+            color: #000 !important;
+        }
+
+        /* Bank Details */
+        .bank-details {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .bank-details-title {
+            font-weight: bold;
+            font-size: 12pt;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        table.form-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        table.form-table td:first-child {
+            width: 40%;
+            font-weight: 600;
+            background: #f8f9fa;
+        }
+
+        /* Form Controls */
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 11pt;
+            background: white;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #2c5282;
+            box-shadow: 0 0 0 2px rgba(44, 82, 130, 0.1);
+        }
+
+        input.editable-field {
+            background-color: #e8f5e8 !important;
+            border-color: #4caf50 !important;
+        }
+
+        .readonly-field {
+            background-color: #f5f5f5 !important;
+            border: none !important;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Checkbox Styles */
+        .checkbox-group {
+            margin: 10px 0;
+        }
+
+        .checkbox-item {
+            margin: 6px 0;
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+
+        .checkbox {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #666;
+            border-radius: 3px;
+            margin-right: 8px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: -2px;
+            left: 2px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c5282;
+        }
+
+        .inline-checkboxes {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        /* Important Notes */
+        .important-notes {
+            background: #fff3cd;
+            border: 3px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-notes h3 {
+            color: #d32f2f;
+            font-size: 13pt;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .note-item {
+            margin: 6px 0 6px 20px;
+            line-height: 1.5;
+        }
+
+        /* Photo Box */
+        .photo-box {
+            width: 120px;
+            height: 150px;
+            border: 2px dashed #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 9pt;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Official Use */
+        .official-use {
+            background: #f0f0f0;
+            border: 3px double #000;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .official-use-title {
+            background: #d32f2f;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 12pt;
+            margin: -20px -20px 15px -20px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #2c5282;
+            text-align: center;
+            font-size: 9pt;
+            color: #666;
+        }
+
+        /* Print Button */
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2c5282;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14pt;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .print-button:hover {
+            background: #1e3a5f;
+        }
+
+        .save-button {
+            right: 180px;
+            background: #4caf50;
+        }
+
+        .load-button {
+            right: 340px;
+            background: #ff9800;
+        }
+
+        /* Page Numbers */
+        .page-number {
+            text-align: right;
+            font-size: 9pt;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Auto-calc info */
+        .auto-calc {
+            background: #e3f2fd;
+            padding: 5px 10px;
+            border-left: 3px solid #2196f3;
+            margin: 5px 0;
+            font-size: 10pt;
+        }
+
+        /* Field highlight */
+        .field-highlight {
+            background-color: #f0f8ff;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .auto-populated {
+            background-color: #e8f5e8;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        /* Signature area */
+        .signature-area {
+            border-top: 2px dashed #666;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* Warning box */
+        .warning-box {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning-title {
+            color: #d32f2f;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+    </style>
+</head>
+<body>
+    <!-- Control Buttons -->
+    <button class="print-button no-print" onclick="window.print()">🖨️ Print Form</button>
+    <button class="print-button no-print save-button" onclick="saveFormData()">💾 Save Data</button>
+    <button class="print-button no-print load-button" onclick="loadFormData()">📂 Load Data</button>
+    <button class="print-button no-print" onclick="clearForm()" style="right: 500px; background: #f44336;">🗑️ Clear Form</button>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://kisaaninfotech.com/Images/KisaanInfotech.svg" 
+                 alt="Kisaan Infotech Logo" 
+                 class="company-logo"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjAwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iODAiIGZpbGw9IiMyYzUyODIiLz48dGV4dCB4PSIxMDAiIHk9IjQ1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+S0lTQUFOIElORk9URUNIPC90ZXh0Pjwvc3ZnPg=='">
+            <div class="company-details">
+                Registered Address: Thite Wasti, Survey No. 14/1/1, Mundhwa Road, Kharadi, Pune, Maharashtra, India, 411014<br>
+                Tel: +91-9595820288 | Email: info@kisaaninfotech.com | Website: www.kisaaninfotech.com
+            </div>
+        </div>
+
+        <!-- Form Title -->
+        <div class="form-title">
+            <h1>CONVERTIBLE NOTES INVESTMENT</h1>
+            <h2>KYC Application Form for Individuals</h2>
+        </div>
+
+        <!-- Application Number -->
+        <div class="application-number">
+            Application No: <span id="appNumber">Generating...</span>
+        </div>
+
+        <!-- Investment Details -->
+        <div class="section">
+            <div class="section-title">INVESTMENT DETAILS</div>
+            <table class="form-table">
+                <tr>
+                    <td>Security Type</td>
+                    <td><input type="text" value="Convertible Notes" readonly class="readonly-field"></td>
+                </tr>
+                <tr>
+                    <td>Minimum Investment</td>
+                    <td><input type="text" value="₹30,000 (1,000 shares @ ₹30/share)" readonly class="readonly-field"></td>
+                </tr>
+                <tr>
+                    <td>Interest Rate</td>
+                    <td>
+                        <input type="text" id="interestRate" value="0% per annum" class="editable-field" 
+                               onchange="updateAllFields()" placeholder="Enter interest rate">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Conversion Price</td>
+                    <td><input type="text" value="₹30 per share (Fixed Conversion Price)" readonly class="readonly-field"></td>
+                </tr>
+                <tr>
+                    <td>Maturity Date</td>
+                    <td>12 months from the date of issuance</td>
+                </tr>
+                <tr>
+                    <td>Note Date</td>
+                    <td><input type="date" id="noteDate" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Application Date</td>
+                    <td><input type="date" id="applicationDate" value="<?php echo date('Y-m-d'); ?>" onchange="updateAllFields()"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Company Bank Account -->
+        <div class="bank-details">
+            <div class="bank-details-title">⚠️ COMPANY BANK ACCOUNT FOR INVESTMENT PAYMENT</div>
+            <p><strong>IMPORTANT:</strong> All payments must be made to the following bank account only:</p>
+            <table class="form-table">
+                <tr><td>Account Name</td><td>Kisaan InfoTech Limited</td></tr>
+                <!-- <tr><td>Bank Name</td><td><input type="text" id="companyBankName" placeholder="Enter bank name" onchange="updateAllFields()"></td></tr> -->
+				<tr><td>Bank Name</td><td>State Bank of India</td></tr>
+                <tr><td>Branch Name</td><td>(13527)-KHARADI MAGARPATTA</td></tr>
+                <tr><td>Account Number</td><td>38024978243</td></tr>
+                <tr><td>Account Type</td><td>Current Account</td></tr>
+                <tr><td>IFSC Code</td><td>SBIN0013527</td></tr>
+                <tr><td>MICR Code</td><td><input type="text" id="companyMICR" placeholder="Enter MICR code" onchange="updateAllFields()"></td></tr>
+                <tr><td>SWIFT Code (for NRI)</td><td><input type="text" id="companySWIFT" placeholder="Enter SWIFT code" onchange="updateAllFields()"></td></tr>
+            </table>
+            <p><strong>Note:</strong> Payments from third-party accounts will not be accepted.</p>
+        </div>
+
+        <!-- SECTION A: Investor Category -->
+        <div class="section">
+            <div class="section-title">SECTION A: INVESTOR CATEGORY</div>
+            <p>Please tick ✓ one:</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'investorCategory')">
+                    <span class="checkbox"></span> Individual - Resident Indian
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'investorCategory')">
+                    <span class="checkbox"></span> Individual - Non-Resident Indian (NRI)
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'investorCategory')">
+                    <span class="checkbox"></span> Others (Please specify): <input type="text" id="otherCategory" placeholder="Specify other category" style="width: 200px; margin-left: 10px;" onchange="updateAllFields()">
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION B: Personal Details -->
+        <div class="section">
+            <div class="section-title">SECTION B: PERSONAL DETAILS</div>
+            <table class="form-table">
+                <tr>
+                    <td>Full Name (as per PAN Card)</td>
+                    <td><input type="text" id="fullName" placeholder="Enter full name" class="editable-field" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Father's/Spouse's Name</td>
+                    <td><input type="text" id="fatherSpouseName" placeholder="Enter father's/spouse's name" class="editable-field" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td><input type="date" id="dob" class="editable-field" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <select id="gender" class="editable-field" onchange="updateAllFields()">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Marital Status</td>
+                    <td>
+                        <select id="maritalStatus" class="editable-field" onchange="updateAllFields()">
+                            <option value="">Select Marital Status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nationality</td>
+                    <td><input type="text" id="nationality" value="Indian" class="editable-field" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Occupation/Profession</td>
+                    <td><input type="text" id="occupation" placeholder="Enter occupation" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Politically Exposed Person (PEP)</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'pepStatus')">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'pepStatus')">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div id="pepDetails" style="display: none; margin-top: 10px;">
+                <p>If PEP, please provide details:</p>
+                <input type="text" id="pepDetailsText" placeholder="Enter PEP details" style="width: 100%;" onchange="updateAllFields()">
+            </div>
+        </div>
+
+        <div class="page-number">Page 1 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- SECTION C: Contact Details -->
+        <div class="section">
+            <div class="section-title">SECTION C: CONTACT DETAILS</div>
+            <p>Residential Address:</p>
+            <table class="form-table">
+                <tr>
+                    <td>Address Line 1</td>
+                    <td><input type="text" id="resAddress1" placeholder="Address Line 1" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Address Line 2</td>
+                    <td><input type="text" id="resAddress2" placeholder="Address Line 2" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td><input type="text" id="resCity" placeholder="City" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td><input type="text" id="resState" placeholder="State" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>PIN Code</td>
+                    <td><input type="text" id="resPinCode" placeholder="PIN Code" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td><input type="text" id="resCountry" value="India" onchange="updateAllFields()"></td>
+                </tr>
+            </table>
+            
+            <p>Address Proof Submitted:</p>
+            <div class="inline-checkboxes">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Aadhaar Card
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Passport
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Voter ID
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Driving License
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Utility Bill
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Bank Statement
+                </div>
+            </div>
+            
+            <p>Correspondence Address (if different from above):</p>
+            <div class="checkbox-item" onclick="toggleAddressSame(this)">
+                <span class="checkbox"></span> Same as Residential Address
+            </div>
+            
+            <div id="correspondenceAddress">
+                <table class="form-table">
+                    <tr>
+                        <td>Address Line 1</td>
+                        <td><input type="text" id="corrAddress1" placeholder="Address Line 1" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Address Line 2</td>
+                        <td><input type="text" id="corrAddress2" placeholder="Address Line 2" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td><input type="text" id="corrCity" placeholder="City" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td><input type="text" id="corrState" placeholder="State" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>PIN Code</td>
+                        <td><input type="text" id="corrPinCode" placeholder="PIN Code" onchange="updateAllFields()"></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <p>Contact Details:</p>
+            <table class="form-table">
+                <tr>
+                    <td>Mobile Number (Primary)</td>
+                    <td><input type="tel" id="mobilePrimary" placeholder="Enter mobile number" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Alternate Mobile Number</td>
+                    <td><input type="tel" id="mobileAlt" placeholder="Enter alternate mobile" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Telephone (Residence)</td>
+                    <td><input type="tel" id="phoneResidence" placeholder="Enter residence phone" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Telephone (Office)</td>
+                    <td><input type="tel" id="phoneOffice" placeholder="Enter office phone" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Email ID (Primary)</td>
+                    <td><input type="email" id="emailPrimary" placeholder="Enter primary email" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Alternate Email ID</td>
+                    <td><input type="email" id="emailAlt" placeholder="Enter alternate email" onchange="updateAllFields()"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SECTION D: Communication Preferences -->
+        <div class="section">
+            <div class="section-title">SECTION D: COMMUNICATION PREFERENCES</div>
+            <p>Preferred Mode of Communication:</p>
+            <div class="inline-checkboxes">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Email
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Phone
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Post
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> WhatsApp
+                </div>
+            </div>
+            
+            <p>Preferred Language:</p>
+            <div class="inline-checkboxes">
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'language')">
+                    <span class="checkbox"></span> English
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'language')">
+                    <span class="checkbox"></span> Hindi
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'language')">
+                    <span class="checkbox"></span> Marathi
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'language')">
+                    <span class="checkbox"></span> Other: <input type="text" id="otherLanguage" placeholder="Specify other language" style="width: 150px; margin-left: 10px;" onchange="updateAllFields()">
+                </div>
+            </div>
+        </div>
+
+        <div class="page-number">Page 2 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- SECTION E: Identity Proof Details -->
+        <div class="section">
+            <div class="section-title">SECTION E: IDENTITY PROOF DETAILS</div>
+            <table class="form-table">
+                <tr>
+                    <td>PAN (Permanent Account Number)</td>
+                    <td><input type="text" id="panNumber" placeholder="Enter PAN number" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>PAN Card attached</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'panAttached')">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'panAttached')">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Aadhaar Number</td>
+                    <td><input type="text" id="aadhaarNumber" placeholder="Enter Aadhaar number" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Aadhaar Card attached</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'aadhaarAttached')">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'aadhaarAttached')">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Passport Number (if applicable)</td>
+                    <td><input type="text" id="passportNumber" placeholder="Enter passport number" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Passport Expiry Date</td>
+                    <td><input type="date" id="passportExpiry" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Passport attached</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'passportAttached')">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'passportAttached')">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Driving License Number (if applicable)</td>
+                    <td><input type="text" id="dlNumber" placeholder="Enter driving license number" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Voter ID Number (if applicable)</td>
+                    <td><input type="text" id="voterIdNumber" placeholder="Enter voter ID number" onchange="updateAllFields()"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SECTION F: Bank Account Details -->
+        <div class="section">
+            <div class="section-title">SECTION F: BANK ACCOUNT DETAILS</div>
+            <p>Primary Bank Account (for transactions):</p>
+            <table class="form-table">
+                <tr>
+                    <td>Account Holder Name</td>
+                    <td><span id="bankAccountHolder" class="auto-populated">[Auto-filled from Full Name]</span></td>
+                </tr>
+                <tr>
+                    <td>Bank Name</td>
+                    <td><input type="text" id="bankName" placeholder="Enter bank name" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Branch Name</td>
+                    <td><input type="text" id="bankBranch" placeholder="Enter branch name" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Account Number</td>
+                    <td><input type="text" id="bankAccountNo" placeholder="Enter account number" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Account Type</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'accountType')">
+                            <span class="checkbox"></span> Savings
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'accountType')">
+                            <span class="checkbox"></span> Current
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'accountType')">
+                            <span class="checkbox"></span> NRE
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'accountType')">
+                            <span class="checkbox"></span> NRO
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'accountType')">
+                            <span class="checkbox"></span> FCNR
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>IFSC Code</td>
+                    <td><input type="text" id="bankIFSC" placeholder="Enter IFSC code" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>MICR Code</td>
+                    <td><input type="text" id="bankMICR" placeholder="Enter MICR code" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Cancelled Cheque/Bank Statement attached</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'chequeAttached')">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'chequeAttached')">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="page-number">Page 3 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- SECTION G: Investment Details -->
+        <div class="section">
+            <div class="section-title">SECTION G: INVESTMENT DETAILS</div>
+            <table class="form-table">
+                <tr>
+                    <td>Number of Convertible Notes Applied For</td>
+                    <td>
+                        <span id="notesCount" class="auto-populated">0</span>
+                        <div class="auto-calc">Auto-calculated based on investment amount</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Investment Amount (in figures)</td>
+                    <td>
+                        ₹ <input type="number" id="investmentAmount" min="30000" step="1000" 
+                                placeholder="30000" oninput="calculateNotes(); updateAllFields();">
+                        <div class="auto-calc">Minimum: ₹30,000 | Conversion Price: ₹30/share</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Investment Amount (in words)</td>
+                    <td id="amountInWords" class="auto-populated">Rupees Zero Only</td>
+                </tr>
+                <tr>
+                    <td>Minimum Investment</td>
+                    <td>₹30,000 (for 1,000 shares)</td>
+                </tr>
+                <tr>
+                    <td>Expected Conversion Date (if known)</td>
+                    <td><input type="date" id="expectedConversionDate" onchange="updateAllFields()"></td>
+                </tr>
+            </table>
+            
+            <p>Payment Mode:</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'paymentMode')">
+                    <span class="checkbox"></span> RTGS/NEFT (Transaction Reference Number: 
+                    <input type="text" id="transactionRef" placeholder="Enter transaction reference" style="width: 200px; margin-left: 10px;" onchange="updateAllFields()">)
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'paymentMode')">
+                    <span class="checkbox"></span> Cheque/DD (Cheque No: 
+                    <input type="text" id="chequeNo" placeholder="Cheque No" style="width: 100px; margin-left: 10px;" onchange="updateAllFields()">
+                    Date: <input type="date" id="chequeDate" style="width: 120px;" onchange="updateAllFields()">
+                    Bank: <input type="text" id="chequeBank" placeholder="Bank" style="width: 100px;" onchange="updateAllFields()">)
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'paymentMode')">
+                    <span class="checkbox"></span> UPI (Transaction ID: 
+                    <input type="text" id="upiId" placeholder="Enter UPI transaction ID" style="width: 200px; margin-left: 10px;" onchange="updateAllFields()">)
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'paymentMode')">
+                    <span class="checkbox"></span> Other (Please specify): 
+                    <input type="text" id="otherPaymentMode" placeholder="Specify other mode" style="width: 200px; margin-left: 10px;" onchange="updateAllFields()">
+                </div>
+            </div>
+            
+            <table class="form-table">
+                <tr>
+                    <td>Payment Date</td>
+                    <td><input type="date" id="paymentDate" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>I understand this investment is subject to a 12-month maturity period</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SECTION H: Demat Account Details (Highlighted) -->
+        <div class="section section-h">
+            <div class="section-title">SECTION H: DEMAT ACCOUNT DETAILS (Mandatory)</div>
+            <table class="form-table">
+                <tr>
+                    <td>Do you have a Demat Account?</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'dematAccount')">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'dematAccount')">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Depository</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'depository')">
+                            <span class="checkbox"></span> NSDL
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'depository')">
+                            <span class="checkbox"></span> CDSL
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DP Name</td>
+                    <td><input type="text" id="dpName" placeholder="Enter DP Name" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>DP ID</td>
+                    <td><input type="text" id="dpId" placeholder="Enter DP ID" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Client ID/Beneficiary Account Number</td>
+                    <td><input type="text" id="clientId" placeholder="Enter Client ID" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Demat Account Statement attached</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'dematStatement')">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'dematStatement')">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="warning-box">
+                <div class="warning-title">⚠️ IMPORTANT NOTE</div>
+                <p>Demat account is mandatory for receiving shares upon conversion. Please ensure you have an active Demat account before investing.</p>
+            </div>
+        </div>
+
+        <div class="page-number">Page 4 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- SECTION I: Nomination Details -->
+        <div class="section">
+            <div class="section-title">SECTION I: NOMINATION DETAILS (Optional but Recommended)</div>
+            <p>Do you wish to appoint a Nominee? 
+                <span class="inline-checkboxes">
+                    <div class="checkbox-item" onclick="toggleNomineeSection(this)">
+                        <span class="checkbox"></span> Yes
+                    </div>
+                    <div class="checkbox-item" onclick="toggleNomineeSection(this)">
+                        <span class="checkbox"></span> No
+                    </div>
+                </span>
+            </p>
+            
+            <div id="nomineeSection" style="display: none;">
+                <p>Nominee 1:</p>
+                <table class="form-table">
+                    <tr>
+                        <td>Full Name</td>
+                        <td><input type="text" id="nominee1Name" placeholder="Nominee full name" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Relationship with Investor</td>
+                        <td><input type="text" id="nominee1Relation" placeholder="Relationship" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td><input type="date" id="nominee1Dob" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><input type="text" id="nominee1Address" placeholder="Nominee address" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Share of Nomination</td>
+                        <td><input type="number" id="nominee1Share" min="0" max="100" placeholder="%" onchange="updateNominationTotal()"> %</td>
+                    </tr>
+                    <tr>
+                        <td>PAN (if major)</td>
+                        <td><input type="text" id="nominee1Pan" placeholder="Nominee PAN" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Aadhaar Number</td>
+                        <td><input type="text" id="nominee1Aadhaar" placeholder="Nominee Aadhaar" onchange="updateAllFields()"></td>
+                    </tr>
+                </table>
+                
+                <div id="minorGuardianSection" style="display: none; margin-top: 15px;">
+                    <p>If Nominee 1 is Minor:</p>
+                    <table class="form-table">
+                        <tr>
+                            <td>Guardian's Name</td>
+                            <td><input type="text" id="guardianName" placeholder="Guardian's name" onchange="updateAllFields()"></td>
+                        </tr>
+                        <tr>
+                            <td>Guardian's Relationship with Nominee</td>
+                            <td><input type="text" id="guardianRelation" placeholder="Relationship" onchange="updateAllFields()"></td>
+                        </tr>
+                        <tr>
+                            <td>Guardian's PAN</td>
+                            <td><input type="text" id="guardianPan" placeholder="Guardian's PAN" onchange="updateAllFields()"></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <p>Nominee 2 (if applicable):</p>
+                <table class="form-table">
+                    <tr>
+                        <td>Full Name</td>
+                        <td><input type="text" id="nominee2Name" placeholder="Nominee 2 full name" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Relationship with Investor</td>
+                        <td><input type="text" id="nominee2Relation" placeholder="Relationship" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td><input type="date" id="nominee2Dob" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><input type="text" id="nominee2Address" placeholder="Nominee 2 address" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Share of Nomination</td>
+                        <td><input type="number" id="nominee2Share" min="0" max="100" placeholder="%" onchange="updateNominationTotal()"> %</td>
+                    </tr>
+                </table>
+                
+                <div class="warning-box" style="margin-top: 15px;">
+                    <div class="warning-title">Total Nomination: <span id="totalNomination">0</span>%</div>
+                    <p><strong>Note:</strong> Total nomination percentage must equal 100%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION J: Source of Funds Declaration -->
+        <div class="section">
+            <div class="section-title">SECTION J: SOURCE OF FUNDS DECLARATION</div>
+            <p>Source of Investment Funds (Please tick all applicable):</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Salary/Professional Income
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Business Income
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Agricultural Income
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Savings/Fixed Deposits
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Sale of Assets/Property
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Inheritance/Gift
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Loan (please specify source: 
+                    <input type="text" id="loanSource" placeholder="Loan source" style="width: 200px; margin-left: 10px;" onchange="updateAllFields()">)
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Returns from Investments
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Others (please specify): 
+                    <input type="text" id="otherSource" placeholder="Other source" style="width: 200px; margin-left: 10px;" onchange="updateAllFields()">
+                </div>
+            </div>
+        </div>
+
+        <div class="page-number">Page 5 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- SECTION K: Tax Residency Information -->
+        <div class="section">
+            <div class="section-title">SECTION K: TAX RESIDENCY INFORMATION</div>
+            <p>Are you a tax resident of any other country? 
+                <span class="inline-checkboxes">
+                    <div class="checkbox-item" onclick="toggleTaxResidency(this)">
+                        <span class="checkbox"></span> Yes
+                    </div>
+                    <div class="checkbox-item" onclick="toggleTaxResidency(this)">
+                        <span class="checkbox"></span> No
+                    </div>
+                </span>
+            </p>
+            
+            <div id="taxResidencyDetails" style="display: none;">
+                <p>If yes, please provide details:</p>
+                <table class="form-table">
+                    <tr>
+                        <td>Country 1</td>
+                        <td>
+                            <input type="text" id="taxCountry1" placeholder="Country name" style="width: 200px;" onchange="updateAllFields()">
+                            Tax ID: <input type="text" id="taxId1" placeholder="Tax ID" style="width: 150px;" onchange="updateAllFields()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Country 2</td>
+                        <td>
+                            <input type="text" id="taxCountry2" placeholder="Country name" style="width: 200px;" onchange="updateAllFields()">
+                            Tax ID: <input type="text" id="taxId2" placeholder="Tax ID" style="width: 150px;" onchange="updateAllFields()">
+                        </td>
+                    </tr>
+                </table>
+                <p>Tax Residency Certificate attached (if applicable): 
+                    <span class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'taxCertificate')">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'taxCertificate')">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION L: FATCA/CRS Declaration -->
+        <div class="section">
+            <div class="section-title">SECTION L: FATCA/CRS DECLARATION</div>
+            <p>For tax compliance purposes:</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> I confirm that I am a tax resident of India only
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> I confirm that I am a tax resident of countries other than India (as mentioned in Section K)
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> I certify that the tax information provided is true and accurate
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> I undertake to inform the Company of any changes to my tax residency status
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION M: Related Party Disclosure -->
+        <div class="section">
+            <div class="section-title">SECTION M: RELATED PARTY DISCLOSURE</div>
+            <p>Are you related to any Director, Promoter, or Key Managerial Personnel of Kisaan InfoTech Limited?</p>
+            <div class="inline-checkboxes">
+                <div class="checkbox-item" onclick="toggleRelatedParty(this)">
+                    <span class="checkbox"></span> Yes
+                </div>
+                <div class="checkbox-item" onclick="toggleRelatedParty(this)">
+                    <span class="checkbox"></span> No
+                </div>
+            </div>
+            
+            <div id="relatedPartyDetails" style="display: none; margin-top: 15px;">
+                <p>If yes, please provide details:</p>
+                <table class="form-table">
+                    <tr>
+                        <td>Name of Related Person</td>
+                        <td><input type="text" id="relatedPersonName" placeholder="Related person name" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Relationship</td>
+                        <td><input type="text" id="relatedPersonRelation" placeholder="Relationship" onchange="updateAllFields()"></td>
+                    </tr>
+                    <tr>
+                        <td>Designation in Company</td>
+                        <td><input type="text" id="relatedPersonDesignation" placeholder="Designation" onchange="updateAllFields()"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="page-number">Page 6 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- SECTION N: Investor Sophistication & Risk Acknowledgment -->
+        <div class="section">
+            <div class="section-title">SECTION N: INVESTOR SOPHISTICATION & RISK ACKNOWLEDGMENT</div>
+            <table class="form-table">
+                <tr>
+                    <td>Your Investment Experience (years)</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'investmentExp')">
+                            <span class="checkbox"></span> Less than 1 year
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'investmentExp')">
+                            <span class="checkbox"></span> 1-3 years
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'investmentExp')">
+                            <span class="checkbox"></span> 3-5 years
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'investmentExp')">
+                            <span class="checkbox"></span> 5-10 years
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'investmentExp')">
+                            <span class="checkbox"></span> More than 10 years
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prior Investment in Unlisted/Startup Securities</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="togglePriorInvestment(this)">
+                            <span class="checkbox"></span> Yes
+                        </div>
+                        <div class="checkbox-item" onclick="togglePriorInvestment(this)">
+                            <span class="checkbox"></span> No
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>If yes, number of investments</td>
+                    <td><input type="number" id="priorInvestmentsCount" min="0" placeholder="Number" style="width: 100px;" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Annual Investment in Securities (approx.)</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'annualInvestment')">
+                            <span class="checkbox"></span> Below ₹1 Lakh
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'annualInvestment')">
+                            <span class="checkbox"></span> ₹1-5 Lakhs
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'annualInvestment')">
+                            <span class="checkbox"></span> ₹5-10 Lakhs
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'annualInvestment')">
+                            <span class="checkbox"></span> ₹10-25 Lakhs
+                        </div>
+                        <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'annualInvestment')">
+                            <span class="checkbox"></span> Above ₹25 Lakhs
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Professional Qualifications (if any)</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> CA
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> CS
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> CFA
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> MBA (Finance)
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> Other: 
+                            <input type="text" id="otherQualification" placeholder="Specify" style="width: 150px; margin-left: 10px;" onchange="updateAllFields()">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+     <!-- Section O: Declarations and Undertakings -->
+        <div class="section">
+            <div class="section-title">SECTION O: DECLARATIONS AND UNDERTAKINGS</div>
+            <p>I/We hereby declare, confirm, and undertake that:</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 1. I/We have read and understood the Private Placement Memorandum, Term Sheet, Convertible Note Agreement, and all related documents provided by Kisaan InfoTech Limited.
+                </div>
+                <!-- Add all 22 declarations similarly -->
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 2. I/We understand that this investment in Convertible Notes involves a high degree of risk and that I/We may lose all or part of the invested capital.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 3. I/We confirm that the Convertible Notes will convert into equity shares at ₹30 per share (subject to adjustments as per the Note Agreement) or will be repaid within 12 months from the date of issuance.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 4. I/We understand that there is no guaranteed return on this investment and that the Company is under no obligation to pay interest (0% interest rate agreed).
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 5. I/We understand that the equity shares received upon conversion will be unlisted and illiquid, and there is no assurance of listing on any stock exchange.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 6. I/We confirm that I/We have the financial capacity to bear the loss of the entire investment amount without affecting my/our financial stability.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 7. I/We confirm that the investment is being made from legitimate sources and not from proceeds of any unlawful activity.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 8. I/We understand that this investment is subject to lock-in periods and transfer restrictions as specified in the Note Agreement and Shareholders' Agreement.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 9. I/We understand that the notes are non-transferable without prior written consent of the Company.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 10. I/We understand that conversion may be subject to anti-dilution adjustments as per the Note Agreement.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 11. I/We understand that early redemption is not permitted except as specified in the Note Agreement.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 12. I/We confirm that I/We are investing as a principal and not as an agent/trustee for any other person.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 13. I/We acknowledge that I/We have been given adequate opportunity to seek independent legal, tax, and financial advice before making this investment.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 14. I/We understand that past performance of the Company or similar investments is not indicative of future results.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 15. I/We confirm that I/We am/are investing surplus funds and this does not represent my/our entire investable corpus.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 16. All information provided in this KYC form is true, correct, and complete to the best of my/our knowledge and belief.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 17. I/We authorize Kisaan InfoTech Limited to verify the information provided and to obtain any additional information as may be required.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 18. I/We undertake to inform the Company immediately of any changes in the information provided in this form.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 19. I/We confirm that I/We are not insolvent, have not been declared bankrupt, and are not subject to any disqualification under applicable laws.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 20. I/We understand and accept that the Company reserves the right to accept or reject this application without assigning any reason.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 21. I/We agree to be bound by the terms and conditions of the Convertible Note Agreement and the Articles of Association of the Company.
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox"></span> 22. I/We consent to the Company sharing my/our information with regulatory authorities, depositories, registrars, and other service providers as required.
+                </div>
+            </div>
+        </div>
+
+        <div class="page-number">Page 7 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- SECTION P: Anti-Money Laundering (AML) Declaration -->
+        <div class="section">
+            <div class="section-title">SECTION P: ANTI-MONEY LAUNDERING (AML) DECLARATION</div>
+            <p>I/We hereby declare that:</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> 1. The investment amount does not represent proceeds from any illegal or criminal activity.
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> 2. I/We am/are not involved in any activity related to money laundering, terrorist financing, or any other financial crime.
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> 3. I/We am/are not listed on any sanctions list maintained by the United Nations, OFAC, EU, or any other regulatory authority.
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> 4. I/We undertake to provide any additional information or documentation as may be required for AML/KYC compliance.
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION Q: Data Privacy & Consent -->
+        <div class="section">
+            <div class="section-title">SECTION Q: DATA PRIVACY & CONSENT</div>
+            <p>I/We hereby consent to:</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> The collection, processing, storage, and use of my/our personal information for the purposes of this investment and related activities.
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> The processing of my/our data in accordance with applicable data protection laws including the Information Technology Act, 2000 and rules thereunder.
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> The Company retaining my/our information for as long as required under applicable laws and regulations.
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION R: Authorization for Joint Holders -->
+        <div class="section">
+            <div class="section-title">SECTION R: AUTHORIZATION FOR JOINT HOLDERS (If Applicable)</div>
+            <p>Joint Holder 2:</p>
+            <table class="form-table">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" id="jointHolder2Name" placeholder="Joint holder 2 name" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>PAN</td>
+                    <td><input type="text" id="jointHolder2Pan" placeholder="Joint holder 2 PAN" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Signature</td>
+                    <td>______________________________</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td><input type="date" id="jointHolder2Date" onchange="updateAllFields()"></td>
+                </tr>
+            </table>
+            
+            <p>Joint Holder 3:</p>
+            <table class="form-table">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" id="jointHolder3Name" placeholder="Joint holder 3 name" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>PAN</td>
+                    <td><input type="text" id="jointHolder3Pan" placeholder="Joint holder 3 PAN" onchange="updateAllFields()"></td>
+                </tr>
+                <tr>
+                    <td>Signature</td>
+                    <td>______________________________</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td><input type="date" id="jointHolder3Date" onchange="updateAllFields()"></td>
+                </tr>
+            </table>
+            
+            <p>Mode of Holding:</p>
+            <div class="inline-checkboxes">
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'holdingMode')">
+                    <span class="checkbox"></span> Joint (First Holder OR Survivor)
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'holdingMode')">
+                    <span class="checkbox"></span> Joint (First Holder AND Survivor)
+                </div>
+                <div class="checkbox-item" onclick="selectSingleCheckbox(this, 'holdingMode')">
+                    <span class="checkbox"></span> Anyone or Survivor
+                </div>
+            </div>
+        </div>
+
+        <div class="page-number">Page 8 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- SECTION S: Documents Checklist -->
+        <div class="section">
+            <div class="section-title">SECTION S: DOCUMENTS CHECKLIST</div>
+            <p>Please ensure the following documents are attached with this application:</p>
+            
+            <p><strong>Mandatory Documents:</strong></p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Self-attested copy of PAN Card
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Self-attested copy of Aadhaar Card / Passport / Voter ID / Driving License
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Address Proof (if different from identity proof)
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Recent Passport-size Photograph (2 copies)
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Cancelled Cheque / Bank Statement (not older than 3 months)
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Demat Account Statement
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Proof of Payment (RTGS/NEFT receipt, Cheque copy, UPI screenshot, etc.)
+                </div>
+            </div>
+            
+            <p><strong>For NRI/Foreign Investors (Additional Documents):</strong></p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Copy of Passport
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Overseas Address Proof
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> PIO/OCI Card (if applicable)
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> RBI/FIPB approval (if required)
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Tax Residency Certificate
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> FATCA/CRS Self-Certification
+                </div>
+            </div>
+            
+            <p><strong>Optional Documents:</strong></p>
+            <div class="checkbox-group">
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Income Tax Return (last 2 years)
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Net Worth Certificate
+                </div>
+                <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                    <span class="checkbox"></span> Source of Funds Documentation
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION T: Investor Signature and Date -->
+        <div class="section signature-section avoid-break">
+            <div class="section-title">SECTION T: INVESTOR SIGNATURE AND DATE</div>
+            <p>I/We hereby confirm that I/We have read, understood, and agree to all the terms, conditions, declarations, and undertakings mentioned in this KYC Application Form.</p>
+            <p>For Individual Investors:</p>
+            <table class="form-table">
+                <tr>
+                    <td>Signature of Applicant</td>
+                    <td>______________________________</td>
+                </tr>
+                <tr>
+                    <td>Name (in CAPITAL LETTERS)</td>
+                    <td id="signatureName" class="auto-populated" style="font-size: 14pt; font-weight: bold;">[FULL NAME WILL APPEAR HERE]</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td id="signatureDate" class="auto-populated"><?php echo date('d-m-Y'); ?></td>
+                </tr>
+                <tr>
+                    <td>Place</td>
+                    <td><input type="text" id="signaturePlace" placeholder="Enter place" onchange="updateAllFields()"></td>
+                </tr>
+            </table>
+            <p>Photograph:</p>
+            <div class="photo-box">Paste recent passport-size photograph here</div>
+        </div>
+
+        <!-- SECTION U: For Official Use Only -->
+        <div class="section official-use avoid-break">
+            <div class="official-use-title">SECTION U: FOR OFFICIAL USE ONLY</div>
+            <p>DO NOT WRITE IN THIS SECTION</p>
+            <table class="form-table">
+                <tr>
+                    <td>Application Number</td>
+                    <td id="officialAppNumber" class="auto-populated"></td>
+                </tr>
+                <tr>
+                    <td>Date of Receipt</td>
+                    <td><input type="date" id="officialReceiptDate" readonly style="background: #f5f5f5;"></td>
+                </tr>
+                <tr>
+                    <td>Amount Received</td>
+                    <td>₹ <span id="officialAmount" class="auto-populated">0</span></td>
+                </tr>
+                <tr>
+                    <td>Payment Mode</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> RTGS/NEFT
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> Cheque
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> UPI
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> Other
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Payment Verified by</td>
+                    <td>Signature: _____________ Name: _____________ Date: _____</td>
+                </tr>
+                <tr>
+                    <td>KYC Documents Verified by</td>
+                    <td>Signature: _____________ Name: _____________ Date: _____</td>
+                </tr>
+                <tr>
+                    <td>Application Status</td>
+                    <td class="inline-checkboxes">
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> Approved
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> Rejected
+                        </div>
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <span class="checkbox"></span> Pending
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Remarks (if any)</td>
+                    <td><input type="text" readonly style="background: #f5f5f5; width: 100%;"></td>
+                </tr>
+                <tr>
+                    <td>Note Certificate Number</td>
+                    <td><input type="text" readonly style="background: #f5f5f5; width: 100%;"></td>
+                </tr>
+                <tr>
+                    <td>Date of Note Issuance</td>
+                    <td><input type="date" readonly style="background: #f5f5f5;"></td>
+                </tr>
+                <tr>
+                    <td>Number of Notes Issued</td>
+                    <td><input type="text" readonly style="background: #f5f5f5; width: 100%;"></td>
+                </tr>
+                <tr>
+                    <td>Authorized Signatory</td>
+                    <td>Signature: _____________ Name: _____________ Date: _____</td>
+                </tr>
+            </table>
+            <p>Company Seal:</p>
+            <div style="border: 1px solid #000; height: 50px; width: 150px;"></div>
+        </div>
+
+        <div class="page-number">Page 9 of 10</div>
+        <div class="page-break"></div>
+
+        <!-- Important Notes -->
+        <div class="important-notes">
+            <h3>IMPORTANT NOTES</h3>
+            <p>Please read carefully before submitting your application:</p>
+            
+            <div class="note-section">
+                <h4>Investment Terms</h4>
+                <ol>
+                    <li class="note-item">Minimum Investment: ₹30,000 for 1,000 Convertible Notes (convertible into 1,000 shares at ₹30/share)</li>
+                    <li class="note-item">Conversion Terms: The notes will automatically convert into equity shares at ₹30 per share upon the earlier of: a Qualified Financing Event (Series A or subsequent funding round), Maturity date (12 months from issuance), Company's discretion with investor consent</li>
+                    <li class="note-item">Repayment Option: If no conversion event occurs by maturity date, the Company may, at its sole discretion: Repay the principal amount in cash, Negotiate an extension with the note holder, Convert at the agreed price of ₹30/share</li>
+                    <li class="note-item">No Interest: These notes carry 0% interest rate. No interest will accrue or be payable.</li>
+                    <li class="note-item">Lock-in Period: Converted shares will be subject to a lock-in period as specified in the Shareholders' Agreement.</li>
+                    <li class="note-item">Transferability: Convertible Notes are non-transferable without prior written consent of the Company.</li>
+                    <li class="note-item">Dilution Risk: The conversion may be subject to anti-dilution adjustments as per the Note Agreement.</li>
+                </ol>
+            </div>
+            
+            <div class="note-section">
+                <h4>Application Process</h4>
+                <ol start="8">
+                    <li class="note-item">Cooling-off Period: Investors have a 48-hour review period after application submission to withdraw their application without penalty.</li>
+                    <li class="note-item">Processing Time: Applications will be processed within 7-10 working days of receipt of complete documentation and payment clearance.</li>
+                    <li class="note-item">Note Issuance: Note certificates will be issued within 15 days of payment clearance and application approval.</li>
+                    <li class="note-item">Incomplete Applications: Applications with incomplete information or missing documents will not be processed and will be returned to the investor.</li>
+                    <li class="note-item">Application Acceptance: The Company reserves the right to accept or reject any application without assigning any reason.</li>
+                    <li class="note-item">Payment: All payments must be made from the investor's own bank account. Third-party payments will not be accepted.</li>
+                </ol>
+            </div>
+            
+            <div class="note-section">
+                <h4>Regulatory Compliance</h4>
+                <ol start="14">
+                    <li class="note-item">Private Placement: This is a private placement under Section 42 of the Companies Act, 2013 and relevant SEBI regulations.</li>
+                    <li class="note-item">Unlisted Securities: The Company's shares are unlisted and there is no assurance of listing on any stock exchange in the future.</li>
+                    <li class="note-item">Risk Disclosure: Investment in unlisted securities involves substantial risk including the risk of loss of entire capital.</li>
+                </ol>
+            </div>
+            
+            <div class="note-section">
+                <h4>Contact Information</h4>
+                <ol start="17">
+                    <li class="note-item">For Queries: Email: info@kisaaninfotech.com, Phone: +91 95958 20288, Address: Thite Wasti, Survey No. 14/1/1, Mundhwa Road, Kharadi, Pune, Maharashtra - 411014, Office Hours: Monday to Friday, 10:00 AM to 6:00 PM</li>
+                    <li class="note-item">Document Submission: All documents can be submitted via: Email (scanned copies): info@kisaaninfotech.com, Courier/Post to the registered address, In-person at the registered office (by appointment only)</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="footer">
+            END OF APPLICATION FORM<br>
+            Version 2.0 | Date: December 2025<br>
+            © 2025 Kisaan InfoTech Limited. All rights reserved.
+        </div>
+
+        <div class="page-number">Page 10 of 10</div>
+    </div>
+
+    <script>
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateApplicationNumber();
+            updateCurrentDate();
+            setupCheckboxes();
+            loadSavedData();
+            updateAllFields(); // Initial update
+        });
+
+        // Generate Application Number based on Financial Year
+        function generateApplicationNumber() {
+            const today = new Date();
+            let financialYearStart, financialYearEnd;
+            
+            // Determine financial year (April 1 to March 31)
+            if (today.getMonth() >= 3) { // April (3) to December
+                financialYearStart = today.getFullYear();
+                financialYearEnd = today.getFullYear() + 1;
+            } else { // January to March
+                financialYearStart = today.getFullYear() - 1;
+                financialYearEnd = today.getFullYear();
+            }
+            
+            const fyCode = financialYearStart.toString().slice(-2) + financialYearEnd.toString().slice(-2);
+            
+            // Try to get sequential number from localStorage
+            let seqNumber = localStorage.getItem(`KYC_CN_SEQ_${fyCode}`);
+            if (!seqNumber) {
+                seqNumber = 1;
+            } else {
+                seqNumber = parseInt(seqNumber) + 1;
+            }
+            
+            // Save next number for future use
+            localStorage.setItem(`KYC_CN_SEQ_${fyCode}`, seqNumber.toString());
+            
+            const serial = seqNumber.toString().padStart(4, '0');
+            const appNumber = `KYC/CN/${fyCode}-${serial}`;
+            
+            // Update display
+            document.getElementById('appNumber').textContent = appNumber;
+            document.getElementById('officialAppNumber').textContent = appNumber;
+            
+            // Store for reference
+            localStorage.setItem('currentAppNumber', appNumber);
+        }
+
+        // Update current date in signature section
+        function updateCurrentDate() {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            document.getElementById('signatureDate').textContent = formattedDate;
+            document.getElementById('officialReceiptDate').valueAsDate = now;
+        }
+
+        // Checkbox handling functions
+        function setupCheckboxes() {
+            document.querySelectorAll('.checkbox-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on input field inside
+                    if (e.target.tagName === 'INPUT') return;
+                    
+                    const checkbox = this.querySelector('.checkbox');
+                    if (checkbox) {
+                        checkbox.classList.toggle('checked');
+                    }
+                });
+            });
+        }
+
+        function toggleCheckbox(element) {
+            const checkbox = element.querySelector('.checkbox');
+            if (checkbox) {
+                checkbox.classList.toggle('checked');
+            }
+        }
+
+        function selectSingleCheckbox(element, groupName) {
+            // Get all checkboxes in the same group
+            const parent = element.parentElement;
+            const checkboxes = parent.querySelectorAll('.checkbox');
+            
+            // Uncheck all in group
+            checkboxes.forEach(cb => cb.classList.remove('checked'));
+            
+            // Check the clicked one
+            element.querySelector('.checkbox').classList.add('checked');
+            
+            // Special handling for PEP
+            if (groupName === 'pepStatus') {
+                const pepText = element.textContent.trim();
+                const pepDetailsDiv = document.getElementById('pepDetails');
+                if (pepText.includes('Yes')) {
+                    pepDetailsDiv.style.display = 'block';
+                } else {
+                    pepDetailsDiv.style.display = 'none';
+                }
+            }
+        }
+
+        // Address same as residential toggle
+        function toggleAddressSame(element) {
+            const isChecked = element.querySelector('.checkbox').classList.contains('checked');
+            const corrAddressDiv = document.getElementById('correspondenceAddress');
+            
+            if (isChecked) {
+                // Copy residential address to correspondence address
+                document.getElementById('corrAddress1').value = document.getElementById('resAddress1').value;
+                document.getElementById('corrAddress2').value = document.getElementById('resAddress2').value;
+                document.getElementById('corrCity').value = document.getElementById('resCity').value;
+                document.getElementById('corrState').value = document.getElementById('resState').value;
+                document.getElementById('corrPinCode').value = document.getElementById('resPinCode').value;
+                corrAddressDiv.style.display = 'none';
+            } else {
+                corrAddressDiv.style.display = 'block';
+            }
+            updateAllFields();
+        }
+
+        // Toggle nominee section
+        function toggleNomineeSection(element) {
+            const isYes = element.textContent.includes('Yes');
+            const nomineeSection = document.getElementById('nomineeSection');
+            nomineeSection.style.display = isYes ? 'block' : 'none';
+            updateAllFields();
+        }
+
+        // Update nomination total
+        function updateNominationTotal() {
+            const share1 = parseInt(document.getElementById('nominee1Share').value) || 0;
+            const share2 = parseInt(document.getElementById('nominee2Share').value) || 0;
+            const total = share1 + share2;
+            document.getElementById('totalNomination').textContent = total;
+            
+            // Highlight if not 100%
+            if (total !== 100 && total > 0) {
+                document.getElementById('totalNomination').style.color = '#d32f2f';
+                document.getElementById('totalNomination').style.fontWeight = 'bold';
+            } else {
+                document.getElementById('totalNomination').style.color = '#2e7d32';
+            }
+            updateAllFields();
+        }
+
+        // Toggle tax residency section
+        function toggleTaxResidency(element) {
+            const isYes = element.textContent.includes('Yes');
+            const taxSection = document.getElementById('taxResidencyDetails');
+            taxSection.style.display = isYes ? 'block' : 'none';
+            updateAllFields();
+        }
+
+        // Toggle related party section
+        function toggleRelatedParty(element) {
+            const isYes = element.textContent.includes('Yes');
+            const relatedSection = document.getElementById('relatedPartyDetails');
+            relatedSection.style.display = isYes ? 'block' : 'none';
+            updateAllFields();
+        }
+
+        // Toggle prior investment count
+        function togglePriorInvestment(element) {
+            const isYes = element.textContent.includes('Yes');
+            const countInput = document.getElementById('priorInvestmentsCount');
+            if (isYes) {
+                countInput.disabled = false;
+                countInput.style.backgroundColor = 'white';
+            } else {
+                countInput.disabled = true;
+                countInput.style.backgroundColor = '#f5f5f5';
+                countInput.value = '';
+            }
+            updateAllFields();
+        }
+
+        // Auto-calculate number of convertible notes
+        function calculateNotes() {
+            const amountInput = document.getElementById('investmentAmount');
+            let amount = parseFloat(amountInput.value) || 0;
+            const conversionPrice = 30; // Fixed conversion price
+            
+            // Validate minimum investment
+            if (amount < 30000) {
+                amount = 30000;
+                amountInput.value = amount;
+            }
+            
+            // Calculate number of notes (1 note = 1 share)
+            const notes = Math.floor(amount / conversionPrice);
+            document.getElementById('notesCount').textContent = notes;
+            
+            // Update amount in words
+            updateAmountInWords(amount);
+            
+            // Update official section
+            document.getElementById('officialAmount').textContent = amount.toLocaleString('en-IN');
+        }
+
+        // Convert number to words (Indian numbering system)
+        function updateAmountInWords(amount) {
+            const words = numberToWords(amount);
+            document.getElementById('amountInWords').textContent = `Rupees ${words} Only`;
+        }
+
+        function numberToWords(num) {
+            const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+            const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+            const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+            
+            function convertHundreds(n) {
+                if (n === 0) return '';
+                let result = '';
+                
+                if (n >= 100) {
+                    result += ones[Math.floor(n / 100)] + ' Hundred ';
+                    n %= 100;
+                }
+                
+                if (n >= 20) {
+                    result += tens[Math.floor(n / 10)] + ' ';
+                    n %= 10;
+                } else if (n >= 10) {
+                    result += teens[n - 10] + ' ';
+                    n = 0;
+                }
+                
+                if (n > 0) {
+                    result += ones[n] + ' ';
+                }
+                
+                return result.trim();
+            }
+            
+            if (num === 0) return 'Zero';
+            
+            let result = '';
+            const crore = Math.floor(num / 10000000);
+            num %= 10000000;
+            
+            const lakh = Math.floor(num / 100000);
+            num %= 100000;
+            
+            const thousand = Math.floor(num / 1000);
+            num %= 1000;
+            
+            const hundred = num;
+            
+            if (crore > 0) {
+                result += convertHundreds(crore) + ' Crore ';
+            }
+            
+            if (lakh > 0) {
+                result += convertHundreds(lakh) + ' Lakh ';
+            }
+            
+            if (thousand > 0) {
+                result += convertHundreds(thousand) + ' Thousand ';
+            }
+            
+            if (hundred > 0) {
+                result += convertHundreds(hundred);
+            }
+            
+            return result.trim() || 'Zero';
+        }
+
+        // Update ALL fields - main auto-population function
+        function updateAllFields() {
+            // Get core personal data
+            const fullName = document.getElementById('fullName').value;
+            const fatherSpouseName = document.getElementById('fatherSpouseName').value;
+            const dob = document.getElementById('dob').value;
+            const gender = document.getElementById('gender').value;
+            const maritalStatus = document.getElementById('maritalStatus').value;
+            const nationality = document.getElementById('nationality').value;
+            const panNumber = document.getElementById('panNumber').value;
+            const aadhaarNumber = document.getElementById('aadhaarNumber').value;
+            
+            // Update signature section (in CAPITAL LETTERS)
+            document.getElementById('signatureName').textContent = fullName.toUpperCase();
+            
+            // Update bank account holder name
+            document.getElementById('bankAccountHolder').textContent = fullName;
+            
+            // Update current date in signature
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            document.getElementById('signatureDate').textContent = formattedDate;
+            
+            // Update investment calculations
+            calculateNotes();
+            
+            // Save all data
+            saveFormData();
+        }
+
+        // Save form data to localStorage
+        function saveFormData() {
+            const formData = {};
+            
+            // Save all input fields
+            document.querySelectorAll('input, select, textarea').forEach(field => {
+                if (field.id && field.type !== 'button') {
+                    formData[field.id] = field.value;
+                }
+            });
+            
+            // Save checkbox states
+            const checkboxStates = {};
+            document.querySelectorAll('.checkbox').forEach((cb, index) => {
+                const parent = cb.closest('.checkbox-item');
+                if (parent) {
+                    const text = parent.textContent.trim().replace(/\s+/g, ' ');
+                    checkboxStates[`checkbox_${index}`] = {
+                        checked: cb.classList.contains('checked'),
+                        text: text
+                    };
+                }
+            });
+            formData.checkboxStates = checkboxStates;
+            
+            // Save application number
+            formData.applicationNumber = document.getElementById('appNumber').textContent;
+            
+            localStorage.setItem('kycFormData', JSON.stringify(formData));
+        }
+
+        // Load saved form data
+        function loadFormData() {
+            const savedData = localStorage.getItem('kycFormData');
+            if (!savedData) {
+                alert('No saved data found!');
+                return;
+            }
+            
+            const formData = JSON.parse(savedData);
+            
+            // Load input fields
+            Object.keys(formData).forEach(key => {
+                if (key !== 'checkboxStates' && key !== 'applicationNumber') {
+                    const field = document.getElementById(key);
+                    if (field) {
+                        field.value = formData[key];
+                    }
+                }
+            });
+            
+            // Load checkbox states
+            if (formData.checkboxStates) {
+                Object.keys(formData.checkboxStates).forEach(key => {
+                    const checkboxData = formData.checkboxStates[key];
+                    // This is simplified - in production, you'd need to match checkboxes by text
+                });
+            }
+            
+            // Trigger calculations
+            calculateNotes();
+            updateAllFields();
+            
+            alert('Form data loaded successfully!');
+        }
+
+        // Clear form
+        function clearForm() {
+            if (confirm('Are you sure you want to clear all form data?')) {
+                // Clear all input fields
+                document.querySelectorAll('input:not([type="button"]), select, textarea').forEach(field => {
+                    if (field.type === 'checkbox' || field.type === 'radio') {
+                        field.checked = false;
+                    } else {
+                        field.value = '';
+                    }
+                });
+                
+                // Clear all checkboxes
+                document.querySelectorAll('.checkbox').forEach(cb => {
+                    cb.classList.remove('checked');
+                });
+                
+                // Clear auto-populated fields
+                document.getElementById('signatureName').textContent = '[FULL NAME WILL APPEAR HERE]';
+                document.getElementById('bankAccountHolder').textContent = '[Auto-filled from Full Name]';
+                document.getElementById('notesCount').textContent = '0';
+                document.getElementById('amountInWords').textContent = 'Rupees Zero Only';
+                document.getElementById('officialAmount').textContent = '0';
+                
+                // Clear localStorage
+                localStorage.removeItem('kycFormData');
+                
+                alert('Form cleared successfully!');
+            }
+        }
+
+        // Print form with serial number preservation
+        window.printForm = function() {
+            saveFormData();
+            const appNumber = document.getElementById('appNumber').textContent;
+            localStorage.setItem('lastPrintedAppNumber', appNumber);
+            window.print();
+        };
+
+        // Override window.print to use our function
+        window.print = window.printForm;
+    </script>
+</body>
+</html>
