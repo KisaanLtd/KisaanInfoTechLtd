@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODE OF CONDUCT FOR DIRECTORS | Kisaan Infotech Limited</title>
+    <style>
+        /* Critical Compliance Alert Styling */
+        .compliance-alert {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-left: 6px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .alert-title {
+            color: #856404;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .alert-title:before {
+            content: "⚠️";
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        /* Main Document Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .document-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 40px 50px;
+            position: relative;
+            border: 1px solid #ddd;
+        }
+        
+        /* Header with Compliance Badge */
+        .header {
+            border-bottom: 3px solid #2c7a2c;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .compliance-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #dc3545;
+            color: white;
+            padding: 8px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 0 0 0 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .company-name {
+            color: #2c7a2c;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .document-title {
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            margin: 25px 0;
+            text-decoration: underline;
+            color: #1a5276;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        /* Attention Grabbing Elements */
+        .director-notice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 2px solid #2196f3;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(33, 150, 243, 0.1);
+        }
+        
+        .notice-title {
+            color: #0d47a1;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .notice-title:before {
+            content: "📋";
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .legal-reference {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2c7a2c;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #555;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            color: #2c7a2c;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e8f5e9;
+            position: relative;
+        }
+        
+        .section-number {
+            display: inline-block;
+            background: #2c7a2c;
+            color: white;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            border-radius: 50%;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+        
+        .subsection {
+            margin: 20px 0 20px 20px;
+        }
+        
+        .subsection-title {
+            font-weight: bold;
+            color: #1a5276;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        /* List Styling */
+        .compliance-list {
+            list-style-type: none;
+            margin: 15px 0 15px 20px;
+        }
+        
+        .compliance-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .compliance-list li:before {
+            content: "✓";
+            color: #2c7a2c;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .requirement-list {
+            list-style-type: none;
+            margin: 15px 0 15px 20px;
+        }
+        
+        .requirement-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .requirement-list li:before {
+            content: "•";
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        /* New/Updated Content Indicators */
+        .updated-content {
+            background-color: #e8f5e9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .new-section {
+            background-color: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            border: 1px dashed #2196f3;
+        }
+        
+        .new-tag {
+            background: #2196f3;
+            color: white;
+            padding: 2px 8px;
+            font-size: 11px;
+            border-radius: 3px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        /* Signature Section */
+        .signature-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .signature-block {
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
+            margin-right: 5%;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            height: 40px;
+        }
+        
+        .signature-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                font-size: 12pt;
+            }
+            
+            .document-container {
+                box-shadow: none;
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            .compliance-alert, .director-notice {
+                break-inside: avoid;
+            }
+            
+            .no-print {
+                display: none;
+            }
+            
+            @page {
+                margin: 1.5cm;
+            }
+        }
+        
+        /* Interactive Elements */
+        .toggle-details {
+            background: none;
+            border: none;
+            color: #2196f3;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+        
+        .details-content {
+            display: none;
+            padding: 15px;
+            background: #f8f9fa;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .acknowledgment-box {
+            background: #fff8e1;
+            border: 2px solid #ffd54f;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .acknowledgment-title {
+            color: #5d4037;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <!-- Compliance Alert -->
+        <div class="compliance-alert no-print">
+            <div class="alert-title">COMPLIANCE ACTION REQUIRED</div>
+            <div>This document requires immediate Director acknowledgment. Key updates include: (1) Enhanced whistleblower protections, (2) ESG oversight responsibilities, (3) Digital governance protocols, and (4) Updated regulatory references. All Directors must submit annual compliance affirmation by December 31.</div>
+        </div>
+        
+        <!-- Header Section -->
+        <div class="header">
+            <div class="compliance-badge">VERSION 3.0 | UPDATED 2024</div>
+            <div class="company-name">KISAAN INFOTECH LIMITED</div>
+            <div>CIN:U74999PN2014PLC150773</div>
+            <div>Registered Office: Thite Wasti, Survey No. 14/1/1, Mundhwa Road, Kharadi, Pune, Maharashtra, India, 411014</div>
+            
+            <div class="document-title">CODE OF CONDUCT FOR DIRECTORS</div>
+            <div class="subtitle">
+                (Pursuant to Section 149(8) of the Companies Act, 2013 read with Rule 6 of the Companies (Appointment and Qualification of Directors) Rules, 2014,<br>
+                and SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 as amended)
+            </div>
+        </div>
+        
+        <!-- Director Notice -->
+        <div class="director-notice">
+            <div class="notice-title">DIRECTOR'S PERSONAL COMPLIANCE NOTICE</div>
+            <div>As a Director of Kisaan Infotech Limited, you are personally responsible for understanding and adhering to this Code. Violations may result in regulatory penalties, disqualification, and personal liability. This document supersedes all previous versions and must be read in conjunction with the Company's Whistleblower Policy, Insider Trading Code, and Sexual Harassment Policy.</div>
+        </div>
+        
+        <!-- 1. Preamble -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">1</span>
+                PREAMBLE & GOVERNANCE FRAMEWORK
+            </div>
+            <div class="legal-reference">
+                <strong>Regulatory Reference:</strong> Companies Act, 2013 (Section 149); SEBI LODR Regulations (Regulation 17(5)); SEBI (Prohibition of Insider Trading) Regulations, 2015
+            </div>
+            <p>This Code of Conduct ("Code") establishes the ethical and professional standards for Directors of Kisaan Infotech Limited ("Company"). It is formulated pursuant to:</p>
+            <ul class="compliance-list">
+                <li>Companies Act, 2013, and the Companies (Appointment and Qualification of Directors) Rules, 2014</li>
+                <li>SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 as amended</li>
+                <li>SEBI (Prohibition of Insider Trading) Regulations, 2015</li>
+                <li>Digital Personal Data Protection Act, 2023</li>
+                <li>Global best practices in corporate governance</li>
+            </ul>
+            <p>The Code aims to ensure Directors uphold the highest standards of integrity, accountability, and transparency while discharging their fiduciary duties.</p>
+        </div>
+        
+        <!-- 2. Applicability -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">2</span>
+                APPLICABILITY & SCOPE
+            </div>
+            <p>This Code applies to <strong>all Directors</strong> of the Company, including:</p>
+            <ul class="requirement-list">
+                <li>Executive Directors (Whole-time, Managing, Executive)</li>
+                <li>Non-Executive Directors</li>
+                <li>Independent Directors (must additionally comply with Schedule IV of Companies Act, 2013)</li>
+                <li>Alternate Directors</li>
+                <li>Additional Directors</li>
+                <li>Women Directors (with additional responsibilities under POSH Act, 2013)</li>
+            </ul>
+            <div class="updated-content">
+                <strong>Note:</strong> This Code extends to Director conduct in both physical and digital environments, including social media, virtual meetings, and electronic communications.
+            </div>
+        </div>
+        
+        <!-- 3. Duties & Responsibilities -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">3</span>
+                FIDUCIARY DUTIES & RESPONSIBILITIES
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">3.1 FIDUCIARY OBLIGATIONS</div>
+                <p>Directors shall, at all times:</p>
+                <ul class="compliance-list">
+                    <li>Act in <strong>good faith</strong> and in the <strong>best interests</strong> of the Company, prioritizing long-term sustainable value creation</li>
+                    <li>Exercise <strong>due care, skill, and diligence</strong> expected from a person of their knowledge and position</li>
+                    <li>Exercise <strong>independent judgment</strong> while making decisions</li>
+                    <li>Avoid and disclose <strong>any conflict of interest</strong> between personal interests and Company interests</li>
+                    <li>Protect and preserve <strong>Company assets</strong>, including intellectual property and data</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">3.2 COMPLIANCE OBLIGATIONS</div>
+                <p>Directors shall ensure:</p>
+                <ul class="compliance-list">
+                    <li><strong>Full compliance</strong> with all applicable laws, rules, regulations in India and jurisdictions where Company operates</li>
+                    <li>Adherence to <strong>Memorandum and Articles of Association</strong> of the Company</li>
+                    <li>Implementation of decisions made by <strong>Board and shareholders</strong></li>
+                    <li>Periodic review of <strong>regulatory compliance status</strong> across operations</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">3.3 BOARD PARTICIPATION & PREPARATION</div>
+                <p>Directors shall:</p>
+                <ul class="compliance-list">
+                    <li><strong>Attend and actively participate</strong> in Board and Committee meetings (minimum attendance as per statutory requirements)</li>
+                    <li><strong>Prepare adequately</strong> by reviewing agenda, background materials, and seeking clarifications in advance</li>
+                    <li><strong>Contribute constructively</strong> to discussions and decision-making</li>
+                    <li><strong>Devote sufficient time</strong> to understand Company's business, risks, and opportunities</li>
+                    <li><strong>Attend training programs</strong> on corporate governance, regulatory updates, and sector developments</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 4. Conflict of Interest -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">4</span>
+                CONFLICT OF INTEREST & DISCLOSURES
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">4.1 DISCLOSURE REQUIREMENTS</div>
+                <p>Directors shall <strong>immediately disclose</strong>:</p>
+                <ul class="requirement-list">
+                    <li>Any <strong>direct or indirect interest</strong> in contracts/arrangements with the Company (Form DIR-8)</li>
+                    <li>All <strong>material financial interests</strong> (exceeding ₹5 lakhs or 2% of turnover, whichever is lower)</li>
+                    <li><strong>Annual declarations</strong> at beginning of financial year and updates within 30 days of change</li>
+                    <li><strong>Relationships</strong> with entities transacting with Company</li>
+                    <li>Any <strong>position held</strong> in other companies/entities</li>
+                </ul>
+                <p><strong>Voting Restriction:</strong> Directors shall <em>abstain</em> from discussion and voting on matters where conflict exists.</p>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">4.2 RELATED PARTY TRANSACTIONS <span class="new-tag">UPDATED</span></div>
+                <ul class="compliance-list">
+                    <li>All Related Party Transactions must be <strong>at arm's length</strong> and compliant with Companies Act and SEBI LODR</li>
+                    <li>Prior <strong>Audit Committee approval</strong> required for material RPTs</li>
+                    <li>Complete <strong>disclosure</strong> in financial statements and Board reports</li>
+                    <li>No <strong>undue personal benefit</strong> from position as Director</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 5. Confidentiality -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">5</span>
+                CONFIDENTIALITY & INFORMATION SECURITY <span class="new-tag">EXPANDED</span>
+            </div>
+            <p>Directors shall maintain <strong>strict confidentiality</strong> of all non-public information:</p>
+            <ul class="compliance-list">
+                <li><strong>Not disclose</strong> confidential information to third parties without Board authorization</li>
+                <li><strong>Use information</strong> solely for legitimate Company purposes</li>
+                <li><strong>Comply strictly</strong> with SEBI Insider Trading Regulations - no trading during prohibited periods</li>
+                <li><strong>Safeguard</strong> physical and digital information assets</li>
+                <li><strong>Report immediately</strong> any suspected data breach or security incident</li>
+                <li><strong>Comply</strong> with Digital Personal Data Protection Act, 2023 requirements</li>
+            </ul>
+            <div class="updated-content">
+                <strong>Digital Communication Protocol:</strong> Use only approved encrypted channels for sharing sensitive information. Avoid discussing confidential matters on personal devices or unsecured networks.
+            </div>
+        </div>
+        
+        <!-- 6. Corporate Opportunities -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">6</span>
+                CORPORATE OPPORTUNITIES & FAIR DEALING
+            </div>
+            <ul class="compliance-list">
+                <li><strong>No diversion</strong> of business opportunities belonging to Company for personal gain</li>
+                <li><strong>Disclose to Board</strong> any opportunity that may interest Company</li>
+                <li><strong>No competition</strong> with Company's business interests</li>
+                <li><strong>Fair dealing</strong> with all stakeholders - no manipulation or misrepresentation</li>
+                <li><strong>No misuse</strong> of Company property, information, or position</li>
+            </ul>
+        </div>
+        
+        <!-- 7. New: ESG & Sustainability Oversight -->
+        <div class="section new-section">
+            <div class="section-title">
+                <span class="section-number">7</span>
+                ESG OVERSIGHT & SUSTAINABILITY <span class="new-tag">NEW</span>
+            </div>
+            <p>Directors shall provide strategic oversight on Environmental, Social, and Governance aspects:</p>
+            <ul class="compliance-list">
+                <li><strong>Review and approve</strong> ESG policy and sustainability framework</li>
+                <li><strong>Monitor implementation</strong> of climate-related risk management</li>
+                <li><strong>Ensure diversity, equity and inclusion</strong> across organization</li>
+                <li><strong>Oversee human rights</strong> compliance in operations and supply chain</li>
+                <li><strong>Review annual</strong> Business Responsibility and Sustainability Report (BRSR)</li>
+                <li><strong>Promote circular economy</strong> and resource efficiency principles</li>
+            </ul>
+        </div>
+        
+        <!-- 8. Financial Integrity -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">8</span>
+                FINANCIAL INTEGRITY & REPORTING
+            </div>
+            <ul class="compliance-list">
+                <li>Ensure <strong>accuracy and completeness</strong> of financial records and statements</li>
+                <li>No <strong>manipulation or misrepresentation</strong> of financial information</li>
+                <li>Compliance with <strong>Indian Accounting Standards</strong> and regulatory requirements</li>
+                <li>Robust <strong>internal controls</strong> and risk management systems</li>
+                <li>Timely <strong>disclosure of material events</strong> as per SEBI LODR</li>
+                <li>Oversight of <strong>internal and statutory audits</strong></li>
+            </ul>
+        </div>
+        
+        <!-- 9. New: Digital Governance -->
+        <div class="section new-section">
+            <div class="section-title">
+                <span class="section-number">9</span>
+                DIGITAL GOVERNANCE & CYBERSECURITY <span class="new-tag">NEW</span>
+            </div>
+            <p>Directors shall oversee the Company's digital transformation and cybersecurity posture:</p>
+            <ul class="compliance-list">
+                <li><strong>Approve and monitor</strong> cybersecurity policy and incident response plan</li>
+                <li><strong>Review quarterly</strong> cybersecurity threat assessments</li>
+                <li><strong>Ensure adequate</strong> investment in IT infrastructure and security</li>
+                <li><strong>Oversee data protection</strong> compliance and privacy-by-design implementation</li>
+                <li><strong>Monitor emerging</strong> technology risks (AI, blockchain, IoT)</li>
+            </ul>
+        </div>
+        
+        <!-- 10. Stakeholder Responsibilities -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">10</span>
+                STAKEHOLDER RESPONSIBILITIES
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">10.1 SHAREHOLDERS</div>
+                <ul class="compliance-list">
+                    <li><strong>Equitable treatment</strong> of all shareholders</li>
+                    <li>Protection of <strong>shareholder rights</strong> and interests</li>
+                    <li><strong>Transparent communication</strong> and timely disclosures</li>
+                    <li><strong>Effective grievance redressal</strong> mechanism</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">10.2 EMPLOYEES <span class="new-tag">UPDATED</span></div>
+                <ul class="compliance-list">
+                    <li>Promote <strong>respect, dignity, equal opportunity</strong> (no discrimination based on gender, caste, religion, disability)</li>
+                    <li>Ensure <strong>POSH Act compliance</strong> - zero tolerance for sexual harassment</li>
+                    <li>Maintain <strong>safe and healthy</strong> work environment</li>
+                    <li>Encourage <strong>professional development</strong> and talent retention</li>
+                    <li>Fair <strong>compensation and benefits</strong> structure</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">10.3 CUSTOMERS & BUSINESS PARTNERS</div>
+                <ul class="compliance-list">
+                    <li><strong>Fair and ethical</strong> business practices</li>
+                    <li>Maintain <strong>quality standards</strong> in products/services</li>
+                    <li>Honor <strong>commitments and obligations</strong></li>
+                    <li>Protect <strong>customer data privacy</strong></li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">10.4 COMMUNITY & ENVIRONMENT</div>
+                <ul class="compliance-list">
+                    <li>Promote <strong>Corporate Social Responsibility</strong> (2% compliance as per Companies Act)</li>
+                    <li><strong>Environmentally sustainable</strong> operations</li>
+                    <li>Positive <strong>social impact</strong> in communities</li>
+                    <li>Responsible <strong>waste management</strong> and carbon footprint reduction</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 11. Professional Development -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">11</span>
+                PROFESSIONAL DEVELOPMENT & TRAINING
+            </div>
+            <p>Directors shall continuously enhance their effectiveness through:</p>
+            <ul class="compliance-list">
+                <li><strong>Annual training</strong> on governance, compliance, and sector trends</li>
+                <li>Updates on <strong>regulatory changes</strong> and best practices</li>
+                <li>Understanding of <strong>Company's business, risks, and technology</strong></li>
+                <li><strong>Peer learning</strong> and director development programs</li>
+            </ul>
+        </div>
+        
+        <!-- 12. Independent Directors -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">12</span>
+                INDEPENDENCE OF INDEPENDENT DIRECTORS
+            </div>
+            <p>Independent Directors shall maintain <strong>true independence</strong> in judgment and actions:</p>
+            <ul class="compliance-list">
+                <li><strong>No material pecuniary relationship</strong> with Company, promoters, or management</li>
+                <li><strong>Objective judgment</strong> on all Board matters</li>
+                <li>Compliance with <strong>independence criteria</strong> under Companies Act and SEBI LODR</li>
+                <li><strong>Separate meetings</strong> without management presence at least annually</li>
+                <li>Evaluation of <strong>Chairperson and Non-Independent Directors</strong></li>
+            </ul>
+        </div>
+        
+        <!-- 13. Reporting Violations -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">13</span>
+                REPORTING VIOLATIONS & WHISTLEBLOWER PROTECTION <span class="new-tag">ENHANCED</span>
+            </div>
+            <p>Directors shall promote <strong>ethical culture</strong> and <strong>speak-up environment</strong>:</p>
+            <ul class="compliance-list">
+                <li><strong>Report immediately</strong> any Code violations to Audit Committee Chair</li>
+                <li><strong>Anonymous reporting</strong> channel available through ethics hotline/portal</li>
+                <li><strong>Strict non-retaliation</strong> policy for good faith reports</li>
+                <li><strong>Cooperate fully</strong> in investigations</li>
+                <li><strong>Maintain confidentiality</strong> of reporting and investigation process</li>
+            </ul>
+            <div class="updated-content">
+                <strong>Whistleblower Portal:</strong> https://ethics.kisaaninfotech.com | <strong>Hotline:</strong> 1800-XXX-XXXX (24x7) | <strong>Email:</strong> ethics@kisaaninfotech.com
+            </div>
+        </div>
+        
+        <!-- 14. Consequences -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">14</span>
+                CONSEQUENCES OF NON-COMPLIANCE
+            </div>
+            <p>Violations may result in:</p>
+            <ul class="requirement-list">
+                <li><strong>Investigation</strong> by Board/Audit Committee/Nominated Director</li>
+                <li><strong>Censure, reprimand, or warning</strong></li>
+                <li><strong>Suspension or removal</strong> from Board/Committee positions</li>
+                <li><strong>Legal action</strong> under applicable laws</li>
+                <li><strong>Reporting to regulatory authorities</strong> (SEBI, MCA, Stock Exchanges)</li>
+                <li><strong>Disqualification</strong> from directorship for specified period</li>
+            </ul>
+        </div>
+        
+        <!-- 15. Affirmation -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">15</span>
+                ANNUAL AFFIRMATION & COMPLIANCE CERTIFICATION
+            </div>
+            <p>All Directors shall:</p>
+            <ul class="compliance-list">
+                <li><strong>Acknowledge receipt</strong> and <strong>understanding</strong> of this Code</li>
+                <li><strong>Submit annual compliance affirmation</strong> by December 31 each year</li>
+                <li><strong>Disclose non-compliance</strong> immediately if occurs</li>
+                <li><strong>Certify independence</strong> (Independent Directors)</li>
+                <li><strong>Maintain record</strong> of affirmations for 8 years</li>
+            </ul>
+        </div>
+        
+        <!-- 16. Amendments -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">16</span>
+                AMENDMENTS, WAIVERS & DISCLOSURES
+            </div>
+            <ul class="compliance-list">
+                <li>Amendments require <strong>Board approval</strong> and <strong>shareholder notification</strong></li>
+                <li><strong>No waiver</strong> for provisions required by law</li>
+                <li><strong>Public disclosure</strong> of Code and amendments on website</li>
+                <li><strong>Annual review</strong> by Nomination & Remuneration Committee</li>
+            </ul>
+        </div>
+        
+        <!-- Acknowledgment Section -->
+        <div class="acknowledgment-box">
+            <div class="acknowledgment-title">DIRECTOR ACKNOWLEDGMENT & COMPLIANCE CERTIFICATE</div>
+            <p>I hereby acknowledge that I have received, read, understood, and agree to comply with the Kisaan Infotech Limited Code of Conduct for Directors. I understand that violations may result in disciplinary action, including potential removal and legal consequences.</p>
+            
+            <div style="margin: 25px 0;">
+                <strong>Director Name:</strong> _________________________________________
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <strong>Director Identification Number (DIN):</strong> _______________________
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <strong>Category of Directorship:</strong> 
+                □ Executive □ Non-Executive □ Independent □ Woman Director
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <strong>Signature:</strong> _______________________ <strong>Date:</strong> ___/___/_______
+            </div>
+            
+            <div style="margin: 20px 0; font-size: 13px;">
+                <strong>Submit to:</strong> Company Secretary, Kisaan Infotech Limited<br>
+                <strong>Email:</strong> company.secretary@kisaaninfotech.com | <strong>Deadline:</strong> December 31, 2024
+            </div>
+        </div>
+        
+        <!-- Signature Section -->
+        <div class="signature-section">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <strong>ADOPTED BY THE BOARD OF DIRECTORS</strong><br>
+                On: [Date of Board Approval]
+            </div>
+            
+            <div class="signature-block">
+                <div class="signature-line"></div>
+                <div class="signature-label">Chairperson, Board of Directors</div>
+            </div>
+            
+            <div class="signature-block">
+                <div class="signature-line"></div>
+                <div class="signature-label">Chairperson, Audit Committee</div>
+            </div>
+            
+            <div style="clear: both; margin-top: 40px; text-align: center; font-style: italic;">
+                For and on behalf of the Board of Directors of<br>
+                <strong>Kisaan Infotech Limited</strong>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="contact-info">
+                <strong>Kisaan Infotech Limited</strong><br>
+                Registered Address: Thite Wasti, Survey No. 14/1/1, Mundhwa Road, Kharadi, Pune, Maharashtra, India, 411014<br>
+                Tel: +91-9595820288 | Email: info@kisaaninfotech.com | Website: www.kisaaninfotech.com<br>
+                CIN: U74999PN2014PLC150773 | Compliance Officer: [Name] | Company Secretary: [Name]
+            </div>
+            
+            <div>
+                <strong>Document Version:</strong> 3.0 | <strong>Effective Date:</strong> [Date of Board Approval]<br>
+                <strong>Previous Version:</strong> 2.0 dated 26/09/2018 | <strong>Next Review Due:</strong> December 2025<br>
+                © 2024 Kisaan Infotech Limited. This document is confidential and proprietary.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive functionality for Director engagement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add toggle functionality for detailed sections
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'toggle-details no-print';
+                toggleBtn.textContent = '[Show Details]';
+                toggleBtn.addEventListener('click', function() {
+                    const section = this.closest('.section');
+                    const details = section.querySelector('.details-content') || 
+                                   section.querySelector('.updated-content') ||
+                                   section.querySelector('.compliance-list');
+                    if (details) {
+                        if (details.style.display === 'block') {
+                            details.style.display = 'none';
+                            this.textContent = '[Show Details]';
+                        } else {
+                            details.style.display = 'block';
+                            this.textContent = '[Hide Details]';
+                        }
+                    }
+                });
+                title.appendChild(toggleBtn);
+            });
+            
+            // Print button functionality
+            const printBtn = document.createElement('button');
+            printBtn.className = 'no-print';
+            printBtn.style.cssText = 'position:fixed;top:20px;right:20px;padding:10px 20px;background:#2c7a2c;color:white;border:none;border-radius:4px;cursor:pointer;z-index:1000;';
+            printBtn.textContent = 'Print Code';
+            printBtn.onclick = () => window.print();
+            document.body.appendChild(printBtn);
+            
+            // Add today's date to acknowledgment section
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            document.querySelectorAll('strong:contains("Date:")').forEach(el => {
+                if (el.textContent.includes('Date:')) {
+                    const dateInput = el.nextElementSibling;
+                    if (dateInput && dateInput.tagName === 'INPUT') {
+                        dateInput.value = dateStr;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
