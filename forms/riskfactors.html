@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Factors Disclosure - Kisaan Infotech Limited</title>
+    <style>
+        /* Print-specific styles */
+        @media print {
+            @page {
+                margin: 0.75in;
+                size: letter;
+            }
+            
+            body {
+                font-size: 11pt;
+                line-height: 1.4;
+            }
+            
+            .page-break {
+                page-break-before: always;
+                margin-top: 2em;
+            }
+            
+            .no-print {
+                display: none;
+            }
+            
+            .header-container {
+                position: static;
+            }
+            
+            .footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                font-size: 9pt;
+                color: #666;
+                border-top: 1px solid #ddd;
+                padding-top: 5px;
+            }
+        }
+        
+        /* Screen styles */
+        @media screen {
+            body {
+                max-width: 8.5in;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f5f5f5;
+            }
+            
+            .document-container {
+                background-color: white;
+                padding: 40px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            }
+            
+            .print-button {
+                display: block;
+                margin: 20px auto;
+                padding: 10px 20px;
+                background-color: #2c7a2c;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+        }
+        
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Times New Roman", Times, serif;
+            color: #000000;
+            line-height: 1.5;
+        }
+        
+        .document-container {
+            position: relative;
+        }
+        
+        .header-container {
+            border-bottom: 2px solid #2c7a2c;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .logo-container {
+            flex: 0 0 auto;
+        }
+        
+        .company-logo {
+            height: 60px;
+            width: auto;
+        }
+        
+        .header-text {
+            text-align: right;
+            flex: 1;
+        }
+        
+        .company-name {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #2c7a2c;
+            margin-bottom: 5px;
+        }
+        
+        .document-title {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin: 25px 0;
+            text-decoration: underline;
+        }
+        
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            color: #2c7a2c;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        
+        .subsection-title {
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 15px 0 8px 0;
+            color: #000000;
+        }
+        
+        .risk-category {
+            font-size: 13pt;
+            font-weight: bold;
+            margin: 18px 0 10px 0;
+            padding-left: 10px;
+            color: #2c7a2c;
+        }
+        
+        .risk-item {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        .risk-item-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .risk-description {
+            margin-left: 15px;
+            text-align: justify;
+        }
+        
+        .forward-looking-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            border-left: 4px solid #2c7a2c;
+        }
+        
+        .forward-looking-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 12pt;
+        }
+        
+        .disclaimer-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 25px 0;
+            background-color: #fff8e1;
+            font-size: 10pt;
+            text-align: justify;
+        }
+        
+        .disclaimer-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 10.5pt;
+        }
+        
+        .signature-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #000;
+        }
+        
+        .signature-line {
+            margin-top: 40px;
+            width: 100%;
+        }
+        
+        .signature-field {
+            width: 60%;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            margin-bottom: 25px;
+        }
+        
+        .signature-label {
+            font-size: 11pt;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            font-size: 9pt;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .page-number:after {
+            content: "Page " counter(page);
+        }
+        
+        ol, ul {
+            margin-left: 30px;
+            margin-bottom: 12px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background-color: #ffffcc;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <!-- Header with Logo -->
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://kisaaninfotech.com/Images/KisaanInfotech.svg" alt="Kisaan Infotech Limited" class="company-logo">
+            </div>
+            <div class="header-text">
+                <div class="company-name">KISAAN INFOTECH LIMITED</div>
+                <div>CIN:U74999PN2014PLC150773</div>
+                <div>Registered Office:THITE WASTI, S NO. 14/1/1, MUNDHWA ROAD, KHARADI, PUNE, Pune, Maharashtra, 411014, India</div>
+            </div>
+        </div>
+        
+        <!-- Document Title -->
+        <div class="document-title">ANNEXURE A</div>
+        <div class="document-title">MANAGEMENT'S DISCUSSION OF RISK FACTORS</div>
+        
+        <!-- Investment Risk Statement -->
+        <div class="section-title">INVESTMENT RISK STATEMENT</div>
+        <div class="risk-item">
+            An investment in the equity shares of <strong>Kisaan Infotech Limited</strong> ("the Company") involves a high degree of risk. Prospective investors should carefully consider all the risks described below, together with all other information contained in this Offer Document/Prospectus, before making any investment decision. If any of the following risks materialize, individually or collectively, the Company's business, financial condition, results of operations, and future prospects could be materially and adversely affected. This could lead to a decline in the trading price of the equity shares and a partial or complete loss of the investment. The risks enumerated herein are not exhaustive, and additional risks not presently known to the Management or those currently deemed immaterial could also have an adverse effect.
+        </div>
+        
+        <!-- Forward-Looking Statements Box -->
+        <div class="forward-looking-box">
+            <div class="forward-looking-title">FORWARD-LOOKING STATEMENTS</div>
+            <div class="risk-item">
+                This document contains statements concerning the Company's future expectations, plans, and prospects that constitute "forward-looking statements" under applicable securities laws and regulations. These statements can be identified by terms such as "aim," "anticipate," "believe," "estimate," "expect," "intend," "may," "plan," "potential," "will," "would," and similar expressions. Such statements are based on certain assumptions and expectations of future events. <span class="highlight">Actual results may differ materially from those expressed or implied due to numerous risks and uncertainties, including but not limited to those described in this section.</span> The Company assumes no responsibility to publicly amend, modify, or revise any forward-looking statement based on subsequent developments, information, or events.
+            </div>
+        </div>
+        
+        <!-- Disclaimer Box -->
+        <div class="disclaimer-box">
+            <div class="disclaimer-title">IMPORTANT DISCLAIMER</div>
+            <div>
+                This document does not constitute an offer to sell or a solicitation of an offer to buy any securities. The information contained herein is for informational purposes only and must be read in conjunction with the complete Offer Document/Prospectus. Investors are advised to consult with their own legal, tax, and financial advisors before making any investment decision. The Company has obtained all necessary statutory approvals as required for its business operations as of the date of this document.
+            </div>
+        </div>
+        
+        <!-- PART A: BUSINESS AND OPERATIONAL RISKS -->
+        <div class="section-title page-break">PART A: RISKS RELATING TO THE COMPANY'S BUSINESS AND OPERATIONS</div>
+        
+        <div class="risk-category">1. REGULATORY AND COMPLIANCE RISKS</div>
+        <div class="risk-item">
+            <div class="risk-item-title">Regulatory Oversight and Changes</div>
+            <div class="risk-description">
+                The Company operates in the <strong>Agri-tech and Information Technology sectors</strong>, which are subject to oversight by multiple regulatory authorities in India (including but not limited to the Ministry of Agriculture and Farmers' Welfare, Ministry of Electronics and Information Technology, and relevant data protection authorities). Evolving regulations, changes in interpretation, or delays in obtaining necessary statutory approvals, licenses, and renewals could increase compliance costs, restrict operations, and adversely affect business, financial condition, and results of operations. The Company cannot predict the final form, timing, or impact of proposed legislation or regulations.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Legal and Policy Framework Evolution</div>
+            <div class="risk-description">
+                Proposed or new laws governing data privacy (including the Digital Personal Data Protection Act, 2023), e-commerce, agricultural marketing, software taxation, or intellectual property could necessitate significant changes to the Company's business model, technology architecture, data handling practices, and contractual terms. Compliance with such new frameworks may require substantial capital expenditure and ongoing operational costs, potentially impacting profitability.
+            </div>
+        </div>
+        
+        <div class="risk-category">2. MARKET AND COMPETITION RISKS</div>
+        <div class="risk-item">
+            <div class="risk-item-title">Intense Competitive Pressure</div>
+            <div class="risk-description">
+                The Company faces intense competition from established IT service providers, other Agri-tech startups, agricultural input companies with digital initiatives, and government-sponsored agricultural extension programs. Certain competitors may have significantly greater financial, technical, marketing, distribution, and human resources, stronger brand recognition, more extensive intellectual property portfolios, and deeper relationships with potential clients, farmers, and channel partners.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Market Acceptance and Adoption</div>
+            <div class="risk-description">
+                The Company's success is contingent upon the adoption of its technology solutions (including software platforms, mobile applications, and IoT devices) by farmers, farmer-producer organizations (FPOs), agricultural cooperatives, and institutional buyers. Failure to accurately anticipate market needs, demonstrate clear economic value or return on investment, overcome resistance to technology adoption in rural areas, or effectively differentiate from competing solutions could limit user acquisition, engagement, and revenue generation.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Unfair Competitive Practices and Espionage</div>
+            <div class="risk-description">
+                <span class="highlight">The competitive landscape includes the risk of competitors engaging in aggressive or unethical tactics.</span> This may include attempted theft of trade secrets, proprietary algorithms, business strategies, or confidential client data through cyber means or social engineering. <span class="highlight">Additionally, targeted recruitment of key technical and managerial personnel to gain access to confidential information, or the filing of strategic, baseless legal claims to disrupt operations and consume management resources, poses a material risk.</span> Defending against such actions requires significant financial resources and management attention.
+            </div>
+        </div>
+        
+        <div class="risk-category">3. OPERATIONAL AND STRATEGIC RISKS</div>
+        <div class="risk-item">
+            <div class="risk-item-title">Dependence on Key Personnel and Talent Retention</div>
+            <div class="risk-description">
+                The Company's performance is highly dependent on its founder(s), senior management, software developers, data scientists, and agronomy experts. The inability to attract, integrate, motivate, and retain qualified personnel with specialized experience in both agriculture and technology could impair innovation, product development, customer support, and business continuity. The loss of services of one or more key personnel could adversely affect operations.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Execution of Growth and Diversification Strategy</div>
+            <div class="risk-description">
+                The Company's strategy may include diversification into new business verticals (e.g., precision farming services, agricultural fintech, supply chain logistics) or the introduction of new products/services. Such initiatives carry inherent risks of market failure, operational overreach, integration challenges, capital misallocation, and distraction from core operations, which may not yield expected returns and could adversely affect financial performance.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Technology, Cybersecurity, and Data Integrity</div>
+            <div class="risk-description">
+                The Company's platform is vulnerable to service disruptions, software defects, hardware failures, cybersecurity breaches (including ransomware, phishing, and denial-of-service attacks), and rapid technological obsolescence. A significant security incident involving farmer data, financial information, or proprietary business intelligence could severely damage the Company's reputation, lead to legal liability, regulatory penalties, and loss of customer trust. The Company's insurance coverage may be insufficient to cover all potential losses from such events.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Reputational Harm from Misinformation</div>
+            <div class="risk-description">
+                <span class="highlight">The Company's reputation and stakeholder confidence are vulnerable to misinformation, disparagement, or false claims circulated by external parties.</span> This includes campaigns orchestrated by competitors or conducted by former employees, contractors, or other associates via social media, industry forums, or direct outreach to clients, partners, or investors. <span class="highlight">Such campaigns could damage client trust, affect employee morale, impact financing opportunities, and necessitate costly legal and public relations efforts to mitigate, regardless of their factual inaccuracy.</span>
+            </div>
+        </div>
+        
+        <div class="risk-category">4. FINANCIAL RISKS</div>
+        <div class="risk-item">
+            <div class="risk-item-title">Funding, Liquidity, and Capital Requirements</div>
+            <div class="risk-description">
+                Future capital needs for expansion, technology development, or acquisitions may require additional equity or debt financing. <span class="highlight">Any future issuance of equity capital may dilute the shareholding percentage and voting power of existing investors.</span> An inability to secure additional funding on favorable terms, or at all, could constrain growth plans and operational flexibility. The Company may also be affected by volatility in global financial markets, which may impact the availability and cost of capital.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Dividend Policy</div>
+            <div class="risk-description">
+                The declaration and payment of any dividends in the future will be at the discretion of the Board of Directors and will depend on numerous factors, including but not limited to future earnings, cash flows, capital requirements, contractual restrictions, working capital needs, anticipated capital expenditures, and compliance with applicable laws (including any capital adequacy standards stipulated by lenders or regulators). <strong>There is no guaranteed minimum dividend, and the Company may never declare or pay dividends.</strong>
+            </div>
+        </div>
+        
+        <!-- PART B: COUNTRY-SPECIFIC RISKS -->
+        <div class="section-title page-break">PART B: RISKS RELATING TO INDIA</div>
+        
+        <div class="risk-category">1. MACROECONOMIC AND SOVEREIGN RISKS</div>
+        <div class="risk-item">
+            <div class="risk-item-title">Economic Conditions and Growth Variability</div>
+            <div class="risk-description">
+                All the Company's revenues are currently derived from operations within India. A significant slowdown in Indian economic growth, high inflation, fiscal deficits, fluctuations in interest rates, or unfavorable changes in monetary/fiscal policy could reduce overall public and private sector investment, decrease agricultural incomes, and affect demand for the Company's services, thereby impacting its financial performance.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Political, Social, and Security Environment</div>
+            <div class="risk-description">
+                <span class="highlight">Political instability, changes in government policies affecting the agricultural or technology sectors, social unrest, civil disorder, or acts of terrorism could disrupt economic activity, supply chains, communication networks, and business operations, creating an uncertain and challenging operating environment.</span> Changes in trade policies, export-import regulations, or subsidies relevant to the agricultural sector could also indirectly affect the Company's business model.
+            </div>
+        </div>
+        
+        <div class="risk-category">2. INFRASTRUCTURAL AND ENVIRONMENTAL RISKS</div>
+        <div class="risk-item">
+            <div class="risk-item-title">Exposure to Natural Disasters and Climate</div>
+            <div class="risk-description">
+                India is susceptible to monsoon variability, droughts, floods, cyclones, earthquakes, and other natural disasters. Such events can directly disrupt the agricultural ecosystem the Company serves (affecting its client base) and indirectly affect operations through damage to physical infrastructure (e.g., offices, data centers), communication networks, and transportation systems, potentially leading to operational downtime.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Tax and Regulatory Uncertainty</div>
+            <div class="risk-description">
+                Uncertainties in the interpretation, application, or enforcement of Indian tax laws (including Goods and Services Tax, corporate income tax, and equalization levy) or competition law could lead to disputes, unforeseen tax liabilities, penalties, interest, and increased compliance costs. Tax assessments or investigations, even if successfully defended, consume management time and financial resources.
+            </div>
+        </div>
+        
+        <!-- PART C: SECURITIES-SPECIFIC RISKS -->
+        <div class="section-title page-break">PART C: RISKS RELATING TO THE EQUITY SHARES</div>
+        
+        <div class="risk-category">1. MARKET AND LIQUIDITY RISKS</div>
+        <div class="risk-item">
+            <div class="risk-item-title">Absence of a Public Market / Listing Risk</div>
+            <div class="risk-description">
+                <span class="highlight">The Equity Shares of the Company are presently <strong>unlisted</strong> and are not traded on any recognized stock exchange, including the National Stock Exchange (NSE) or the BSE Limited (BSE).</span> An application for listing may be made in the future, but <strong>there is no guarantee that the Equity Shares will be listed on any exchange in a timely manner or at all.</strong> Prospective investors must therefore be prepared to hold their investment indefinitely with limited to no liquidity and no readily available market price.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Price Volatility and Market Sentiment</div>
+            <div class="risk-description">
+                If and when listed, the market price of the Equity Shares may be highly volatile and could fluctuate significantly due to factors beyond the Company's control, including but not limited to:
+                <ol type="i">
+                    <li>Variations in the Company's quarterly or annual operating results from market expectations;</li>
+                    <li>Announcements by the Company or its competitors regarding new products, technologies, strategic alliances, or major contracts;</li>
+                    <li>Changes in the estimates of the Company's performance or changes in recommendations by securities analysts;</li>
+                    <li><span class="highlight">Favorable or unfavorable media reports, social media sentiment, or the spread of misinformation concerning the Company, its management, or its industry;</span></li>
+                    <li>Sales of substantial blocks of Equity Shares by existing shareholders, including promoters;</li>
+                    <li>Market conditions affecting the Information Technology, Agri-tech sectors, or the economy as a whole;</li>
+                    <li>Changes in regulations, policies, or tax laws applicable to the Company's business.</li>
+                </ol>
+                The trading price may decline due to a loss of investor confidence in equity markets generally, or in reaction to events affecting other companies in the industry, even if these events do not directly affect the Company.
+            </div>
+        </div>
+        
+        <div class="risk-category">2. INVESTMENT-SPECIFIC RISKS</div>
+        <div class="risk-item">
+            <div class="risk-item-title">Dilution of Shareholding</div>
+            <div class="risk-description">
+                As noted in Part A, the Company may issue additional equity shares, options, warrants, or other convertible instruments in the future to raise capital, fund acquisitions, or incentivize employees. Any such issuance will dilute the proportional ownership, voting power, and potentially the earnings per share of existing shareholders.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Restrictions on Transfer and Price Movement</div>
+            <div class="risk-description">
+                If listed, the Equity Shares may be subject to exchange-mandated restrictions on daily price movements (e.g., circuit filters). Such restrictions may prevent shareholders from selling their shares at a desired price during periods of significant market volatility, potentially locking in losses or preventing the realization of gains at a specific point in time.
+            </div>
+        </div>
+        
+        <div class="risk-item">
+            <div class="risk-item-title">Tax Implications for Investors</div>
+            <div class="risk-description">
+                Investors are solely responsible for understanding and complying with all applicable Indian tax laws concerning their investment, including taxes on capital gains, dividends (if any), and securities transaction tax (upon future listing and trading). Tax laws and rates are subject to change, which may affect the net returns from the investment.
+            </div>
+        </div>
+        
+        <!-- Signature Section -->
+        <div class="signature-section page-break">
+            <div class="signature-field"></div>
+            <div class="signature-label">Place: _________________________</div>
+            
+            <div class="signature-field" style="margin-top: 40px;"></div>
+            <div class="signature-label">Date: _________________________</div>
+            
+            <div class="signature-field" style="margin-top: 40px;"></div>
+            <div class="signature-label">Name: _________________________</div>
+            
+            <div class="signature-field" style="margin-top: 40px;"></div>
+            <div class="signature-label">Designation: Director</div>
+            
+            <div style="margin-top: 50px; font-style: italic; font-size: 10pt;">
+                <strong>For and on behalf of the Board of Directors of<br>Kisaan Infotech Limited</strong>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div>This document is an integral part of the Offer Document/Prospectus dated _______.</div>
+            <div>Registered Office:THITE WASTI, S NO. 14/1/1, MUNDHWA ROAD, KHARADI, PUNE, Pune, Maharashtra, 411014, India | Corporate Identification Number (CIN):U74999PN2014PLC150773</div>
+            <div>© Kisaan Infotech Limited. All rights reserved.</div>
+        </div>
+    </div>
+    
+    <!-- Print Button (visible only on screen) -->
+    <button class="print-button no-print" onclick="window.print()">Print this Document</button>
+
+    <script>
+        // Add page numbers for print
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add last updated date to footer
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = today.toLocaleDateString('en-IN', options);
+            
+            // Find and update any date placeholders if needed
+            const dateElements = document.querySelectorAll('.signature-label');
+            if (dateElements.length > 0) {
+                // You can set a default date in the second signature line (index 1)
+                // Uncomment below to auto-insert today's date
+                // dateElements[1].textContent = 'Date: ' + dateString;
+            }
+            
+            // Add print functionality enhancements
+            const printButton = document.querySelector('.print-button');
+            if (printButton) {
+                printButton.addEventListener('click', function() {
+                    // Before printing, you could add logic to update fields
+                    window.print();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
