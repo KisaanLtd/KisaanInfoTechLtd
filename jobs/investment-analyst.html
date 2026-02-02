@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Analyst - Kisaan Infotech Limited</title>
+    <link rel="canonical" href="https://kisaaninfotech.com/jobs/investment-analyst.html" />
+    <link rel="icon" href="https://kisaaninfotech.com/favicon.png" type="image/ico" sizes="16x16">
+
+    <!-- Google Analytics 4 (same as main site) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEPM4D0EMX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JEPM4D0EMX');
+    </script>
+
+    <style>
+        /* ────────────────────────────────────────────── */
+        /* Copied directly from main index.html for consistency */
+        /* ────────────────────────────────────────────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --secondary: #1976d2;
+            --secondary-dark: #0d47a1;
+            --accent: #ff9800;
+            --text-dark: #263238;
+            --text-light: #546e7a;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --light-green: #e8f5e9;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+        /* Navigation – identical to main site */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .navbar.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo img {
+            height: 50px;
+            transition: var(--transition);
+        }
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: var(--transition);
+        }
+        /* Content styles – adapted from main site */
+        section {
+            padding: 100px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--text-dark);
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        .content-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .content-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: var(--light-green);
+            color: var(--primary-dark);
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+        }
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-toggle { display: flex; }
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+            }
+            .nav-menu.active { left: 0; }
+            section { padding-top: 120px; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation – 100% matching main site -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="https://kisaaninfotech.com">
+                    <img src="https://kisaaninfotech.com/Images/KisaanInfotech.svg" alt="Kisaan Infotech">
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="https://kisaaninfotech.com">About</a></li>
+                <li><a href="https://shop.kisaaninfotech.com">Shop</a></li>
+                <li><a href="https://kisaaninfotech.com/services.html">Services</a></li>
+                <li><a href="https://kisaaninfotech.com/investors.html">Investors</a></li>
+                <li><a href="https://kisaaninfotech.com/jobs/Jobslist.html" class="active">Careers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Job Content -->
+    <section>
+        <h1 class="section-title">Investment Analyst</h1>
+        <p style="text-align:center; font-size:1.3rem; margin-bottom:40px; color:var(--text-light);">
+            Corporate Investments | Agrotech and Fintech Focus<br>
+            <strong>KISAAN INFOTECH LIMITED</strong>
+        </p>
+
+        <div class="content-card">
+            <h3>About The Role</h3>
+            <p>Expanding our investment operations with a systematic analysis program focused on agrotech, fintech, and related sectors through strategic corporate initiatives. Seeking a disciplined, analytical, experienced investment analyst to serve as Primary Investment Analyst.</p>
+            <p>This is <strong>NOT</strong> a speculative investment role. Execute data-driven, research-supported evaluations under CFO supervision with strict due diligence protocols.</p>
+            <ul>
+                <li><span class="highlight">Strategic Objective:</span> Identify and evaluate investment opportunities that generate sustainable returns to support company growth and innovation in agriculture technology.</li>
+                <li><span class="highlight">Reporting:</span> Directly to CFO with full operational authority within approved parameters. High-impact role.</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h3>Key Responsibilities</h3>
+            <ul>
+                <li>Conduct in-depth analysis of potential investments in agrotech, fintech, and emerging markets.</li>
+                <li>Perform reviews of economic indicators, industry reports, and competitor landscapes.</li>
+                <li>Evaluate investment risks (market volatility, regulatory changes, sector-specific challenges).</li>
+                <li>Track performance of existing investments and recommend adjustments.</li>
+                <li>Maintain investment logs, prepare P&L analyses, and generate stakeholder reports.</li>
+                <li>Ensure 100% compliance with approved Standard Operating Procedures.</li>
+                <li>Collaborate with finance, operations, and strategy teams.</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h3>Essential Skills & Competencies</h3>
+            <ul>
+                <li>Advanced financial modeling, valuation (DCF, comparables), forecasting, SWOT, scenario planning.</li>
+                <li>Proficiency in Bloomberg, advanced Excel (VBA), Python/R, Tableau/Power BI.</li>
+                <li>Strong critical thinking, risk management, attention to detail, ethical judgment.</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h3>Education & Qualifications</h3>
+            <ul>
+                <li><strong>Preferred:</strong> CFA Level I+, FRM, CAIA, MBA Finance/Investment.</li>
+                <li><strong>Minimum:</strong> Bachelor's in Finance, Economics or related + proven experience.</li>
+                <li><strong>Required:</strong> Verifiable track record (min 12 months) of analytical reports, recommendations, or performance metrics.</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h3>Experience Requirements</h3>
+            <ul>
+                <li>Minimum 2 years in investment analysis or financial research.</li>
+                <li>Preferred: 2–5 years in equity research, venture capital, private equity, or corporate finance (agrotech/fintech exposure advantageous).</li>
+            </ul>
+        </div>
+
+        <!-- ... previous sections remain the same ... -->
+
+<div class="content-card">
+    <h3>Compensation & Benefits</h3>
+    <table>
+        <tr><th>Component</th><th>Details</th></tr>
+        <tr><td>Base Salary</td><td>₹50,000 – ₹80,000 per month</td></tr>
+        <tr><td>Performance Bonus</td><td>10–20% of annual base (target-based)</td></tr>
+        <tr><td><strong>Total Potential</strong></td><td>₹6.6L – ₹11.52L per annum</td></tr>
+    </table>
+    <p><strong>Additional Benefits:</strong> Health insurance, professional development, tool subscriptions, PF, performance incentives, work-life balance initiatives.</p>
+</div>
+
+<div class="content-card" style="text-align:center;">
+    <h3>Ready to Join?</h3>
+    <p>Send your resume, track record/portfolio, and cover letter to:</p>
+    <a href="mailto:careers@kisaaninfotech.com?subject=Application%20for%20Investment%20Analyst" class="cta-button" style="font-size:1.3rem; margin:25px 0;">
+        Apply Now – careers@kisaaninfotech.com
+    </a>
+    <p style="margin-top:20px; color:var(--text-light);">We are an equal opportunity employer.</p>
+</div>
+
+<!-- ... footer remains the same ... -->
+    </section>
+
+    <!-- Footer – aligned with main site style -->
+    <footer style="background: linear-gradient(135deg, var(--primary-dark), var(--text-dark)); color: var(--white); padding: 50px 20px 20px; text-align: center;">
+        <p>© <span id="year"></span> Kisaan Infotech Limited. All Rights Reserved.</p>
+        <p>Empowering every farmer and agriculture stakeholder with skills training, information, and peer-to-peer shared service platforms.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle (same as main site)
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Navbar scroll effect (same as main site)
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
